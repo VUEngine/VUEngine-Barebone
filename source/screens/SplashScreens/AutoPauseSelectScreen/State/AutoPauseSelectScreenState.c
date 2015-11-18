@@ -83,11 +83,11 @@ static void AutoPauseSelectScreenState_print(AutoPauseSelectScreenState this)
 {
     char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
     char* strAutomaticPauseExplanation = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_EXPLANATION);
-    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, "GUIFont");
+    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, NULL);
     Size strAutomaticPauseExplanationSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseExplanation, NULL);
 
     u8 strHeaderXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseSize.x >> 1);
-    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 8, "GUIFont");
+    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 8, NULL);
 
     u8 strExplanationXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseExplanationSize.x >> 1);
     Printing_text(Printing_getInstance(), strAutomaticPauseExplanation, strExplanationXPos, 9 + strAutomaticPauseSize.y, NULL);

@@ -83,11 +83,11 @@ static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner)
     // print text
     char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
     char* strAutomaticPauseText = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_TEXT);
-    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, "GUIFont");
+    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, NULL);
     Size strAutomaticPauseTextSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseText, NULL);
 
     u8 strHeaderXPos = ((__SCREEN_WIDTH >> 4) - (strAutomaticPauseSize.x >> 1));
-    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 10, "GUIFont");
+    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 10, NULL);
 
     u8 strTextXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseTextSize.x >> 1);
     Printing_text(Printing_getInstance(), strAutomaticPauseText, strTextXPos, 11 + strAutomaticPauseSize.y, NULL);

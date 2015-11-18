@@ -117,11 +117,11 @@ void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedK
 static void LangSelectScreenState_print(LangSelectScreenState this)
 {
     char* strLanguageSelect = I18n_getText(I18n_getInstance(), STR_LANGUAGE_SELECT);
-    Size size = Printing_getTextSize(Printing_getInstance(), strLanguageSelect, "GUIFont");
+    Size size = Printing_getTextSize(Printing_getInstance(), strLanguageSelect, NULL);
 
     u8 strHeaderXPos = (__SCREEN_WIDTH >> 4) - (size.x >> 1);
 
-    Printing_text(Printing_getInstance(), strLanguageSelect, strHeaderXPos, 8, "GUIFont");
+    Printing_text(Printing_getInstance(), strLanguageSelect, strHeaderXPos, 8, NULL);
 
 	OptionsSelector_showOptions(this->languageSelector, strHeaderXPos, 9 + size.y);
 }

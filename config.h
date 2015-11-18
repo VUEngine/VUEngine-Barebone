@@ -17,6 +17,12 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
+//---------------------------------------------------------------------------------------------------------
+// 												INCLUDES
+//---------------------------------------------------------------------------------------------------------
+
+#include <Oop.h>
+
 
 //---------------------------------------------------------------------------------------------------------
 // 										DEBUGGING TOOLS
@@ -24,12 +30,18 @@
 
 #ifdef __DEBUG
 #define __PRINT_FRAMERATE
+#define __PRINT_MEMORY_POOL_STATUS
 #define __DEBUG_TOOLS
 #define __STAGE_EDITOR
 #define __ANIMATION_EDITOR
 #endif
 
 #define __PRINT_FRAMERATE
+#define __PRINT_MEMORY_POOL_STATUS
+
+// fires an exception if the stack is overflown
+//#define __ALERT_STACK_OVERFLOW
+
 
 //---------------------------------------------------------------------------------------------------------
 // 										OPTICS / PROJECTION
@@ -57,24 +69,22 @@
 #define __DISTANCE_EYE_SCREEN					384
 
 // maximum view distance (Depth)
-#define __MAXIMUM_VIEW_DISTANCE					256
-// always use a power of 2 as the maximum view distance, and update
-// the number of bits to make projection faster
-#define __MAXIMUM_VIEW_DISTANCE_POW				8
+// always use a power of 2 as the maximum view distance, and update the number of bits to make projection faster
+#define __MAXIMUM_VIEW_DISTANCE_POWER			8
 
 // distance between eyes
 #define __BASE_FACTOR							768
 
-// player's eyes's horizontal position
+// player's eyes' horizontal position
 #define __HORIZONTAL_VIEW_POINT_CENTER			192
 
-// player's eyes's vertical position
+// player's eyes' vertical position
 #define __VERTICAL_VIEW_POINT_CENTER			112
 
 // zoom factor to distortoine zooming
 #define __ZOOM_FACTOR							0.2f
 
-// parallax values are divide by this factor to control it's strenght
+// parallax values are divide by this factor to control their strength
 #define __PARALLAX_CORRECTION_FACTOR			20
 
 
@@ -83,35 +93,35 @@
 //---------------------------------------------------------------------------------------------------------
 
 // determine whether frame rate is capped or not
-#define __CAP_FPS						1
+#define __CAP_FPS					1
 
 // clock resolution
-#define __TIMER_RESOLUTION				10
+#define __TIMER_RESOLUTION			10
 
 // target frames per second
 // must be a muliple of 50 to being able to use a timer resolution greater than 1
 // if finer control is needed, change timer resolution to 1
-#define __TARGET_FPS 					50
+#define __TARGET_FPS 				50
 
 // target frames per second
-#define __OPTIMUM_FPS 					__TARGET_FPS
+#define __OPTIMUM_FPS 				__TARGET_FPS
 
 // target frames per second
-#define __MINIMUM_GOOD_FPS 				(__TARGET_FPS - 0)
+#define __MINIMUM_GOOD_FPS 			(__TARGET_FPS - 0)
 
-#define __MILLISECONDS_IN_SECOND		1000
+#define __MILLISECONDS_IN_SECOND	1000
 
 // set animation delays as if they are 60 FPS, and multiply by this factor
-#define __FPS_ANIM_FACTOR 	(__TARGET_FPS / (float)__OPTIMUM_FPS)
+#define __FPS_ANIM_FACTOR 			(__TARGET_FPS / (float)__OPTIMUM_FPS)
 
-// seconds that must elapse to call rest state... in seconds (15 minutes)
-#define __REST_DELAY 		900
+// seconds that must elapse to call rest state (in seconds)
+#define __REST_DELAY 				900 // 15 minutes
 
 // if defined, user input is only read in the Game's update logic cycle;
 // otherwise, it is read on each pass of the Game's main update loop, ensuring
-// that no user's input is lost, but introducing a considerable lost of loop's 
+// that no user's input is lost, but introducing a considerable lost of loop's
 // passes because of the delay needed to read the keypad
-#undef __POLL_USER_INPUT_ONLY_ON_LOGIC_CYCLE
+#define __POLL_USER_INPUT_ONLY_ON_LOGIC_CYCLE
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -127,44 +137,53 @@
 // max number of animation functions per description
 #define __MAX_ANIMATION_FUNCTIONS				32
 
+
 //---------------------------------------------------------------------------------------------------------
 // 										MEMORY POOL
 //---------------------------------------------------------------------------------------------------------
 
-#define __MEMORY_POOLS		9
+// reset to 0 each byte of each free block on reseting game
+// only use for debugging, proper object's initialization must make this macro unnecessary
+#undef __MEMORY_POOL_CLEAN_UP
 
-//each block size
-#define __BLOCK_512B 		512
-#define __BLOCK_256B 		256
-#define __BLOCK_192B 		192
-#define __BLOCK_128B 		128
-#define __BLOCK_100B 		100		// Used by images
-#define __BLOCK_80B 		80		// Used mainly by Sprites
-#define __BLOCK_48B 		48		// Used mainly by Telegrams
-#define __BLOCK_32B 		32		// Used mainly by CharSets
-#define __BLOCK_28B 		28		// Virtual nodes are 24 bytes long so a 32b block is too much
-#define __BLOCK_16B 		16
+#define __MEMORY_POOLS		11
 
-#define __POOL_512B_SIZE 	(__BLOCK_512B * 0)
-#define __POOL_256B_SIZE 	(__BLOCK_256B * 1)
-#define __POOL_192B_SIZE 	(__BLOCK_192B * 12)
-#define __POOL_128B_SIZE 	(__BLOCK_128B * 24)
-#define __POOL_100B_SIZE 	(__BLOCK_100B * 64)
-#define __POOL_80B_SIZE 	(__BLOCK_80B * 48)
-#define __POOL_48B_SIZE 	(__BLOCK_48B * 32)
-#define __POOL_32B_SIZE 	(__BLOCK_32B * 96)
-#define __POOL_28B_SIZE 	(__BLOCK_28B * 768)
-#define __POOL_16B_SIZE 	(__BLOCK_16B * 48)
+#define __MEMORY_POOL_ARRAYS													\
+	__BLOCK_DEFINITION(180, 1)													\
+	__BLOCK_DEFINITION(164, 2)													\
+	__BLOCK_DEFINITION(160, 2)													\
+	__BLOCK_DEFINITION(132, 44)													\
+	__BLOCK_DEFINITION(112, 16)													\
+	__BLOCK_DEFINITION(96, 40)													\
+	__BLOCK_DEFINITION(76, 24)													\
+	__BLOCK_DEFINITION(68, 80)													\
+	__BLOCK_DEFINITION(28, 280)													\
+	__BLOCK_DEFINITION(20, 512)													\
+	__BLOCK_DEFINITION(16, 256)													\
 
-#define __MIN_BLOCK 		__BLOCK_16B
+#define __SET_MEMORY_POOL_ARRAYS												\
+	__SET_MEMORY_POOL_ARRAY(180)												\
+	__SET_MEMORY_POOL_ARRAY(164)												\
+	__SET_MEMORY_POOL_ARRAY(160)												\
+	__SET_MEMORY_POOL_ARRAY(132)												\
+	__SET_MEMORY_POOL_ARRAY(112)												\
+	__SET_MEMORY_POOL_ARRAY(96)													\
+	__SET_MEMORY_POOL_ARRAY(76)													\
+	__SET_MEMORY_POOL_ARRAY(68)													\
+	__SET_MEMORY_POOL_ARRAY(28)													\
+	__SET_MEMORY_POOL_ARRAY(20)													\
+	__SET_MEMORY_POOL_ARRAY(16)													\
+
+// percentage (0-100) above which the MemoryPool's status shows the pool usage
+#define __MEMORY_POOL_WARNING_THRESHOLD	85
 
 
 //---------------------------------------------------------------------------------------------------------
 // 										CHAR MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
-// the fourth segment is used for text allocation
-// changing this value to 4 may cause text corruption
+// number of char segments
+// the fourth segment is used for text allocation, changing this value to 4 may cause text corruption
 #define __CHAR_SEGMENTS					3
 
 // number of chars per char segment
@@ -175,8 +194,7 @@
 // 										SPRITE MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
-// total number of layers
-// basically the number of WORLDS
+// total number of layers (basically the number of Worlds)
 #define __TOTAL_LAYERS			32
 
 
@@ -185,31 +203,30 @@
 //---------------------------------------------------------------------------------------------------------
 
 // bgmaps to use (leave 2 bgmaps to allocate param table)
-#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 			14
+#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 	14
 
 // bgmaps to use (leave 2 bgmaps to allocate param table)
-#define __MAX_NUMBER_OF_BGMAPS_SEGMENTS 			(__TOTAL_NUMBER_OF_BGMAPS_SEGMENTS - 1)
+#define __MAX_NUMBER_OF_BGMAPS_SEGMENTS 	(__TOTAL_NUMBER_OF_BGMAPS_SEGMENTS - 1)
 
 // number of bgmap definitions in each bgmap segment
-#define __NUM_BGMAPS_PER_SEGMENT 					16
+#define __NUM_BGMAPS_PER_SEGMENT 			16
 
-// numbef of bgmap segments for dynamically allocated textures
-// when preloading
-#define __NUMBER_OF_BGMAPS_SEGMENTS_ROOM 			1
+// number of bgmap segments for dynamically allocated textures when preloading
+#define __NUMBER_OF_BGMAPS_SEGMENTS_ROOM 	1
 
 // printing area
-#define __PRINTING_BGMAP_X_OFFSET					0
-#define __PRINTING_BGMAP_Y_OFFSET					0
-#define __PRINTING_BGMAP_Z_OFFSET					__ZZERO
-#define __PRINTABLE_BGMAP_AREA 						(64 * 28)
+#define __PRINTING_BGMAP_X_OFFSET			0
+#define __PRINTING_BGMAP_Y_OFFSET			0
+#define __PRINTING_BGMAP_Z_OFFSET			__ZZERO
+#define __PRINTABLE_BGMAP_AREA 				(64 * 28)
 
-#define __PALETTE_MASK								0x0600
-#define __WORLD_LAYER_MASK							0x01F0
-#define __SEGMENT_MASK								0x000F
+#define __PALETTE_MASK						0x0600
+#define __WORLD_LAYER_MASK					0x01F0
+#define __SEGMENT_MASK						0x000F
 
-#define __PALETTE_MASK_DISP							0x09 /* 6 */
-#define __WORLD_LAYER_MASK_DISP						0x04 /* 1 */
-#define __SEGMENT_MASK_DISP							0x00 /* 0 */
+#define __PALETTE_MASK_DISP					0x09 /* 6 */
+#define __WORLD_LAYER_MASK_DISP				0x04 /* 1 */
+#define __SEGMENT_MASK_DISP					0x00 /* 0 */
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -217,13 +234,13 @@
 //---------------------------------------------------------------------------------------------------------
 
 // param table for affine and hbias render
-#define __PARAM_TABLE_END 							0x0003D800
+#define __PARAM_TABLE_END 					0x0003D800
 
 // maximum possible scale: affects param table allocation space
-#define __MAXIMUM_SCALE								2
+#define __MAXIMUM_SCALE						2
 
 // maximum number of rows to write on each call to affine calculation functions
-#define __MAXIMUM_AFFINE_ROWS_PER_CALL				16
+#define __MAXIMUM_AFFINE_ROWS_PER_CALL		16
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -236,12 +253,12 @@
 // 2) select the next entity to load
 // 3) create the selected entity
 // 4) initialize the loaded entity
-#define __STREAM_CYCLE_DURATION	12
+#define __STREAM_CYCLE_DURATION		24
 
-// pad to determine if an entity must be loaded/unloaded 
+// pad to determine if an entity must be loaded/unloaded
 // load pad must always be lower than unload pad!
-// too close values will put under heavy usage the streaming!
-#define __ENTITY_LOAD_PAD 			96
+// too close values will put the streaming under heavy usage!
+#define __ENTITY_LOAD_PAD 			192
 #define __ENTITY_UNLOAD_PAD 		(__ENTITY_LOAD_PAD + 32)
 
 // the number of entities in the stage's definition to check for streaming in on each preload cycle
@@ -291,22 +308,6 @@
 
 #define __PRINTING_PALETTE		3
 
-#define __GPLT0_VALUE  			0xE4	// 11 10 01 00
-#define __GPLT1_VALUE  			0xE0	// 11 10 00 00
-#define __GPLT2_VALUE  			0xD0	// 11 01 00 00
-#define __GPLT3_VALUE  			0xE0	// 11 10 00 00
-
-#define __JPLT0_VALUE  			0xE4	// 11 10 01 00
-#define __JPLT1_VALUE  			0xE0	// 11 10 00 00
-#define __JPLT2_VALUE  			0xD0	// 11 01 00 00
-#define __JPLT3_VALUE  			0xE0	// 11 10 00 00
-
-#define	__BKCOL					0x00
-
-#define __BRTA					0x00
-#define __BRTB					0x00
-#define __BRTC					0x00
-
 
 //---------------------------------------------------------------------------------------------------------
 // 									LOW BATTERY INDICATOR
@@ -345,6 +346,14 @@
 
 // when this is defined, custom fonts are loaded instead of the default one
 //#define __CUSTOM_FONTS
+
+
+//---------------------------------------------------------------------------------------------------------
+// 									RANDOM NUMBER GENERATION
+//---------------------------------------------------------------------------------------------------------
+
+// how many times the randomSeed function cycles generate a random seed
+#define __RANDOM_SEED_CYCLES		2
 
 
 //---------------------------------------------------------------------------------------------------------
