@@ -41,7 +41,7 @@ extern StageROMDef ADJUSTMENT_SCREEN_ST;
 static void AdjustmentScreenState_destructor(AdjustmentScreenState this);
 static void AdjustmentScreenState_constructor(AdjustmentScreenState this);
 static void AdjustmentScreenState_print(AdjustmentScreenState this);
-static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 releasedKey);
+static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 pressedKey);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ static void AdjustmentScreenState_constructor(AdjustmentScreenState this)
 {
 	__CONSTRUCT_BASE();
 
-	SplashScreenState_setNextstate(__UPCAST(SplashScreenState, this), __UPCAST(GameState, AutoPauseSelectScreenState_getInstance()));
+	SplashScreenState_setNextstate(__GET_CAST(SplashScreenState, this), __GET_CAST(GameState, AutoPauseSelectScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)& ADJUSTMENT_SCREEN_ST;
 }
 
@@ -76,12 +76,12 @@ static void AdjustmentScreenState_print(AdjustmentScreenState this)
 {
 }
 
-static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 releasedKey)
+static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 pressedKey)
 {
     // TODO: replace this ugly hack with a proper Game_isPaused check or something similar
-    if (this->nextState == NULL) 
+    if(this->nextState == NULL)
     {
-        Game_unpause(Game_getInstance(), __UPCAST(GameState, this));
+        Game_unpause(Game_getInstance(), __GET_CAST(GameState, this));
     } 
     else 
     {

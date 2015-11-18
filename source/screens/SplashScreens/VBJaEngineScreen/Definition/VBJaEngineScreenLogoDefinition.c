@@ -110,15 +110,15 @@ BgmapSpriteROMDef VBJAENGINE_LOGO_3D_IM_SPRITE =
 
 	// texture definition
 	(TextureDefinition*)&VBJAENGINE_LOGO_3D_TX,
-	
+
+    // displacement (x, y, z) (in pixels)
+    {0, 0, 0},
+
 	// bgmap mode (BGMAP, AFFINE or H-BIAS)
 	WRLD_BGMAP,
 	
-	// display mode
+	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_ON,
-
-	// parallax displacement
-	0		
 };
 
 BgmapSpriteROMDef* const VBJAENGINE_LOGO_3D_IM_SPRITES[] =
@@ -135,14 +135,14 @@ BgmapSpriteROMDef VBJAENGINE_LOGO_OUTLINE_IM_SPRITE =
 	// texture definition
 	(TextureDefinition*)&VBJAENGINE_LOGO_OUTLINE_TX,
 
+    // displacement (x, y, z) (in pixels)
+    {0, 0, 0},
+
 	// bgmap mode (BGMAP, AFFINE or H-BIAS)
 	WRLD_BGMAP,
 
-	// display mode
+	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_ON,
-
-	// parallax displacement
-	0		
 };
 
 BgmapSpriteROMDef* VBJAENGINE_LOGO_OUTLINE_IM_SPRITES[] =

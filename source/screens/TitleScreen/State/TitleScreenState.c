@@ -75,7 +75,7 @@ static void TitleScreenState_destructor(TitleScreenState this)
 static void TitleScreenState_enter(TitleScreenState this, void* owner)
 {
 	//load stage
-	GameState_loadStage(__UPCAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL);
+	GameState_loadStage(__GET_CAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL, true);
 
     char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
     Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);

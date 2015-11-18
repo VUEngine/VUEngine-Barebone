@@ -43,7 +43,7 @@ extern LangROMDef* __LANGUAGES[];
 
 static void LangSelectScreenState_destructor(LangSelectScreenState this);
 static void LangSelectScreenState_constructor(LangSelectScreenState this);
-static void LangSelectScreenState_processInput(LangSelectScreenState this, u16 releasedKey);
+static void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey);
 static void LangSelectScreenState_print(LangSelectScreenState this);
 
 
@@ -64,7 +64,7 @@ static void LangSelectScreenState_constructor(LangSelectScreenState this)
 {
 	__CONSTRUCT_BASE();
 
-	SplashScreenState_setNextstate(__UPCAST(SplashScreenState, this), __UPCAST(GameState, TitleScreenState_getInstance()));
+	SplashScreenState_setNextstate(__GET_CAST(SplashScreenState, this), __GET_CAST(GameState, TitleScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
 
     u8 activeLanguage = I18n_getActiveLanguage(I18n_getInstance());
@@ -73,7 +73,7 @@ static void LangSelectScreenState_constructor(LangSelectScreenState this)
 	VirtualList languageNames = VirtualList_new();
 
 	int i = 0;
-	for (; __LANGUAGES[i]; i++)
+	for(; __LANGUAGES[i]; i++)
 	{
 		I18n_setActiveLanguage(I18n_getInstance(), i);
 		VirtualList_pushBack(languageNames, I18n_getActiveLanguageName(I18n_getInstance()));
@@ -88,7 +88,7 @@ static void LangSelectScreenState_constructor(LangSelectScreenState this)
 // class's destructor
 static void LangSelectScreenState_destructor(LangSelectScreenState this)
 {
-	if (this->languageSelector)
+	if(this->languageSelector)
 	{
 		__DELETE(this->languageSelector);
 	}
@@ -97,20 +97,20 @@ static void LangSelectScreenState_destructor(LangSelectScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-void LangSelectScreenState_processInput(LangSelectScreenState this, u16 releasedKey)
+void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey)
 {
-	if ((releasedKey & K_LU) || (releasedKey & K_RU))
+	if((pressedKey & K_LU) || (pressedKey & K_RU))
 	{
 		OptionsSelector_selectPrevious(this->languageSelector);
 	}
-    else if ((releasedKey & K_LD) || (releasedKey & K_RD))
+    else if((pressedKey & K_LD) || (pressedKey & K_RD))
 	{
 		OptionsSelector_selectNext(this->languageSelector);
 	}
-	else if ((releasedKey & K_A) || (releasedKey & K_STA))
+	else if((pressedKey & K_A) || (pressedKey & K_STA))
 	{
 	    I18n_setActiveLanguage(I18n_getInstance(), OptionsSelector_getSelectedOption(this->languageSelector));
-	    Game_changeState(Game_getInstance(), __UPCAST(GameState, this->nextState));
+	    Game_changeState(Game_getInstance(), __GET_CAST(GameState, this->nextState));
 	}
 }
 

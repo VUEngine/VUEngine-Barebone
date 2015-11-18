@@ -29,7 +29,7 @@
 int main(void)
 {
     // start the game
-	Game_start(Game_getInstance(), __UPCAST(GameState, PrecautionScreenState_getInstance()));
+	Game_start(Game_getInstance(), __GET_CAST(GameState, PrecautionScreenState_getInstance()));
     
 	// end program
 	return true;

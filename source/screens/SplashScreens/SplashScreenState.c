@@ -56,7 +56,7 @@ void SplashScreenState_enter(SplashScreenState this, void* owner)
 {
 	if(this->stageDefinition)
 	{
-		GameState_loadStage(__UPCAST(GameState, this), this->stageDefinition, NULL);
+		GameState_loadStage(__GET_CAST(GameState, this), this->stageDefinition, NULL, true);
 	}
 
     __VIRTUAL_CALL(void, SplashScreenState, print, this);
@@ -68,7 +68,7 @@ void SplashScreenState_enter(SplashScreenState this, void* owner)
 void SplashScreenState_execute(SplashScreenState this, void* owner)
 {
  	// call base
-	GameState_execute(__UPCAST(GameState, this), owner);
+	GameState_execute(__GET_CAST(GameState, this), owner);
 }
 
 // state's exit
@@ -83,20 +83,20 @@ void SplashScreenState_exit(SplashScreenState this, void* owner)
 // state's resume
 void SplashScreenState_resume(SplashScreenState this, void* owner)
 {
-	GameState_resume(__UPCAST(GameState, this), owner);
+	GameState_resume(__GET_CAST(GameState, this), owner);
 
 	__VIRTUAL_CALL(void, SplashScreenState, print, this);
 	
 #ifdef __DEBUG_TOOLS
-	if (!Game_isExitingSpecialMode(Game_getInstance()))
+	if(!Game_isExitingSpecialMode(Game_getInstance()))
 	{
 #endif
 #ifdef __STAGE_EDITOR
-	if (!Game_isExitingSpecialMode(Game_getInstance()))
+	if(!Game_isExitingSpecialMode(Game_getInstance()))
 	{
 #endif
 #ifdef __ANIMATION_EDITOR
-	if (!Game_isExitingSpecialMode(Game_getInstance()))
+	if(!Game_isExitingSpecialMode(Game_getInstance()))
 	{
 #endif
 
@@ -117,7 +117,7 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 // state's on message
 bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegram telegram)
 {
-	switch (Telegram_getMessage(telegram))
+	switch(Telegram_getMessage(telegram))
 	{
 		case kKeyPressed:
 		{
@@ -131,7 +131,7 @@ bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegr
 	return false;
 }
 
-void SplashScreenState_processInput(SplashScreenState this, u16 releasedKey)
+void SplashScreenState_processInput(SplashScreenState this, u16 pressedKey)
 {
 	Game_changeState(Game_getInstance(), this->nextState);
 }

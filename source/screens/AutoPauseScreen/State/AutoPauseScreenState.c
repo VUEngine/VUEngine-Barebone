@@ -78,7 +78,7 @@ static void AutoPauseScreenState_destructor(AutoPauseScreenState this)
 static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner)
 {
 	// load stage
-	GameState_loadStage(__UPCAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL);
+	GameState_loadStage(__GET_CAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL, true);
 
     // print text
     char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
@@ -106,15 +106,15 @@ static void AutoPauseScreenState_exit(AutoPauseScreenState this, void* owner)
 static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* owner, Telegram telegram)
 {
 	// process message
-	switch (Telegram_getMessage(telegram))
+	switch(Telegram_getMessage(telegram))
     {
 		case kKeyPressed:
 			{
 				u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
 		
-				if (K_STA & pressedKey)
+				if(K_STA & pressedKey)
 				{
-					Game_unpause(Game_getInstance(), __UPCAST(GameState, this));
+					Game_unpause(Game_getInstance(), __GET_CAST(GameState, this));
 				}
 			}
 			return true;

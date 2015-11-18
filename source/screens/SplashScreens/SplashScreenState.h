@@ -71,7 +71,7 @@ void SplashScreenState_execute(SplashScreenState this, void* owner);
 void SplashScreenState_exit(SplashScreenState this, void* owner);
 void SplashScreenState_resume(SplashScreenState this, void* owner);
 bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegram telegram);
-void SplashScreenState_processInput(SplashScreenState this, u16 releasedKey);
+void SplashScreenState_processInput(SplashScreenState this, u16 pressedKey);
 void SplashScreenState_print(SplashScreenState this);
 void SplashScreenState_setNextstate(SplashScreenState this, GameState nextState);
 
