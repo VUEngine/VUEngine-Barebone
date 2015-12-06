@@ -99,6 +99,10 @@ StageROMDef VBJAENGINE_SCREEN_ST =
     	}
     },
 
+    // BGMAP segments configuration
+    // number of segments reserved for dynamically allocated textures when preloading
+    1,
+
     // OBJs segments sizes (must total 1024)
     {
         // SPT0
