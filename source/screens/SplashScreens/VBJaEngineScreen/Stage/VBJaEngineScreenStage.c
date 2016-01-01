@@ -28,11 +28,11 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern TextureDefinition VBJAENGINE_BG_TX;
-extern TextureDefinition VBJAENGINE_LOGO_3D_TX;
+extern TextureDefinition VBJAENGINE_LOGO_TX;
 extern TextureDefinition VBJAENGINE_LOGO_OUTLINE_TX;
 
 extern EntityDefinition VBJAENGINE_BG_SB;
-extern EntityDefinition VBJAENGINE_LOGO_3D_IM;
+extern EntityDefinition VBJAENGINE_LOGO_IM;
 extern EntityDefinition VBJAENGINE_LOGO_OUTLINE_IM;
 
 
@@ -42,7 +42,7 @@ extern EntityDefinition VBJAENGINE_LOGO_OUTLINE_IM;
 
 PositionedEntityROMDef VBJAENGINE_SCREEN_ST_UI_ENTITIES[] =
 {
-	{&VBJAENGINE_LOGO_3D_IM, 		{FTOFIX19_13((__SCREEN_WIDTH >> 1) - 6), 	FTOFIX19_13((__SCREEN_HEIGHT >> 1) - 4), 	FTOFIX19_13(0)}, NULL, NULL, NULL, true},
+	{&VBJAENGINE_LOGO_IM, 		{FTOFIX19_13((__SCREEN_WIDTH >> 1) - 6), 	FTOFIX19_13((__SCREEN_HEIGHT >> 1) - 4), 	FTOFIX19_13(0)}, NULL, NULL, NULL, true},
 	{&VBJAENGINE_LOGO_OUTLINE_IM, 	{FTOFIX19_13((__SCREEN_WIDTH >> 1) + 5), 	FTOFIX19_13(__SCREEN_HEIGHT >> 1), 			FTOFIX19_13(0)}, NULL, NULL, NULL, true},
 	{NULL, {0,0,0}, NULL, NULL, NULL, false},
 };
@@ -69,6 +69,18 @@ StageROMDef VBJAENGINE_SCREEN_ST =
         // z
         1
     },
+
+    // streaming
+	{
+		// delay per cycle
+		8,
+		// load padding
+		64,
+		// unload padding
+		16,
+		// streaming amplitude
+		16,
+	},
 
     // gravity
     {
@@ -130,7 +142,7 @@ StageROMDef VBJAENGINE_SCREEN_ST =
         // y
         ITOFIX19_13(0),
         //z
-        ITOFIX19_13(__ZZERO)
+        ITOFIX19_13(0)
     },
 
     // optical configuration values
@@ -147,7 +159,10 @@ StageROMDef VBJAENGINE_SCREEN_ST =
 		ITOFIX19_13(__VERTICAL_VIEW_POINT_CENTER),
     },
     
-    // textures
+    // charsets to preload
+    NULL,
+
+    // textures to preload
     NULL,
 
     // UI entities

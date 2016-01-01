@@ -59,6 +59,18 @@ StageROMDef EMPTY_ST =
         0,
     },
 
+    // streaming
+	{
+		// delay per cycle
+		8,
+		// load padding
+		64,
+		// unload padding
+		16,
+		// streaming amplitude
+		16,
+	},
+
     // gravity
     {
 	    ITOFIX19_13(0),
@@ -135,7 +147,10 @@ StageROMDef EMPTY_ST =
 		// vertical View point center
 		ITOFIX19_13(__VERTICAL_VIEW_POINT_CENTER),
     },
-    
+
+    // charsets to preload
+    NULL,
+
     // textures to preload
     (TextureDefinition**)EMPTY_ST_TEXTURES,
 

@@ -78,7 +78,7 @@ static void AutoPauseScreenState_destructor(AutoPauseScreenState this)
 static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner)
 {
 	// load stage
-	GameState_loadStage(__GET_CAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL, true);
+	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL, true);
 
     // print text
     char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
@@ -92,14 +92,14 @@ static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner)
     u8 strTextXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseTextSize.x >> 1);
     Printing_text(Printing_getInstance(), strAutomaticPauseText, strTextXPos, 11 + strAutomaticPauseSize.y, NULL);
 
-    Screen_startEffect(Screen_getInstance(), kFadeIn, 16 >> 1);
+    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
 }
 
 // state's exit
 static void AutoPauseScreenState_exit(AutoPauseScreenState this, void* owner)
 {
 	// make a fade out
-	Screen_startEffect(Screen_getInstance(), kFadeOut, 16 >> 1);
+	Screen_startEffect(Screen_getInstance(), kFadeOut, 16);
 }
 
 // state's on message
@@ -114,7 +114,7 @@ static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* 
 		
 				if(K_STA & pressedKey)
 				{
-					Game_unpause(Game_getInstance(), __GET_CAST(GameState, this));
+					Game_unpause(Game_getInstance(), __SAFE_CAST(GameState, this));
 				}
 			}
 			return true;

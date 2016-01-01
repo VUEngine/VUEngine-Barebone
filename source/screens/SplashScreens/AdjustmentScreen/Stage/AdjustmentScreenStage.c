@@ -64,7 +64,19 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
         // z
         1
     },
-    
+
+    // streaming
+	{
+		// delay per cycle
+		8,
+		// load padding
+		64,
+		// unload padding
+		16,
+		// streaming amplitude
+		16,
+	},
+
     // gravity
     {
 	    ITOFIX19_13(0),
@@ -125,7 +137,7 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
         // y
         ITOFIX19_13(0),
         //z
-        ITOFIX19_13(__ZZERO)
+        ITOFIX19_13(0)
     },
 
     // optical configuration values
@@ -142,7 +154,10 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
 		ITOFIX19_13(__VERTICAL_VIEW_POINT_CENTER),
     },
 
-    // textures
+    // charsets to preload
+    NULL,
+
+    // textures to preload
     NULL,
 
     // UI entities

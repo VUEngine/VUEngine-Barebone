@@ -34,22 +34,26 @@ extern BYTE AdjustmentScreenLogoMap[];
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
+CharSetROMDef ADJUSTMENT_SCREEN_LOGO_CH =
+{
+    // number of chars, depending on allocation type:
+    // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
+    // __ANIMATED_MULTI: sum of chars of all animation frames
+    // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
+    // __NOT_ANIMATED: number of chars of whole image
+    65,
+
+    // allocation type
+    __NOT_ANIMATED,
+
+    // char definition
+    AdjustmentScreenLogoTiles,
+};
+
 TextureROMDef ADJUSTMENT_SCREEN_LOGO_TX =
 {
-    {
-        // number of chars, depending on allocation type:
-        // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
-        // __ANIMATED_MULTI: sum of chars of all animation frames
-        // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
-        // __NOT_ANIMATED: number of chars of whole image
-        65,
-
-        // allocation type
-        __NOT_ANIMATED,
-
-        // char definition
-        AdjustmentScreenLogoTiles,
-    },
+    // charset definition
+    (CharSetDefinition*)&ADJUSTMENT_SCREEN_LOGO_CH,
 
     // bgmap definition
     AdjustmentScreenLogoMap,
@@ -78,7 +82,7 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_LOGO_IM_SPRITE =
     // displacement (x, y, z) (in pixels)
     {0, 0, 0},
 
-	// bgmap mode (BGMAP, AFFINE, H-BIAS)
+	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
 	WRLD_BGMAP,
 	
 	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
