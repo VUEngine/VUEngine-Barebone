@@ -31,6 +31,11 @@
 
 __CLASS_DEFINITION(SplashScreenState, GameState);
 
+enum SplashScreensMessageTypes
+{
+	kScreenStarted = kLastEngineMessage + 1,
+};
+
 
 //---------------------------------------------------------------------------------------------------------
 // 												CLASS'S METHODS
@@ -55,14 +60,18 @@ void SplashScreenState_destructor(SplashScreenState this)
 // state's enter
 void SplashScreenState_enter(SplashScreenState this, void* owner)
 {
+	// call base
+	GameState_enter(__SAFE_CAST(GameState, this), owner);
+
 	if(this->stageDefinition)
 	{
 		GameState_loadStage(__SAFE_CAST(GameState, this), this->stageDefinition, NULL, true);
 	}
 
     __VIRTUAL_CALL(void, SplashScreenState, print, this);
-	
-    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+
+	// start fade in effect in 1 ms, because a full render cycle is needed to put everything in place
+	MessageDispatcher_dispatchMessage(1, __SAFE_CAST(Object, this), __SAFE_CAST(Object, Game_getInstance()), kScreenStarted, NULL);
 }
 
 // state's execute
@@ -77,6 +86,9 @@ void SplashScreenState_execute(SplashScreenState this, void* owner)
 // state's exit
 void SplashScreenState_exit(SplashScreenState this, void* owner)
 {
+	// call base
+	GameState_exit(__SAFE_CAST(GameState, this), owner);
+
 	Screen_startEffect(Screen_getInstance(), kFadeOut, 16);
 
 	// destroy the state
@@ -104,7 +116,7 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 #endif
 
 	// make a fade in
-    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+	Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
 
 #ifdef __DEBUG_TOOLS
 	}
@@ -122,13 +134,17 @@ bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegr
 {
 	switch(Telegram_getMessage(telegram))
 	{
-		case kKeyPressed:
-		{
-            u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
+		case kScreenStarted:
 
-            __VIRTUAL_CALL(void, SplashScreenState, processInput, this, pressedKey);
-        }
-        break;
+		    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+			break;
+
+		case kKeyPressed:
+		    {
+                u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
+                __VIRTUAL_CALL(void, SplashScreenState, processInput, this, pressedKey);
+            }
+            break;
 	}
 
 	return false;
