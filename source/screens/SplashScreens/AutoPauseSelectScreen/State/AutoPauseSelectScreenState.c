@@ -67,14 +67,14 @@ static void AutoPauseSelectScreenState_constructor(AutoPauseSelectScreenState th
 {
 	__CONSTRUCT_BASE();
 
-	SplashScreenState_setNextstate(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, VBJaEngineScreenState_getInstance()));
+	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, VBJaEngineScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
     this->selection = true;
 }
 
 // class's destructor
 static void AutoPauseSelectScreenState_destructor(AutoPauseSelectScreenState this)
-{	
+{
 	// destroy base
 	__SINGLETON_DESTROY;
 }
@@ -149,12 +149,12 @@ static void AutoPauseSelectScreenState_renderSelection(AutoPauseSelectScreenStat
 
 void AutoPauseSelectScreenState_processInput(AutoPauseSelectScreenState this, u16 pressedKey)
 {
-	if((pressedKey & K_LL) || (pressedKey & K_LR))
+	if ((pressedKey & K_LL) || (pressedKey & K_LR))
 	{
 	    this->selection = !this->selection;
 	    AutoPauseSelectScreenState_renderSelection(this);
 	}
-	else if((pressedKey & K_A) || (pressedKey & K_STA))
+	else if ((pressedKey & K_A) || (pressedKey & K_STA))
 	{
 		Game_setAutomaticPauseState(Game_getInstance(), this->selection ? __SAFE_CAST(GameState, AutoPauseScreenState_getInstance()): NULL);
 	    Game_changeState(Game_getInstance(), this->nextState);

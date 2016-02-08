@@ -21,6 +21,7 @@
 
 #include <Image.h>
 
+
 //---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
@@ -36,13 +37,12 @@ extern BYTE AdjustmentScreenIconMap[];
 CharSetROMDef ADJUSTMENT_SCREEN_ICON_CH =
 {
     // number of chars, depending on allocation type:
-    // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
-    // __ANIMATED_MULTI: sum of chars of all animation frames
-    // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
-    // __NOT_ANIMATED: number of chars of whole image
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
+    // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
     5,
 
     // allocation type
+    // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
     __NOT_ANIMATED,
 
     // char definition
@@ -63,10 +63,12 @@ TextureROMDef ADJUSTMENT_SCREEN_ICON_TX =
     // rows (max 64)
     2,
 
-    // number of frames
+    // number of frames, depending on charset's allocation type:
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
+    // __ANIMATED_MULTI: total number of frames
     1,
 
-    // palette number
+    // palette number (0-3)
     0,
 };
 
@@ -76,14 +78,14 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_ICON_IM_L_SPRITE =
 	__TYPE(BgmapSprite),
 
 	// texture definition
-	(TextureDefinition*)& ADJUSTMENT_SCREEN_ICON_TX,
+	(TextureDefinition*)&ADJUSTMENT_SCREEN_ICON_TX,
 
-    // displacement (x, y, z) (in pixels)
-    {0, 0, 0},
-	
+	// displacement
+	{0, 0, 0},
+
 	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
 	WRLD_BGMAP,
-	
+
 	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_LON,
 };
@@ -100,21 +102,21 @@ BgmapSpriteROMDef const ADJUSTMENT_SCREEN_ICON_IM_R_SPRITE =
 	__TYPE(BgmapSprite),
 
 	// texture definition
-	(TextureDefinition*)& ADJUSTMENT_SCREEN_ICON_TX,
+	(TextureDefinition*)&ADJUSTMENT_SCREEN_ICON_TX,
 
-    // displacement (x, y, z) (in pixels)
-    {0, 0, 0},
+	// displacement
+	{0, 0, 0},
 
 	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
 	WRLD_BGMAP,
-	
+
 	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_RON,
 };
 
 BgmapSpriteROMDef* ADJUSTMENT_SCREEN_ICON_IM_R_SPRITES[] =
 {
-	& ADJUSTMENT_SCREEN_ICON_IM_R_SPRITE,
+	&ADJUSTMENT_SCREEN_ICON_IM_R_SPRITE,
 	NULL
 
 };

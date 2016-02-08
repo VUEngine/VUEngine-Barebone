@@ -79,8 +79,6 @@ void SplashScreenState_execute(SplashScreenState this, void* owner)
 {
  	// call base
 	GameState_execute(__SAFE_CAST(GameState, this), owner);
-
-	Game_enableKeypad(Game_getInstance());
 }
 
 // state's exit
@@ -130,7 +128,7 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 #endif
 }
 
-// state's on message
+// state's handle message
 bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegram telegram)
 {
 	switch(Telegram_getMessage(telegram))
@@ -160,7 +158,7 @@ void SplashScreenState_print(SplashScreenState this)
 {
 }
 
-void SplashScreenState_setNextstate(SplashScreenState this, GameState nextState)
+void SplashScreenState_setNextState(SplashScreenState this, GameState nextState)
 {
     this->nextState = nextState;
 }

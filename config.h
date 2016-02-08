@@ -25,27 +25,22 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										DEBUGGING TOOLS
+// 											DEBUGGING TOOLS
 //---------------------------------------------------------------------------------------------------------
 
-#ifdef __DEBUG
+#ifdef __TOOLS
 #define __PRINT_FRAMERATE
 #define __PRINT_MEMORY_POOL_STATUS
 #define __ALERT_STACK_OVERFLOW
+#define __PRINT_TRANSFORMATIONS_NOT_IN_SYNC_WITH_VPU_WARNING
 #define __DEBUG_TOOLS
 #define __STAGE_EDITOR
 #define __ANIMATION_EDITOR
 #endif
 
-#ifdef __DEBUG_TOOLS
-#define __PRINT_FRAMERATE
-#define __PRINT_MEMORY_POOL_STATUS
-#define __ALERT_STACK_OVERFLOW
-#endif
-
 
 //---------------------------------------------------------------------------------------------------------
-// 										OPTICS / PROJECTION
+// 											OPTICS / PROJECTION
 //---------------------------------------------------------------------------------------------------------
 
 // screen width in pixels
@@ -55,13 +50,12 @@
 #define __SCREEN_HEIGHT							224
 
 // screen depth in pixels
-#define __SCREEN_DEPTH							0
+#define __SCREEN_DEPTH							384
 
 // distance from player's eyes to the virtual screen
 #define __DISTANCE_EYE_SCREEN					384
 
-// maximum view distance (Depth)
-// always use a power of 2 as the maximum view distance, and update the number of bits to make projection faster
+// maximum view distance (depth) (power of two)
 #define __MAXIMUM_VIEW_DISTANCE_POWER			8
 
 // distance between eyes
@@ -78,43 +72,32 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										FRAME RATE CONTROL
+// 											FRAME RATE CONTROL
 //---------------------------------------------------------------------------------------------------------
 
-// determine whether frame rate is capped or not
-#define __CAP_FPS								1
+// disable VPU's XPEND interrupt, and thus rendering while transformation operations have not finished
+#undef __FORCE_VPU_SYNC
 
 // clock resolution
 #define __TIMER_RESOLUTION						10
 
 // target frames per second
-// must be a muliple of 50 to being able to use a timer resolution greater than 1
-// if finer control is needed, change timer resolution to 1
-#define __TARGET_FPS 							50
+// __FRAME_CYCLE = 0 means __TARGET_FPS = 50
+// __FRAME_CYCLE = 1 means __TARGET_FPS = 25
+#define	__FRAME_CYCLE							0
+
+#define __TARGET_FPS 							(50 >> __FRAME_CYCLE)
 
 // target frames per second
-#define __OPTIMUM_FPS 							__TARGET_FPS
+#define __OPTIMUM_FPS 							(__TARGET_FPS >> __FRAME_CYCLE)
 
 // target frames per second
-#define __MINIMUM_GOOD_FPS 						(__TARGET_FPS - 0)
+#define __MINIMUM_GOOD_FPS 						(__TARGET_FPS - 2)
 
-#define __MILLISECONDS_IN_SECOND				1000
-
-// set animation delays as if they are 60 FPS, and multiply by this factor
-#define __FPS_ANIM_FACTOR 						(__TARGET_FPS / (float)__OPTIMUM_FPS)
-
-// seconds that must elapse to call rest state (in seconds)
-#define __REST_DELAY 							900 // 15 minutes
-
-// if defined, user input is only read in the Game's update logic cycle;
-// otherwise, it is read on each pass of the Game's main update loop, ensuring
-// that no user's input is lost, but introducing a considerable lost of loop's
-// passes because of the delay needed to read the keypad
-#define __POLL_USER_INPUT_ONLY_ON_LOGIC_CYCLE
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										ANIMATION
+// 												ANIMATION
 //---------------------------------------------------------------------------------------------------------
 
 // max length of an animation function's name
@@ -128,7 +111,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										MEMORY POOL
+// 												MEMORY POOL
 //---------------------------------------------------------------------------------------------------------
 
 // reset to 0 each byte of each free block on resetting game
@@ -155,12 +138,12 @@
 	__SET_MEMORY_POOL_ARRAY(20)																			\
 	__SET_MEMORY_POOL_ARRAY(16)																			\
 
-// percentage (0-100) above which the MemoryPool's status shows the pool usage
+// percentage (0-100) above which the memory pool's status shows the pool usage
 #define __MEMORY_POOL_WARNING_THRESHOLD			85
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										CHAR MANAGEMENT
+// 											CHAR MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
 // number of char segments
@@ -172,7 +155,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										SPRITE MANAGEMENT
+// 											SPRITE MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
 // total number of layers (basically the number of Worlds)
@@ -180,7 +163,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										TEXTURE MANAGEMENT
+// 											TEXTURE MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
 // total number of bgmap segments
@@ -208,7 +191,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										PARAM TABLE
+// 												PARAM TABLE
 //---------------------------------------------------------------------------------------------------------
 
 // param table for affine and hbias render
@@ -222,7 +205,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										    STREAMING
+// 											    STREAMING
 //---------------------------------------------------------------------------------------------------------
 
 // the number of total calls to the streaming method which completes a cycle
@@ -239,23 +222,26 @@
 #define __ENTITY_LOAD_PAD 						256
 #define __ENTITY_UNLOAD_PAD 					(__ENTITY_LOAD_PAD + 56)
 
-// the number of entities in the stage's definition to check for streaming in on each preload cycle
-// since there are 32 layers, that's the theoretical limit of entities to display
-#define __STREAMING_AMPLITUDE					16
-
 
 //---------------------------------------------------------------------------------------------------------
-// 										PHYSICS
+// 												PHYSICS
 //---------------------------------------------------------------------------------------------------------
 
-#define __GRAVITY								9800
+#define __GRAVITY								9800 * 4
+
+// number of game cycles to wait before checking for gravity on each body
+#define __GRAVITY_CHECK_CYCLE_DELAY	(__TARGET_FPS / 10)
 
 #define __MAX_SHAPES_PER_LEVEL					32
 #define __MAX_BODIES_PER_LEVEL					32
 
+// used to make an approximation of Lorentz' contraction
+// to handle collisions on very fast moving shapes
+#define __LIGHT_SPEED		ITOFIX19_13(50000)
+
 
 //---------------------------------------------------------------------------------------------------------
-// 										SOUND
+// 												SOUND
 //---------------------------------------------------------------------------------------------------------
 
 // channels per bgms
@@ -276,26 +262,26 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										COLOR PALETTES
+// 											COLOR PALETTES
 //---------------------------------------------------------------------------------------------------------
 
-#define __PRINTING_PALETTE						3
+#define __PRINTING_PALETTE						0
 
 // default palette values, actual values are set in stage definitions
 
 #define __BGMAP_PALETTE_0						0b11100100
 #define __BGMAP_PALETTE_1						0b11100000
-#define __BGMAP_PALETTE_2						0b11010000
-#define __BGMAP_PALETTE_3						0b11100000
+#define __BGMAP_PALETTE_2						0b10010000
+#define __BGMAP_PALETTE_3						0b01010000
 
-#define __OBJECT_PALETTE_0						0b11100100
-#define __OBJECT_PALETTE_1						0b11100000
-#define __OBJECT_PALETTE_2						0b11010000
-#define __OBJECT_PALETTE_3						0b11100000
+#define __OBJECT_PALETTE_0						__BGMAP_PALETTE_0
+#define __OBJECT_PALETTE_1						__BGMAP_PALETTE_1
+#define __OBJECT_PALETTE_2						__BGMAP_PALETTE_2
+#define __OBJECT_PALETTE_3						__BGMAP_PALETTE_3
 
 
 //---------------------------------------------------------------------------------------------------------
-// 									LOW BATTERY INDICATOR
+// 											LOW BATTERY INDICATOR
 //---------------------------------------------------------------------------------------------------------
 
 // when this is defined, the engine's default low battery indicator is used
@@ -314,7 +300,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										AUTOMATIC PAUSE
+// 											AUTOMATIC PAUSE
 //---------------------------------------------------------------------------------------------------------
 
 // amount of time after which to show auto pause (in milliseconds)
@@ -326,7 +312,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											FONTS
+// 												FONTS
 //---------------------------------------------------------------------------------------------------------
 
 // when this is defined, custom fonts are loaded instead of the default one
@@ -334,7 +320,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 									RANDOM NUMBER GENERATION
+// 										RANDOM NUMBER GENERATION
 //---------------------------------------------------------------------------------------------------------
 
 // how many times the randomSeed function cycles generate a random seed
@@ -342,7 +328,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											EXCEPTIONS
+// 												EXCEPTIONS
 //---------------------------------------------------------------------------------------------------------
 
 #define __EXCEPTION_COLUMN						0

@@ -20,7 +20,6 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <string.h>
-
 #include <Game.h>
 #include <Screen.h>
 #include <Printing.h>
@@ -102,7 +101,7 @@ static void AutoPauseScreenState_exit(AutoPauseScreenState this, void* owner)
 	Screen_startEffect(Screen_getInstance(), kFadeOut, 16);
 }
 
-// state's on message
+// state's handle message
 static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* owner, Telegram telegram)
 {
 	// process message
@@ -111,7 +110,7 @@ static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* 
 		case kKeyPressed:
 			{
 				u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
-		
+
 				if(K_STA & pressedKey)
 				{
 					Game_unpause(Game_getInstance(), __SAFE_CAST(GameState, this));

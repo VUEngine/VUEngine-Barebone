@@ -30,14 +30,6 @@
 // 										DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-// only need to define one for all managed entities
-const ManagedEntityROMDef MANAGED_ENTITY =
-{
-    __TYPE(ManagedEntity),
-    NULL
-};
-
-
 #ifdef __DEBUG_TOOLS
 const ClassSizeData _userClassesSizeData[] =
 {

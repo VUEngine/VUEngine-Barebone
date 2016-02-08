@@ -64,7 +64,7 @@ static void PrecautionScreenState_constructor(PrecautionScreenState this)
 {
 	__CONSTRUCT_BASE();
 
-	SplashScreenState_setNextstate(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AdjustmentScreenState_getInstance()));
+	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AdjustmentScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
 }
 
@@ -81,9 +81,9 @@ static void PrecautionScreenState_enter(PrecautionScreenState this, void* owner)
     SplashScreenState_enter(__SAFE_CAST(SplashScreenState, this), owner);
 
     // show this screen for at least 2 seconds, as defined by Nintendo in the official development manual
-    Clock_delay(Game_getClock(Game_getInstance()), 2000);
-    KeypadManager_flush(KeypadManager_getInstance());
-    Game_enableKeypad(Game_getInstance());
+	Clock_delay(Game_getClock(Game_getInstance()), 2000);
+	KeypadManager_flush(KeypadManager_getInstance());
+	Game_enableKeypad(Game_getInstance());
 }
 
 static void PrecautionScreenState_print(PrecautionScreenState this)
@@ -93,7 +93,7 @@ static void PrecautionScreenState_print(PrecautionScreenState this)
     Size titleSize = Printing_getTextSize(Printing_getInstance(), strPrecautionTitle, NULL);
     Size textSize = Printing_getTextSize(Printing_getInstance(), strPrecautionText, NULL);
 
-    u8 totalHeight = titleSize.y + 1 + textSize.y;
+    u8 totalHeight = titleSize.y + textSize.y;
 
     Printing_text(
         Printing_getInstance(),
@@ -111,4 +111,3 @@ static void PrecautionScreenState_print(PrecautionScreenState this)
         NULL
     );
 }
-
