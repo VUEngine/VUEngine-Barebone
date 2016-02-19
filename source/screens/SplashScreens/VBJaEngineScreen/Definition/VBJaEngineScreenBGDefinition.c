@@ -19,7 +19,8 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <ScrollBackground.h>
+#include <Image.h>
+#include <MBgmapSprite.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -37,13 +38,12 @@ extern BYTE VBJaEngineScreenBGMap[];
 CharSetROMDef VBJAENGINE_BG_CH =
 {
     // number of chars, depending on allocation type:
-    // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
-    // __ANIMATED_MULTI: sum of chars of all animation frames
-    // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
-    // __NOT_ANIMATED: number of chars of whole image
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
+    // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
     148,
 
     // allocation type
+    // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
     __NOT_ANIMATED,
 
     // char definition
@@ -59,45 +59,66 @@ TextureROMDef VBJAENGINE_BG_TX =
     VBJaEngineScreenBGMap,
 
     // cols (max 64)
-    48,
+    64,
 
     // rows (max 64)
     28,
 
-    // number of frames
+    // number of frames, depending on charset's allocation type:
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
+    // __ANIMATED_MULTI: total number of frames
     1,
 
-    // palette number
+    // palette number (0-3)
     0,
 };
 
-BgmapSpriteROMDef VBJAENGINE_BG_SB_SPRITE =
+TextureROMDef* VBJAENGINE_BG_IM_SPRITE_TEXTURES[] = 
 {
-	// sprite's type
-	__TYPE(BgmapSprite),
-
-	// texture definition
 	(TextureDefinition*)&VBJAENGINE_BG_TX,
-
-    // displacement (x, y, z) (in pixels)
-    {0, 0, 0},
-
-	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
-	WRLD_BGMAP,
-	
-	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
-	WRLD_ON,
-};
-
-BgmapSpriteROMDef* const VBJAENGINE_BG_SB_SPRITES[] =
-{
-	&VBJAENGINE_BG_SB_SPRITE,
-	&VBJAENGINE_BG_SB_SPRITE,
 	NULL
 };
 
-ScrollBackgroundROMDef VBJAENGINE_BG_SB =
+MBgmapSpriteROMDef VBJAENGINE_BG_IM_SPRITE =
 {
-	__TYPE(ScrollBackground),
-	(SpriteROMDef**)VBJAENGINE_BG_SB_SPRITES,
+	{
+		// sprite's type
+		__TYPE(MBgmapSprite),
+
+		// texture definition
+		NULL,
+
+        // displacement
+        {0, 0, 0},
+		
+		// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
+		WRLD_BGMAP,
+		
+		// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
+		WRLD_ON,
+	},
+	
+	(TextureDefinition**)VBJAENGINE_BG_IM_SPRITE_TEXTURES,
+	
+	// SCX/SCY
+	WRLD_1x1,
+
+	// x loop
+	true,
+	
+	// y loop
+	false,
 };
+
+BgmapSpriteROMDef* const VBJAENGINE_BG_IM_SPRITES[] =
+{
+	(BgmapSpriteROMDef*)&VBJAENGINE_BG_IM_SPRITE,
+	NULL
+};
+
+ImageROMDef VBJAENGINE_BG_IM =
+{
+	__TYPE(Image),
+	(SpriteROMDef**)VBJAENGINE_BG_IM_SPRITES,
+};
+

@@ -37,26 +37,25 @@ extern BYTE VBJaEngineScreenLogoOutlineMap[];
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-CharSetROMDef VBJAENGINE_LOGO_CH =
+CharSetROMDef VBJAENGINE_LOGO_3D_CH =
 {
     // number of chars, depending on allocation type:
-    // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
-    // __ANIMATED_MULTI: sum of chars of all animation frames
-    // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
-    // __NOT_ANIMATED: number of chars of whole image
-    54,
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
+    // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
+    49,
 
     // allocation type
+    // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
     __NOT_ANIMATED,
 
     // char definition
     VBJaEngineScreenLogoTiles,
 };
 
-TextureROMDef VBJAENGINE_LOGO_TX =
+TextureROMDef VBJAENGINE_LOGO_3D_TX =
 {
     // charset definition
-    (CharSetDefinition*)&VBJAENGINE_LOGO_CH,
+    (CharSetDefinition*)&VBJAENGINE_LOGO_3D_CH,
 
     // bgmap definition
     VBJaEngineScreenLogoMap,
@@ -67,23 +66,24 @@ TextureROMDef VBJAENGINE_LOGO_TX =
     // rows (max 64)
     9,
 
-    // number of frames
+    // number of frames, depending on charset's allocation type:
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
+    // __ANIMATED_MULTI: total number of frames
     1,
 
-   // palette number
+   // palette number (0-3)
     0,
 };
 
 CharSetROMDef VBJAENGINE_LOGO_OUTLINE_CH =
 {
     // number of chars, depending on allocation type:
-    // __ANIMATED_SINGLE: number of chars of a single animation frame (cols * rows of this texture)
-    // __ANIMATED_MULTI: sum of chars of all animation frames
-    // __ANIMATED_SHARED: number of chars of a single animation frame (cols * rows of this texture)
-    // __NOT_ANIMATED: number of chars of whole image
-    57,
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
+    // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
+    80,
 
     // allocation type
+    // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
     __NOT_ANIMATED,
 
     // char definition
@@ -104,35 +104,31 @@ TextureROMDef VBJAENGINE_LOGO_OUTLINE_TX =
     // rows (max 64)
     9,
 
-    // number of frames
+    // number of frames, depending on charset's allocation type:
+    // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
+    // __ANIMATED_MULTI: total number of frames
     1,
 
-    // palette number
+    // palette number (0-3)
     1,
 };
 
-BgmapSpriteROMDef VBJAENGINE_LOGO_IM_SPRITE =
+BgmapSpriteROMDef VBJAENGINE_LOGO_3D_IM_SPRITE =
 {
 	// sprite's type
 	__TYPE(BgmapSprite),
 
 	// texture definition
-	(TextureDefinition*)&VBJAENGINE_LOGO_TX,
+	(TextureDefinition*)&VBJAENGINE_LOGO_3D_TX,
 
-    // displacement (x, y, z) (in pixels)
-    {0, 0, 0},
+	// displacement
+	{0, 0, FTOFIX19_13(0.0001f)},
 
-	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
+	// bgmap mode (BGMAP, AFFINE or H-BIAS)
 	WRLD_BGMAP,
-	
+
 	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_ON,
-};
-
-BgmapSpriteROMDef* const VBJAENGINE_LOGO_IM_SPRITES[] =
-{
-	&VBJAENGINE_LOGO_IM_SPRITE,
-	NULL
 };
 
 BgmapSpriteROMDef VBJAENGINE_LOGO_OUTLINE_IM_SPRITE =
@@ -143,30 +139,25 @@ BgmapSpriteROMDef VBJAENGINE_LOGO_OUTLINE_IM_SPRITE =
 	// texture definition
 	(TextureDefinition*)&VBJAENGINE_LOGO_OUTLINE_TX,
 
-    // displacement (x, y, z) (in pixels)
-    {0, 0, 0},
+	// displacement
+	{FTOFIX19_13(13), FTOFIX19_13(1), 0},
 
-	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
+	// bgmap mode (BGMAP, AFFINE or H-BIAS)
 	WRLD_BGMAP,
 
 	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
 	WRLD_ON,
 };
 
-BgmapSpriteROMDef* VBJAENGINE_LOGO_OUTLINE_IM_SPRITES[] =
+BgmapSpriteROMDef* const VBJAENGINE_LOGO_3D_IM_SPRITES[] =
 {
 	&VBJAENGINE_LOGO_OUTLINE_IM_SPRITE,
+	&VBJAENGINE_LOGO_3D_IM_SPRITE,
 	NULL
 };
 
-ImageROMDef VBJAENGINE_LOGO_IM =
+ImageROMDef VBJAENGINE_LOGO_3D_IM =
 {
 	__TYPE(Image),
-	(SpriteROMDef**)VBJAENGINE_LOGO_IM_SPRITES,
-};
-
-ImageROMDef VBJAENGINE_LOGO_OUTLINE_IM =
-{
-	__TYPE(Image),
-	(SpriteROMDef**)VBJAENGINE_LOGO_OUTLINE_IM_SPRITES,
+	(SpriteROMDef**)VBJAENGINE_LOGO_3D_IM_SPRITES,
 };
