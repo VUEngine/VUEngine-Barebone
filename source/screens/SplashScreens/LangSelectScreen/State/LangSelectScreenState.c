@@ -97,7 +97,7 @@ static void LangSelectScreenState_destructor(LangSelectScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey)
+static void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey)
 {
 	if ((pressedKey & K_LU) || (pressedKey & K_RU))
 	{
