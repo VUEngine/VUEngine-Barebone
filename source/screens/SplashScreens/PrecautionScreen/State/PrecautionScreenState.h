@@ -39,7 +39,6 @@
 	__VIRTUAL_SET(ClassName, PrecautionScreenState, enter);												\
 	__VIRTUAL_SET(ClassName, PrecautionScreenState, print);												\
 
-
 __CLASS(PrecautionScreenState);
 
 #define PrecautionScreenState_ATTRIBUTES							   									\
