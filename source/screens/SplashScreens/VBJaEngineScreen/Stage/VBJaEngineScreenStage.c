@@ -100,7 +100,10 @@ StageROMDef VBJAENGINE_SCREEN_ST =
 		// maximum number of rows to compute on each call to the affine functions
 		16,
 
-		// Palette's config
+        // column table
+		NULL,
+
+		// palette's config
         {
         	// background color
         	__COLOR_BLACK,
@@ -144,7 +147,7 @@ StageROMDef VBJAENGINE_SCREEN_ST =
         	ITOFIX19_13(0),
     		ITOFIX19_13(0),
     		ITOFIX19_13(0),
-    		ITOFIX19_13(0)
+    		ITOFIX19_13(0),
         },
 
         // optical configuration values
@@ -168,7 +171,7 @@ StageROMDef VBJAENGINE_SCREEN_ST =
         {
     	    ITOFIX19_13(0),
     	    ITOFIX19_13(0),
-    	    ITOFIX19_13(0)
+    	    ITOFIX19_13(0),
         },
 
         // friction
