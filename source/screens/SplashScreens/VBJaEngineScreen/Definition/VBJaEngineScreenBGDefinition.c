@@ -64,7 +64,10 @@ TextureROMDef VBJAENGINE_BG_TX =
     // rows (max 64)
     28,
 
-    // number of frames, depending on charset's allocation type:
+    // padding for affine transformations
+	{0, 0},
+
+	// number of frames, depending on charset's allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
     // __ANIMATED_MULTI: total number of frames
     1,
@@ -73,7 +76,7 @@ TextureROMDef VBJAENGINE_BG_TX =
     0,
 };
 
-TextureROMDef* VBJAENGINE_BG_IM_SPRITE_TEXTURES[] = 
+TextureROMDef* const VBJAENGINE_BG_IM_SPRITE_TEXTURES[] =
 {
 	(TextureDefinition*)&VBJAENGINE_BG_TX,
 	NULL
@@ -82,30 +85,32 @@ TextureROMDef* VBJAENGINE_BG_IM_SPRITE_TEXTURES[] =
 MBgmapSpriteROMDef VBJAENGINE_BG_IM_SPRITE =
 {
 	{
-		// sprite's type
-		__TYPE(MBgmapSprite),
+        {
+            // sprite's type
+            __TYPE(MBgmapSprite),
 
-		// texture definition
-		NULL,
+            // texture definition
+            NULL,
 
-        // displacement
-        {0, 0, 0},
-		
-		// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
-		WRLD_BGMAP,
-		
-		// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
-		WRLD_ON,
+            // displacement
+            {0, 0, 0},
+        },
+
+		// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJ or __WORLD_HBIAS)
+		__WORLD_BGMAP,
+
+		// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
+		__WORLD_ON,
 	},
-	
+
 	(TextureDefinition**)VBJAENGINE_BG_IM_SPRITE_TEXTURES,
-	
+
 	// SCX/SCY
-	WRLD_1x1,
+	__WORLD_1x1,
 
 	// x loop
 	true,
-	
+
 	// y loop
 	false,
 };

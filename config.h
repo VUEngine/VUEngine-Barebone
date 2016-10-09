@@ -29,14 +29,53 @@
 //---------------------------------------------------------------------------------------------------------
 
 #ifdef __TOOLS
+
+// print frame rate
 #define __PRINT_FRAMERATE
+
+// print memory pool's status
 #define __PRINT_MEMORY_POOL_STATUS
+#define __PRINT_DETAILED_MEMORY_POOL_STATUS
+
+// alert stack overflows
 #define __ALERT_STACK_OVERFLOW
-#define __PRINT_TRANSFORMATIONS_NOT_IN_SYNC_WITH_VPU_WARNING
+
+// tools
 #define __DEBUG_TOOLS
 #define __STAGE_EDITOR
 #define __ANIMATION_EDITOR
 #endif
+
+//---------------------------------------------------------------------------------------------------------
+// 											PROFILING
+//---------------------------------------------------------------------------------------------------------
+
+// print frame rate
+#undef __PRINT_FRAMERATE
+
+// show game's process profiling
+#undef __PROFILE_GAME
+
+// show detailed profiling of each of the game's main processes
+// it is more useful when __TIMER_RESOLUTION approaches 1
+#undef __PROFILE_GAME_DETAILED
+
+// to make it easier to read the profiling output
+#undef __DIMM_FOR_PROFILING
+
+// show streaming's process profiling
+#undef __PROFILE_STREAMING
+
+// print the game's current process while the VIP's frame start
+// and idle interrupts are fired, but the game frame is still pending
+// processes to complete
+#undef __PROFILE_GAME_STATE_DURING_VIP_INTERRUPT
+
+// alert VIP's overtime
+#define __ALERT_VIP_OVERTIME
+
+// alert transformation - VIP unsync warning
+#define __ALERT_TRANSFORMATIONS_NOT_IN_SYNC_WITH_VIP
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -56,16 +95,16 @@
 #define __DISTANCE_EYE_SCREEN					384
 
 // maximum view distance (depth) (power of two)
-#define __MAXIMUM_VIEW_DISTANCE_POWER			8
+#define __MAXIMUM_VIEW_DISTANCE_POWER			9
 
 // distance between eyes
 #define __BASE_FACTOR							768
 
 // player's eyes' horizontal position
-#define __HORIZONTAL_VIEW_POINT_CENTER			192
+#define __HORIZONTAL_VIEW_POINT_CENTER			__SCREEN_WIDTH / 2
 
 // player's eyes' vertical position
-#define __VERTICAL_VIEW_POINT_CENTER			112
+#define __VERTICAL_VIEW_POINT_CENTER			__SCREEN_HEIGHT / 2
 
 // parallax values are divide by this factor to control their strength
 #define __PARALLAX_CORRECTION_FACTOR			16
@@ -75,11 +114,14 @@
 // 											FRAME RATE CONTROL
 //---------------------------------------------------------------------------------------------------------
 
-// disable VPU's XPEND interrupt, and thus rendering while transformation operations have not finished
-#undef __FORCE_VPU_SYNC
+// disable VIP's __XPEND interrupt, and thus rendering while transformation operations have not finished
+#undef __FORCE_VIP_SYNC
 
-// clock resolution
-#define __TIMER_RESOLUTION						10
+// timer resolution
+#define __TIMER_RESOLUTION						1
+
+// options are __TIMER_20US and __TIMER_100US
+#define __TIMER_FREQUENCY                       __TIMER_20US
 
 // target frames per second
 // __FRAME_CYCLE = 0 means __TARGET_FPS = 50
@@ -88,12 +130,13 @@
 
 #define __TARGET_FPS 							(50 >> __FRAME_CYCLE)
 
+#define __GAME_FRAME_DURATION                   __MILLISECONDS_IN_SECOND / __TARGET_FPS
+
 // target frames per second
 #define __OPTIMUM_FPS 							(__TARGET_FPS >> __FRAME_CYCLE)
 
-// target frames per second
-#define __MINIMUM_GOOD_FPS 						(__TARGET_FPS - 2)
-
+// define to dispatch the delayed messages every other game frame cycle
+#define __RUN_DELAYED_MESSAGES_DISPATCHING_AT_HALF_FRAME_RATE
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -118,8 +161,10 @@
 // only use for debugging, proper object's initialization must make this macro unnecessary
 #undef __MEMORY_POOL_CLEAN_UP
 
+#undef __MEMORY_POOLS
 #define __MEMORY_POOLS							7
 
+#undef __MEMORY_POOL_ARRAYS
 #define __MEMORY_POOL_ARRAYS																			\
     __BLOCK_DEFINITION(224, 4)																			\
     __BLOCK_DEFINITION(128, 64)																			\
@@ -129,6 +174,7 @@
     __BLOCK_DEFINITION(20, 700)																			\
     __BLOCK_DEFINITION(16, 320)
 
+#undef __SET_MEMORY_POOL_ARRAYS
 #define __SET_MEMORY_POOL_ARRAYS																		\
 	__SET_MEMORY_POOL_ARRAY(224)																		\
 	__SET_MEMORY_POOL_ARRAY(128)																		\
@@ -137,6 +183,7 @@
 	__SET_MEMORY_POOL_ARRAY(32)																			\
 	__SET_MEMORY_POOL_ARRAY(20)																			\
 	__SET_MEMORY_POOL_ARRAY(16)																			\
+
 
 // percentage (0-100) above which the memory pool's status shows the pool usage
 #define __MEMORY_POOL_WARNING_THRESHOLD			85
@@ -194,9 +241,6 @@
 // 												PARAM TABLE
 //---------------------------------------------------------------------------------------------------------
 
-// param table for affine and hbias render
-#define __PARAM_TABLE_END 						0x0003D800
-
 // maximum possible scale: affects param table allocation space
 #define __MAXIMUM_SCALE							2
 
@@ -227,17 +271,17 @@
 // 												PHYSICS
 //---------------------------------------------------------------------------------------------------------
 
-#define __GRAVITY								9800 * 4
+#define __GRAVITY								13000
 
-// number of game cycles to wait before checking for gravity on each body
-#define __GRAVITY_CHECK_CYCLE_DELAY	(__TARGET_FPS / 10)
+// number of bodies to check for gravity on each cycle
+#define __BODIES_TO_CHECK_FOR_GRAVITY		    10
 
 #define __MAX_SHAPES_PER_LEVEL					32
 #define __MAX_BODIES_PER_LEVEL					32
 
 // used to make an approximation of Lorentz' contraction
 // to handle collisions on very fast moving shapes
-#define __LIGHT_SPEED		ITOFIX19_13(50000)
+#define __LIGHT_SPEED		                    ITOFIX19_13(50000)
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -259,6 +303,24 @@
 #define __TOTAL_SOUNDS							(__BGMS + __FXS)
 #define __LEFT_EAR_CENTER						96
 #define __RIGHT_EAR_CENTER						288
+
+
+//---------------------------------------------------------------------------------------------------------
+// 											BRIGHTNESS
+//---------------------------------------------------------------------------------------------------------
+
+// default brightness settings, actual values are set in stage definitions
+// for a nice progression, each shade should be about twice as big as the previous one
+// _BRIGHT_RED must be larger than _DARK_RED + _MEDIUM_RED
+#define __BRIGHTNESS_DARK_RED					32
+#define __BRIGHTNESS_MEDIUM_RED					64
+#define __BRIGHTNESS_BRIGHT_RED					128
+
+// default total duration for blocking fade in/out effects
+#define __FADE_DURATION							1000
+
+// default delay between steps in asynchronous fade effect
+#define __FADE_DELAY					        16
 
 
 //---------------------------------------------------------------------------------------------------------

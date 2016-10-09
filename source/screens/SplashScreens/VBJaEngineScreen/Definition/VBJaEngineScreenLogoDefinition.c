@@ -66,7 +66,10 @@ TextureROMDef VBJAENGINE_LOGO_3D_TX =
     // rows (max 64)
     9,
 
-    // number of frames, depending on charset's allocation type:
+    // padding for affine transformations
+	{0, 0},
+
+	// number of frames, depending on charset's allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
     // __ANIMATED_MULTI: total number of frames
     1,
@@ -104,7 +107,10 @@ TextureROMDef VBJAENGINE_LOGO_OUTLINE_TX =
     // rows (max 64)
     9,
 
-    // number of frames, depending on charset's allocation type:
+    // padding for affine transformations
+	{0, 0},
+
+	// number of frames, depending on charset's allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
     // __ANIMATED_MULTI: total number of frames
     1,
@@ -115,38 +121,42 @@ TextureROMDef VBJAENGINE_LOGO_OUTLINE_TX =
 
 BgmapSpriteROMDef VBJAENGINE_LOGO_3D_IM_SPRITE =
 {
-	// sprite's type
-	__TYPE(BgmapSprite),
+    {
+        // sprite's type
+        __TYPE(BgmapSprite),
 
-	// texture definition
-	(TextureDefinition*)&VBJAENGINE_LOGO_3D_TX,
+        // texture definition
+        (TextureDefinition*)&VBJAENGINE_LOGO_3D_TX,
 
-	// displacement
-	{0, 0, FTOFIX19_13(0.0001f)},
+        // displacement
+        {0, 0, FTOFIX19_13(1)},
+    },
 
 	// bgmap mode (BGMAP, AFFINE or H-BIAS)
-	WRLD_BGMAP,
+	__WORLD_BGMAP,
 
-	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
-	WRLD_ON,
+	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
+	__WORLD_ON,
 };
 
 BgmapSpriteROMDef VBJAENGINE_LOGO_OUTLINE_IM_SPRITE =
 {
-	// sprite's type
-	__TYPE(BgmapSprite),
+    {
+        // sprite's type
+        __TYPE(BgmapSprite),
 
-	// texture definition
-	(TextureDefinition*)&VBJAENGINE_LOGO_OUTLINE_TX,
+        // texture definition
+        (TextureDefinition*)&VBJAENGINE_LOGO_OUTLINE_TX,
 
-	// displacement
-	{FTOFIX19_13(13), FTOFIX19_13(1), 0},
+        // displacement
+        {FTOFIX19_13(13), FTOFIX19_13(1), 0},
+    },
 
 	// bgmap mode (BGMAP, AFFINE or H-BIAS)
-	WRLD_BGMAP,
+	__WORLD_BGMAP,
 
-	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
-	WRLD_ON,
+	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
+	__WORLD_ON,
 };
 
 BgmapSpriteROMDef* const VBJAENGINE_LOGO_3D_IM_SPRITES[] =

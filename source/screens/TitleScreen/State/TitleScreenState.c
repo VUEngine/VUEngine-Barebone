@@ -28,6 +28,7 @@
 #include <TitleScreenState.h>
 #include <AdjustmentScreenState.h>
 #include <Languages.h>
+#include <PostProcessingEffects.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -59,9 +60,9 @@ __SINGLETON_DYNAMIC(TitleScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void TitleScreenState_constructor(TitleScreenState this)
+static void __attribute__ ((noinline)) TitleScreenState_constructor(TitleScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(GameState);
 }
 
 // class's destructor
@@ -72,8 +73,12 @@ static void TitleScreenState_destructor(TitleScreenState this)
 }
 
 // state's enter
-static void TitleScreenState_enter(TitleScreenState this, void* owner)
+static void TitleScreenState_enter(TitleScreenState this, void* owner __attribute__ ((unused)))
 {
+	// call base
+	GameState_enter(__SAFE_CAST(GameState, this), owner);
+
+	// disallow user input
     Game_disableKeypad(Game_getInstance());
 
 	//load stage
@@ -82,13 +87,25 @@ static void TitleScreenState_enter(TitleScreenState this, void* owner)
     char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
     Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
 
+	// print hello world
     Printing_text(
         Printing_getInstance(),
         strHelloWorld,
         (__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
-        (__SCREEN_HEIGHT >> 4) - (textSize.y >> 1),
+        12,
         NULL
     );
 
-    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+	// add post processing effect to make text wobble
+	Game_addPostProcessingEffect(Game_getInstance(), PostProcessingEffects_wobble, NULL);
+
+	// start fade in effect
+	Screen_startEffect(Screen_getInstance(),
+	    kFadeTo, // effect type
+	    0, // initial delay (in ms)
+	    NULL, // target brightness
+	    __FADE_DELAY, // delay between fading steps (in ms)
+	    NULL, // callback function
+	    NULL // callback scope
+	);
 }

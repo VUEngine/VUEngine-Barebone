@@ -34,31 +34,34 @@
  * form part of a valid UTF-8 byte sequence: £
  */
 
+const char* const LANGUAGE_FR_STRINGS[] =
+{
+    //STR_PRECAUTION_SCREEN_TITLE:
+    "IMPORTANT:",
+    //STR_PRECAUTION_SCREEN_TEXT:
+    "PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA PRENDRE AVANT DE JOUER",
+    //STR_AUTOMATIC_PAUSE:
+    "Pause Automatique",
+    //STR_AUTOMATIC_PAUSE_EXPLANATION:
+    "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
+    //STR_AUTOMATIC_PAUSE_TEXT:
+    "Se il vous plaît, prendre un repos!",
+    //STR_ON:
+    "Activé",
+    //STR_OFF:
+    "Desactivé",
+    //STR_LANGUAGE_SELECT:
+    "Choix de la langue",
+
+    //STR_HELLO_WORLD:
+    "Bonjour Le Monde!",
+};
+
 const LangROMDef LANGUAGE_FR =
 {
     // Language Name
     "Français",
 
     // Strings
-    {
-        //STR_PRECAUTION_SCREEN_TITLE:
-        "IMPORTANT:",
-        //STR_PRECAUTION_SCREEN_TEXT:
-        "PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA PRENDRE AVANT DE JOUER",
-        //STR_AUTOMATIC_PAUSE:
-        "Pause Automatique",
-        //STR_AUTOMATIC_PAUSE_EXPLANATION:
-        "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
-        //STR_AUTOMATIC_PAUSE_TEXT:
-        "Se il vous plaît, prendre un repos!",
-        //STR_ON:
-        "Activé",
-        //STR_OFF:
-        "Desactivé",
-        //STR_LANGUAGE_SELECT:
-        "Choix de la langue",
-
-        //STR_HELLO_WORLD:
-        "Bonjour Le Monde!",
-    },
+    (const char**)LANGUAGE_FR_STRINGS
 };

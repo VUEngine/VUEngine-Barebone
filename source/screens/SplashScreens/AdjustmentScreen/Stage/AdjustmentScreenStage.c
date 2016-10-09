@@ -20,7 +20,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Stage.h>
-#include <VPUManager.h>
+#include <VIPManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -75,20 +75,22 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
             // y
             ITOFIX19_13(0),
             // z
-            ITOFIX19_13(0),
+            ITOFIX19_13(0)
         },
 	},
 
     // streaming
 	{
-		// delay per cycle
-		15,
+        // minimum free ms in the current game frame to allow streaming to quick in
+        10,
 		// load padding
 		40,
 		// unload padding
 		16,
 		// streaming amplitude
 		24,
+		// particle removal delay cycles
+		0,
 	},
 
 	// rendering
@@ -102,54 +104,76 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
 		// maximum number of rows to compute on each call to the affine functions
 		16,
 
-        // column table
-		NULL,
-
-		// palette's config
+        // colors config
         {
-        	// background color
-        	__COLOR_BLACK,
+            // background color
+            __COLOR_BLACK,
 
+            // brightness
+            // these values times the repeat values specified in the column table (max. 16) make the final
+            // brightness values on the respective regions of the screen. maximum brightness is 128.
+            {
+                // dark red
+                __BRIGHTNESS_DARK_RED,
+                // medium red
+                __BRIGHTNESS_MEDIUM_RED,
+                // bright red
+                __BRIGHTNESS_BRIGHT_RED,
+            },
+
+            // brightness repeat
+            (BrightnessRepeatDefinition*)NULL,
+        },
+
+        // palettes' config
+        {
         	{
+        	    // bgmap palette 0
                 __BGMAP_PALETTE_0,
+        	    // bgmap palette 1
                 __BGMAP_PALETTE_1,
+                // bgmap palette 2
                 __BGMAP_PALETTE_2,
+        	    // bgmap palette 3
                 __BGMAP_PALETTE_3,
         	},
         	{
+        	    // object palette 0
                 __OBJECT_PALETTE_0,
+        	    // object palette 1
                 __OBJECT_PALETTE_1,
+        	    // object palette 2
                 __OBJECT_PALETTE_2,
+        	    // object palette 3
                 __OBJECT_PALETTE_3,
-        	}
-
+        	},
         },
 
-        // BGMAP segments configuration
-        // number of segments reserved for dynamically allocated textures when preloading
-        1,
+        // bgmap segments configuration
+        // number of segments reserved for the param table
+        0,
 
-    	// OBJs segments sizes (must total 1024)
+    	// obj segments sizes (must total 1024)
         {
-            // SPT0
+            // __spt0
         	__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
-            // SPT1
+            // __spt1
         	__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
-            // SPT2
+            // __spt2
         	__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
-            // SPT3
+            // __spt3
         	__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
         },
 
-        // OBJs segments z coordinates
+        // obj segments z coordinates
         // Note that each SPT's z coordinate much be larger than or equal to the previous one's,
-        // since the VIP renders OBJ Worlds in reverse order (SPT3 to SPT0)
+        // since the VIP renders OBJ Worlds in reverse order (__SPT3 to __SPT0)
         {
-            // SPT0
+            // __spt0
         	ITOFIX19_13(0),
     		ITOFIX19_13(0),
     		ITOFIX19_13(0),
-    		ITOFIX19_13(0),
+    		ITOFIX19_13(0)
         },
 
         // optical configuration values
@@ -173,7 +197,7 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
         {
     	    ITOFIX19_13(0),
     	    ITOFIX19_13(0),
-    	    ITOFIX19_13(0),
+    	    ITOFIX19_13(0)
         },
 
         // friction
@@ -194,7 +218,7 @@ StageROMDef ADJUSTMENT_SCREEN_ST =
 
     // entities
     {
-        // UI
+        // ui
         {
         	NULL,
             NULL,

@@ -34,31 +34,34 @@
  * form part of a valid UTF-8 byte sequence: £
  */
 
+const char* const LANGUAGE_ES_STRINGS[] =
+{
+    //STR_PRECAUTION_SCREEN_TITLE:
+    "IMPORTANTE:",
+    //STR_PRECAUTION_SCREEN_TEXT:
+    "     LEA LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
+    //STR_AUTOMATIC_PAUSE:
+    "Pausa Automática",
+    //STR_AUTOMATIC_PAUSE_EXPLANATION:
+    " La función automática de pausa le\nrecordará que debe tomar un descanso\n  de jugar approx. cada 30 minutos",
+    //STR_AUTOMATIC_PAUSE_TEXT:
+    "¡Por favor, tómese un descanso!",
+    //STR_ON:
+    "Encendido",
+    //STR_OFF:
+    "Apagado",
+    //STR_LANGUAGE_SELECT:
+    "Seleccionar Idioma",
+
+    //STR_HELLO_WORLD:
+    "Hola Mundo!",
+};
+
 const LangROMDef LANGUAGE_ES =
 {
     // Language Name
     "Español",
 
     // Strings
-    {
-        //STR_PRECAUTION_SCREEN_TITLE:
-        "IMPORTANTE:",
-        //STR_PRECAUTION_SCREEN_TEXT:
-        "     LEA LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
-        //STR_AUTOMATIC_PAUSE:
-        "Pausa Automática",
-        //STR_AUTOMATIC_PAUSE_EXPLANATION:
-        " La función automática de pausa le\nrecordará que debe tomar un descanso\n  de jugar approx. cada 30 minutos",
-        //STR_AUTOMATIC_PAUSE_TEXT:
-        "¡Por favor, tómese un descanso!",
-        //STR_ON:
-        "Encendido",
-        //STR_OFF:
-        "Apagado",
-        //STR_LANGUAGE_SELECT:
-        "Seleccionar Idioma",
-
-        //STR_HELLO_WORLD:
-        "Hola Mundo!",
-    },
+    (const char**)LANGUAGE_ES_STRINGS
 };

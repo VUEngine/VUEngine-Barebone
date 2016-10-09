@@ -14,16 +14,15 @@
  * see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LANGUAGE_SELECTION_SCREEN_STATE_H_
-#define LANGUAGE_SELECTION_SCREEN_STATE_H_
+#ifndef PROGRESS_MANAGER_H_
+#define PROGRESS_MANAGER_H_
 
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <SplashScreenState.h>
-#include <OptionsSelector.h>
+#include <Object.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -31,28 +30,55 @@
 //---------------------------------------------------------------------------------------------------------
 
 // declare the virtual methods
-#define LangSelectScreenState_METHODS(ClassName)														\
-    	SplashScreenState_METHODS(ClassName)							    							\
+#define ProgressManager_METHODS(ClassName)																\
+    	Object_METHODS(ClassName)																		\
 
 // declare the virtual methods which are redefined
-#define LangSelectScreenState_SET_VTABLE(ClassName)														\
-        SplashScreenState_SET_VTABLE(ClassName)				    										\
-        __VIRTUAL_SET(ClassName, LangSelectScreenState, print);											\
-        __VIRTUAL_SET(ClassName, LangSelectScreenState, processInput);									\
+#define ProgressManager_SET_VTABLE(ClassName)															\
+    	Object_SET_VTABLE(ClassName)																	\
 
-__CLASS(LangSelectScreenState);
+// declare a ProgressManager
+__CLASS(ProgressManager);
 
-#define LangSelectScreenState_ATTRIBUTES																\
-        /* inherits */																				    \
-        SplashScreenState_ATTRIBUTES																	\
-        OptionsSelector languageSelector;														   		\
+#define ProgressManager_ATTRIBUTES																		\
+        /* super's attributes */																		\
+        Object_ATTRIBUTES																				\
+
+
+//---------------------------------------------------------------------------------------------------------
+// 												DECLARATIONS
+//---------------------------------------------------------------------------------------------------------
+
+#define SAVE_STAMP								"VBJaEBrB"
+#define SAVE_STAMP_LENGTH						8
+
+// this struct is never instantiated, its sole purpose is to determine offsets of its members.
+// therefore it acts as kind of like a map of sram content.
+typedef struct UserData
+{
+	// flag to know if there is data saved
+	u8 saveStamp[SAVE_STAMP_LENGTH];
+
+	// active language id
+	u8 languageId;
+
+	// auto pause status (0: on, 1: off)
+	u8 autoPauseStatus;
+
+} UserData;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 										PUBLIC INTERFACE
 //---------------------------------------------------------------------------------------------------------
 
-LangSelectScreenState LangSelectScreenState_getInstance(void);
+ProgressManager ProgressManager_getInstance();
+
+void ProgressManager_destructor(ProgressManager this);
+u8 ProgressManager_getLanguage(ProgressManager this);
+void ProgressManager_setLanguage(ProgressManager this, u8 language);
+bool ProgressManager_getAutomaticPauseStatus(ProgressManager this);
+void ProgressManager_setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
 
 
 #endif

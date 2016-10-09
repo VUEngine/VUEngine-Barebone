@@ -34,31 +34,34 @@
  * form part of a valid UTF-8 byte sequence: £
  */
 
+const char* const LANGUAGE_DE_STRINGS[] =
+{
+    //STR_PRECAUTION_SCREEN_TITLE:
+    "WICHTIG:",
+    //STR_PRECAUTION_SCREEN_TEXT:
+    "   LESEN SIE VOR DEM\n\n SPIELEN DIE ANLEITUNG\n\nUND SICHERHEITSHINWEISE",
+    //STR_AUTOMATIC_PAUSE:
+    "Automatische Pause",
+    //STR_AUTOMATIC_PAUSE_EXPLANATION:
+    " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
+    //STR_AUTOMATIC_PAUSE_TEXT:
+    "Bitte mache eine Pause!",
+    //STR_ON:
+    "An",
+    //STR_OFF:
+    "Aus",
+    //STR_LANGUAGE_SELECT:
+    "Sprachauswahl",
+
+    //STR_HELLO_WORLD:
+    "Hallo, Welt!",
+};
+
 const LangROMDef LANGUAGE_DE =
 {
     // Language Name
     "Deutsch",
 
     // Strings
-    {
-        //STR_PRECAUTION_SCREEN_TITLE:
-        "WICHTIG:",
-        //STR_PRECAUTION_SCREEN_TEXT:
-        "   LESEN SIE VOR DEM\n\n SPIELEN DIE ANLEITUNG\n\nUND SICHERHEITSHINWEISE",
-        //STR_AUTOMATIC_PAUSE:
-        "Automatische Pause",
-        //STR_AUTOMATIC_PAUSE_EXPLANATION:
-        " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
-        //STR_AUTOMATIC_PAUSE_TEXT:
-        "Bitte mache eine Pause!",
-        //STR_ON:
-        "An",
-        //STR_OFF:
-        "Aus",
-        //STR_LANGUAGE_SELECT:
-        "Sprachauswahl",
-
-        //STR_HELLO_WORLD:
-        "Hallo, Welt!",
-    },
+    (const char**)LANGUAGE_DE_STRINGS
 };

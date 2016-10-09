@@ -23,6 +23,15 @@
 #include <Screen.h>
 #include <MessageDispatcher.h>
 #include <SplashScreenState.h>
+#include <KeypadManager.h>
+
+
+//---------------------------------------------------------------------------------------------------------
+// 												PROTOTYPES
+//---------------------------------------------------------------------------------------------------------
+
+static void SplashScreenState_onFadeInComplete(SplashScreenState this, Object eventFirer);
+static void SplashScreenState_onFadeOutComplete(SplashScreenState this, Object eventFirer);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -31,10 +40,6 @@
 
 __CLASS_DEFINITION(SplashScreenState, GameState);
 
-enum SplashScreensMessageTypes
-{
-	kScreenStarted = kLastEngineMessage + 1,
-};
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -44,7 +49,7 @@ enum SplashScreensMessageTypes
 // class's constructor
 void SplashScreenState_constructor(SplashScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(GameState);
 
 	this->stageDefinition = NULL;
 }
@@ -68,10 +73,12 @@ void SplashScreenState_enter(SplashScreenState this, void* owner)
 		GameState_loadStage(__SAFE_CAST(GameState, this), this->stageDefinition, NULL, true);
 	}
 
-    __VIRTUAL_CALL(void, SplashScreenState, print, this);
+    __VIRTUAL_CALL(SplashScreenState, print, this);
 
 	// start fade in effect in 1 ms, because a full render cycle is needed to put everything in place
 	MessageDispatcher_dispatchMessage(1, __SAFE_CAST(Object, this), __SAFE_CAST(Object, Game_getInstance()), kScreenStarted, NULL);
+
+    Game_disableKeypad(Game_getInstance());
 }
 
 // state's execute
@@ -84,9 +91,6 @@ void SplashScreenState_execute(SplashScreenState this, void* owner)
 // state's exit
 void SplashScreenState_exit(SplashScreenState this, void* owner)
 {
-    // start a fade out effect
-	Screen_startEffect(Screen_getInstance(), kFadeOut, 16);
-
 	// call base
 	GameState_exit(__SAFE_CAST(GameState, this), owner);
 
@@ -99,7 +103,7 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 {
 	GameState_resume(__SAFE_CAST(GameState, this), owner);
 
-	__VIRTUAL_CALL(void, SplashScreenState, print, this);
+	__VIRTUAL_CALL(SplashScreenState, print, this);
 
 #ifdef __DEBUG_TOOLS
 	if(!Game_isExitingSpecialMode(Game_getInstance()))
@@ -114,8 +118,8 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 	{
 #endif
 
-	// make a fade in
-	Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+	// start a fade in effect
+	Screen_startEffect(Screen_getInstance(), kFadeIn, __FADE_DURATION);
 
 #ifdef __DEBUG_TOOLS
 	}
@@ -129,19 +133,31 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 }
 
 // state's handle message
-bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegram telegram)
+bool SplashScreenState_processMessage(SplashScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
 {
 	switch(Telegram_getMessage(telegram))
 	{
 		case kScreenStarted:
 
-		    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+            // start fade in effect
+            Screen_startEffect(Screen_getInstance(),
+                kFadeTo, // effect type
+                0, // initial delay (in ms)
+                NULL, // target brightness
+                __FADE_DELAY, // delay between fading steps (in ms)
+                (void (*)(Object, Object))SplashScreenState_onFadeInComplete, // callback function
+                __SAFE_CAST(Object, this) // callback scope
+            );
+
 			break;
 
 		case kKeyPressed:
 		    {
-                u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
-                __VIRTUAL_CALL(void, SplashScreenState, processInput, this, pressedKey);
+                u32 pressedKey = *((u32*)Telegram_getExtraInfo(telegram));
+                if(pressedKey & ~K_PWR)
+                {
+                    __VIRTUAL_CALL(SplashScreenState, processInput, this, pressedKey);
+                }
             }
             break;
 	}
@@ -149,16 +165,51 @@ bool SplashScreenState_handleMessage(SplashScreenState this, void* owner, Telegr
 	return false;
 }
 
-void SplashScreenState_processInput(SplashScreenState this, u16 pressedKey)
+void SplashScreenState_processInput(SplashScreenState this, u32 pressedKey __attribute__ ((unused)))
 {
-	Game_changeState(Game_getInstance(), this->nextState);
+	SplashScreenState_loadNextState(this);
 }
 
-void SplashScreenState_print(SplashScreenState this)
+void SplashScreenState_print(SplashScreenState this __attribute__ ((unused)))
 {
 }
 
 void SplashScreenState_setNextState(SplashScreenState this, GameState nextState)
 {
     this->nextState = nextState;
+}
+
+void SplashScreenState_loadNextState(SplashScreenState this)
+{
+    // disable user input
+    Game_disableKeypad(Game_getInstance());
+
+    // start fade out effect
+    Brightness brightness = (Brightness){0, 0, 0};
+    Screen_startEffect(Screen_getInstance(),
+        kFadeTo, // effect type
+        0, // initial delay (in ms)
+        &brightness, // target brightness
+        __FADE_DELAY, // delay between fading steps (in ms)
+        (void (*)(Object, Object))SplashScreenState_onFadeOutComplete, // callback function
+        __SAFE_CAST(Object, this) // callback scope
+    );
+}
+
+// handle event
+static void SplashScreenState_onFadeInComplete(SplashScreenState this __attribute__ ((unused)), Object eventFirer __attribute__ ((unused)))
+{
+	ASSERT(this, "SplashScreenState::onFadeInComplete: null this");
+
+    // enable user input
+    Game_enableKeypad(Game_getInstance());
+}
+
+// handle event
+static void SplashScreenState_onFadeOutComplete(SplashScreenState this, Object eventFirer __attribute__ ((unused)))
+{
+	ASSERT(this, "SplashScreenState::onFadeOutComplete: null this");
+
+    // change to next stage
+    Game_changeState(Game_getInstance(), this->nextState);
 }

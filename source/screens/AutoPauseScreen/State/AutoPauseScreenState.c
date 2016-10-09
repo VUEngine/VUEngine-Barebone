@@ -27,6 +27,7 @@
 #include <PhysicalWorld.h>
 #include <I18n.h>
 #include <AutoPauseScreenState.h>
+#include <KeyPadManager.h>
 #include <Languages.h>
 
 
@@ -45,7 +46,7 @@ static void AutoPauseScreenState_destructor(AutoPauseScreenState this);
 static void AutoPauseScreenState_constructor(AutoPauseScreenState this);
 static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner);
 static void AutoPauseScreenState_exit(AutoPauseScreenState this, void* owner);
-static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* owner, Telegram telegram);
+static bool AutoPauseScreenState_processMessage(AutoPauseScreenState this, void* owner, Telegram telegram);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -61,9 +62,9 @@ __SINGLETON(AutoPauseScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void AutoPauseScreenState_constructor(AutoPauseScreenState this)
+static void __attribute__ ((noinline)) AutoPauseScreenState_constructor(AutoPauseScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(GameState);
 }
 
 // class's destructor
@@ -74,42 +75,42 @@ static void AutoPauseScreenState_destructor(AutoPauseScreenState this)
 }
 
 // state's enter
-static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner)
+static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner __attribute__ ((unused)))
 {
 	// load stage
 	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_ST, NULL, true);
 
     // print text
-    char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
-    char* strAutomaticPauseText = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_TEXT);
-    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, NULL);
+    const char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
+    const char* strAutomaticPauseText = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_TEXT);
+    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, "GUIFont");
     Size strAutomaticPauseTextSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseText, NULL);
 
     u8 strHeaderXPos = ((__SCREEN_WIDTH >> 4) - (strAutomaticPauseSize.x >> 1));
-    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 10, NULL);
+    Printing_text(Printing_getInstance(), strAutomaticPause, strHeaderXPos, 10, "GUIFont");
 
     u8 strTextXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseTextSize.x >> 1);
     Printing_text(Printing_getInstance(), strAutomaticPauseText, strTextXPos, 11 + strAutomaticPauseSize.y, NULL);
 
-    Screen_startEffect(Screen_getInstance(), kFadeIn, 16);
+    Screen_startEffect(Screen_getInstance(), kFadeIn, __FADE_DURATION);
 }
 
 // state's exit
-static void AutoPauseScreenState_exit(AutoPauseScreenState this, void* owner)
+static void AutoPauseScreenState_exit(AutoPauseScreenState this __attribute__ ((unused)), void* owner __attribute__ ((unused)))
 {
 	// make a fade out
-	Screen_startEffect(Screen_getInstance(), kFadeOut, 16);
+	Screen_startEffect(Screen_getInstance(), kFadeOut, __FADE_DURATION);
 }
 
 // state's handle message
-static bool AutoPauseScreenState_handleMessage(AutoPauseScreenState this, void* owner, Telegram telegram)
+static bool AutoPauseScreenState_processMessage(AutoPauseScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
 {
 	// process message
 	switch(Telegram_getMessage(telegram))
     {
 		case kKeyPressed:
 			{
-				u16 pressedKey = *((u16*)Telegram_getExtraInfo(telegram));
+				u32 pressedKey = *((u32*)Telegram_getExtraInfo(telegram));
 
 				if(K_STA & pressedKey)
 				{

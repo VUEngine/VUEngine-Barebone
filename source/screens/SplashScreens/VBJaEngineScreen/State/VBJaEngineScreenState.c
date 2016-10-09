@@ -39,7 +39,6 @@ extern StageROMDef VBJAENGINE_SCREEN_ST;
 
 static void VBJaEngineScreenState_destructor(VBJaEngineScreenState this);
 static void VBJaEngineScreenState_constructor(VBJaEngineScreenState this);
-static void VBJaEngineScreenState_print(VBJaEngineScreenState this);
 static void VBJaEngineScreenState_execute(VBJaEngineScreenState this, void* owner);
 
 
@@ -56,9 +55,9 @@ __SINGLETON_DYNAMIC(VBJaEngineScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void VBJaEngineScreenState_constructor(VBJaEngineScreenState this)
+static void __attribute__ ((noinline)) VBJaEngineScreenState_constructor(VBJaEngineScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(SplashScreenState);
 
 	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, LangSelectScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&VBJAENGINE_SCREEN_ST;
@@ -71,16 +70,12 @@ static void VBJaEngineScreenState_destructor(VBJaEngineScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-static void VBJaEngineScreenState_print(VBJaEngineScreenState this)
-{
-}
-
 // state's execute
 static void VBJaEngineScreenState_execute(VBJaEngineScreenState this, void* owner)
 {
     VBVec3D translation =
     {
-        ITOFIX19_13(1),
+        __1I_FIX19_13,
         ITOFIX19_13(0),
         ITOFIX19_13(0)
     };

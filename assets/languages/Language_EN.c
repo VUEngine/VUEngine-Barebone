@@ -34,31 +34,35 @@
  * form part of a valid UTF-8 byte sequence: £
  */
 
+const char* const LANGUAGE_EN_STRINGS[] =
+// Strings
+{
+    //STR_PRECAUTION_SCREEN_SCREEN_TITLE:
+    "IMPORTANT:",
+    //STR_PRECAUTION_SCREEN_TEXT:
+    "READ INSTRUCTION AND\n\nPRECAUTION BOOKLETS\n\n  BEFORE OPERATING",
+    //STR_AUTOMATIC_PAUSE:
+    "Automatic Pause",
+    //STR_AUTOMATIC_PAUSE_EXPLANATION:
+    "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
+    //STR_AUTOMATIC_PAUSE_TEXT:
+    "Please take a rest!",
+    //STR_ON:
+    "On",
+    //STR_OFF:
+    "Off",
+    //STR_LANGUAGE_SELECT:
+    "Language Select",
+
+    //STR_HELLO_WORLD:
+    "Hello, World!",
+};
+
 const LangROMDef LANGUAGE_EN =
 {
     // Language Name
     "English",
 
     // Strings
-    {
-        //STR_PRECAUTION_SCREEN_SCREEN_TITLE:
-        "IMPORTANT:",
-        //STR_PRECAUTION_SCREEN_TEXT:
-        "READ INSTRUCTION AND\n\nPRECAUTION BOOKLETS\n\n  BEFORE OPERATING",
-        //STR_AUTOMATIC_PAUSE:
-        "Automatic Pause",
-        //STR_AUTOMATIC_PAUSE_EXPLANATION:
-        "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
-        //STR_AUTOMATIC_PAUSE_TEXT:
-        "Please take a rest!",
-        //STR_ON:
-        "On",
-        //STR_OFF:
-        "Off",
-        //STR_LANGUAGE_SELECT:
-        "Language Select",
-
-        //STR_HELLO_WORLD:
-        "Hello, World!",
-    },
+    (const char**)LANGUAGE_EN_STRINGS
 };

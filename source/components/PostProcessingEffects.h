@@ -14,24 +14,22 @@
  * see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef POST_PROCESSING_EFFECTS_H_
+#define POST_PROCESSING_EFFECTS_H_
+
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <PrecautionScreenState.h>
+#include <SpatialObject.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										  GAME'S MAIN LOOP
+// 										FUNCTIONS
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
-{
-    // start the game
-	Game_start(Game_getInstance(), __SAFE_CAST(GameState, PrecautionScreenState_getInstance()));
+void PostProcessingEffects_wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
 
-	// end program
-	return true;
-}
+
+#endif

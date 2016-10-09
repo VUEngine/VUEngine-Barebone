@@ -27,6 +27,8 @@
 #include <LangSelectScreenState.h>
 #include <TitleScreenState.h>
 #include <Languages.h>
+#include <KeyPadManager.h>
+#include <ProgressManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -43,7 +45,7 @@ extern LangROMDef* __LANGUAGES[];
 
 static void LangSelectScreenState_destructor(LangSelectScreenState this);
 static void LangSelectScreenState_constructor(LangSelectScreenState this);
-static void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey);
+static void LangSelectScreenState_processInput(LangSelectScreenState this, u32 pressedKey);
 static void LangSelectScreenState_print(LangSelectScreenState this);
 
 
@@ -59,18 +61,18 @@ __SINGLETON_DYNAMIC(LangSelectScreenState);
 // 												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
-// class's constructor
-static void LangSelectScreenState_constructor(LangSelectScreenState this)
+static void __attribute__ ((noinline)) LangSelectScreenState_constructor(LangSelectScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(SplashScreenState);
 
 	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, TitleScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
 
-    u8 activeLanguage = I18n_getActiveLanguage(I18n_getInstance());
-	this->languageSelector = OptionsSelector_new(1, 8, "\xB", kString);
+	// create options selector and populate with language names
+	this->languageSelector = __NEW(OptionsSelector, 1, 8, "\xB", kString);
+	VirtualList languageNames = __NEW(VirtualList);
 
-	VirtualList languageNames = VirtualList_new();
+    u8 activeLanguage = ProgressManager_getLanguage(ProgressManager_getInstance());
 
 	int i = 0;
 	for(; __LANGUAGES[i]; i++)
@@ -79,13 +81,13 @@ static void LangSelectScreenState_constructor(LangSelectScreenState this)
 		VirtualList_pushBack(languageNames, I18n_getActiveLanguageName(I18n_getInstance()));
 	}
 
-	I18n_setActiveLanguage(I18n_getInstance(), activeLanguage);
-
     OptionsSelector_setOptions(this->languageSelector, languageNames);
 	__DELETE(languageNames);
+
+	I18n_setActiveLanguage(I18n_getInstance(), activeLanguage);
+    OptionsSelector_setSelectedOption(this->languageSelector, activeLanguage);
 }
 
-// class's destructor
 static void LangSelectScreenState_destructor(LangSelectScreenState this)
 {
 	if(this->languageSelector)
@@ -97,32 +99,34 @@ static void LangSelectScreenState_destructor(LangSelectScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-static void LangSelectScreenState_processInput(LangSelectScreenState this, u16 pressedKey)
+void LangSelectScreenState_processInput(LangSelectScreenState this, u32 pressedKey)
 {
-	if ((pressedKey & K_LU) || (pressedKey & K_RU))
+	if((pressedKey & K_LU) || (pressedKey & K_RU))
 	{
 		OptionsSelector_selectPrevious(this->languageSelector);
 	}
-    else if ((pressedKey & K_LD) || (pressedKey & K_RD))
+    else if((pressedKey & K_LD) || (pressedKey & K_RD))
 	{
 		OptionsSelector_selectNext(this->languageSelector);
 	}
-	else if ((pressedKey & K_A) || (pressedKey & K_STA))
+	else if((pressedKey & K_A) || (pressedKey & K_STA))
 	{
-	    I18n_setActiveLanguage(I18n_getInstance(), OptionsSelector_getSelectedOption(this->languageSelector));
-	    Game_changeState(Game_getInstance(), __SAFE_CAST(GameState, this->nextState));
+		int selectedLanguage = OptionsSelector_getSelectedOption(this->languageSelector);
+	    I18n_setActiveLanguage(I18n_getInstance(), selectedLanguage);
+	    ProgressManager_setLanguage(ProgressManager_getInstance(), selectedLanguage);
+	    SplashScreenState_loadNextState(__SAFE_CAST(SplashScreenState, this));
 	}
 }
 
 static void LangSelectScreenState_print(LangSelectScreenState this)
 {
-    char* strLanguageSelect = I18n_getText(I18n_getInstance(), STR_LANGUAGE_SELECT);
+	// print header
+    const char* strLanguageSelect = I18n_getText(I18n_getInstance(), STR_LANGUAGE_SELECT);
     Size size = Printing_getTextSize(Printing_getInstance(), strLanguageSelect, NULL);
-
     u8 strHeaderXPos = (__SCREEN_WIDTH >> 4) - (size.x >> 1);
-
     Printing_text(Printing_getInstance(), strLanguageSelect, strHeaderXPos, 8, NULL);
 
+	// print options
 	OptionsSelector_showOptions(this->languageSelector, strHeaderXPos, 9 + size.y);
 }
 

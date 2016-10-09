@@ -63,7 +63,10 @@ TextureROMDef ADJUSTMENT_SCREEN_BG_TX =
     // rows (max 64)
     14,
 
-    // number of frames, depending on charset's allocation type:
+    // padding for affine transformations
+	{0, 0},
+
+	// number of frames, depending on charset's allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED, __NOT_ANIMATED: 1
     // __ANIMATED_MULTI: total number of frames
     1,
@@ -74,20 +77,22 @@ TextureROMDef ADJUSTMENT_SCREEN_BG_TX =
 
 BgmapSpriteROMDef ADJUSTMENT_SCREEN_BG_IM_SPRITE =
 {
-	// sprite's type
-	__TYPE(BgmapSprite),
+    {
+        // sprite's type
+        __TYPE(BgmapSprite),
 
-	// texture definition
-	(TextureDefinition*)&ADJUSTMENT_SCREEN_BG_TX,
+        // texture definition
+        (TextureDefinition*)&ADJUSTMENT_SCREEN_BG_TX,
 
-	// displacement
-	{0, 0, 0},
+        // displacement
+        {0, 0, 0},
+    },
 
-	// bgmap mode (WRLD_BGMAP, WRLD_AFFINE, WRLD_OBJ or WRLD_HBIAS)
-	WRLD_BGMAP,
+	// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJ or __WORLD_HBIAS)
+	__WORLD_BGMAP,
 
-	// display mode (WRLD_ON, WRLD_LON or WRLD_RON)
-	WRLD_ON,
+	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
+	__WORLD_ON,
 };
 
 BgmapSpriteROMDef* const ADJUSTMENT_SCREEN_BG_IM_SPRITES[] =

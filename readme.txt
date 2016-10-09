@@ -47,7 +47,7 @@ Description:
 A short summary of the file layout:
 
 source/			   		VB source code
-source/game/objects/	Definition and implementation of the different graphics, objects, IA, worlds			
+source/game/objects/	Definition and implementation of the different graphics, objects, IA, worlds
 
 
 For more documentation go to:
@@ -61,7 +61,7 @@ COMPILING ON WIN32
 Requirements:
 
 	* Minimal Linux environment (i.e: CygWin) that includes make and git
-	
+
 	* GCCVB 4.4.2 for V810
 
 
@@ -76,11 +76,11 @@ Requirements:
 
 CREDITS
 ==================
-	
+
 	* Jorge Eremiev:
 		* Main programmer
 		* Debugging and testing
-		
+
 	* Christian Radke (KR155E):
 		* Programmer
 		* Game designer
@@ -89,7 +89,6 @@ CREDITS
 		* Debugging and testing
 		* Documentation
 
-Graphics based on open source sprites by Kenney (http://www.kenney.nl)
 
 ==================
 

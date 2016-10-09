@@ -28,6 +28,7 @@
 #include <PrecautionScreenState.h>
 #include <AdjustmentScreenState.h>
 #include <Languages.h>
+ #include <debugUtilities.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -43,8 +44,8 @@ extern StageROMDef EMPTY_ST;
 
 static void PrecautionScreenState_destructor(PrecautionScreenState this);
 static void PrecautionScreenState_constructor(PrecautionScreenState this);
-static void PrecautionScreenState_enter(PrecautionScreenState this, void* owner);
 static void PrecautionScreenState_print(PrecautionScreenState this);
+static bool PrecautionScreenState_processMessage(PrecautionScreenState this, void* owner __attribute__ ((unused)), Telegram telegram);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -60,9 +61,9 @@ __SINGLETON_DYNAMIC(PrecautionScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void PrecautionScreenState_constructor(PrecautionScreenState this)
+static void __attribute__ ((noinline)) PrecautionScreenState_constructor(PrecautionScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(SplashScreenState);
 
 	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AdjustmentScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
@@ -75,21 +76,54 @@ static void PrecautionScreenState_destructor(PrecautionScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-// state's enter
-static void PrecautionScreenState_enter(PrecautionScreenState this, void* owner)
+// state's handle message
+static bool PrecautionScreenState_processMessage(PrecautionScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
 {
-    SplashScreenState_enter(__SAFE_CAST(SplashScreenState, this), owner);
+	switch(Telegram_getMessage(telegram))
+	{
+		case kScreenStarted:
 
-    // show this screen for at least 2 seconds, as defined by Nintendo in the official development manual
-	Clock_delay(Game_getClock(Game_getInstance()), 2000);
-	KeypadManager_flush(KeypadManager_getInstance());
-	Game_enableKeypad(Game_getInstance());
+            // wait some seconds for the screen to stabilize, as defined by Nintendo in the official development manual
+            Game_wait(Game_getInstance(), 3000);
+
+			// start fade in effect
+			Screen_startEffect(Screen_getInstance(),
+			    kFadeTo, // effect type
+			    0, // initial delay (in ms)
+			    NULL, // target brightness
+			    __FADE_DELAY, // delay between fading steps (in ms)
+			    NULL, // callback function
+			    NULL // callback scope
+			);
+
+            // show this screen for at least 2 seconds, as defined by Nintendo in the official development manual (Appendix 1)
+            MessageDispatcher_dispatchMessage(2000, __SAFE_CAST(Object, this), __SAFE_CAST(Object, Game_getInstance()), kScreenAllowUserInput, NULL);
+			break;
+
+		case kScreenAllowUserInput:
+
+            Game_enableKeypad(Game_getInstance());
+			break;
+
+		case kKeyPressed:
+		    {
+                u32 pressedKey = *((u32*)Telegram_getExtraInfo(telegram));
+
+                if(pressedKey & ~K_PWR)
+                {
+                    __VIRTUAL_CALL(SplashScreenState, processInput, this, pressedKey);
+                }
+            }
+            break;
+	}
+
+	return false;
 }
 
-static void PrecautionScreenState_print(PrecautionScreenState this)
+static void PrecautionScreenState_print(PrecautionScreenState this __attribute__ ((unused)))
 {
-    char* strPrecautionTitle = I18n_getText(I18n_getInstance(), STR_PRECAUTION_SCREEN_TITLE);
-    char* strPrecautionText = I18n_getText(I18n_getInstance(), STR_PRECAUTION_SCREEN_TEXT);
+    const char* strPrecautionTitle = I18n_getText(I18n_getInstance(), STR_PRECAUTION_SCREEN_TITLE);
+    const char* strPrecautionText = I18n_getText(I18n_getInstance(), STR_PRECAUTION_SCREEN_TEXT);
     Size titleSize = Printing_getTextSize(Printing_getInstance(), strPrecautionTitle, NULL);
     Size textSize = Printing_getTextSize(Printing_getInstance(), strPrecautionText, NULL);
 
@@ -99,7 +133,7 @@ static void PrecautionScreenState_print(PrecautionScreenState this)
         Printing_getInstance(),
         strPrecautionTitle,
         (__SCREEN_WIDTH >> 4) - (titleSize.x >> 1),
-        (__SCREEN_HEIGHT >> 4) - (totalHeight >> 1),
+        (__SCREEN_HEIGHT >> 4) - (totalHeight >> 1) - 1,
         NULL
     );
 
@@ -107,7 +141,7 @@ static void PrecautionScreenState_print(PrecautionScreenState this)
         Printing_getInstance(),
         strPrecautionText,
         (__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
-        (__SCREEN_HEIGHT >> 4) - (totalHeight >> 1) + titleSize.y + 1,
+        (__SCREEN_HEIGHT >> 4) - (totalHeight >> 1) - 1 + titleSize.y + 2,
         NULL
     );
 }

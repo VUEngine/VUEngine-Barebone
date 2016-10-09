@@ -30,6 +30,8 @@
 #include <VBJaEngineScreenState.h>
 #include <AutoPauseScreenState.h>
 #include <Languages.h>
+#include <KeyPadManager.h>
+#include <ProgressManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -47,7 +49,7 @@ static void AutoPauseSelectScreenState_destructor(AutoPauseSelectScreenState thi
 static void AutoPauseSelectScreenState_constructor(AutoPauseSelectScreenState this);
 static void AutoPauseSelectScreenState_print(AutoPauseSelectScreenState this);
 static void AutoPauseSelectScreenState_renderSelection(AutoPauseSelectScreenState this);
-static void AutoPauseSelectScreenState_processInput(AutoPauseSelectScreenState this, u16 pressedKey);
+static void AutoPauseSelectScreenState_processInput(AutoPauseSelectScreenState this, u32 pressedKey);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -63,9 +65,9 @@ __SINGLETON_DYNAMIC(AutoPauseSelectScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void AutoPauseSelectScreenState_constructor(AutoPauseSelectScreenState this)
+static void __attribute__ ((noinline)) AutoPauseSelectScreenState_constructor(AutoPauseSelectScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(SplashScreenState);
 
 	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, VBJaEngineScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_ST;
@@ -81,8 +83,10 @@ static void AutoPauseSelectScreenState_destructor(AutoPauseSelectScreenState thi
 
 static void AutoPauseSelectScreenState_print(AutoPauseSelectScreenState this)
 {
-    char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
-    char* strAutomaticPauseExplanation = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_EXPLANATION);
+    this->selection = ProgressManager_getAutomaticPauseStatus(ProgressManager_getInstance());
+
+    const char* strAutomaticPause = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
+    const char* strAutomaticPauseExplanation = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE_EXPLANATION);
     Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPause, NULL);
     Size strAutomaticPauseExplanationSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseExplanation, NULL);
 
@@ -97,8 +101,8 @@ static void AutoPauseSelectScreenState_print(AutoPauseSelectScreenState this)
 
 static void AutoPauseSelectScreenState_renderSelection(AutoPauseSelectScreenState this)
 {
-    char* strOn = I18n_getText(I18n_getInstance(), STR_ON);
-    char* strOff = I18n_getText(I18n_getInstance(), STR_OFF);
+    const char* strOn = I18n_getText(I18n_getInstance(), STR_ON);
+    const char* strOff = I18n_getText(I18n_getInstance(), STR_OFF);
 
     // get strings and determine sizes
     Size strOnSize = Printing_getTextSize(Printing_getInstance(), strOn, NULL);
@@ -125,8 +129,9 @@ static void AutoPauseSelectScreenState_renderSelection(AutoPauseSelectScreenStat
     Printing_text(Printing_getInstance(), strOff, selectionStart + 3 + strOnSize.x, 17, NULL);
 
     // print selector
-    u8 optionStart = this->selection ? selectionStart - 1 : selectionStart - 1 + optionsGap + strOnSize.x;
-    u8 optionEnd = this->selection ? optionStart + 1 + strOnSize.x : optionStart + 1 + strOffSize.x;
+    u8 optionStart = this->selection ? selectionStart : selectionStart + optionsGap + strOnSize.x;
+    u8 optionEnd = this->selection ? optionStart + strOnSize.x : optionStart + strOffSize.x;
+    optionStart--;
     Printing_text(Printing_getInstance(), "\x03\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08\x08", optionStart, 16, NULL);
     Printing_text(Printing_getInstance(), "\x04               ", optionEnd, 16, NULL);
     Printing_text(Printing_getInstance(), "\x07", optionStart, 17, NULL);
@@ -147,16 +152,20 @@ static void AutoPauseSelectScreenState_renderSelection(AutoPauseSelectScreenStat
     Printing_text(Printing_getInstance(), "\x06               ", optionEnd, 17 + strOnSize.y, NULL);
 }
 
-static void AutoPauseSelectScreenState_processInput(AutoPauseSelectScreenState this, u16 pressedKey)
+void AutoPauseSelectScreenState_processInput(AutoPauseSelectScreenState this, u32 pressedKey)
 {
-	if ((pressedKey & K_LL) || (pressedKey & K_LR))
+	if((pressedKey & K_LL) || (pressedKey & K_LR))
 	{
 	    this->selection = !this->selection;
 	    AutoPauseSelectScreenState_renderSelection(this);
 	}
-	else if ((pressedKey & K_A) || (pressedKey & K_STA))
+	else if((pressedKey & K_A) || (pressedKey & K_STA))
 	{
-		Game_setAutomaticPauseState(Game_getInstance(), this->selection ? __SAFE_CAST(GameState, AutoPauseScreenState_getInstance()): NULL);
-	    Game_changeState(Game_getInstance(), this->nextState);
+		Game_setAutomaticPauseState(Game_getInstance(), this->selection
+			? __SAFE_CAST(GameState, AutoPauseScreenState_getInstance())
+			: NULL
+		);
+	    ProgressManager_setAutomaticPauseStatus(ProgressManager_getInstance(), (bool)this->selection);
+	    SplashScreenState_loadNextState(__SAFE_CAST(SplashScreenState, this));
 	}
 }

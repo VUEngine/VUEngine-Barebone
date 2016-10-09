@@ -40,8 +40,7 @@ extern StageROMDef ADJUSTMENT_SCREEN_ST;
 
 static void AdjustmentScreenState_destructor(AdjustmentScreenState this);
 static void AdjustmentScreenState_constructor(AdjustmentScreenState this);
-static void AdjustmentScreenState_print(AdjustmentScreenState this);
-static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 pressedKey);
+static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u32 pressedKey);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -57,9 +56,9 @@ __SINGLETON_DYNAMIC(AdjustmentScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void AdjustmentScreenState_constructor(AdjustmentScreenState this)
+static void __attribute__ ((noinline)) AdjustmentScreenState_constructor(AdjustmentScreenState this)
 {
-	__CONSTRUCT_BASE();
+	__CONSTRUCT_BASE(SplashScreenState);
 
 	SplashScreenState_setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AutoPauseSelectScreenState_getInstance()));
 	this->stageDefinition = (StageDefinition*)&ADJUSTMENT_SCREEN_ST;
@@ -72,11 +71,7 @@ static void AdjustmentScreenState_destructor(AdjustmentScreenState this)
 	__SINGLETON_DESTROY;
 }
 
-static void AdjustmentScreenState_print(AdjustmentScreenState this)
-{
-}
-
-static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 pressedKey)
+static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u32 pressedKey __attribute__ ((unused)))
 {
     // TODO: replace this ugly hack with a proper Game_isPaused check or something similar
     if(this->nextState == NULL)
@@ -85,6 +80,6 @@ static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u16 p
     }
     else
     {
-	    Game_changeState(Game_getInstance(), this->nextState);
+	    SplashScreenState_loadNextState(__SAFE_CAST(SplashScreenState, this));
     }
 }
