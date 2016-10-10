@@ -193,12 +193,8 @@
 // 											CHAR MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
-// number of char segments
-// the fourth segment is used for text allocation, changing this value to 4 may cause text corruption
-#define __CHAR_SEGMENTS							3
-
-// number of chars per char segment
-#define __CHAR_SEGMENT_TOTAL_CHARS 				512
+// the last 512 chars are used for text allocation
+#define __CHAR_SEGMENT_TOTAL_CHARS 				(2048 - 512)
 
 
 //---------------------------------------------------------------------------------------------------------
