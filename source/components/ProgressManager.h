@@ -1,17 +1,22 @@
-/* VBJaEngine: bitmap graphics engine for the Nintendo Virtual Boy
+/* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
+ * A universal game engine for the Nintendo Virtual Boy
  *
- * Copyright (C) 2007 Jorge Eremiev <jorgech3@gmail.com>
+ * Copyright (C) 2007, 2017 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License as published by the Free Software Foundation; either version 3 of the License,
- * or (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
- * License for more details.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
- * You should have received a copy of the GNU General Public License along with this program. If not,
- * see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 #ifndef PROGRESS_MANAGER_H_
@@ -37,27 +42,32 @@
 #define ProgressManager_SET_VTABLE(ClassName)															\
     	Object_SET_VTABLE(ClassName)																	\
 
-// declare a ProgressManager
+// declare class
 __CLASS(ProgressManager);
 
+// declare class attributes
 #define ProgressManager_ATTRIBUTES																		\
-        /* super's attributes */																		\
         Object_ATTRIBUTES																				\
+        /* flag that tells if sram is available on the current cartridge */								\
+        bool sramAvailable;																				\
 
 
 //---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-#define SAVE_STAMP								"VBJaEBrB"
+#define SAVE_STAMP								"VUEngine"
 #define SAVE_STAMP_LENGTH						8
 
 // this struct is never instantiated, its sole purpose is to determine offsets of its members.
 // therefore it acts as kind of like a map of sram content.
-typedef struct UserData
+typedef struct SaveData
 {
 	// flag to know if there is data saved
 	u8 saveStamp[SAVE_STAMP_LENGTH];
+
+	// checksum over sram content to prevent save data manipulation
+	u32 checksum;
 
 	// active language id
 	u8 languageId;
@@ -65,7 +75,7 @@ typedef struct UserData
 	// auto pause status (0: on, 1: off)
 	u8 autoPauseStatus;
 
-} UserData;
+} SaveData;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -74,11 +84,13 @@ typedef struct UserData
 
 ProgressManager ProgressManager_getInstance();
 
+void ProgressManager_clearProgress(ProgressManager this);
 void ProgressManager_destructor(ProgressManager this);
-u8 ProgressManager_getLanguage(ProgressManager this);
-void ProgressManager_setLanguage(ProgressManager this, u8 language);
 bool ProgressManager_getAutomaticPauseStatus(ProgressManager this);
+u8   ProgressManager_getLanguage(ProgressManager this);
+bool ProgressManager_hasProgress(ProgressManager this);
 void ProgressManager_setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
+void ProgressManager_setLanguage(ProgressManager this, u8 language);
 
 
 #endif

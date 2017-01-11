@@ -1,17 +1,22 @@
-/* VBJaEngine: bitmap graphics engine for the Nintendo Virtual Boy
+/* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
+ * A universal game engine for the Nintendo Virtual Boy
  *
- * Copyright (C) 2007 Jorge Eremiev <jorgech3@gmail.com>
+ * Copyright (C) 2007, 2017 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License as published by the Free Software Foundation; either version 3 of the License,
- * or (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
- * License for more details.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
- * You should have received a copy of the GNU General Public License along with this program. If not,
- * see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 #ifndef CONFIG_H_
@@ -45,6 +50,7 @@
 #define __STAGE_EDITOR
 #define __ANIMATION_EDITOR
 #endif
+
 
 //---------------------------------------------------------------------------------------------------------
 // 											PROFILING
@@ -144,7 +150,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // max length of an animation function's name
-#define __MAX_ANIMATION_FUNCTION_NAME_LENGTH	20
+#define __MAX_ANIMATION_FUNCTION_NAME_LENGTH	16
 
 // max number of frames per animation function
 #define __MAX_FRAMES_PER_ANIMATION_FUNCTION		16
@@ -162,27 +168,46 @@
 #undef __MEMORY_POOL_CLEAN_UP
 
 #undef __MEMORY_POOLS
-#define __MEMORY_POOLS							7
+#define __MEMORY_POOLS							16
 
 #undef __MEMORY_POOL_ARRAYS
 #define __MEMORY_POOL_ARRAYS																			\
-    __BLOCK_DEFINITION(224, 4)																			\
-    __BLOCK_DEFINITION(128, 64)																			\
-    __BLOCK_DEFINITION(96, 32)																			\
-    __BLOCK_DEFINITION(64, 90)																			\
-    __BLOCK_DEFINITION(32, 256)																			\
-    __BLOCK_DEFINITION(20, 700)																			\
-    __BLOCK_DEFINITION(16, 320)
+	__BLOCK_DEFINITION(200, 1)																			\
+	__BLOCK_DEFINITION(168, 8)																			\
+	__BLOCK_DEFINITION(148, 8)																			\
+	__BLOCK_DEFINITION(144, 26)																			\
+	__BLOCK_DEFINITION(136, 10)																			\
+	__BLOCK_DEFINITION(128, 45)																			\
+	__BLOCK_DEFINITION(112, 40)																			\
+	__BLOCK_DEFINITION(100, 25)																			\
+	__BLOCK_DEFINITION(88, 80)																			\
+	__BLOCK_DEFINITION(76, 10)																			\
+	__BLOCK_DEFINITION(68, 64)																			\
+	__BLOCK_DEFINITION(32, 12)																			\
+	__BLOCK_DEFINITION(28, 190)																			\
+	__BLOCK_DEFINITION(24, 90)																			\
+	__BLOCK_DEFINITION(20, 690)																			\
+	__BLOCK_DEFINITION(16, 480)						    												\
+
 
 #undef __SET_MEMORY_POOL_ARRAYS
 #define __SET_MEMORY_POOL_ARRAYS																		\
-	__SET_MEMORY_POOL_ARRAY(224)																		\
+	__SET_MEMORY_POOL_ARRAY(200)																		\
+	__SET_MEMORY_POOL_ARRAY(168)																		\
+	__SET_MEMORY_POOL_ARRAY(148)																		\
+	__SET_MEMORY_POOL_ARRAY(144)																		\
+	__SET_MEMORY_POOL_ARRAY(136)																		\
 	__SET_MEMORY_POOL_ARRAY(128)																		\
-	__SET_MEMORY_POOL_ARRAY(96)																			\
-	__SET_MEMORY_POOL_ARRAY(64)																			\
+	__SET_MEMORY_POOL_ARRAY(112)																		\
+	__SET_MEMORY_POOL_ARRAY(100)																		\
+	__SET_MEMORY_POOL_ARRAY(88)																			\
+	__SET_MEMORY_POOL_ARRAY(76)																			\
+	__SET_MEMORY_POOL_ARRAY(68)																			\
 	__SET_MEMORY_POOL_ARRAY(32)																			\
+	__SET_MEMORY_POOL_ARRAY(28)																			\
+	__SET_MEMORY_POOL_ARRAY(24)																			\
 	__SET_MEMORY_POOL_ARRAY(20)																			\
-	__SET_MEMORY_POOL_ARRAY(16)																			\
+	__SET_MEMORY_POOL_ARRAY(16)                                                                         \
 
 
 // percentage (0-100) above which the memory pool's status shows the pool usage
@@ -190,18 +215,27 @@
 
 
 //---------------------------------------------------------------------------------------------------------
+// 												SRAM
+//---------------------------------------------------------------------------------------------------------
+
+// the amount of available sram space, in bytes
+// the vb allows up to 16 mb, but all known carts support only 8 kb of sram
+#define __TOTAL_SAVE_RAM 						8192
+
+
+//---------------------------------------------------------------------------------------------------------
 // 											CHAR MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
-// the last 512 chars are used for text allocation
-#define __CHAR_SEGMENT_TOTAL_CHARS 				(2048 - 512)
+// total number of available chars in char memory
+#define __CHAR_MEMORY_TOTAL_CHARS 				2048
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											SPRITE MANAGEMENT
 //---------------------------------------------------------------------------------------------------------
 
-// total number of layers (basically the number of Worlds)
+// total number of layers (basically the number of worlds)
 #define __TOTAL_LAYERS							32
 
 
@@ -313,7 +347,7 @@
 #define __BRIGHTNESS_BRIGHT_RED					128
 
 // default total duration for blocking fade in/out effects
-#define __FADE_DURATION							1000
+#define __FADE_DURATION							320
 
 // default delay between steps in asynchronous fade effect
 #define __FADE_DELAY					        16
@@ -327,10 +361,10 @@
 
 // default palette values, actual values are set in stage definitions
 
-#define __BGMAP_PALETTE_0						0b11100100
-#define __BGMAP_PALETTE_1						0b11100000
-#define __BGMAP_PALETTE_2						0b10010000
-#define __BGMAP_PALETTE_3						0b01010000
+#define __BGMAP_PALETTE_0						0b11100100 // normal progression
+#define __BGMAP_PALETTE_1						0b11100000 // show dark red as black
+#define __BGMAP_PALETTE_2						0b10010000 // background layer
+#define __BGMAP_PALETTE_3						0b01010000 // very dark, used when getting hit
 
 #define __OBJECT_PALETTE_0						__BGMAP_PALETTE_0
 #define __OBJECT_PALETTE_1						__BGMAP_PALETTE_1
@@ -367,14 +401,6 @@
 // the automatic pause state is not pushed until there is only one state in the game's stack.
 // the following defines the time between checks whether the condition is met (in milliseconds)
 #define __AUTO_PAUSE_RECHECK_DELAY				(60 * 1000)
-
-
-//---------------------------------------------------------------------------------------------------------
-// 												FONTS
-//---------------------------------------------------------------------------------------------------------
-
-// when this is defined, custom fonts are loaded instead of the default one
-//#define __CUSTOM_FONTS
 
 
 //---------------------------------------------------------------------------------------------------------

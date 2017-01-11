@@ -1,17 +1,22 @@
-/* VBJaEngine: bitmap graphics engine for the Nintendo Virtual Boy
+/* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
+ * A universal game engine for the Nintendo Virtual Boy
  *
- * Copyright (C) 2007 Jorge Eremiev <jorgech3@gmail.com>
+ * Copyright (C) 2007, 2017 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License as published by the Free Software Foundation; either version 3 of the License,
- * or (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
- * License for more details.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
- * You should have received a copy of the GNU General Public License along with this program. If not,
- * see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 
@@ -36,25 +41,16 @@
 
 const char* const LANGUAGE_ES_STRINGS[] =
 {
-    //STR_PRECAUTION_SCREEN_TITLE:
-    "IMPORTANTE:",
-    //STR_PRECAUTION_SCREEN_TEXT:
-    "     LEA LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
-    //STR_AUTOMATIC_PAUSE:
-    "Pausa Automática",
-    //STR_AUTOMATIC_PAUSE_EXPLANATION:
-    " La función automática de pausa le\nrecordará que debe tomar un descanso\n  de jugar approx. cada 30 minutos",
-    //STR_AUTOMATIC_PAUSE_TEXT:
-    "¡Por favor, tómese un descanso!",
-    //STR_ON:
-    "Encendido",
-    //STR_OFF:
-    "Apagado",
-    //STR_LANGUAGE_SELECT:
-    "Seleccionar Idioma",
-
-    //STR_HELLO_WORLD:
-    "Hola Mundo!",
+    /* STR_AUTOMATIC_PAUSE */			"Pausa Automática",
+    /* STR_AUTO_PAUSE_EXPLANATION */	" La función automática de pausa le\nrecordará que debe tomar un descanso\n  de jugar approx. cada 30 minutos",
+    /* STR_HELLO_WORLD */				"Hola Mundo!",
+    /* STR_IMPORTANT */					"IMPORTANTE:",
+	/* STR_LANGUAGE: */					"Idioma",
+    /* STR_LANGUAGE_SELECT */			"Seleccionar Idioma",
+    /* STR_OFF */						"Apagado",
+    /* STR_ON */						"Encendido",
+    /* STR_PRECAUTION_SCREEN_TEXT */	"     LEA LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
+	/* STR_TAKE_A_REST: */				"¡Por favor, tómese un descanso!",
 };
 
 const LangROMDef LANGUAGE_ES =

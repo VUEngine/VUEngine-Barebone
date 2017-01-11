@@ -1,17 +1,22 @@
-/* VBJaEngine: bitmap graphics engine for the Nintendo Virtual Boy
+/* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
+ * A universal game engine for the Nintendo Virtual Boy
  *
- * Copyright (C) 2007 Jorge Eremiev <jorgech3@gmail.com>
+ * Copyright (C) 2007, 2017 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License as published by the Free Software Foundation; either version 3 of the License,
- * or (at your option) any later version.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
- * License for more details.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
- * You should have received a copy of the GNU General Public License along with this program. If not,
- * see <http://www.gnu.org/licenses/>.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 
@@ -36,25 +41,16 @@
 
 const char* const LANGUAGE_FR_STRINGS[] =
 {
-    //STR_PRECAUTION_SCREEN_TITLE:
-    "IMPORTANT:",
-    //STR_PRECAUTION_SCREEN_TEXT:
-    "PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA PRENDRE AVANT DE JOUER",
-    //STR_AUTOMATIC_PAUSE:
-    "Pause Automatique",
-    //STR_AUTOMATIC_PAUSE_EXPLANATION:
-    "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
-    //STR_AUTOMATIC_PAUSE_TEXT:
-    "Se il vous plaît, prendre un repos!",
-    //STR_ON:
-    "Activé",
-    //STR_OFF:
-    "Desactivé",
-    //STR_LANGUAGE_SELECT:
-    "Choix de la langue",
-
-    //STR_HELLO_WORLD:
-    "Bonjour Le Monde!",
+    /* STR_AUTOMATIC_PAUSE */			"Pause Automatique",
+    /* STR_AUTO_PAUSE_EXPLANATION */	"  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
+    /* STR_HELLO_WORLD */				"Bonjour Le Monde!",
+    /* STR_IMPORTANT */					"IMPORTANT:",
+	/* STR_LANGUAGE */					"Langue",
+    /* STR_LANGUAGE_SELECT */			"Choix de la langue",
+    /* STR_OFF */						"Desactivé",
+    /* STR_ON */						"Activé",
+    /* STR_PRECAUTION_SCREEN_TEXT */	"PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA PRENDRE AVANT DE JOUER",
+	/* STR_TAKE_A_REST */				"Se il vous plaît, prendre un repos!",
 };
 
 const LangROMDef LANGUAGE_FR =
