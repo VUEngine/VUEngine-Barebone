@@ -33,11 +33,6 @@
 
 extern BYTE AdjustmentScreenVUEngineBGTiles[];
 extern BYTE AdjustmentScreenVUEngineBGMap[];
-extern BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_SMALL_CHIP_IM_SPRITE_1;
-extern BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_SMALL_CHIP_IM_SPRITE_2;
-extern BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_1;
-extern BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_2;
-extern BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_3;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -49,7 +44,7 @@ CharSetROMDef ADJUSTMENT_SCREEN_VUENGINE_BG_CH =
     // number of chars, depending on allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
     // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-    334,
+    321,
 
     // allocation type
     // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
@@ -102,6 +97,7 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_BG_IM_SPRITE =
     },
 
 	// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJ or __WORLD_HBIAS)
+	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
@@ -111,11 +107,6 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_BG_IM_SPRITE =
 BgmapSpriteROMDef* const ADJUSTMENT_SCREEN_VUENGINE_BG_IM_SPRITES[] =
 {
 	&ADJUSTMENT_SCREEN_VUENGINE_BG_IM_SPRITE,
-	&ADJUSTMENT_SCREEN_VUENGINE_SMALL_CHIP_IM_SPRITE_1,
-	&ADJUSTMENT_SCREEN_VUENGINE_SMALL_CHIP_IM_SPRITE_2,
-	&ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_1,
-	&ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_2,
-	&ADJUSTMENT_SCREEN_VUENGINE_CAPACITOR_IM_SPRITE_3,
 	NULL
 };
 

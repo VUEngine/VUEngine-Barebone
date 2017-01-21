@@ -43,7 +43,7 @@ CharSetROMDef ADJUSTMENT_SCREEN_PVB_LOGO_CH =
     // number of chars, depending on allocation type:
     // __ANIMATED_SINGLE, _SHARED, _SHARED_COORDINATED: number of chars of a single animation frame (cols * rows)
     // __ANIMATED_MULTI, __NOT_ANIMATED: sum of all chars
-    72,
+    64,
 
     // allocation type
     // (__ANIMATED_SINGLE, __ANIMATED_SHARED, __ANIMATED_SHARED_COORDINATED, __ANIMATED_MULTI or __NOT_ANIMATED)
@@ -95,7 +95,8 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITE =
         {0, 0, 0, 0},
     },
 
-	// LOGOmap mode ( LOGOMAP, AFFINE, H-BIAS)
+	// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJ or __WORLD_HBIAS)
+	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
