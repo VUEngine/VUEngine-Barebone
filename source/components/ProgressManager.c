@@ -32,6 +32,7 @@
 #include <ProgressManager.h>
 #include <SRAMManager.h>
 #include <Utilities.h>
+#include <AutoPauseScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------

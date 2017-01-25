@@ -89,7 +89,7 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 	//load stage
 	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
-    char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
+    const char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
     Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
 
 	// print hello world
