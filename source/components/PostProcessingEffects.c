@@ -49,93 +49,93 @@ u32 PostProcessingEffects_writeToFrameBuffer(u16 y, u16 shift, u32* columnSource
  * Applies a full screen wobble distortion that is reminiscent of water waves. This effect reads and write
  * almost the whole screen and is therefore not feasible on hardware.
  *
- * @param currentDrawingFrameBufferSet  The framebuffer set that's currently being accessed
+ * @param currentDrawingFrameBufferSet	The framebuffer set that's currently being accessed
  */
 void PostProcessingEffects_wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
 {
-    u8 buffer = 0;
-    u16 x = 0;
-    u32 previousSourcePointerValue = 0;
+	u8 buffer = 0;
+	u16 x = 0;
+	u32 previousSourcePointerValue = 0;
 
-    // runtime working variables
-    static int waveLutIndex = 0;
+	// runtime working variables
+	static int waveLutIndex = 0;
 
-    // look up table of bitshifts performed on rows
-    // values must be multiples of 2
-    const u32 waveLut[128] =
-    {
-         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-         4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-         6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-         8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-         8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-         6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-         4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    };
+	// look up table of bitshifts performed on rows
+	// values must be multiples of 2
+	const u32 waveLut[128] =
+	{
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+		4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+		6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+		6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+		4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+		2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	};
 
-    // write to framebuffers for both screens
-    for(; buffer < 2; buffer++)
-    {
-        // loop columns
-        for(x = 0; x < 384; x++)
-        {
-            // get pointer to currently manipulated 32 bits of framebuffer
-            u32* columnSourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4);
+	// write to framebuffers for both screens
+	for(; buffer < 2; buffer++)
+	{
+		// loop columns
+		for(x = 0; x < 384; x++)
+		{
+			// get pointer to currently manipulated 32 bits of framebuffer
+			u32* columnSourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4);
 
-            // the shifted out pixels on top should be black
-            previousSourcePointerValue = 0;
+			// the shifted out pixels on top should be black
+			previousSourcePointerValue = 0;
 
-            // increase look up table index, wrap around if necessary
-            waveLutIndex += (waveLutIndex < 127) ? 1 : -127;
+			// increase look up table index, wrap around if necessary
+			waveLutIndex += (waveLutIndex < 127) ? 1 : -127;
 
-            // we can skip further processing for the current column if no shifting would be done on it
-            if(waveLut[waveLutIndex] == 0)
-            {
-                continue;
-            }
+			// we can skip further processing for the current column if no shifting would be done on it
+			if(waveLut[waveLutIndex] == 0)
+			{
+				continue;
+			}
 
-            // apply only to area that holds text on title
-            previousSourcePointerValue = PostProcessingEffects_writeToFrameBuffer(6, waveLut[waveLutIndex], columnSourcePointer, previousSourcePointerValue);
-        }
-    }
+			// apply only to area that holds text on title
+			previousSourcePointerValue = PostProcessingEffects_writeToFrameBuffer(6, waveLut[waveLutIndex], columnSourcePointer, previousSourcePointerValue);
+		}
+	}
 
-    // move the wave one pixel in the next frame
-    waveLutIndex++;
+	// move the wave one pixel in the next frame
+	waveLutIndex++;
 }
 
 /**
  * Helper function used by various post processing effects to write a 32 bit value to the framebuffer
  * (16 pixels)
  *
- * @param y                             Y coordinate (true y value = y * 16)
- * @param shift                         Number of bits to shift the pixels by
- * @param columnSourcePointer           Framebuffer address of the current column (x value)
- * @param previousSourcePointerValue    Value from the loop's previous cycle (effectively where y - 1)
+ * @param y								Y coordinate (true y value = y * 16)
+ * @param shift							Number of bits to shift the pixels by
+ * @param columnSourcePointer			Framebuffer address of the current column (x value)
+ * @param previousSourcePointerValue	Value from the loop's previous cycle (effectively where y - 1)
  */
 u32 PostProcessingEffects_writeToFrameBuffer(u16 y, u16 shift, u32* columnSourcePointer, u32 previousSourcePointerValue)
 {
-    // pointer to currently manipulated 32 bits of framebuffer
-    u32* sourcePointer = columnSourcePointer + y;
+	// pointer to currently manipulated 32 bits of framebuffer
+	u32* sourcePointer = columnSourcePointer + y;
 
-    // save current pointer value to temp var and shift highest x bits of it, according to lut,
-    // to the lowest bits, since we want to insert these
-    u32 sourcePointerCurrentValue = *sourcePointer;
-    u32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - shift);
+	// save current pointer value to temp var and shift highest x bits of it, according to lut,
+	// to the lowest bits, since we want to insert these
+	u32 sourcePointerCurrentValue = *sourcePointer;
+	u32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - shift);
 
-    // manipulate current 32 bits in frame buffer
-    *sourcePointer =
-        // shift bits according to wave lut
-        // it's two bits per pixel, so 2 bits shifted left = 1 pixel shifted down on screen
-        (sourcePointerCurrentValue << shift)
+	// manipulate current 32 bits in frame buffer
+	*sourcePointer =
+		// shift bits according to wave lut
+		// it's two bits per pixel, so 2 bits shifted left = 1 pixel shifted down on screen
+		(sourcePointerCurrentValue << shift)
 
-        // since the above shifting creates black pixels, we need to carry over these pixels
-        // from the previous loop
-        | previousSourcePointerValue;
+		// since the above shifting creates black pixels, we need to carry over these pixels
+		// from the previous loop
+		| previousSourcePointerValue;
 
-    // we need the current source pointer value from _before_ we modified it, therefore we save it
-    // it to a temp variable while modifying
-    return previousSourcePointerValueTemp;
+	// we need the current source pointer value from _before_ we modified it, therefore we save it
+	// it to a temp variable while modifying
+	return previousSourcePointerValueTemp;
 }

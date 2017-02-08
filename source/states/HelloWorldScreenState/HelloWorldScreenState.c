@@ -84,33 +84,33 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 	GameState_enter(__SAFE_CAST(GameState, this), owner);
 
 	// disallow user input
-    Game_disableKeypad(Game_getInstance());
+	Game_disableKeypad(Game_getInstance());
 
 	//load stage
 	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
-    const char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
-    Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
+	const char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
+	Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
 
 	// print hello world
-    Printing_text(
-        Printing_getInstance(),
-        strHelloWorld,
-        (__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
-        12,
-        NULL
-    );
+	Printing_text(
+		Printing_getInstance(),
+		strHelloWorld,
+		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
+		12,
+		NULL
+	);
 
 	// add post processing effect to make text wobble
 	Game_addPostProcessingEffect(Game_getInstance(), PostProcessingEffects_wobble, NULL);
 
 	// start fade in effect
 	Screen_startEffect(Screen_getInstance(),
-	    kFadeTo, // effect type
-	    0, // initial delay (in ms)
-	    NULL, // target brightness
-	    __FADE_DELAY, // delay between fading steps (in ms)
-	    NULL, // callback function
-	    NULL // callback scope
+		kFadeTo, // effect type
+		0, // initial delay (in ms)
+		NULL, // target brightness
+		__FADE_DELAY, // delay between fading steps (in ms)
+		NULL, // callback function
+		NULL // callback scope
 	);
 }

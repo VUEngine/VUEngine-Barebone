@@ -41,23 +41,23 @@
 
 const char* const LANGUAGE_EN_STRINGS[] =
 {
-    /* STR_AUTOMATIC_PAUSE */			"Automatic Pause",
-    /* STR_AUTO_PAUSE_EXPLANATION */	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
-    /* STR_HELLO_WORLD */				"Hello, World!",
-    /* STR_IMPORTANT */					"IMPORTANT:",
+	/* STR_AUTOMATIC_PAUSE */			"Automatic Pause",
+	/* STR_AUTO_PAUSE_EXPLANATION */	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
+	/* STR_HELLO_WORLD */				"Hello, World!",
+	/* STR_IMPORTANT */					"IMPORTANT:",
 	/* STR_LANGUAGE */					"Language",
-    /* STR_LANGUAGE_SELECT */			"Language Select",
-    /* STR_OFF */						"Off",
-    /* STR_ON */						"On",
-    /* STR_PRECAUTION_SCREEN_TEXT */	"READ INSTRUCTION AND\n\nPRECAUTION BOOKLETS\n\n  BEFORE OPERATING",
+	/* STR_LANGUAGE_SELECT */			"Language Select",
+	/* STR_OFF */						"Off",
+	/* STR_ON */						"On",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"READ INSTRUCTION AND\n\nPRECAUTION BOOKLETS\n\n  BEFORE OPERATING",
 	/* STR_TAKE_A_REST */				"Please take a rest!",
 };
 
 const LangROMDef LANGUAGE_EN =
 {
-    // Language Name
-    "English",
+	// Language Name
+	"English",
 
-    // Strings
-    (const char**)LANGUAGE_EN_STRINGS
+	// Strings
+	(const char**)LANGUAGE_EN_STRINGS
 };

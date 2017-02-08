@@ -105,10 +105,10 @@ u32 ProgressManager_computeChecksum(ProgressManager this __attribute__ ((unused)
 	u32 crc32 = ~0;
 
 	// iterate over whole save data, starting right after the previously saved checksum
-    int i = (offsetof(struct SaveData, checksum) + sizeof(crc32));
-    for(; i < (int)sizeof(SaveData); i++)
-    {
-    	// get the current byte
+	int i = (offsetof(struct SaveData, checksum) + sizeof(crc32));
+	for(; i < (int)sizeof(SaveData); i++)
+	{
+		// get the current byte
 		u8 currentByte;
 		SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&currentByte, i, sizeof(currentByte));
 
@@ -125,9 +125,9 @@ u32 ProgressManager_computeChecksum(ProgressManager this __attribute__ ((unused)
 				crc32 = (crc32 >> 1);
 			}
 		}
-    }
+	}
 
-    return ~crc32;
+	return ~crc32;
 }
 
 void ProgressManager_writeChecksum(ProgressManager this)

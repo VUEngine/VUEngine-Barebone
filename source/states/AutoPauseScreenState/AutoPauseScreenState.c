@@ -88,40 +88,40 @@ static void AutoPauseScreenState_enter(AutoPauseScreenState this, void* owner __
 	// load stage
 	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
-    // print text
-    const char* strAutomaticPauseTitle = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
-    const char* strAutomaticPauseTitleFont = "LargeFont";
-    const char* strAutomaticPauseText = I18n_getText(I18n_getInstance(), STR_TAKE_A_REST);
-    Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseTitle, strAutomaticPauseTitleFont);
-    Size strAutomaticPauseTextSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseText, NULL);
+	// print text
+	const char* strAutomaticPauseTitle = I18n_getText(I18n_getInstance(), STR_AUTOMATIC_PAUSE);
+	const char* strAutomaticPauseTitleFont = "LargeFont";
+	const char* strAutomaticPauseText = I18n_getText(I18n_getInstance(), STR_TAKE_A_REST);
+	Size strAutomaticPauseSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseTitle, strAutomaticPauseTitleFont);
+	Size strAutomaticPauseTextSize = Printing_getTextSize(Printing_getInstance(), strAutomaticPauseText, NULL);
 
-    u8 strHeaderXPos = ((__SCREEN_WIDTH >> 4) - (strAutomaticPauseSize.x >> 1));
-    Printing_text(
-    	Printing_getInstance(),
-    	Utilities_toUppercase(strAutomaticPauseTitle),
-    	strHeaderXPos,
-    	14,
-    	strAutomaticPauseTitleFont
+	u8 strHeaderXPos = ((__SCREEN_WIDTH >> 4) - (strAutomaticPauseSize.x >> 1));
+	Printing_text(
+		Printing_getInstance(),
+		Utilities_toUppercase(strAutomaticPauseTitle),
+		strHeaderXPos,
+		14,
+		strAutomaticPauseTitleFont
 	);
 
-    u8 strTextXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseTextSize.x >> 1);
-    Printing_text(Printing_getInstance(), strAutomaticPauseText, strTextXPos, 15 + strAutomaticPauseSize.y, NULL);
+	u8 strTextXPos = (__SCREEN_WIDTH >> 4) - (strAutomaticPauseTextSize.x >> 1);
+	Printing_text(Printing_getInstance(), strAutomaticPauseText, strTextXPos, 15 + strAutomaticPauseSize.y, NULL);
 
 	// disable user input
-    Game_disableKeypad(Game_getInstance());
+	Game_disableKeypad(Game_getInstance());
 
 	// start clocks to start animations
 	GameState_startClocks(__SAFE_CAST(GameState, this));
 
-    // fade in screen
-    Screen_startEffect(Screen_getInstance(),
-        kFadeTo, // effect type
-        0, // initial delay (in ms)
-        NULL, // target brightness
-        __FADE_DELAY, // delay between fading steps (in ms)
-        (void (*)(Object, Object))AutoPauseScreenState_onFadeInComplete, // callback function
-        __SAFE_CAST(Object, this) // callback scope
-    );
+	// fade in screen
+	Screen_startEffect(Screen_getInstance(),
+		kFadeTo, // effect type
+		0, // initial delay (in ms)
+		NULL, // target brightness
+		__FADE_DELAY, // delay between fading steps (in ms)
+		(void (*)(Object, Object))AutoPauseScreenState_onFadeInComplete, // callback function
+		__SAFE_CAST(Object, this) // callback scope
+	);
 }
 
 // state's exit
@@ -136,7 +136,7 @@ static bool AutoPauseScreenState_processMessage(AutoPauseScreenState this, void*
 {
 	// process message
 	switch(Telegram_getMessage(telegram))
-    {
+	{
 		case kKeyPressed:
 			{
 				u32 pressedKey = *((u32*)Telegram_getExtraInfo(telegram));
@@ -170,7 +170,7 @@ static void AutoPauseScreenState_onFadeInComplete(AutoPauseScreenState this __at
 {
 	ASSERT(this, "AutoPauseScreenState::onFadeOutComplete: null this");
 
-    Game_enableKeypad(Game_getInstance());
+	Game_enableKeypad(Game_getInstance());
 }
 
 // handle event
@@ -182,5 +182,5 @@ static void AutoPauseScreenState_onFadeOutComplete(AutoPauseScreenState this __a
 	Game_enableKeypad(Game_getInstance());
 
 	// resume game
-    Game_unpause(Game_getInstance(), __SAFE_CAST(GameState, this));
+	Game_unpause(Game_getInstance(), __SAFE_CAST(GameState, this));
 }
