@@ -42,16 +42,12 @@ const ClassSizeData _userClassesSizeData[] =
 };
 #endif
 
-#ifdef __STAGE_EDITOR
 const UserObject _userObjects[] =
 {
 	{NULL, ""},
 };
-#endif
 
-#ifdef __ANIMATION_EDITOR
 const UserAnimatedInGameEntity _userAnimatedInGameEntities[] =
 {
 	{NULL, ""},
 };
-#endif
