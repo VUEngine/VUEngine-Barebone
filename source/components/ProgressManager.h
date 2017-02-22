@@ -36,28 +36,28 @@
 
 // declare the virtual methods
 #define ProgressManager_METHODS(ClassName)																\
-    	Object_METHODS(ClassName)																		\
+		Object_METHODS(ClassName)																		\
 
 // declare the virtual methods which are redefined
 #define ProgressManager_SET_VTABLE(ClassName)															\
-    	Object_SET_VTABLE(ClassName)																	\
+		Object_SET_VTABLE(ClassName)																	\
 
 // declare class
 __CLASS(ProgressManager);
 
 // declare class attributes
 #define ProgressManager_ATTRIBUTES																		\
-        Object_ATTRIBUTES																				\
-        /* flag that tells if sram is available on the current cartridge */								\
-        bool sramAvailable;																				\
+		Object_ATTRIBUTES																				\
+		/* flag that tells if sram is available on the current cartridge */								\
+		bool sramAvailable;																				\
 
 
 //---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-#define SAVE_STAMP								"VUEngine"
-#define SAVE_STAMP_LENGTH						8
+#define SAVE_STAMP				"VUEngine"
+#define SAVE_STAMP_LENGTH		8
 
 // this struct is never instantiated, its sole purpose is to determine offsets of its members.
 // therefore it acts as kind of like a map of sram content.
@@ -87,7 +87,7 @@ ProgressManager ProgressManager_getInstance();
 void ProgressManager_clearProgress(ProgressManager this);
 void ProgressManager_destructor(ProgressManager this);
 bool ProgressManager_getAutomaticPauseStatus(ProgressManager this);
-u8   ProgressManager_getLanguage(ProgressManager this);
+u8 ProgressManager_getLanguage(ProgressManager this);
 bool ProgressManager_hasProgress(ProgressManager this);
 void ProgressManager_setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
 void ProgressManager_setLanguage(ProgressManager this, u8 language);

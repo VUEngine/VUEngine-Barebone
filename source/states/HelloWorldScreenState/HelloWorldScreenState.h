@@ -46,7 +46,6 @@
 __CLASS(HelloWorldScreenState);
 
 #define HelloWorldScreenState_ATTRIBUTES																\
-		/* inherits */																					\
 		GameState_ATTRIBUTES
 
 

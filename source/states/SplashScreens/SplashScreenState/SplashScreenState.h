@@ -47,30 +47,29 @@ enum SplashScreensMessageTypes
 
 // declare the virtual methods
 #define SplashScreenState_METHODS(ClassName)															\
-        GameState_METHODS(ClassName)											    					\
-        __VIRTUAL_DEC(ClassName, void, print);															\
-        __VIRTUAL_DEC(ClassName, void, processInput, u32 releasedKey);									\
+		GameState_METHODS(ClassName)																	\
+		__VIRTUAL_DEC(ClassName, void, print);															\
+		__VIRTUAL_DEC(ClassName, void, processInput, u32 releasedKey);									\
 
 // declare the virtual methods which are redefined
 #define SplashScreenState_SET_VTABLE(ClassName)															\
-        GameState_SET_VTABLE(ClassName)								   									\
-        __VIRTUAL_SET(ClassName, SplashScreenState, enter);												\
-        __VIRTUAL_SET(ClassName, SplashScreenState, exit);												\
-        __VIRTUAL_SET(ClassName, SplashScreenState, execute);											\
-        __VIRTUAL_SET(ClassName, SplashScreenState, resume);											\
-        __VIRTUAL_SET(ClassName, SplashScreenState, processMessage);                                    \
-        __VIRTUAL_SET(ClassName, SplashScreenState, processInput);										\
-        __VIRTUAL_SET(ClassName, SplashScreenState, print);												\
+		GameState_SET_VTABLE(ClassName)																	\
+		__VIRTUAL_SET(ClassName, SplashScreenState, enter);												\
+		__VIRTUAL_SET(ClassName, SplashScreenState, exit);												\
+		__VIRTUAL_SET(ClassName, SplashScreenState, execute);											\
+		__VIRTUAL_SET(ClassName, SplashScreenState, resume);											\
+		__VIRTUAL_SET(ClassName, SplashScreenState, processMessage);									\
+		__VIRTUAL_SET(ClassName, SplashScreenState, processInput);										\
+		__VIRTUAL_SET(ClassName, SplashScreenState, print);												\
 
 __CLASS(SplashScreenState);
 
-#define SplashScreenState_ATTRIBUTES								   									\
-        /* inherits */																					\
-        GameState_ATTRIBUTES																			\
-        /* state to enter after this one */																\
-        GameState nextState;																			\
-        /* definition of screen's stage */																\
-        StageDefinition* stageDefinition;																\
+#define SplashScreenState_ATTRIBUTES																	\
+		GameState_ATTRIBUTES																			\
+		/* state to enter after this one */																\
+		GameState nextState;																			\
+		/* definition of screen's stage */																\
+		StageDefinition* stageDefinition;																\
 
 
 //---------------------------------------------------------------------------------------------------------

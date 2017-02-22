@@ -37,20 +37,19 @@
 
 // declare the virtual methods
 #define LangSelectScreenState_METHODS(ClassName)														\
-    	SplashScreenState_METHODS(ClassName)							    							\
+		SplashScreenState_METHODS(ClassName)															\
 
 // declare the virtual methods which are redefined
 #define LangSelectScreenState_SET_VTABLE(ClassName)														\
-        SplashScreenState_SET_VTABLE(ClassName)				    										\
-        __VIRTUAL_SET(ClassName, LangSelectScreenState, print);											\
-        __VIRTUAL_SET(ClassName, LangSelectScreenState, processInput);									\
+		SplashScreenState_SET_VTABLE(ClassName)															\
+		__VIRTUAL_SET(ClassName, LangSelectScreenState, print);											\
+		__VIRTUAL_SET(ClassName, LangSelectScreenState, processInput);									\
 
 __CLASS(LangSelectScreenState);
 
 #define LangSelectScreenState_ATTRIBUTES																\
-        /* inherits */																				    \
-        SplashScreenState_ATTRIBUTES																	\
-        OptionsSelector languageSelector;														   		\
+		SplashScreenState_ATTRIBUTES																	\
+		OptionsSelector languageSelector;																\
 
 
 //---------------------------------------------------------------------------------------------------------
