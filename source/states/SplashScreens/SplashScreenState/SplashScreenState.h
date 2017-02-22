@@ -24,14 +24,14 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
 #include <GameState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S ENUMS
+//											CLASS'S ENUMS
 //---------------------------------------------------------------------------------------------------------
 
 enum SplashScreensMessageTypes
@@ -42,7 +42,7 @@ enum SplashScreensMessageTypes
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DECLARATION
+//											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
 // declare the virtual methods
@@ -65,6 +65,7 @@ enum SplashScreensMessageTypes
 __CLASS(SplashScreenState);
 
 #define SplashScreenState_ATTRIBUTES																	\
+		/* inherits */																					\
 		GameState_ATTRIBUTES																			\
 		/* state to enter after this one */																\
 		GameState nextState;																			\
@@ -73,7 +74,7 @@ __CLASS(SplashScreenState);
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										PUBLIC INTERFACE
+//										PUBLIC INTERFACE
 //---------------------------------------------------------------------------------------------------------
 
 void SplashScreenState_constructor(SplashScreenState this);

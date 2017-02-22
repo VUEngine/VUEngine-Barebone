@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
@@ -38,7 +38,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DECLARATIONS
+//												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
 extern StageROMDef EMPTY_STAGE_ST;
@@ -46,7 +46,7 @@ extern LangROMDef* __LANGUAGES[];
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												PROTOTYPES
+//												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
 static void LangSelectScreenState_destructor(LangSelectScreenState this);
@@ -56,7 +56,7 @@ static void LangSelectScreenState_print(LangSelectScreenState this);
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DEFINITION
+//											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
 __CLASS_DEFINITION(LangSelectScreenState, SplashScreenState);
@@ -64,7 +64,7 @@ __SINGLETON_DYNAMIC(LangSelectScreenState);
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												CLASS'S METHODS
+//												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
 static void __attribute__ ((noinline)) LangSelectScreenState_constructor(LangSelectScreenState this)
@@ -100,10 +100,7 @@ static void __attribute__ ((noinline)) LangSelectScreenState_constructor(LangSel
 
 static void LangSelectScreenState_destructor(LangSelectScreenState this)
 {
-	if(this->languageSelector)
-	{
-		__DELETE(this->languageSelector);
-	}
+	__DELETE(this->languageSelector);
 
 	// destroy base
 	__SINGLETON_DESTROY;

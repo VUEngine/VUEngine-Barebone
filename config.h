@@ -23,10 +23,13 @@
 #define CONFIG_H_
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												OOP
 //---------------------------------------------------------------------------------------------------------
 
-#include <Oop.h>
+// define to remove runtime check for abstract class instantiation
+// warning! when the check is disabled, if an abstract class is instantiated, the problem will silently
+// fail. Remove only when shipping the release rom!
+#define __DISABLE_ABSTRACT_CLASS_INSTANTIATION_CHECK
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -207,7 +210,7 @@
 	__SET_MEMORY_POOL_ARRAY(28)																			\
 	__SET_MEMORY_POOL_ARRAY(24)																			\
 	__SET_MEMORY_POOL_ARRAY(20)																			\
-	__SET_MEMORY_POOL_ARRAY(16)																		 \
+	__SET_MEMORY_POOL_ARRAY(16)																		 	\
 
 
 // percentage (0-100) above which the memory pool's status shows the pool usage
@@ -346,11 +349,8 @@
 #define __BRIGHTNESS_MEDIUM_RED					64
 #define __BRIGHTNESS_BRIGHT_RED					128
 
-// default total duration for blocking fade in/out effects
-#define __FADE_DURATION							320
-
-// default delay between steps in asynchronous fade effect
-#define __FADE_DELAY							16
+// default delay between steps in fade effect
+#define __FADE_DELAY							8
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -415,6 +415,7 @@
 // 												EXCEPTIONS
 //---------------------------------------------------------------------------------------------------------
 
+// screen coordinates for the output of exceptions
 #define __EXCEPTION_COLUMN						0
 #define __EXCEPTION_LINE						0
 

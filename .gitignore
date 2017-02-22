@@ -1,5 +1,5 @@
+.idea/workspace.xml
 build/
-/.idea/workspace.xml
 /.settings/
 /old/
 .cdtproject
@@ -14,3 +14,5 @@ cproject
 *.asm
 *.map
 sections*.txt
+setupClasses.c
+headerFiles.txt

@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
@@ -32,15 +32,16 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												PROTOTYPES
+//												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
 static void SplashScreenState_onFadeInComplete(SplashScreenState this, Object eventFirer);
 static void SplashScreenState_onFadeOutComplete(SplashScreenState this, Object eventFirer);
+static void SplashScreenState_onUserInput(SplashScreenState this, Object eventFirer);
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DEFINITION
+//											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
 __CLASS_DEFINITION(SplashScreenState, GameState);
@@ -48,7 +49,7 @@ __CLASS_DEFINITION(SplashScreenState, GameState);
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												CLASS'S METHODS
+//												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
@@ -96,6 +97,9 @@ void SplashScreenState_execute(SplashScreenState this, void* owner)
 // state's exit
 void SplashScreenState_exit(SplashScreenState this, void* owner)
 {
+	// remove event listeners
+	Object_removeEventListener(__SAFE_CAST(Object, Game_getInstance()), __SAFE_CAST(Object, this), (EventListener)SplashScreenState_onUserInput, kEventUserInput);
+
 	// call base
 	GameState_exit(__SAFE_CAST(GameState, this), owner);
 
@@ -124,7 +128,7 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 #endif
 
 	// start a fade in effect
-	Screen_startEffect(Screen_getInstance(), kFadeIn, __FADE_DURATION);
+	Screen_startEffect(Screen_getInstance(), kFadeIn, __FADE_DELAY);
 
 #ifdef __DEBUG_TOOLS
 	}
@@ -135,6 +139,16 @@ void SplashScreenState_resume(SplashScreenState this, void* owner)
 #ifdef __ANIMATION_EDITOR
 	}
 #endif
+}
+
+static void SplashScreenState_onUserInput(SplashScreenState this __attribute__ ((unused)), Object eventFirer __attribute__ ((unused)))
+{
+	u32 pressedKey = KeypadManager_getUserInput(KeypadManager_getInstance()).pressedKey;
+
+	if(pressedKey & ~K_PWR)
+	{
+		__VIRTUAL_CALL(SplashScreenState, processInput, this, pressedKey);
+	}
 }
 
 // state's handle message
@@ -154,16 +168,6 @@ bool SplashScreenState_processMessage(SplashScreenState this, void* owner __attr
 				__SAFE_CAST(Object, this) // callback scope
 			);
 
-			break;
-
-		case kKeyPressed:
-			{
-				u32 pressedKey = *((u32*)Telegram_getExtraInfo(telegram));
-				if(pressedKey & ~K_PWR)
-				{
-					__VIRTUAL_CALL(SplashScreenState, processInput, this, pressedKey);
-				}
-			}
 			break;
 	}
 
@@ -208,6 +212,9 @@ static void SplashScreenState_onFadeInComplete(SplashScreenState this __attribut
 
 	// enable user input
 	Game_enableKeypad(Game_getInstance());
+
+	// add event listeners
+	Object_addEventListener(__SAFE_CAST(Object, Game_getInstance()), __SAFE_CAST(Object, this), (EventListener)SplashScreenState_onUserInput, kEventUserInput);
 }
 
 // handle event
