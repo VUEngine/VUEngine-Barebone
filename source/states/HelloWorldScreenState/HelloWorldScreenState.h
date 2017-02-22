@@ -19,8 +19,8 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef TITLE_SCREEN_STATE_H_
-#define TITLE_SCREEN_STATE_H_
+#ifndef HELLO_WORLD_STATE_H_
+#define HELLO_WORLD_STATE_H_
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -35,19 +35,19 @@
 //---------------------------------------------------------------------------------------------------------
 
 // declare the virtual methods
-#define HelloWorldScreenState_METHODS(ClassName)																\
-    	GameState_METHODS(ClassName)											    				    \
+#define HelloWorldScreenState_METHODS(ClassName)														\
+		GameState_METHODS(ClassName)																	\
 
 // declare the virtual methods which are redefined
-#define HelloWorldScreenState_SET_VTABLE(ClassName)															\
-        GameState_SET_VTABLE(ClassName)								    								\
-        __VIRTUAL_SET(ClassName, HelloWorldScreenState, enter);												\
+#define HelloWorldScreenState_SET_VTABLE(ClassName)														\
+		GameState_SET_VTABLE(ClassName)																	\
+		__VIRTUAL_SET(ClassName, HelloWorldScreenState, enter);											\
 
 __CLASS(HelloWorldScreenState);
 
-#define HelloWorldScreenState_ATTRIBUTES							        									\
-        /* inherits */																					\
-        GameState_ATTRIBUTES
+#define HelloWorldScreenState_ATTRIBUTES																\
+		/* inherits */																					\
+		GameState_ATTRIBUTES
 
 
 //---------------------------------------------------------------------------------------------------------
