@@ -49,7 +49,7 @@ const char* const LANGUAGE_FR_STRINGS[] =
 	/* STR_LANGUAGE_SELECT */			"Choix de la langue",
 	/* STR_OFF */						"Desactivé",
 	/* STR_ON */						"Activé",
-	/* STR_PRECAUTION_SCREEN_TEXT */	"PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA PRENDRE AVANT DE JOUER",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA AVANT DE JOUER",
 	/* STR_TAKE_A_REST */				"Se il vous plaît, prendre un repos!",
 };
 

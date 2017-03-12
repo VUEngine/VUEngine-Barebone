@@ -81,7 +81,7 @@ static void HelloWorldScreenState_destructor(HelloWorldScreenState this)
 static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
 {
 	// call base
-	GameState_enter(__SAFE_CAST(GameState, this), owner);
+	__CALL_BASE_METHOD(GameState, enter, this, owner);
 
 	// disallow user input
 	Game_disableKeypad(Game_getInstance());

@@ -24,14 +24,14 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
 #include <GameState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DECLARATION
+//											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
 // declare the virtual methods
@@ -43,18 +43,19 @@
 		GameState_SET_VTABLE(ClassName)																	\
 		__VIRTUAL_SET(ClassName, AutoPauseScreenState, enter);											\
 		__VIRTUAL_SET(ClassName, AutoPauseScreenState, exit);											\
+		__VIRTUAL_SET(ClassName, AutoPauseScreenState, processUserInput);								\
 
 __CLASS(AutoPauseScreenState);
 
 #define AutoPauseScreenState_ATTRIBUTES																	\
+		/* inherits */																					\
 		GameState_ATTRIBUTES																			\
 
-
 //---------------------------------------------------------------------------------------------------------
-// 										PUBLIC INTERFACE
+//										PUBLIC INTERFACE
 //---------------------------------------------------------------------------------------------------------
 
 AutoPauseScreenState AutoPauseScreenState_getInstance(void);
-
+void AutoPauseScreenState_processUserInput(AutoPauseScreenState this, UserInput userInput);
 
 #endif

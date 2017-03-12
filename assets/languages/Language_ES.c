@@ -42,14 +42,14 @@
 const char* const LANGUAGE_ES_STRINGS[] =
 {
 	/* STR_AUTOMATIC_PAUSE */			"Pausa Automática",
-	/* STR_AUTO_PAUSE_EXPLANATION */	" La función automática de pausa le\nrecordará que debe tomar un descanso\n  de jugar approx. cada 30 minutos",
+	/* STR_AUTO_PAUSE_EXPLANATION: */	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
 	/* STR_HELLO_WORLD */				"Hola Mundo!",
 	/* STR_IMPORTANT */					"IMPORTANTE:",
 	/* STR_LANGUAGE: */					"Idioma",
 	/* STR_LANGUAGE_SELECT */			"Seleccionar Idioma",
 	/* STR_OFF */						"Apagado",
 	/* STR_ON */						"Encendido",
-	/* STR_PRECAUTION_SCREEN_TEXT */	"     LEA LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
+	/* STR_PRECAUTION_SCREEN_TEXT: */	"       LEE LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
 	/* STR_TAKE_A_REST: */				"¡Por favor, tómese un descanso!",
 };
 
