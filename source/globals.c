@@ -28,7 +28,7 @@
 #include <Debug.h>
 #include <ManagedEntity.h>
 #include <StageEditor.h>
-#include <AnimationEditor.h>
+#include <AnimationInspector.h>
 
 
 //---------------------------------------------------------------------------------------------------------
