@@ -29,7 +29,6 @@
 #include <MessageDispatcher.h>
 #include <AdjustmentScreenState.h>
 #include <AutoPauseSelectScreenState.h>
-#include <Languages.h>
 #include <DirectDraw.h>
 
 
@@ -47,7 +46,7 @@ extern StageROMDef ADJUSTMENT_SCREEN_STAGE_ST;
 static void AdjustmentScreenState_destructor(AdjustmentScreenState this);
 static void AdjustmentScreenState_constructor(AdjustmentScreenState this);
 static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u32 pressedKey);
-void AdjustmentScreenState_rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet __attribute__ ((unused)), SpatialObject spatialObject);
+void AdjustmentScreenState_rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -84,99 +83,66 @@ void AdjustmentScreenState_enter(AdjustmentScreenState this, void* owner)
 	// call base
 	__CALL_BASE_METHOD(SplashScreenState, enter, this, owner);
 
+	// move the printing area out of the visible screen to save CPU resources
+	Printing_setWorldCoordinates(Printing_getInstance(), __SCREEN_WIDTH, __SCREEN_HEIGHT);
+
 	// add rhombus effect
-	Game_addPostProcessingEffect(Game_getInstance(), AdjustmentScreenState_rhombusEmitterPostProcessingEffect, NULL);
+	VIPManager_pushBackPostProcessingEffect(VIPManager_getInstance(), AdjustmentScreenState_rhombusEmitterPostProcessingEffect, NULL);
 }
 
 static void AdjustmentScreenState_processInput(AdjustmentScreenState this, u32 pressedKey __attribute__ ((unused)))
 {
-	// TODO: replace this ugly hack with a proper Game_isPaused check or something similar
-	if(this->nextState == NULL)
-	{
-		Screen_startEffect(Screen_getInstance(), kFadeOut, __FADE_DELAY);
-		Game_unpause(Game_getInstance(), __SAFE_CAST(GameState, this));
-	}
-	else
-	{
-		SplashScreenState_loadNextState(__SAFE_CAST(SplashScreenState, this));
-	}
-}
-
-void AdjustmentScreenState_drawRhombus(fix19_13 radiusFix19_13, u32 color, VBVec3D spatialObjectPosition)
-{
-	DirectDraw directDraw = DirectDraw_getInstance();
-
-	DirectDraw_drawLine(
-		directDraw,
-		(VBVec2D) {spatialObjectPosition.x - radiusFix19_13,	spatialObjectPosition.y,					spatialObjectPosition.z, 0},
-		(VBVec2D) {spatialObjectPosition.x,						spatialObjectPosition.y - radiusFix19_13,	spatialObjectPosition.z, 0},
-		color
-	);
-
-	DirectDraw_drawLine(
-		directDraw,
-		(VBVec2D) {spatialObjectPosition.x + radiusFix19_13,	spatialObjectPosition.y,					spatialObjectPosition.z, 0},
-		(VBVec2D) {spatialObjectPosition.x,						spatialObjectPosition.y - radiusFix19_13,	spatialObjectPosition.z, 0},
-		color
-	);
-
-	DirectDraw_drawLine(
-		directDraw,
-		(VBVec2D) {spatialObjectPosition.x + radiusFix19_13,	spatialObjectPosition.y,					spatialObjectPosition.z, 0},
-		(VBVec2D) {spatialObjectPosition.x,						spatialObjectPosition.y + radiusFix19_13,	spatialObjectPosition.z, 0},
-		color
-	);
-
-	DirectDraw_drawLine(
-		directDraw,
-		(VBVec2D) {spatialObjectPosition.x - radiusFix19_13,	spatialObjectPosition.y,					spatialObjectPosition.z, 0},
-		(VBVec2D) {spatialObjectPosition.x,						spatialObjectPosition.y + radiusFix19_13,	spatialObjectPosition.z, 0},
-		color
-	);
+	SplashScreenState_loadNextState(__SAFE_CAST(SplashScreenState, this));
 }
 
 void AdjustmentScreenState_rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet __attribute__ ((unused)), SpatialObject spatialObject __attribute__ ((unused)))
 {
-	u32 color;
-
 	// runtime working variables
 	// negative value to achieve an initial delay
-	static int radius = -32;
+	static int radius = ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE;
 
-	// increase radius by 1 in each cycle
-	radius++;
+	// increase radius in each cycle
+	radius += 2;
 
-	// gradually decrease color with larger radius
 	if(radius < 68)
 	{
 		return;
 	}
-	else if(radius < 160)
-	{
-		color = __COLOR_BRIGHT_RED;
-	}
-	else if(radius < 224)
-	{
-		color = __COLOR_MEDIUM_RED;
-	}
-	else if(radius < 280)
-	{
-		color = __COLOR_DARK_RED;
-	}
-	else if(radius < 400)
-	{
-		// pause for a little bit before restarting
-		return;
-	}
-	else
+	else if(radius > 300)
 	{
 		// reset radius when reaching a certain length
-		radius = 68;
+		radius = ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE;
 		return;
 	}
 
-	// draw rhombuses around object with given radius and color
-	VBVec3D spatialObjectPosition = {FTOFIX19_13(192), FTOFIX19_13(112), FTOFIX19_13(0)};
-	AdjustmentScreenState_drawRhombus(ITOFIX19_13(radius), color, spatialObjectPosition);
-	AdjustmentScreenState_drawRhombus(ITOFIX19_13(radius + radius - 72), color, spatialObjectPosition);
+	// draw rhombus around object with given radius
+	DirectDraw directDraw = DirectDraw_getInstance();
+
+	DirectDraw_drawLine(
+		directDraw,
+		(VBVec2D) {__I_TO_FIX19_13(192 - radius),	__I_TO_FIX19_13(112),			0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		(VBVec2D) {__I_TO_FIX19_13(192),			__I_TO_FIX19_13(112 - radius),	0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		__COLOR_BRIGHT_RED
+	);
+
+	DirectDraw_drawLine(
+		directDraw,
+		(VBVec2D) {__I_TO_FIX19_13(192 + radius),	__I_TO_FIX19_13(112),			0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		(VBVec2D) {__I_TO_FIX19_13(192),			__I_TO_FIX19_13(112 - radius),	0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		__COLOR_BRIGHT_RED
+	);
+
+	DirectDraw_drawLine(
+		directDraw,
+		(VBVec2D) {__I_TO_FIX19_13(192 + radius),	__I_TO_FIX19_13(112),			0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		(VBVec2D) {__I_TO_FIX19_13(192),			__I_TO_FIX19_13(112 + radius),	0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		__COLOR_BRIGHT_RED
+	);
+
+	DirectDraw_drawLine(
+		directDraw,
+		(VBVec2D) {__I_TO_FIX19_13(192 - radius),	__I_TO_FIX19_13(112),			0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		(VBVec2D) {__I_TO_FIX19_13(192),			__I_TO_FIX19_13(112 + radius),	0, -((radius + ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE)>>5)},
+		__COLOR_BRIGHT_RED
+	);
 }

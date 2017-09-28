@@ -27,7 +27,6 @@
 #include <Stage.h>
 
 
-
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
@@ -71,18 +70,16 @@ StageROMDef EMPTY_STAGE_ST =
 		// screen's initial position inside the game world
 		{
 			// x
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 			// y
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 			// z
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 		},
 	},
 
 	// streaming
 	{
-		// minimum free ms in the current game frame to allow streaming to quick in
-		10,
 		// load padding
 		40,
 		// unload padding
@@ -170,13 +167,13 @@ StageROMDef EMPTY_STAGE_ST =
 		// since the vip renders obj worlds in reverse order (__spt3 to __spt0)
 		{
 			// __spt0
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt1
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt2
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt3
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 		},
 
 		// optical configuration values
@@ -184,13 +181,13 @@ StageROMDef EMPTY_STAGE_ST =
 			// maximum view distance's power into the horizon
 			__MAXIMUM_VIEW_DISTANCE_POWER,
 			// distance of the eyes to the screen
-			ITOFIX19_13(__DISTANCE_EYE_SCREEN),
+			__I_TO_FIX19_13(__DISTANCE_EYE_SCREEN),
 			// distance from left to right eye (depth sensation)
-			ITOFIX19_13(__BASE_FACTOR),
+			__I_TO_FIX19_13(__BASE_FACTOR),
 			// horizontal view point center
-			ITOFIX19_13(__HORIZONTAL_VIEW_POINT_CENTER),
+			__I_TO_FIX19_13(__HORIZONTAL_VIEW_POINT_CENTER),
 			// vertical view point center
-			ITOFIX19_13(__VERTICAL_VIEW_POINT_CENTER),
+			__I_TO_FIX19_13(__VERTICAL_VIEW_POINT_CENTER),
 		},
 	},
 
@@ -198,13 +195,13 @@ StageROMDef EMPTY_STAGE_ST =
 	{
 		// gravity
 		{
-			ITOFIX19_13(0),
-			ITOFIX19_13(__GRAVITY),
-			ITOFIX19_13(0)
+			__I_TO_FIX19_13(0),
+			__I_TO_FIX19_13(__GRAVITY),
+			__I_TO_FIX19_13(0)
 		},
 
 		// friction
-		FTOFIX19_13(0.1f),
+		__F_TO_FIX19_13(0.1f),
 	},
 
 	// assets
@@ -216,7 +213,7 @@ StageROMDef EMPTY_STAGE_ST =
 		(CharSetDefinition**)NULL,
 
 		// textures to preload
-		(StageTextureEntryDefinition*)NULL,
+		(TextureDefinition**)NULL,
 
 		// background music
 		(const u16 (*)[])NULL,
@@ -233,4 +230,7 @@ StageROMDef EMPTY_STAGE_ST =
 		// children
 		EMPTY_STAGE_ST_ENTITIES,
 	},
+
+	// post processing effects
+	(PostProcessingEffect*)NULL,
 };

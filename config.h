@@ -131,10 +131,7 @@
 #undef __FORCE_VIP_SYNC
 
 // Timer resolution
-#define __TIMER_RESOLUTION						1
-
-// Options are __TIMER_20US and __TIMER_100US
-#define __TIMER_FREQUENCY						__TIMER_20US
+#define __TIMER_RESOLUTION						10
 
 /* __FRAME_CYCLE = 0 means __TARGET_FPS = 50
  * __FRAME_CYCLE = 1 means __TARGET_FPS = 25
@@ -329,7 +326,7 @@
 /* Used to make an approximation of Lorentz' contraction
  * to handle collisions on very fast moving shapes
  */
-#define __LIGHT_SPEED							ITOFIX19_13(50000)
+#define __LIGHT_SPEED							__I_TO_FIX19_13(50000)
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -392,7 +389,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // When defined, the engine's default low battery indicator is used
-#undef __LOW_BATTERY_INDICATOR
+//#define __LOW_BATTERY_INDICATOR
 
 // Position of low battery indicator
 #define __LOW_BATTERY_INDICATOR_POS_X			45

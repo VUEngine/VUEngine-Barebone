@@ -3,7 +3,8 @@
 # Default build type
 TYPE = debug
 #TYPE = release
-#TYPE = release-tools
+#TYPE = beta
+#TYPE = tools
 #TYPE = preprocessor
 
 # Where I live
@@ -45,6 +46,10 @@ VIRTUAL_TABLES_DATA_SECTION_ATTRIBUTE       = __VIRTUAL_TABLES_DATA_SECTION_ATTR
 # include overrides
 CONFIG_MAKE_FILE = $(shell pwd)/config.make
 include $(CONFIG_MAKE_FILE)
+
+ifneq ($(BUILD_MODE),)
+TYPE = $(BUILD_MODE)
+endif
 
 OPTIMIZATION_OPTION = -O0
 ifneq ($(OPTIMIZATION),)
@@ -140,7 +145,13 @@ endif
 ifeq ($(TYPE), release)
 LD_PARAMS = -T$(LINKER_SCRIPT) -lm
 C_PARAMS = $(ESSENTIAL_HEADERS) $(PROLOG_FUNCTIONS_FLAG) $(FRAME_POINTER_USAGE_FLAG) $(PEDANTIC_WARNINGS_FLAG) $(OPTIMIZATION_OPTION) -std=gnu99 -mv810 -nodefaultlibs -Wall -Wextra -finline-functions -Winline
-MACROS = $(COMMON_MACROS)
+MACROS = __RELEASE $(COMMON_MACROS)
+endif
+
+ifeq ($(TYPE), beta)
+LD_PARAMS = -T$(LINKER_SCRIPT) -lm
+C_PARAMS = $(ESSENTIAL_HEADERS) $(PROLOG_FUNCTIONS_FLAG) $(FRAME_POINTER_USAGE_FLAG) $(PEDANTIC_WARNINGS_FLAG) $(OPTIMIZATION_OPTION) -std=gnu99 -mv810 -nodefaultlibs -Wall -Wextra -finline-functions -Winline
+MACROS = __BETA $(COMMON_MACROS)
 endif
 
 ifeq ($(TYPE), tools)

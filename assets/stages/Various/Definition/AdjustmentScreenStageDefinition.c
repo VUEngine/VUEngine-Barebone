@@ -37,19 +37,18 @@ extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R;
 extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM;
 
 
-
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
 PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_ENTITIES[] =
 {
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {FTOFIX19_13(12), FTOFIX19_13(12), FTOFIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Left (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {FTOFIX19_13(12), FTOFIX19_13(212), FTOFIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Left (Right Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_BG_IM, {FTOFIX19_13(192), FTOFIX19_13(112), FTOFIX19_13(16)}, 0, NULL, NULL, NULL, false}, // Background
-	{&ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM, {FTOFIX19_13(192), FTOFIX19_13(112), FTOFIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Logo
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {FTOFIX19_13(372), FTOFIX19_13(212), FTOFIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Right (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {FTOFIX19_13(372), FTOFIX19_13(12), FTOFIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Right (Right Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {__F_TO_FIX19_13(12), __F_TO_FIX19_13(12), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Left (Left Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {__F_TO_FIX19_13(12), __F_TO_FIX19_13(212), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Left (Right Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_BG_IM, {__F_TO_FIX19_13(192), __F_TO_FIX19_13(112), __F_TO_FIX19_13(16)}, 0, NULL, NULL, NULL, false}, // Background
+	{&ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM, {__F_TO_FIX19_13(192), __F_TO_FIX19_13(112), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Logo
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {__F_TO_FIX19_13(372), __F_TO_FIX19_13(212), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Right (Left Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {__F_TO_FIX19_13(372), __F_TO_FIX19_13(12), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Right (Right Eye)
 
 	{NULL, {0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -87,18 +86,16 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// screen's initial position inside the game world
 		{
 			// x
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 			// y
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 			// z
-			ITOFIX19_13(0),
+			__I_TO_FIX19_13(0),
 		},
 	},
 
 	// streaming
 	{
-		// minimum free ms in the current game frame to allow streaming to quick in
-		5,
 		// load padding
 		40,
 		// unload padding
@@ -186,13 +183,13 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// since the vip renders obj worlds in reverse order (__spt3 to __spt0)
 		{
 			// __spt0
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt1
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt2
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 			// __spt3
-			FTOFIX19_13(0),
+			__F_TO_FIX19_13(0),
 		},
 
 		// optical configuration values
@@ -200,13 +197,13 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 			// maximum view distance's power into the horizon
 			__MAXIMUM_VIEW_DISTANCE_POWER,
 			// distance of the eyes to the screen
-			ITOFIX19_13(__DISTANCE_EYE_SCREEN),
+			__I_TO_FIX19_13(__DISTANCE_EYE_SCREEN),
 			// distance from left to right eye (depth sensation)
-			ITOFIX19_13(__BASE_FACTOR),
+			__I_TO_FIX19_13(__BASE_FACTOR),
 			// horizontal view point center
-			ITOFIX19_13(__HORIZONTAL_VIEW_POINT_CENTER),
+			__I_TO_FIX19_13(__HORIZONTAL_VIEW_POINT_CENTER),
 			// vertical view point center
-			ITOFIX19_13(__VERTICAL_VIEW_POINT_CENTER),
+			__I_TO_FIX19_13(__VERTICAL_VIEW_POINT_CENTER),
 		},
 	},
 
@@ -214,13 +211,13 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 	{
 		// gravity
 		{
-			ITOFIX19_13(0),
-			ITOFIX19_13(__GRAVITY),
-			ITOFIX19_13(0)
+			__I_TO_FIX19_13(0),
+			__I_TO_FIX19_13(__GRAVITY),
+			__I_TO_FIX19_13(0)
 		},
 
 		// friction
-		FTOFIX19_13(0.1f),
+		__F_TO_FIX19_13(0.1f),
 	},
 
 	// assets
@@ -232,7 +229,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		(CharSetDefinition**)NULL,
 
 		// textures to preload
-		(StageTextureEntryDefinition*)NULL,
+		(TextureDefinition**)NULL,
 
 		// background music
 		(const u16 (*)[])NULL,
@@ -249,4 +246,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// children
 		ADJUSTMENT_SCREEN_STAGE_ST_ENTITIES,
 	},
+
+	// post processing effects
+	(PostProcessingEffect*)NULL,
 };

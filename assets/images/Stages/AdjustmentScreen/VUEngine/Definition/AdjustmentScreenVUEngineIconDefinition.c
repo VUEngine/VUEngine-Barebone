@@ -21,14 +21,15 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <StaticImage.h>
+#include <Entity.h>
+#include <macros.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DECLARATIONS
+//												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
 extern BYTE AdjustmentScreenVUEngineIconTiles[];
@@ -36,7 +37,7 @@ extern BYTE AdjustmentScreenVUEngineIconMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DEFINITIONS
+//												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
 CharSetROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_CH =
@@ -68,7 +69,7 @@ TextureROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_TX =
 	// rows (max 64)
 	3,
 
-	// padding for affine transformations
+	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
 
 	// number of frames, depending on charset's allocation type:
@@ -78,6 +79,9 @@ TextureROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_TX =
 
 	// palette number (0-3)
 	0,
+
+	// recyclable
+	false,
 };
 
 BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L_SPRITE =
@@ -99,6 +103,9 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L_SPRITE =
 	// bgmap mode (__WORLD_BGMAP, __WORLD_AFFINE, __WORLD_OBJECT or __WORLD_HBIAS)
 	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
+
+	// pointer to affine/hbias manipulation function
+	NULL,
 
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
 	__WORLD_LON,
@@ -130,6 +137,9 @@ BgmapSpriteROMDef const ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R_SPRITE =
 	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
+	// pointer to affine/hbias manipulation function
+	NULL,
+
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
 	__WORLD_RON,
 };
@@ -141,14 +151,46 @@ BgmapSpriteROMDef* const ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R_SPRITES[] =
 
 };
 
-StaticImageROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L =
+EntityROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L =
 {
-	__TYPE(StaticImage),
-	(SpriteROMDef**) ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L_SPRITES,
+	// class allocator
+	__TYPE(Entity),
+
+	// sprites
+	(SpriteROMDef**)ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L_SPRITES,
+
+	// collision shapes
+	(ShapeDefinition*)NULL,
+
+	// size
+	// if 0, width and height will be inferred from the first sprite's texture's size
+	{0, 0, 0},
+
+	// gameworld's character's type
+	kNoType,
+
+	// physical specification
+	(PhysicalSpecification*)NULL,
 };
 
-StaticImageROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R =
+EntityROMDef ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R =
 {
-	__TYPE(StaticImage),
-	(SpriteROMDef**) ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R_SPRITES,
+	// class allocator
+	__TYPE(Entity),
+
+	// sprites
+	(SpriteROMDef**)ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R_SPRITES,
+
+	// collision shapes
+	(ShapeDefinition*)NULL,
+
+	// size
+	// if 0, width and height will be inferred from the first sprite's texture's size
+	{0, 0, 0},
+
+	// gameworld's character's type
+	kNoType,
+
+	// physical specification
+	(PhysicalSpecification*)NULL,
 };

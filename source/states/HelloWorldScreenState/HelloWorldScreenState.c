@@ -27,6 +27,7 @@
 #include <string.h>
 
 #include <Game.h>
+#include <VIPManager.h>
 #include <Screen.h>
 #include <Printing.h>
 #include <I18n.h>
@@ -101,8 +102,8 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 		NULL
 	);
 
-	// add post processing effect to make text wobble
-	Game_addPostProcessingEffect(Game_getInstance(), PostProcessingEffects_wobble, NULL);
+	// add rhombus effect
+	VIPManager_pushBackPostProcessingEffect(VIPManager_getInstance(), PostProcessingEffects_wobble, NULL);
 
 	// start fade in effect
 	Screen_startEffect(Screen_getInstance(),

@@ -20,14 +20,15 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <StaticImage.h>
+#include <Entity.h>
+#include <macros.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DECLARATIONS
+//												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
 extern BYTE AdjustmentScreenPvbLogoTiles[];
@@ -35,7 +36,7 @@ extern BYTE AdjustmentScreenPvbLogoMap[];
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DEFINITIONS
+//												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
 CharSetROMDef ADJUSTMENT_SCREEN_PVB_LOGO_CH =
@@ -67,7 +68,7 @@ TextureROMDef ADJUSTMENT_SCREEN_PVB_LOGO_TX =
 	// rows (max 64)
 	5,
 
-	// padding for affine transformations
+	// padding for affine/hbias transformations (cols, rows)
 	{0, 0},
 
 	// number of frames, depending on charset's allocation type:
@@ -77,6 +78,9 @@ TextureROMDef ADJUSTMENT_SCREEN_PVB_LOGO_TX =
 
 	// palette number (0-3)
 	1,
+
+	// recyclable
+	false,
 };
 
 BgmapSpriteROMDef ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITE =
@@ -99,6 +103,9 @@ BgmapSpriteROMDef ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITE =
 	// make sure to use the proper corresponding sprite type throughout the definition (BgmapSprite or ObjectSprite)
 	__WORLD_BGMAP,
 
+	// pointer to affine/hbias manipulation function
+	NULL,
+
 	// display mode (__WORLD_ON, __WORLD_LON or __WORLD_RON)
 	__WORLD_ON,
 };
@@ -109,8 +116,24 @@ BgmapSpriteROMDef* const ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITES[] =
 	NULL
 };
 
-StaticImageROMDef ADJUSTMENT_SCREEN_PVB_LOGO_IM =
+EntityROMDef ADJUSTMENT_SCREEN_PVB_LOGO_IM =
 {
-	__TYPE(StaticImage),
-	(SpriteROMDef**) ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITES,
+	// class allocator
+	__TYPE(Entity),
+
+	// sprites
+	(SpriteROMDef**)ADJUSTMENT_SCREEN_PVB_LOGO_IM_SPRITES,
+
+	// collision shapes
+	(ShapeDefinition*)NULL,
+
+	// size
+	// if 0, width and height will be inferred from the first sprite's texture's size
+	{0, 0, 0},
+
+	// gameworld's character's type
+	kNoType,
+
+	// physical specification
+	(PhysicalSpecification*)NULL,
 };

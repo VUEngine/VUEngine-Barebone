@@ -19,35 +19,19 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
-//---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
-//---------------------------------------------------------------------------------------------------------
-
-#include <Game.h>
-#include <Debug.h>
-#include <ManagedEntity.h>
-#include <StageEditor.h>
-#include <AnimationInspector.h>
+#ifndef MACROS_H_
+#define MACROS_H_
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										DEFINITIONS
+//												DEFINES
 //---------------------------------------------------------------------------------------------------------
 
-#ifdef __DEBUG_TOOLS
-const ClassSizeData _userClassesSizeData[] =
+// entity collision types
+enum CollisionTypes
 {
-	{NULL, ""},
+	kNoType = 1,
 };
+
+
 #endif
-
-const UserObject _userObjects[] =
-{
-	{NULL, ""},
-};
-
-const UserAnimatedEntity _userAnimatedEntities[] =
-{
-	{NULL, ""},
-};
