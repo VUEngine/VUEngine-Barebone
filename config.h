@@ -99,16 +99,19 @@
 #define __SCREEN_HEIGHT							224
 
 // Screen depth in pixels
-#define __SCREEN_DEPTH							384
+#define __SCREEN_DEPTH							2048
 
 // Distance from player's eyes to the virtual screen
 #define __DISTANCE_EYE_SCREEN					384
 
-// Maximum view distance (depth) (power of two)
-#define __MAXIMUM_VIEW_DISTANCE_POWER			9
+// Maximum x view distance (depth) (power of two)
+#define __MAXIMUM_X_VIEW_DISTANCE_POWER			7
+
+// Maximum y view distance (depth) (power of two)
+#define __MAXIMUM_Y_VIEW_DISTANCE_POWER			15
 
 // Distance between eyes
-#define __BASE_FACTOR							768
+#define __BASE_FACTOR							32
 
 // Player's eyes' horizontal position
 #define __HORIZONTAL_VIEW_POINT_CENTER			__SCREEN_WIDTH / 2
@@ -117,7 +120,10 @@
 #define __VERTICAL_VIEW_POINT_CENTER			__SCREEN_HEIGHT / 2
 
 // Parallax values are divide by this factor to control their strength
-#define __PARALLAX_CORRECTION_FACTOR			16
+#define __PARALLAX_CORRECTION_FACTOR			4
+
+// Affects the strong of the scaling
+#define __SCALLING_MODIFIER_FACTOR				0.20f
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -142,7 +148,7 @@
 #define __TARGET_FPS 							(50 >> __FRAME_CYCLE)
 
 // Milliseconds that must take to complete a game cycle
-#define __GAME_FRAME_DURATION					__MILLISECONDS_IN_SECOND / __TARGET_FPS
+#define __GAME_FRAME_DURATION					(__MILLISECONDS_IN_SECOND / __TARGET_FPS)
 
 // Target frames per second
 #define __OPTIMUM_FPS 							(__TARGET_FPS >> __FRAME_CYCLE)
@@ -175,48 +181,36 @@
 #undef __MEMORY_POOL_CLEAN_UP
 
 #undef __MEMORY_POOLS
-#define __MEMORY_POOLS							17
+#define __MEMORY_POOLS							11
 
 #undef __MEMORY_POOL_ARRAYS
 #define __MEMORY_POOL_ARRAYS																			\
-	__BLOCK_DEFINITION(192, 1)																			\
-	__BLOCK_DEFINITION(164, 8)																			\
-	__BLOCK_DEFINITION(144, 10)																			\
-	__BLOCK_DEFINITION(136, 30)																			\
-	__BLOCK_DEFINITION(124, 40)																			\
+	__BLOCK_DEFINITION(164, 1)																			\
+	__BLOCK_DEFINITION(152, 10)																			\
+	__BLOCK_DEFINITION(140, 10)																			\
+	__BLOCK_DEFINITION(116, 40)																			\
 	__BLOCK_DEFINITION(108, 40)																			\
-	__BLOCK_DEFINITION(100, 20)																			\
-	__BLOCK_DEFINITION(92, 12)																			\
-	__BLOCK_DEFINITION(88, 30)																			\
-	__BLOCK_DEFINITION(80, 35)																			\
-	__BLOCK_DEFINITION(76, 20)																			\
-	__BLOCK_DEFINITION(68, 70)																			\
-	__BLOCK_DEFINITION(32, 12)																			\
-	__BLOCK_DEFINITION(28, 180)																			\
-	__BLOCK_DEFINITION(24, 128)																			\
+	__BLOCK_DEFINITION(80, 50)																			\
+	__BLOCK_DEFINITION(68, 60)																			\
+	__BLOCK_DEFINITION(40, 30)																			\
+	__BLOCK_DEFINITION(28, 350)																			\
 	__BLOCK_DEFINITION(20, 700)																			\
-	__BLOCK_DEFINITION(16, 500)																			\
-
+	__BLOCK_DEFINITION(16, 450)																			\
 
 #undef __SET_MEMORY_POOL_ARRAYS
 #define __SET_MEMORY_POOL_ARRAYS																		\
-	__SET_MEMORY_POOL_ARRAY(192)																		\
 	__SET_MEMORY_POOL_ARRAY(164)																		\
-	__SET_MEMORY_POOL_ARRAY(144)																		\
-	__SET_MEMORY_POOL_ARRAY(136)																		\
-	__SET_MEMORY_POOL_ARRAY(124)																		\
+	__SET_MEMORY_POOL_ARRAY(152)																		\
+	__SET_MEMORY_POOL_ARRAY(140)																		\
+	__SET_MEMORY_POOL_ARRAY(116)																		\
 	__SET_MEMORY_POOL_ARRAY(108)																		\
-	__SET_MEMORY_POOL_ARRAY(100)																		\
-	__SET_MEMORY_POOL_ARRAY(92)																			\
-	__SET_MEMORY_POOL_ARRAY(88)																			\
 	__SET_MEMORY_POOL_ARRAY(80)																			\
-	__SET_MEMORY_POOL_ARRAY(76)																			\
 	__SET_MEMORY_POOL_ARRAY(68)																			\
-	__SET_MEMORY_POOL_ARRAY(32)																			\
+	__SET_MEMORY_POOL_ARRAY(40)																			\
 	__SET_MEMORY_POOL_ARRAY(28)																			\
-	__SET_MEMORY_POOL_ARRAY(24)																			\
 	__SET_MEMORY_POOL_ARRAY(20)																			\
 	__SET_MEMORY_POOL_ARRAY(16)
+
 
 // Percentage (0-100) above which the memory pool's status shows the pool usage
 #define __MEMORY_POOL_WARNING_THRESHOLD			85
@@ -313,20 +307,14 @@
 //												PHYSICS
 //---------------------------------------------------------------------------------------------------------
 
-#define __GRAVITY								13000
-
-/* 2's power to divide to the gravity when applied to objects
- * that were at rest before. Initial applied gravity = gravity >> __APPLIED_GRAVITY_FACTOR
- */
-#define __APPLIED_GRAVITY_FACTOR				4
+#define __GRAVITY								(2 * 9.8f)
 
 // Number of bodies to check for gravity on each cycle
 #define __BODIES_TO_CHECK_FOR_GRAVITY			10
 
-/* Used to make an approximation of Lorentz' contraction
- * to handle collisions on very fast moving shapes
- */
-#define __LIGHT_SPEED							__I_TO_FIX19_13(50000)
+// divisor to speed up physics simulations
+// bigger numbers equal faster computations
+#define __PHYSICS_TIME_ELAPSED_DIVISOR			2
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -348,6 +336,12 @@
 #define __TOTAL_SOUNDS							(__BGMS + __FXS)
 #define __LEFT_EAR_CENTER						96
 #define __RIGHT_EAR_CENTER						288
+
+// Affects the amount of attenuation caused by
+// the distance between the x coordinate and
+// each ear's position defined by __LEFT_EAR_CENTER
+// and __RIGHT_EAR_CENTER
+#define __SOUND_STEREO_ATTENUATION_FACTOR		__F_TO_FIX10_6(0.75f)
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -389,7 +383,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // When defined, the engine's default low battery indicator is used
-//#define __LOW_BATTERY_INDICATOR
+#define __LOW_BATTERY_INDICATOR
 
 // Position of low battery indicator
 #define __LOW_BATTERY_INDICATOR_POS_X			45
@@ -431,7 +425,7 @@
 //												EXCEPTIONS
 //---------------------------------------------------------------------------------------------------------
 
-// Screen coordinates for the output of exceptions
+// Camera coordinates for the output of exceptions
 #define __EXCEPTION_COLUMN						0
 #define __EXCEPTION_LINE						0
 

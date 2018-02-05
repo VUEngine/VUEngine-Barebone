@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
-#include <Screen.h>
+#include <Camera.h>
 #include <Printing.h>
 #include <MessageDispatcher.h>
 #include <I18n.h>
@@ -130,7 +130,7 @@ static void LangSelectScreenState_print(LangSelectScreenState this)
 	// print header
 	const char* strLanguageSelectTitle = I18n_getText(I18n_getInstance(), STR_LANGUAGE);
 	const char* strLanguageSelectTitleFont = "LargeFont";
-	Size size = Printing_getTextSize(Printing_getInstance(), strLanguageSelectTitle, strLanguageSelectTitleFont);
+	FontSize size = Printing_getTextSize(Printing_getInstance(), strLanguageSelectTitle, strLanguageSelectTitleFont);
 	u8 strHeaderXPos = (__HALF_SCREEN_WIDTH_IN_CHARS) - (size.x >> 1);
 	Printing_text(
 		Printing_getInstance(),

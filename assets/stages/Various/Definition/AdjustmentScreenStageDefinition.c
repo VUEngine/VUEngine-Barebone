@@ -43,20 +43,19 @@ extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM;
 
 PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_ENTITIES[] =
 {
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {__F_TO_FIX19_13(12), __F_TO_FIX19_13(12), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Left (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {__F_TO_FIX19_13(12), __F_TO_FIX19_13(212), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Left (Right Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_BG_IM, {__F_TO_FIX19_13(192), __F_TO_FIX19_13(112), __F_TO_FIX19_13(16)}, 0, NULL, NULL, NULL, false}, // Background
-	{&ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM, {__F_TO_FIX19_13(192), __F_TO_FIX19_13(112), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Logo
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {__F_TO_FIX19_13(372), __F_TO_FIX19_13(212), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Right (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {__F_TO_FIX19_13(372), __F_TO_FIX19_13(12), __F_TO_FIX19_13(0)}, 0, NULL, NULL, NULL, false}, // Icon Top Right (Right Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {(12), (12), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Top Left (Left Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {(12), (212), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Left (Right Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_BG_IM, {(192), (112), (16), (0)}, 0, NULL, NULL, NULL, false}, // Background
+	{&ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM, {(192), (112), (0), (0)}, 0, NULL, NULL, NULL, false}, // Logo
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {(372), (212), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Right (Left Eye)
+	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {(372), (12), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Top Right (Right Eye)
 
-	{NULL, {0,0,0}, 0, NULL, NULL, NULL, false},
+	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
 PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_UI_ENTITIES[] =
 {
-
-	{NULL, {0,0,0}, 0, NULL, NULL, NULL, false},
+	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
 
@@ -71,6 +70,9 @@ PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_UI_ENTITIES[] =
 
 StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 {
+	// allocator
+	__TYPE(Stage),
+
 	// level
 	{
 		// size
@@ -83,15 +85,33 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 			__SCREEN_DEPTH,
 		},
 
-		// screen's initial position inside the game world
+		// camera's initial position inside the game world
 		{
 			// x
-			__I_TO_FIX19_13(0),
+			0,
 			// y
-			__I_TO_FIX19_13(0),
+			0,
 			// z
-			__I_TO_FIX19_13(0),
+			0,
+			// p
+			0
 		},
+
+		// camera's frustum
+        {
+        	// x0
+        	0,
+        	// y0
+			0,
+			// z0
+			-10,
+        	// x1
+        	__SCREEN_WIDTH,
+        	// y1
+        	__SCREEN_HEIGHT,
+        	// z1
+        	__SCREEN_WIDTH * 5
+        }
 	},
 
 	// streaming
@@ -183,27 +203,29 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// since the vip renders obj worlds in reverse order (__spt3 to __spt0)
 		{
 			// __spt0
-			__F_TO_FIX19_13(0),
+			__F_TO_FIX10_6(0),
 			// __spt1
-			__F_TO_FIX19_13(0),
+			__F_TO_FIX10_6(0),
 			// __spt2
-			__F_TO_FIX19_13(0),
+			__F_TO_FIX10_6(0),
 			// __spt3
-			__F_TO_FIX19_13(0),
+			__F_TO_FIX10_6(0),
 		},
 
 		// optical configuration values
 		{
 			// maximum view distance's power into the horizon
-			__MAXIMUM_VIEW_DISTANCE_POWER,
+			__MAXIMUM_X_VIEW_DISTANCE_POWER, __MAXIMUM_Y_VIEW_DISTANCE_POWER,
 			// distance of the eyes to the screen
-			__I_TO_FIX19_13(__DISTANCE_EYE_SCREEN),
+			__DISTANCE_EYE_SCREEN,
 			// distance from left to right eye (depth sensation)
-			__I_TO_FIX19_13(__BASE_FACTOR),
+			__BASE_FACTOR,
 			// horizontal view point center
-			__I_TO_FIX19_13(__HORIZONTAL_VIEW_POINT_CENTER),
+			__HORIZONTAL_VIEW_POINT_CENTER,
 			// vertical view point center
-			__I_TO_FIX19_13(__VERTICAL_VIEW_POINT_CENTER),
+			__VERTICAL_VIEW_POINT_CENTER,
+			// scaling factor
+			__SCALLING_MODIFIER_FACTOR,
 		},
 	},
 
@@ -211,13 +233,13 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 	{
 		// gravity
 		{
-			__I_TO_FIX19_13(0),
-			__I_TO_FIX19_13(__GRAVITY),
-			__I_TO_FIX19_13(0)
+			__I_TO_FIX10_6(0),
+			__F_TO_FIX10_6(__GRAVITY),
+			__I_TO_FIX10_6(0)
 		},
 
 		// friction
-		__F_TO_FIX19_13(0.1f),
+		__F_TO_FIX10_6(0.1f),
 	},
 
 	// assets

@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
-#include <Screen.h>
+#include <Camera.h>
 #include <Printing.h>
 #include <MessageDispatcher.h>
 #include <KeypadManager.h>
@@ -92,7 +92,7 @@ static bool PrecautionScreenState_processMessage(PrecautionScreenState this, voi
 		case kScreenStarted:
 			{
 				// play start-up sound
-				VBVec3D position = {0, 0, 0};
+				Vector3D position = {0, 0, 0};
 				SoundManager_playFxSound(SoundManager_getInstance(), INTRO_SND, position);
 
 				// wait some seconds for the screen to stabilize, as defined by Nintendo in the official development manual
@@ -123,10 +123,10 @@ static void PrecautionScreenState_print(PrecautionScreenState this __attribute__
 {
 	const char* strPrecautionTitle = I18n_getText(I18n_getInstance(), STR_IMPORTANT);
 	const char* strPrecautionTitleFont = "LargeFont";
-	Size titleSize = Printing_getTextSize(Printing_getInstance(), strPrecautionTitle, strPrecautionTitleFont);
+	FontSize titleSize = Printing_getTextSize(Printing_getInstance(), strPrecautionTitle, strPrecautionTitleFont);
 
 	const char* strPrecautionText = I18n_getText(I18n_getInstance(), STR_PRECAUTION_SCREEN_TEXT);
-	Size textSize = Printing_getTextSize(Printing_getInstance(), strPrecautionText, NULL);
+	FontSize textSize = Printing_getTextSize(Printing_getInstance(), strPrecautionText, NULL);
 
 	u8 totalHeight = titleSize.y + textSize.y;
 

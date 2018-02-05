@@ -80,7 +80,6 @@ static void __attribute__ ((noinline)) ProgressManager_constructor(ProgressManag
 void ProgressManager_destructor(ProgressManager this)
 {
 	ASSERT(this, "ProgressManager::destructor: null this");
-	ASSERT(EventManager_getInstance(), "ProgressManager::destructor: null eventManager");
 
 	// destroy base
 	__SINGLETON_DESTROY;

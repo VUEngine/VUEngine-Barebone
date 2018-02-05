@@ -28,7 +28,7 @@
 
 #include <Game.h>
 #include <VIPManager.h>
-#include <Screen.h>
+#include <Camera.h>
 #include <Printing.h>
 #include <I18n.h>
 #include <HelloWorldScreenState.h>
@@ -91,7 +91,7 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
 	const char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
-	Size textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
+	FontSize textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
 
 	// print hello world
 	Printing_text(
@@ -106,7 +106,7 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 	VIPManager_pushBackPostProcessingEffect(VIPManager_getInstance(), PostProcessingEffects_wobble, NULL);
 
 	// start fade in effect
-	Screen_startEffect(Screen_getInstance(),
+	Camera_startEffect(Camera_getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)
 		NULL, // target brightness
