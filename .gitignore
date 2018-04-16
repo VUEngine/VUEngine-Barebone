@@ -1,11 +1,6 @@
 .idea/workspace.xml
 build/
-/.settings/
-/old/
-.cdtproject
-.cproject
-.project
-cproject
+*.o
 *.a
 *.vb
 *.elf
@@ -13,6 +8,8 @@ cproject
 *.lnk
 *.asm
 *.map
+*.ftp
 sections*.txt
 setupClasses.c
 headerFiles.txt
+v810_err.txt
