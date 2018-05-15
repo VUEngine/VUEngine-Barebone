@@ -31,28 +31,6 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DECLARATION
-//---------------------------------------------------------------------------------------------------------
-
-// declare the virtual methods
-#define ProgressManager_METHODS(ClassName)																\
-		Object_METHODS(ClassName)																		\
-
-// declare the virtual methods which are redefined
-#define ProgressManager_SET_VTABLE(ClassName)															\
-		Object_SET_VTABLE(ClassName)																	\
-
-// declare class
-__CLASS(ProgressManager);
-
-// declare class attributes
-#define ProgressManager_ATTRIBUTES																		\
-		Object_ATTRIBUTES																				\
-		/* flag that tells if sram is available on the current cartridge */								\
-		bool sramAvailable;																				\
-
-
-//---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
@@ -79,18 +57,23 @@ typedef struct SaveData
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										PUBLIC INTERFACE
+//											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-ProgressManager ProgressManager_getInstance();
+singleton class ProgressManager : Object
+{
+	// flag that tells if sram is available on the current cartridge
+	bool sramAvailable;
 
-void ProgressManager_clearProgress(ProgressManager this);
-void ProgressManager_destructor(ProgressManager this);
-bool ProgressManager_getAutomaticPauseStatus(ProgressManager this);
-u8 ProgressManager_getLanguage(ProgressManager this);
-bool ProgressManager_hasProgress(ProgressManager this);
-void ProgressManager_setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
-void ProgressManager_setLanguage(ProgressManager this, u8 language);
+	ProgressManager ProgressManager::getInstance();
+	void ProgressManager::clearProgress(ProgressManager this);
+	void ProgressManager::destructor(ProgressManager this);
+	bool ProgressManager::getAutomaticPauseStatus(ProgressManager this);
+	u8 ProgressManager::getLanguage(ProgressManager this);
+	bool ProgressManager::hasProgress(ProgressManager this);
+	void ProgressManager::setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
+	void ProgressManager::setLanguage(ProgressManager this, u8 language);
+}
 
 
 #endif

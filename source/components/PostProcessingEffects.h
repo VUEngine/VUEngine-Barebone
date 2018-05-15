@@ -34,7 +34,7 @@
 // 										FUNCTIONS
 //---------------------------------------------------------------------------------------------------------
 
-void PostProcessingEffects_wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
+void PostProcessingEffects::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
 
 
 #endif

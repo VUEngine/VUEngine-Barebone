@@ -26,32 +26,24 @@
 
 #include <string.h>
 #include <stddef.h>
-
 #include <Game.h>
 #include <I18n.h>
-#include <ProgressManager.h>
 #include <SRAMManager.h>
 #include <Utilities.h>
+#include <ProgressManager.h>
 #include <AutoPauseScreenState.h>
-
-
-//---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DEFINITION
-//---------------------------------------------------------------------------------------------------------
-
-__CLASS_DEFINITION(ProgressManager, Object);
 
 
 //---------------------------------------------------------------------------------------------------------
 // 												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void ProgressManager_constructor(ProgressManager this);
-bool ProgressManager_verifySaveStamp(ProgressManager this);
-u32 ProgressManager_computeChecksum(ProgressManager this);
-void ProgressManager_writeChecksum(ProgressManager this);
-bool ProgressManager_verifyChecksum(ProgressManager this);
-static void ProgressManager_initialize(ProgressManager this);
+static void ProgressManager::constructor(ProgressManager this);
+bool ProgressManager::verifySaveStamp(ProgressManager this);
+u32 ProgressManager::computeChecksum(ProgressManager this);
+void ProgressManager::writeChecksum(ProgressManager this);
+bool ProgressManager::verifyChecksum(ProgressManager this);
+static void ProgressManager::initialize(ProgressManager this);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -62,22 +54,22 @@ static void ProgressManager_initialize(ProgressManager this);
 __SINGLETON(ProgressManager);
 
 // class's constructor
-static void __attribute__ ((noinline)) ProgressManager_constructor(ProgressManager this)
+static void __attribute__ ((noinline)) ProgressManager::constructor(ProgressManager this)
 {
 	ASSERT(this, "ProgressManager::constructor: null this");
 
 	// construct base object
-	__CONSTRUCT_BASE(Object);
+	Base::constructor();
 
 	// init class variables
 	this->sramAvailable = false;
 
 	// init progress
-	ProgressManager_initialize(this);
+	ProgressManager::initialize(this);
 }
 
 // class's destructor
-void ProgressManager_destructor(ProgressManager this)
+void ProgressManager::destructor(ProgressManager this)
 {
 	ASSERT(this, "ProgressManager::destructor: null this");
 
@@ -86,20 +78,20 @@ void ProgressManager_destructor(ProgressManager this)
 }
 
 // write then immediately read save stamp to validate sram
-bool ProgressManager_verifySaveStamp(ProgressManager this __attribute__ ((unused)))
+bool ProgressManager::verifySaveStamp(ProgressManager this __attribute__ ((unused)))
 {
 	char saveStamp[SAVE_STAMP_LENGTH];
 
 	// write save stamp
-	SRAMManager_save(SRAMManager_getInstance(), (BYTE*)SAVE_STAMP, offsetof(struct SaveData, saveStamp), sizeof(saveStamp));
+	SRAMManager::save(SRAMManager::getInstance(), (BYTE*)SAVE_STAMP, offsetof(struct SaveData, saveStamp), sizeof(saveStamp));
 
 	// read save stamp
-	SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&saveStamp, offsetof(struct SaveData, saveStamp), sizeof(saveStamp));
+	SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&saveStamp, offsetof(struct SaveData, saveStamp), sizeof(saveStamp));
 
 	return !strncmp(saveStamp, SAVE_STAMP, SAVE_STAMP_LENGTH);
 }
 
-u32 ProgressManager_computeChecksum(ProgressManager this __attribute__ ((unused)))
+u32 ProgressManager::computeChecksum(ProgressManager this __attribute__ ((unused)))
 {
 	u32 crc32 = ~0;
 
@@ -109,7 +101,7 @@ u32 ProgressManager_computeChecksum(ProgressManager this __attribute__ ((unused)
 	{
 		// get the current byte
 		u8 currentByte;
-		SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&currentByte, i, sizeof(currentByte));
+		SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&currentByte, i, sizeof(currentByte));
 
 		// loop over all bits of the current byte and add to checksum
 		u8 bit = 0;
@@ -129,90 +121,90 @@ u32 ProgressManager_computeChecksum(ProgressManager this __attribute__ ((unused)
 	return ~crc32;
 }
 
-void ProgressManager_writeChecksum(ProgressManager this)
+void ProgressManager::writeChecksum(ProgressManager this)
 {
-	u32 checksum = ProgressManager_computeChecksum(this);
-	SRAMManager_save(SRAMManager_getInstance(), (BYTE*)&checksum, offsetof(struct SaveData, checksum), sizeof(checksum));
+	u32 checksum = ProgressManager::computeChecksum(this);
+	SRAMManager::save(SRAMManager::getInstance(), (BYTE*)&checksum, offsetof(struct SaveData, checksum), sizeof(checksum));
 }
 
-bool ProgressManager_verifyChecksum(ProgressManager this)
+bool ProgressManager::verifyChecksum(ProgressManager this)
 {
-	u32 computedChecksum = ProgressManager_computeChecksum(this);
+	u32 computedChecksum = ProgressManager::computeChecksum(this);
 	u32 savedChecksum = 0;
-	SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&savedChecksum, offsetof(struct SaveData, checksum), sizeof(savedChecksum));
+	SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&savedChecksum, offsetof(struct SaveData, checksum), sizeof(savedChecksum));
 
 	return (computedChecksum == savedChecksum);
 }
 
-static void ProgressManager_initialize(ProgressManager this)
+static void ProgressManager::initialize(ProgressManager this)
 {
 	ASSERT(this, "ProgressManager::initialize: null this");
 
 	// verify sram validity
-	if(ProgressManager_verifySaveStamp(this))
+	if(ProgressManager::verifySaveStamp(this))
 	{
 		// set sram available flag
 		this->sramAvailable = true;
 
 		// verify saved progress presence and integrity
-		if(!ProgressManager_verifyChecksum(this))
+		if(!ProgressManager::verifyChecksum(this))
 		{
 			// write checksum
-			ProgressManager_writeChecksum(this);
+			ProgressManager::writeChecksum(this);
 		}
 
 		// load and set active language
-		I18n_setActiveLanguage(I18n_getInstance(), ProgressManager_getLanguage(this));
+		I18n::setActiveLanguage(I18n::getInstance(), ProgressManager::getLanguage(this));
 
 		// load and set auto pause state
-		Game_setAutomaticPauseState(Game_getInstance(), ProgressManager_getAutomaticPauseStatus(this)
-			? __SAFE_CAST(GameState, AutoPauseScreenState_getInstance())
+		Game::setAutomaticPauseState(Game::getInstance(), ProgressManager::getAutomaticPauseStatus(this)
+			? __SAFE_CAST(GameState, AutoPauseScreenState::getInstance())
 			: NULL
 		);
 	}
 }
 
-u8 ProgressManager_getLanguage(ProgressManager this __attribute__ ((unused)))
+u8 ProgressManager::getLanguage(ProgressManager this __attribute__ ((unused)))
 {
 	ASSERT(this, "ProgressManager::getLanguage: null this");
 
 	u8 languageId = 0;
 	if(this->sramAvailable)
 	{
-		SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&languageId, offsetof(struct SaveData, languageId), sizeof(languageId));
+		SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&languageId, offsetof(struct SaveData, languageId), sizeof(languageId));
 	}
 
 	return languageId;
 }
 
-void ProgressManager_setLanguage(ProgressManager this __attribute__ ((unused)), u8 languageId)
+void ProgressManager::setLanguage(ProgressManager this __attribute__ ((unused)), u8 languageId)
 {
 	ASSERT(this, "ProgressManager::setLanguage: null this");
 
 	if(this->sramAvailable)
 	{
 		// write language
-		SRAMManager_save(SRAMManager_getInstance(), (BYTE*)&languageId, offsetof(struct SaveData, languageId), sizeof(languageId));
+		SRAMManager::save(SRAMManager::getInstance(), (BYTE*)&languageId, offsetof(struct SaveData, languageId), sizeof(languageId));
 
 		// write checksum
-		ProgressManager_writeChecksum(this);
+		ProgressManager::writeChecksum(this);
 	}
 }
 
-bool ProgressManager_getAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)))
+bool ProgressManager::getAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)))
 {
 	ASSERT(this, "ProgressManager::getAutomaticPause: null this");
 
 	u8 autoPauseStatus = 0;
 	if(this->sramAvailable)
 	{
-		SRAMManager_read(SRAMManager_getInstance(), (BYTE*)&autoPauseStatus, offsetof(struct SaveData, autoPauseStatus), sizeof(autoPauseStatus));
+		SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&autoPauseStatus, offsetof(struct SaveData, autoPauseStatus), sizeof(autoPauseStatus));
 	}
 
 	return !autoPauseStatus;
 }
 
-void ProgressManager_setAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)), u8 autoPauseStatus)
+void ProgressManager::setAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)), u8 autoPauseStatus)
 {
 	ASSERT(this, "ProgressManager::setAutomaticPause: null this");
 
@@ -223,9 +215,9 @@ void ProgressManager_setAutomaticPauseStatus(ProgressManager this __attribute__ 
 		autoPauseStatus = !autoPauseStatus;
 
 		// write auto pause status
-		SRAMManager_save(SRAMManager_getInstance(), (BYTE*)&autoPauseStatus, offsetof(struct SaveData, autoPauseStatus), sizeof(autoPauseStatus));
+		SRAMManager::save(SRAMManager::getInstance(), (BYTE*)&autoPauseStatus, offsetof(struct SaveData, autoPauseStatus), sizeof(autoPauseStatus));
 
 		// write checksum
-		ProgressManager_writeChecksum(this);
+		ProgressManager::writeChecksum(this);
 	}
 }

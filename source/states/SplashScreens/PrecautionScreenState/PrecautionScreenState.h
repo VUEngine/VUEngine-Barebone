@@ -34,29 +34,13 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-// declare the virtual methods
-#define PrecautionScreenState_METHODS(ClassName)														\
-		SplashScreenState_METHODS(ClassName)															\
+singleton class PrecautionScreenState: SplashScreenState
+{
+	PrecautionScreenState PrecautionScreenState::getInstance(void);
 
-// declare the virtual methods which are redefined
-#define PrecautionScreenState_SET_VTABLE(ClassName)														\
-		SplashScreenState_SET_VTABLE(ClassName)															\
-		__VIRTUAL_SET(ClassName, PrecautionScreenState, print);											\
-		__VIRTUAL_SET(ClassName, PrecautionScreenState, processMessage);								\
-
-
-__CLASS(PrecautionScreenState);
-
-#define PrecautionScreenState_ATTRIBUTES																\
-		/* inherits */																					\
-		SplashScreenState_ATTRIBUTES																	\
-
-
-//---------------------------------------------------------------------------------------------------------
-//										PUBLIC INTERFACE
-//---------------------------------------------------------------------------------------------------------
-
-PrecautionScreenState PrecautionScreenState_getInstance(void);
+	virtual static void PrecautionScreenState::print(PrecautionScreenState this);
+	virtual static bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* owner, Telegram telegram);
+}
 
 
 #endif

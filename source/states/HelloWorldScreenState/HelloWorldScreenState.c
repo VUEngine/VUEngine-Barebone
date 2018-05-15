@@ -48,16 +48,14 @@ extern StageROMDef EMPTY_STAGE_ST;
 // 												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void HelloWorldScreenState_destructor(HelloWorldScreenState this);
-static void HelloWorldScreenState_constructor(HelloWorldScreenState this);
-static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner);
+static void HelloWorldScreenState::destructor(HelloWorldScreenState this);
+static void HelloWorldScreenState::constructor(HelloWorldScreenState this);
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__CLASS_DEFINITION(HelloWorldScreenState, GameState);
 __SINGLETON_DYNAMIC(HelloWorldScreenState);
 
 
@@ -66,36 +64,36 @@ __SINGLETON_DYNAMIC(HelloWorldScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void __attribute__ ((noinline)) HelloWorldScreenState_constructor(HelloWorldScreenState this)
+static void __attribute__ ((noinline)) HelloWorldScreenState::constructor(HelloWorldScreenState this)
 {
-	__CONSTRUCT_BASE(GameState);
+	Base::constructor();
 }
 
 // class's destructor
-static void HelloWorldScreenState_destructor(HelloWorldScreenState this)
+static void HelloWorldScreenState::destructor(HelloWorldScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's enter
-static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
+static void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
 {
 	// call base
-	Base_enter(this, owner);
+	Base::enter(this, owner);
 
 	// disallow user input
-	Game_disableKeypad(Game_getInstance());
+	Game::disableKeypad(Game::getInstance());
 
 	//load stage
-	GameState_loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
+	GameState::loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
-	const char* strHelloWorld = I18n_getText(I18n_getInstance(), STR_HELLO_WORLD);
-	FontSize textSize = Printing_getTextSize(Printing_getInstance(), strHelloWorld, NULL);
+	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
+	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, NULL);
 
 	// print hello world
-	Printing_text(
-		Printing_getInstance(),
+	Printing::text(
+		Printing::getInstance(),
 		strHelloWorld,
 		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
 		12,
@@ -103,10 +101,10 @@ static void HelloWorldScreenState_enter(HelloWorldScreenState this, void* owner 
 	);
 
 	// add rhombus effect
-	VIPManager_pushBackPostProcessingEffect(VIPManager_getInstance(), PostProcessingEffects_wobble, NULL);
+	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), PostProcessingEffects_wobble, NULL);
 
 	// start fade in effect
-	Camera_startEffect(Camera_getInstance(),
+	Camera::startEffect(Camera::getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)
 		NULL, // target brightness

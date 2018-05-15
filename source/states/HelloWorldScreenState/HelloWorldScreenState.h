@@ -34,26 +34,11 @@
 // 											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-// declare the virtual methods
-#define HelloWorldScreenState_METHODS(ClassName)														\
-		GameState_METHODS(ClassName)																	\
-
-// declare the virtual methods which are redefined
-#define HelloWorldScreenState_SET_VTABLE(ClassName)														\
-		GameState_SET_VTABLE(ClassName)																	\
-		__VIRTUAL_SET(ClassName, HelloWorldScreenState, enter);											\
-
-__CLASS(HelloWorldScreenState);
-
-#define HelloWorldScreenState_ATTRIBUTES																\
-		GameState_ATTRIBUTES
-
-
-//---------------------------------------------------------------------------------------------------------
-// 										PUBLIC INTERFACE
-//---------------------------------------------------------------------------------------------------------
-
-HelloWorldScreenState HelloWorldScreenState_getInstance(void);
+singleton class HelloWorldScreenState : GameState
+{
+	HelloWorldScreenState HelloWorldScreenState::getInstance(void);
+	virtual static void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner);
+}
 
 
 #endif
