@@ -35,13 +35,13 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class LangSelectScreenState: SplashScreenState
+dynamic_singleton class LangSelectScreenState: SplashScreenState
 {
 	OptionsSelector languageSelector;
 
-	LangSelectScreenState LangSelectScreenState::getInstance(void);
-	virtual static void LangSelectScreenState::processInput(LangSelectScreenState this, u32 pressedKey);
-	virtual static void LangSelectScreenState::print(LangSelectScreenState this);
+	static LangSelectScreenState getInstance();
+	override static void processInput(LangSelectScreenState this, u32 pressedKey);
+	override static void print(LangSelectScreenState this);
 }
 
 

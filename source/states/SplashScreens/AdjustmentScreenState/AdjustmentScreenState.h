@@ -41,11 +41,11 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class AdjustmentScreenState: SplashScreenState
+dynamic_singleton class AdjustmentScreenState: SplashScreenState
 {
-	AdjustmentScreenState AdjustmentScreenState::getInstance(void);
-	virtual void AdjustmentScreenState::enter(AdjustmentScreenState this, void* owner);
-	virtual static void AdjustmentScreenState::processInput(AdjustmentScreenState this, u32 pressedKey);
+	static AdjustmentScreenState getInstance();
+	override void enter(AdjustmentScreenState this, void* owner);
+	override void processInput(AdjustmentScreenState this, u32 pressedKey);
 }
 
 

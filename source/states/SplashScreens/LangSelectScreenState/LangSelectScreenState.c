@@ -49,22 +49,22 @@ extern LangROMDef* __LANGUAGES[];
 //												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void LangSelectScreenState::destructor(LangSelectScreenState this);
-static void LangSelectScreenState::constructor(LangSelectScreenState this);
+void LangSelectScreenState::destructor(LangSelectScreenState this);
+void LangSelectScreenState::constructor(LangSelectScreenState this);
 
 
 //---------------------------------------------------------------------------------------------------------
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__SINGLETON_DYNAMIC(LangSelectScreenState);
+
 
 
 //---------------------------------------------------------------------------------------------------------
 //												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
-static void __attribute__ ((noinline)) LangSelectScreenState::constructor(LangSelectScreenState this)
+void __attribute__ ((noinline)) LangSelectScreenState::constructor(LangSelectScreenState this)
 {
 	Base::constructor();
 
@@ -95,7 +95,7 @@ static void __attribute__ ((noinline)) LangSelectScreenState::constructor(LangSe
 	OptionsSelector::setSelectedOption(this->languageSelector, activeLanguage);
 }
 
-static void LangSelectScreenState::destructor(LangSelectScreenState this)
+void LangSelectScreenState::destructor(LangSelectScreenState this)
 {
 	__DELETE(this->languageSelector);
 
@@ -122,7 +122,7 @@ void LangSelectScreenState::processInput(LangSelectScreenState this, u32 pressed
 	}
 }
 
-static void LangSelectScreenState::print(LangSelectScreenState this)
+void LangSelectScreenState::print(LangSelectScreenState this)
 {
 	// print header
 	const char* strLanguageSelectTitle = I18n::getText(I18n::getInstance(), STR_LANGUAGE);

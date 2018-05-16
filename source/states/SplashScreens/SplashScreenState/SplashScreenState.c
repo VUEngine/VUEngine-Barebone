@@ -133,7 +133,7 @@ void SplashScreenState::processUserInput(SplashScreenState this, UserInput userI
 // state's handle message
 bool SplashScreenState::processMessage(SplashScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
 {
-	switch(Telegram_getMessage(telegram))
+	switch(Telegram::getMessage(telegram))
 	{
 		case kScreenStarted:
 

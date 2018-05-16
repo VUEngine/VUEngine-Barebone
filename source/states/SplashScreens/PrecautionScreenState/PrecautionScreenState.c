@@ -50,23 +50,16 @@ extern const u16 INTRO_SND[];
 //												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void PrecautionScreenState::destructor(PrecautionScreenState this);
-static void PrecautionScreenState::constructor(PrecautionScreenState this);
+void PrecautionScreenState::destructor(PrecautionScreenState this);
+void PrecautionScreenState::constructor(PrecautionScreenState this);
 
 
 //---------------------------------------------------------------------------------------------------------
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__SINGLETON_DYNAMIC(PrecautionScreenState);
-
-
-//---------------------------------------------------------------------------------------------------------
-//												CLASS'S METHODS
-//---------------------------------------------------------------------------------------------------------
-
 // class's constructor
-static void __attribute__ ((noinline)) PrecautionScreenState::constructor(PrecautionScreenState this)
+void __attribute__ ((noinline)) PrecautionScreenState::constructor(PrecautionScreenState this)
 {
 	Base::constructor();
 
@@ -75,14 +68,14 @@ static void __attribute__ ((noinline)) PrecautionScreenState::constructor(Precau
 }
 
 // class's destructor
-static void PrecautionScreenState::destructor(PrecautionScreenState this)
+void PrecautionScreenState::destructor(PrecautionScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's handle message
-static bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
+bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
 {
 	switch(Telegram::getMessage(telegram))
 	{
@@ -116,7 +109,7 @@ static bool PrecautionScreenState::processMessage(PrecautionScreenState this, vo
 	return false;
 }
 
-static void PrecautionScreenState::print(PrecautionScreenState this __attribute__ ((unused)))
+void PrecautionScreenState::print(PrecautionScreenState this __attribute__ ((unused)))
 {
 	const char* strPrecautionTitle = I18n::getText(I18n::getInstance(), STR_IMPORTANT);
 	const char* strPrecautionTitleFont = "LargeFont";

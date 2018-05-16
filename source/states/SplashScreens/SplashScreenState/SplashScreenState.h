@@ -47,23 +47,22 @@ enum SplashScreensMessageTypes
 
 abstract class SplashScreenState : GameState
 {
-
 	// state to enter after this one
 	GameState nextState;
 	// definition of screen's stage
 	StageDefinition* stageDefinition;
 
-	void SplashScreenState::constructor(SplashScreenState this);
-	void SplashScreenState::destructor(SplashScreenState this);
-	virtual void SplashScreenState::setNextState(SplashScreenState this, GameState nextState);
-	virtual void SplashScreenState::loadNextState(SplashScreenState this);
-	virtual void SplashScreenState::enter(SplashScreenState this, void* owner);
-	virtual void SplashScreenState::exit(SplashScreenState this, void* owner);
-	virtual void SplashScreenState::resume(SplashScreenState this, void* owner);
-	virtual bool SplashScreenState::processMessage(SplashScreenState this, void* owner, Telegram telegram);
-	virtual void SplashScreenState::processInput(SplashScreenState this, u32 releasedKey);
-	virtual void SplashScreenState::print(SplashScreenState this);
-	virtual void SplashScreenState::processUserInput(SplashScreenState this, UserInput userInput);
+	void constructor(SplashScreenState this);
+	void destructor(SplashScreenState this);
+	virtual void setNextState(SplashScreenState this, GameState nextState);
+	virtual void loadNextState(SplashScreenState this);
+	virtual void print(SplashScreenState this);
+	virtual void processInput(SplashScreenState this, u32 releasedKey);
+	override void enter(SplashScreenState this, void* owner);
+	override void exit(SplashScreenState this, void* owner);
+	override void resume(SplashScreenState this, void* owner);
+	override bool processMessage(SplashScreenState this, void* owner, Telegram telegram);
+	override void processUserInput(SplashScreenState this, UserInput userInput);
 }
 
 

@@ -48,36 +48,29 @@ extern StageROMDef EMPTY_STAGE_ST;
 // 												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void HelloWorldScreenState::destructor(HelloWorldScreenState this);
-static void HelloWorldScreenState::constructor(HelloWorldScreenState this);
+void HelloWorldScreenState::destructor(HelloWorldScreenState this);
+void HelloWorldScreenState::constructor(HelloWorldScreenState this);
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__SINGLETON_DYNAMIC(HelloWorldScreenState);
-
-
-//---------------------------------------------------------------------------------------------------------
-// 												CLASS'S METHODS
-//---------------------------------------------------------------------------------------------------------
-
 // class's constructor
-static void __attribute__ ((noinline)) HelloWorldScreenState::constructor(HelloWorldScreenState this)
+void __attribute__ ((noinline)) HelloWorldScreenState::constructor(HelloWorldScreenState this)
 {
 	Base::constructor();
 }
 
 // class's destructor
-static void HelloWorldScreenState::destructor(HelloWorldScreenState this)
+void HelloWorldScreenState::destructor(HelloWorldScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's enter
-static void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
+void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
 {
 	// call base
 	Base::enter(this, owner);
@@ -101,7 +94,7 @@ static void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner
 	);
 
 	// add rhombus effect
-	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), PostProcessingEffects_wobble, NULL);
+	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), PostProcessingEffects::wobble, NULL);
 
 	// start fade in effect
 	Camera::startEffect(Camera::getInstance(),

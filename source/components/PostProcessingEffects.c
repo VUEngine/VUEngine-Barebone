@@ -139,3 +139,4 @@ u32 PostProcessingEffects::writeToFrameBuffer(u16 y, u16 shift, u32* columnSourc
 	// it to a temp variable while modifying
 	return previousSourcePointerValueTemp;
 }
+

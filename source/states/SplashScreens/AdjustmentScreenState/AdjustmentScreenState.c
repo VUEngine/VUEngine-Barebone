@@ -43,16 +43,9 @@ extern StageROMDef ADJUSTMENT_SCREEN_STAGE_ST;
 //												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void AdjustmentScreenState::destructor(AdjustmentScreenState this);
-static void AdjustmentScreenState::constructor(AdjustmentScreenState this);
+void AdjustmentScreenState::destructor(AdjustmentScreenState this);
+void AdjustmentScreenState::constructor(AdjustmentScreenState this);
 void AdjustmentScreenState::rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
-
-
-//---------------------------------------------------------------------------------------------------------
-//											CLASS'S DEFINITION
-//---------------------------------------------------------------------------------------------------------
-
-__SINGLETON_DYNAMIC(AdjustmentScreenState);
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -60,7 +53,7 @@ __SINGLETON_DYNAMIC(AdjustmentScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void __attribute__ ((noinline)) AdjustmentScreenState::constructor(AdjustmentScreenState this)
+void __attribute__ ((noinline)) AdjustmentScreenState::constructor(AdjustmentScreenState this)
 {
 	Base::constructor();
 
@@ -69,7 +62,7 @@ static void __attribute__ ((noinline)) AdjustmentScreenState::constructor(Adjust
 }
 
 // class's destructor
-static void AdjustmentScreenState::destructor(AdjustmentScreenState this)
+void AdjustmentScreenState::destructor(AdjustmentScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
@@ -88,7 +81,7 @@ void AdjustmentScreenState::enter(AdjustmentScreenState this, void* owner)
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), AdjustmentScreenState::rhombusEmitterPostProcessingEffect, NULL);
 }
 
-static void AdjustmentScreenState::processInput(AdjustmentScreenState this, u32 pressedKey __attribute__ ((unused)))
+void AdjustmentScreenState::processInput(AdjustmentScreenState this, u32 pressedKey __attribute__ ((unused)))
 {
 	SplashScreenState::loadNextState(__SAFE_CAST(SplashScreenState, this));
 }

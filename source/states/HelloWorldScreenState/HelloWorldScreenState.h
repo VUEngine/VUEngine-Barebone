@@ -34,10 +34,10 @@
 // 											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class HelloWorldScreenState : GameState
+dynamic_singleton class HelloWorldScreenState : GameState
 {
-	HelloWorldScreenState HelloWorldScreenState::getInstance(void);
-	virtual static void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner);
+	static HelloWorldScreenState getInstance();
+	override static void enter(HelloWorldScreenState this, void* owner);
 }
 
 

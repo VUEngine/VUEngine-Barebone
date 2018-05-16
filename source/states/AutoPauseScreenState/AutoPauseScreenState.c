@@ -48,10 +48,10 @@ extern StageROMDef EMPTY_STAGE_ST;
 //												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void AutoPauseScreenState::destructor(AutoPauseScreenState this);
-static void AutoPauseScreenState::constructor(AutoPauseScreenState this);
-static void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner);
-static void AutoPauseScreenState::exit(AutoPauseScreenState this, void* owner);
+void AutoPauseScreenState::destructor(AutoPauseScreenState this);
+void AutoPauseScreenState::constructor(AutoPauseScreenState this);
+void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner);
+void AutoPauseScreenState::exit(AutoPauseScreenState this, void* owner);
 static void AutoPauseScreenState::onFadeOutComplete(AutoPauseScreenState this, Object eventFirer);
 static void AutoPauseScreenState::onFadeInComplete(AutoPauseScreenState this, Object eventFirer);
 
@@ -60,7 +60,7 @@ static void AutoPauseScreenState::onFadeInComplete(AutoPauseScreenState this, Ob
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__SINGLETON_DYNAMIC(AutoPauseScreenState);
+
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -68,20 +68,20 @@ __SINGLETON_DYNAMIC(AutoPauseScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void __attribute__ ((noinline)) AutoPauseScreenState::constructor(AutoPauseScreenState this)
+void __attribute__ ((noinline)) AutoPauseScreenState::constructor(AutoPauseScreenState this)
 {
 	Base::constructor();
 }
 
 // class's destructor
-static void AutoPauseScreenState::destructor(AutoPauseScreenState this)
+void AutoPauseScreenState::destructor(AutoPauseScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's enter
-static void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner __attribute__ ((unused)))
+void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner __attribute__ ((unused)))
 {
 	// load stage
 	GameState::loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
@@ -123,7 +123,7 @@ static void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner _
 }
 
 // state's exit
-static void AutoPauseScreenState::exit(AutoPauseScreenState this __attribute__ ((unused)), void* owner __attribute__ ((unused)))
+void AutoPauseScreenState::exit(AutoPauseScreenState this __attribute__ ((unused)), void* owner __attribute__ ((unused)))
 {
 	// call base
 	Base::exit(this, owner);

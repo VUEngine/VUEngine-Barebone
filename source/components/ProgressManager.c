@@ -38,7 +38,7 @@
 // 												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void ProgressManager::constructor(ProgressManager this);
+void ProgressManager::constructor(ProgressManager this);
 bool ProgressManager::verifySaveStamp(ProgressManager this);
 u32 ProgressManager::computeChecksum(ProgressManager this);
 void ProgressManager::writeChecksum(ProgressManager this);
@@ -50,11 +50,8 @@ static void ProgressManager::initialize(ProgressManager this);
 // 												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
-// it's a singleton
-__SINGLETON(ProgressManager);
-
 // class's constructor
-static void __attribute__ ((noinline)) ProgressManager::constructor(ProgressManager this)
+void __attribute__ ((noinline)) ProgressManager::constructor(ProgressManager this)
 {
 	ASSERT(this, "ProgressManager::constructor: null this");
 

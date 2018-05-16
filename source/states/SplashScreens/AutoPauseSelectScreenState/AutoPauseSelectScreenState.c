@@ -51,8 +51,8 @@ extern StageROMDef EMPTY_STAGE_ST;
 //												PROTOTYPES
 //---------------------------------------------------------------------------------------------------------
 
-static void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this);
-static void AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this);
+void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this);
+void AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this);
 static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenState this);
 
 
@@ -60,7 +60,7 @@ static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenSta
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-__SINGLETON_DYNAMIC(AutoPauseSelectScreenState);
+
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ __SINGLETON_DYNAMIC(AutoPauseSelectScreenState);
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void __attribute__ ((noinline)) AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this)
+void __attribute__ ((noinline)) AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this)
 {
 	Base::constructor();
 
@@ -78,13 +78,13 @@ static void __attribute__ ((noinline)) AutoPauseSelectScreenState::constructor(A
 }
 
 // class's destructor
-static void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this)
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
-static void AutoPauseSelectScreenState::print(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::print(AutoPauseSelectScreenState this)
 {
 	this->selection = ProgressManager::getAutomaticPauseStatus(ProgressManager::getInstance());
 
