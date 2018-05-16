@@ -9,13 +9,14 @@ TYPE = debug
 
 # Where I live
 GAME_HOME = $(shell pwd)
-WORKING_FOLDER = $(GAME_HOME)/./$(BUILD_DIR)/compiler
+WORKING_FOLDER = $(GAME_HOME)/$(BUILD_DIR)/compiler
 
 # output dir
 BUILD_DIR = build
 
 # target's needed steps
 ALL_TARGET_PREREQUISITES = dirs $(TARGET).vb $(PAD) $(DUMP_TARGET)
+#ALL_TARGET_PREREQUISITES = portToNewSyntax dirs $(VUENGINE) $(C_OBJECTS) printPostPreprocessorInfo
 
 # compiler
 COMPILER_VERSION = 4.7
@@ -171,7 +172,10 @@ MACROS = $(COMMON_MACROS)
 endif
 
 # Add directories to the include and library paths
-GAME_INCLUDE_PATHS = $(shell find $(WORKING_FOLDER)/source/  -type d -print)
+INCLUDE_DIRS = $(shell find $(VUENGINE_HOME)/source -type d -print)
+INCLUDE_DIRS := $(INCLUDE_DIRS) $(shell find source assets/fonts assets/languages -type d -print)
+
+GAME_INCLUDE_PATHS =$(foreach DIR,$(INCLUDE_DIRS),./$(BUILD_DIR)/compiler/source/$(DIR))
 
 # linked engine's home
 VUENGINE_LIBRARY_PATH = $(BUILD_DIR)
@@ -235,7 +239,9 @@ printBuildingInfo:
 	@echo Build type: $(TYPE)
 	@echo Compiler: $(COMPILER_NAME) $(COMPILER_VERSION)
 	@echo Compiler\'s output: $(COMPILER_OUTPUT)
-#	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/cleanSyntax.sh $(VUENGINE_HOME) $(GAME_HOME)/source $(WORKING_FOLDER)/preprocessor
+
+portToNewSyntax: dirs
+	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/cleanSyntax.sh $(VUENGINE_HOME) $(GAME_HOME)/source $(WORKING_FOLDER)/preprocessor
 
 printPostPreprocessorInfo:
 	@echo Done compiling in $(TYPE) mode with GCC $(COMPILER_VERSION)
@@ -268,7 +274,7 @@ $(TARGET).elf: $(VUENGINE) $(VIRTUAL_METHODS_HELPER) $(C_OBJECTS) $(C_INTERMEDIA
 
 $(VIRTUAL_METHODS_HELPER): $(H_FILES)
 	@echo "Preparing virtual methods in game"
-	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/prepareVirtualMethods.sh -w $(WORKING_FOLDER)/preprocessor -h $(GAME_HOME)/source -p $(HELPERS_PREFIX) -d
+	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/prepareVirtualMethods.sh -w $(WORKING_FOLDER)/preprocessor -h $(WORKING_FOLDER)/source -p $(HELPERS_PREFIX) -d
 
 $(SETUP_CLASSES_OBJECT).o: $(WORKING_FOLDER)/preprocessor/$(SETUP_CLASSES).c
 	@echo Compiling $<
@@ -302,7 +308,7 @@ $(STORE)/%.o: %.s
 
 $(WORKING_FOLDER)/source/%.h: %.h
 	@echo Analysing $<
-	@echo into $@
+#	@echo into $@
 	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/processHeader.sh -i $< -o $@ -w $(WORKING_FOLDER)/preprocessor -c $(CLASSES_HIERARCHY_FILE)
 
 $(VUENGINE): deleteEngine
