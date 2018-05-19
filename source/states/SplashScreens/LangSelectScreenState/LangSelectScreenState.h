@@ -40,8 +40,8 @@ dynamic_singleton class LangSelectScreenState: SplashScreenState
 	OptionsSelector languageSelector;
 
 	static LangSelectScreenState getInstance();
-	override static void processInput(LangSelectScreenState this, u32 pressedKey);
-	override static void print(LangSelectScreenState this);
+	override void processInput(u32 pressedKey);
+	override void print();
 }
 
 

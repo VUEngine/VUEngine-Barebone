@@ -48,15 +48,6 @@ extern StageROMDef EMPTY_STAGE_ST;
 
 
 //---------------------------------------------------------------------------------------------------------
-//												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this);
-void AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this);
-static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenState this);
-
-
-//---------------------------------------------------------------------------------------------------------
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
@@ -68,23 +59,23 @@ static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenSta
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-void __attribute__ ((noinline)) AutoPauseSelectScreenState::constructor(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::constructor()
 {
 	Base::constructor();
 
-	SplashScreenState::setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, LangSelectScreenState::getInstance()));
+	SplashScreenState::setNextState(SplashScreenState::safeCast(this), GameState::safeCast(LangSelectScreenState::getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_STAGE_ST;
 	this->selection = true;
 }
 
 // class's destructor
-void AutoPauseSelectScreenState::destructor(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::destructor()
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
-void AutoPauseSelectScreenState::print(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::print()
 {
 	this->selection = ProgressManager::getAutomaticPauseStatus(ProgressManager::getInstance());
 
@@ -110,7 +101,7 @@ void AutoPauseSelectScreenState::print(AutoPauseSelectScreenState this)
 	AutoPauseSelectScreenState::renderSelection(this);
 }
 
-static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenState this)
+void AutoPauseSelectScreenState::renderSelection()
 {
 	const char* strOn = I18n::getText(I18n::getInstance(), STR_ON);
 	const char* strOff = I18n::getText(I18n::getInstance(), STR_OFF);
@@ -162,7 +153,7 @@ static void AutoPauseSelectScreenState::renderSelection(AutoPauseSelectScreenSta
 	Printing::text(Printing::getInstance(), "\x06               ", optionEnd, __OPTIONS_Y_POS + 1 + strOnSize.y, NULL);
 }
 
-void AutoPauseSelectScreenState::processInput(AutoPauseSelectScreenState this, u32 pressedKey)
+void AutoPauseSelectScreenState::processInput(u32 pressedKey)
 {
 	if((pressedKey & K_LL) || (pressedKey & K_LR))
 	{
@@ -172,10 +163,10 @@ void AutoPauseSelectScreenState::processInput(AutoPauseSelectScreenState this, u
 	else if((pressedKey & K_A) || (pressedKey & K_STA))
 	{
 		Game::setAutomaticPauseState(Game::getInstance(), this->selection
-			? __SAFE_CAST(GameState, AutoPauseScreenState::getInstance())
+			? GameState::safeCast(AutoPauseScreenState::getInstance())
 			: NULL
 		);
 		ProgressManager::setAutomaticPauseStatus(ProgressManager::getInstance(), (bool)this->selection);
-		SplashScreenState::loadNextState(__SAFE_CAST(SplashScreenState, this));
+		SplashScreenState::loadNextState(SplashScreenState::safeCast(this));
 	}
 }

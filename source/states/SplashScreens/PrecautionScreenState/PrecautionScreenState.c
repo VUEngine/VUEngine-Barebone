@@ -47,35 +47,27 @@ extern const u16 INTRO_SND[];
 
 
 //---------------------------------------------------------------------------------------------------------
-//												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-void PrecautionScreenState::destructor(PrecautionScreenState this);
-void PrecautionScreenState::constructor(PrecautionScreenState this);
-
-
-//---------------------------------------------------------------------------------------------------------
 //											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-void __attribute__ ((noinline)) PrecautionScreenState::constructor(PrecautionScreenState this)
+void PrecautionScreenState::constructor()
 {
 	Base::constructor();
 
-	SplashScreenState::setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AdjustmentScreenState::getInstance()));
+	SplashScreenState::setNextState(SplashScreenState::safeCast(this), GameState::safeCast(AdjustmentScreenState::getInstance()));
 	this->stageDefinition = (StageDefinition*)&EMPTY_STAGE_ST;
 }
 
 // class's destructor
-void PrecautionScreenState::destructor(PrecautionScreenState this)
+void PrecautionScreenState::destructor()
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's handle message
-bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* owner __attribute__ ((unused)), Telegram telegram)
+bool PrecautionScreenState::processMessage(void* owner __attribute__ ((unused)), Telegram telegram)
 {
 	switch(Telegram::getMessage(telegram))
 	{
@@ -89,7 +81,7 @@ bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* own
 				Game::wait(Game::getInstance(), 1500);
 
 				// show this screen for at least 2 seconds, as defined by Nintendo in the official development manual (Appendix 1)
-				MessageDispatcher::dispatchMessage(2000, __SAFE_CAST(Object, this), __SAFE_CAST(Object, Game::getInstance()), kScreenAllowUserInput, NULL);
+				MessageDispatcher::dispatchMessage(2000, Object::safeCast(this), Object::safeCast(Game::getInstance()), kScreenAllowUserInput, NULL);
 
 				// call base class' method
 				Base::processMessage(this, owner, telegram);
@@ -109,7 +101,7 @@ bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* own
 	return false;
 }
 
-void PrecautionScreenState::print(PrecautionScreenState this __attribute__ ((unused)))
+void PrecautionScreenState::print()
 {
 	const char* strPrecautionTitle = I18n::getText(I18n::getInstance(), STR_IMPORTANT);
 	const char* strPrecautionTitleFont = "LargeFont";

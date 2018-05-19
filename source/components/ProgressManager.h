@@ -66,13 +66,13 @@ singleton class ProgressManager : Object
 	bool sramAvailable;
 
 	static ProgressManager getInstance();
-	void clearProgress(ProgressManager this);
-	void destructor(ProgressManager this);
-	bool getAutomaticPauseStatus(ProgressManager this);
-	u8 getLanguage(ProgressManager this);
-	bool hasProgress(ProgressManager this);
-	void setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
-	void setLanguage(ProgressManager this, u8 language);
+	void clearProgress();
+	void destructor();
+	bool getAutomaticPauseStatus();
+	u8 getLanguage();
+	bool hasProgress();
+	void setAutomaticPauseStatus(u8 automaticPause);
+	void setLanguage(u8 language);
 }
 
 

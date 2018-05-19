@@ -45,32 +45,24 @@ extern StageROMDef EMPTY_STAGE_ST;
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-void HelloWorldScreenState::destructor(HelloWorldScreenState this);
-void HelloWorldScreenState::constructor(HelloWorldScreenState this);
-
-
-//---------------------------------------------------------------------------------------------------------
 // 											CLASS'S DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-void __attribute__ ((noinline)) HelloWorldScreenState::constructor(HelloWorldScreenState this)
+void HelloWorldScreenState::constructor()
 {
 	Base::constructor();
 }
 
 // class's destructor
-void HelloWorldScreenState::destructor(HelloWorldScreenState this)
+void HelloWorldScreenState::destructor()
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's enter
-void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner __attribute__ ((unused)))
+void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 {
 	// call base
 	Base::enter(this, owner);
@@ -79,7 +71,7 @@ void HelloWorldScreenState::enter(HelloWorldScreenState this, void* owner __attr
 	Game::disableKeypad(Game::getInstance());
 
 	//load stage
-	GameState::loadStage(__SAFE_CAST(GameState, this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
+	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
 	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, NULL);

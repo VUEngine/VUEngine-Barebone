@@ -35,13 +35,6 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-u32 PostProcessingEffects::writeToFrameBuffer(u16 y, u16 shift, u32* columnSourcePointer, u32 previousSourcePointerValue);
-
-
-//---------------------------------------------------------------------------------------------------------
 // 												FUNCTIONS
 //---------------------------------------------------------------------------------------------------------
 
@@ -51,7 +44,7 @@ u32 PostProcessingEffects::writeToFrameBuffer(u16 y, u16 shift, u32* columnSourc
  *
  * @param currentDrawingFrameBufferSet	The framebuffer set that's currently being accessed
  */
-void PostProcessingEffects::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
+static void PostProcessingEffects::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
 {
 	u8 buffer = 0;
 	u16 x = 0;
@@ -115,7 +108,7 @@ void PostProcessingEffects::wobble(u32 currentDrawingFrameBufferSet, SpatialObje
  * @param columnSourcePointer			Framebuffer address of the current column (x value)
  * @param previousSourcePointerValue	Value from the loop's previous cycle (effectively where y - 1)
  */
-u32 PostProcessingEffects::writeToFrameBuffer(u16 y, u16 shift, u32* columnSourcePointer, u32 previousSourcePointerValue)
+static u32 PostProcessingEffects::writeToFrameBuffer(u16 y, u16 shift, u32* columnSourcePointer, u32 previousSourcePointerValue)
 {
 	// pointer to currently manipulated 32 bits of framebuffer
 	u32* sourcePointer = columnSourcePointer + y;
