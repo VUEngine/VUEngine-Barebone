@@ -34,12 +34,12 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class AutoPauseScreenState : GameState
+dynamic_singleton class AutoPauseScreenState : GameState
 {
-	AutoPauseScreenState AutoPauseScreenState::getInstance(void);
-	virtual void AutoPauseScreenState::processUserInput(AutoPauseScreenState this, UserInput userInput);
-	virtual static void AutoPauseScreenState::exit(AutoPauseScreenState this, void* owner);
-	virtual static void AutoPauseScreenState::enter(AutoPauseScreenState this, void* owner);
+	static AutoPauseScreenState getInstance();
+	override void processUserInput(UserInput userInput);
+	override void exit(void* owner);
+	override void enter(void* owner);
 }
 
 

@@ -34,7 +34,11 @@
 // 										FUNCTIONS
 //---------------------------------------------------------------------------------------------------------
 
-void PostProcessingEffects::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
+static class PostProcessingEffects : Object
+{
+	static void wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
+}
 
 
 #endif
+

@@ -34,12 +34,12 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class PrecautionScreenState: SplashScreenState
+dynamic_singleton class PrecautionScreenState: SplashScreenState
 {
-	PrecautionScreenState PrecautionScreenState::getInstance(void);
+	static PrecautionScreenState getInstance();
 
-	virtual static void PrecautionScreenState::print(PrecautionScreenState this);
-	virtual static bool PrecautionScreenState::processMessage(PrecautionScreenState this, void* owner, Telegram telegram);
+	override void print();
+	override bool processMessage(void* owner, Telegram telegram);
 }
 
 

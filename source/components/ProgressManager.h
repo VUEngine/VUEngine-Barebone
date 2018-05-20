@@ -65,14 +65,14 @@ singleton class ProgressManager : Object
 	// flag that tells if sram is available on the current cartridge
 	bool sramAvailable;
 
-	ProgressManager ProgressManager::getInstance();
-	void ProgressManager::clearProgress(ProgressManager this);
-	void ProgressManager::destructor(ProgressManager this);
-	bool ProgressManager::getAutomaticPauseStatus(ProgressManager this);
-	u8 ProgressManager::getLanguage(ProgressManager this);
-	bool ProgressManager::hasProgress(ProgressManager this);
-	void ProgressManager::setAutomaticPauseStatus(ProgressManager this, u8 automaticPause);
-	void ProgressManager::setLanguage(ProgressManager this, u8 language);
+	static ProgressManager getInstance();
+	void clearProgress();
+	void destructor();
+	bool getAutomaticPauseStatus();
+	u8 getLanguage();
+	bool hasProgress();
+	void setAutomaticPauseStatus(u8 automaticPause);
+	void setLanguage(u8 language);
 }
 
 

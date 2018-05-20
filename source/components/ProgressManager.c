@@ -35,29 +35,12 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-static void ProgressManager::constructor(ProgressManager this);
-bool ProgressManager::verifySaveStamp(ProgressManager this);
-u32 ProgressManager::computeChecksum(ProgressManager this);
-void ProgressManager::writeChecksum(ProgressManager this);
-bool ProgressManager::verifyChecksum(ProgressManager this);
-static void ProgressManager::initialize(ProgressManager this);
-
-
-//---------------------------------------------------------------------------------------------------------
 // 												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
-// it's a singleton
-__SINGLETON(ProgressManager);
-
 // class's constructor
-static void __attribute__ ((noinline)) ProgressManager::constructor(ProgressManager this)
+void ProgressManager::constructor()
 {
-	ASSERT(this, "ProgressManager::constructor: null this");
-
 	// construct base object
 	Base::constructor();
 
@@ -69,16 +52,14 @@ static void __attribute__ ((noinline)) ProgressManager::constructor(ProgressMana
 }
 
 // class's destructor
-void ProgressManager::destructor(ProgressManager this)
+void ProgressManager::destructor()
 {
-	ASSERT(this, "ProgressManager::destructor: null this");
-
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // write then immediately read save stamp to validate sram
-bool ProgressManager::verifySaveStamp(ProgressManager this __attribute__ ((unused)))
+bool ProgressManager::verifySaveStamp()
 {
 	char saveStamp[SAVE_STAMP_LENGTH];
 
@@ -91,7 +72,7 @@ bool ProgressManager::verifySaveStamp(ProgressManager this __attribute__ ((unuse
 	return !strncmp(saveStamp, SAVE_STAMP, SAVE_STAMP_LENGTH);
 }
 
-u32 ProgressManager::computeChecksum(ProgressManager this __attribute__ ((unused)))
+u32 ProgressManager::computeChecksum()
 {
 	u32 crc32 = ~0;
 
@@ -121,13 +102,13 @@ u32 ProgressManager::computeChecksum(ProgressManager this __attribute__ ((unused
 	return ~crc32;
 }
 
-void ProgressManager::writeChecksum(ProgressManager this)
+void ProgressManager::writeChecksum()
 {
 	u32 checksum = ProgressManager::computeChecksum(this);
 	SRAMManager::save(SRAMManager::getInstance(), (BYTE*)&checksum, offsetof(struct SaveData, checksum), sizeof(checksum));
 }
 
-bool ProgressManager::verifyChecksum(ProgressManager this)
+bool ProgressManager::verifyChecksum()
 {
 	u32 computedChecksum = ProgressManager::computeChecksum(this);
 	u32 savedChecksum = 0;
@@ -136,10 +117,8 @@ bool ProgressManager::verifyChecksum(ProgressManager this)
 	return (computedChecksum == savedChecksum);
 }
 
-static void ProgressManager::initialize(ProgressManager this)
+void ProgressManager::initialize()
 {
-	ASSERT(this, "ProgressManager::initialize: null this");
-
 	// verify sram validity
 	if(ProgressManager::verifySaveStamp(this))
 	{
@@ -158,16 +137,14 @@ static void ProgressManager::initialize(ProgressManager this)
 
 		// load and set auto pause state
 		Game::setAutomaticPauseState(Game::getInstance(), ProgressManager::getAutomaticPauseStatus(this)
-			? __SAFE_CAST(GameState, AutoPauseScreenState::getInstance())
+			? GameState::safeCast(AutoPauseScreenState::getInstance())
 			: NULL
 		);
 	}
 }
 
-u8 ProgressManager::getLanguage(ProgressManager this __attribute__ ((unused)))
+u8 ProgressManager::getLanguage()
 {
-	ASSERT(this, "ProgressManager::getLanguage: null this");
-
 	u8 languageId = 0;
 	if(this->sramAvailable)
 	{
@@ -177,10 +154,8 @@ u8 ProgressManager::getLanguage(ProgressManager this __attribute__ ((unused)))
 	return languageId;
 }
 
-void ProgressManager::setLanguage(ProgressManager this __attribute__ ((unused)), u8 languageId)
+void ProgressManager::setLanguage(u8 languageId)
 {
-	ASSERT(this, "ProgressManager::setLanguage: null this");
-
 	if(this->sramAvailable)
 	{
 		// write language
@@ -191,10 +166,8 @@ void ProgressManager::setLanguage(ProgressManager this __attribute__ ((unused)),
 	}
 }
 
-bool ProgressManager::getAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)))
+bool ProgressManager::getAutomaticPauseStatus()
 {
-	ASSERT(this, "ProgressManager::getAutomaticPause: null this");
-
 	u8 autoPauseStatus = 0;
 	if(this->sramAvailable)
 	{
@@ -204,10 +177,8 @@ bool ProgressManager::getAutomaticPauseStatus(ProgressManager this __attribute__
 	return !autoPauseStatus;
 }
 
-void ProgressManager::setAutomaticPauseStatus(ProgressManager this __attribute__ ((unused)), u8 autoPauseStatus)
+void ProgressManager::setAutomaticPauseStatus(u8 autoPauseStatus)
 {
-	ASSERT(this, "ProgressManager::setAutomaticPause: null this");
-
 	if(this->sramAvailable)
 	{
 		// we save the inverted status, so that 0 = enabled, 1 = disabled.

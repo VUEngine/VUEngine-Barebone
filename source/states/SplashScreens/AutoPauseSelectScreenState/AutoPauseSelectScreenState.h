@@ -42,13 +42,13 @@
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class AutoPauseSelectScreenState: SplashScreenState
+dynamic_singleton class AutoPauseSelectScreenState: SplashScreenState
 {
 	bool selection;
 
-	AutoPauseSelectScreenState AutoPauseSelectScreenState::getInstance(void);
-	virtual static void AutoPauseSelectScreenState::print(AutoPauseSelectScreenState this);
-	virtual static void AutoPauseSelectScreenState::processInput(AutoPauseSelectScreenState this, u32 pressedKey);
+	static AutoPauseSelectScreenState getInstance();
+	override void print();
+	override void processInput(u32 pressedKey);
 }
 
 

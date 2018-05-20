@@ -40,43 +40,27 @@ extern StageROMDef ADJUSTMENT_SCREEN_STAGE_ST;
 
 
 //---------------------------------------------------------------------------------------------------------
-//												PROTOTYPES
-//---------------------------------------------------------------------------------------------------------
-
-static void AdjustmentScreenState::destructor(AdjustmentScreenState this);
-static void AdjustmentScreenState::constructor(AdjustmentScreenState this);
-void AdjustmentScreenState::rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
-
-
-//---------------------------------------------------------------------------------------------------------
-//											CLASS'S DEFINITION
-//---------------------------------------------------------------------------------------------------------
-
-__SINGLETON_DYNAMIC(AdjustmentScreenState);
-
-
-//---------------------------------------------------------------------------------------------------------
 //												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
 // class's constructor
-static void __attribute__ ((noinline)) AdjustmentScreenState::constructor(AdjustmentScreenState this)
+void AdjustmentScreenState::constructor()
 {
 	Base::constructor();
 
-	SplashScreenState::setNextState(__SAFE_CAST(SplashScreenState, this), __SAFE_CAST(GameState, AutoPauseSelectScreenState::getInstance()));
+	SplashScreenState::setNextState(SplashScreenState::safeCast(this), GameState::safeCast(AutoPauseSelectScreenState::getInstance()));
 	this->stageDefinition = (StageDefinition*)&ADJUSTMENT_SCREEN_STAGE_ST;
 }
 
 // class's destructor
-static void AdjustmentScreenState::destructor(AdjustmentScreenState this)
+void AdjustmentScreenState::destructor()
 {
 	// destroy base
 	__SINGLETON_DESTROY;
 }
 
 // state's enter
-void AdjustmentScreenState::enter(AdjustmentScreenState this, void* owner)
+void AdjustmentScreenState::enter(void* owner)
 {
 	// call base
 	Base::enter(this, owner);
@@ -88,12 +72,12 @@ void AdjustmentScreenState::enter(AdjustmentScreenState this, void* owner)
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), AdjustmentScreenState::rhombusEmitterPostProcessingEffect, NULL);
 }
 
-static void AdjustmentScreenState::processInput(AdjustmentScreenState this, u32 pressedKey __attribute__ ((unused)))
+void AdjustmentScreenState::processInput(u32 pressedKey __attribute__ ((unused)))
 {
-	SplashScreenState::loadNextState(__SAFE_CAST(SplashScreenState, this));
+	SplashScreenState::loadNextState(SplashScreenState::safeCast(this));
 }
 
-void AdjustmentScreenState::rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet __attribute__ ((unused)), SpatialObject spatialObject __attribute__ ((unused)))
+static void AdjustmentScreenState::rhombusEmitterPostProcessingEffect(u32 currentDrawingFrameBufferSet __attribute__ ((unused)), SpatialObject spatialObject __attribute__ ((unused)))
 {
 	// runtime working variables
 	// negative value to achieve an initial delay
