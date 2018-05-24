@@ -27,52 +27,31 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Object.h>
+#include <SaveDataManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												DECLARATIONS
+// 											TYPE DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
-
-#define SAVE_STAMP				"VUEngine"
-#define SAVE_STAMP_LENGTH		8
 
 // this struct is never instantiated, its sole purpose is to determine offsets of its members.
 // therefore it acts as kind of like a map of sram content.
-typedef struct SaveData
+typedef struct GameSaveData
 {
-	// flag to know if there is data saved
-	u8 saveStamp[SAVE_STAMP_LENGTH];
+	// some custom value
+	u8 someCustomValue;
 
-	// checksum over sram content to prevent save data manipulation
-	u32 checksum;
-
-	// active language id
-	u8 languageId;
-
-	// auto pause status (0: on, 1: off)
-	u8 autoPauseStatus;
-
-} SaveData;
+} GameSaveData;
 
 
 //---------------------------------------------------------------------------------------------------------
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-singleton class ProgressManager : Object
+singleton class ProgressManager : SaveDataManager
 {
-	// flag that tells if sram is available on the current cartridge
-	bool sramAvailable;
-
 	static ProgressManager getInstance();
-	void clearProgress();
 	void destructor();
-	bool getAutomaticPauseStatus();
-	u8 getLanguage();
-	bool hasProgress();
-	void setAutomaticPauseStatus(u8 automaticPause);
-	void setLanguage(u8 language);
 }
 
 

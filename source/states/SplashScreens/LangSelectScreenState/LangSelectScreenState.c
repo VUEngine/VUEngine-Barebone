@@ -34,6 +34,7 @@
 #include <Languages.h>
 #include <KeyPadManager.h>
 #include <Utilities.h>
+#include <SaveDataManager.h>
 #include <ProgressManager.h>
 
 
@@ -67,7 +68,7 @@ void LangSelectScreenState::constructor()
 	this->languageSelector = new OptionsSelector(1, 8, NULL);
 	VirtualList languageNames = new VirtualList();
 
-	u8 activeLanguage = ProgressManager::getLanguage(ProgressManager::getInstance());
+	u8 activeLanguage = SaveDataManager::getLanguage(ProgressManager::getInstance());
 
 	int i = 0;
 	for(; __LANGUAGES[i]; i++)
@@ -109,7 +110,7 @@ void LangSelectScreenState::processInput(u32 pressedKey)
 	{
 		int selectedLanguage = OptionsSelector::getSelectedOption(this->languageSelector);
 		I18n::setActiveLanguage(I18n::getInstance(), selectedLanguage);
-		ProgressManager::setLanguage(ProgressManager::getInstance(), selectedLanguage);
+		SaveDataManager::setLanguage(ProgressManager::getInstance(), selectedLanguage);
 		SplashScreenState::loadNextState(SplashScreenState::safeCast(this));
 	}
 }

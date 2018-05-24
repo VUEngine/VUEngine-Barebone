@@ -1,7 +1,14 @@
 VUEngine Barebone
 =================
 
-Barebone project to be used as the foundation of new VUEngine 5.2 projects.
+Barebone project to be used as the foundation of new VUEngine 6 projects.
+
+
+COMPILING ON WIN32
+------------------
+
+The VUEngine Barebone as well as the VUEngine and VUEngine Components library come bundled with VBDE 
+(http://vbde.planetvb.com). Compile by starting the VBDE build system.
 
 
 LICENSE
@@ -26,13 +33,6 @@ want as long as you include the original copyright and license notice in any cop
 	NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-COMPILING ON WIN32
-------------------
-
-The VUEngine Barebone as well as the VUEngine come bundled with VBDE (http://vbde.planetvb.com). 
-Compile by starting the VBDE build system.
 
 
 CREDITS

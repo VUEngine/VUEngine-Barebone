@@ -3,14 +3,19 @@
 NAME = game
 
 # Default build type
-TYPE = debug
-#TYPE = release
+TYPE = release
 #TYPE = beta
 #TYPE = tools
+#TYPE = debug
 #TYPE = preprocessor
 
 # Which libraries are linked
-LIBRARIES = vuengine $(COMPONENTS)
+ifeq ($(COMPONENTS),)
+  COMPONENTS_PREFIXED = $(addprefix vuengine-components/,$(COMPONENTS))
+else
+  COMPONENTS_PREFIXED =
+endif
+LIBRARIES = vuengine $(COMPONENTS_PREFIXED)
 
 # engine's home
 VUENGINE_HOME = $(VBDE)libs/vuengine
@@ -186,7 +191,7 @@ C_PARAMS = -std=gnu99 -mv810 -nodefaultlibs -Wall -Wextra -E
 MACROS = $(COMMON_MACROS)
 endif
 
-# Makefs a list of the source (.cpp) files.
+# Makefs a list of the source (.c) files.
 C_SOURCE = $(foreach DIR,$(SOURCES_DIRS),$(wildcard $(DIR)/*.c))
 
 # Makes a list of the source (.s) files.
@@ -265,7 +270,7 @@ $(TARGET).vb: $(TARGET).elf
 $(TARGET).elf: libraries $(H_FILES) $(C_OBJECTS) $(C_INTERMEDIATE_SOURCES) $(ASSEMBLY_OBJECTS) $(SETUP_CLASSES_OBJECT).o $(FINAL_SETUP_CLASSES_OBJECT).o
 	@echo Linking $(TARGET).elf
 	@$(GCC) -o $@ -nostartfiles $(C_OBJECTS) $(ASSEMBLY_OBJECTS) $(FINAL_SETUP_CLASSES_OBJECT).o $(SETUP_CLASSES_OBJECT).o $(LD_PARAMS) \
-		$(foreach LIBRARY, $(LIBRARIES),-l$(LIBRARY)) $(foreach LIB,$(LIBRARIES_PATH),-L$(LIB)) -Wl,-Map=$(TARGET).map
+		$(foreach LIBRARY, $(LIBRARIES),-l$(shell sed -e "s/vuengine-components\///g" <<< $(LIBRARY))) $(foreach LIB,$(LIBRARIES_PATH),-L$(LIB)) -Wl,-Map=$(TARGET).map
 
 $(SETUP_CLASSES_OBJECT).o: $(PREPROCESSOR_WORKING_FOLDER)/$(SETUP_CLASSES).c
 	@echo -n "Compiling "
@@ -308,13 +313,13 @@ $(PREPROCESSOR_WORKING_FOLDER)/headers/$(NAME)/%.h: %.h
 	@sh $(VUENGINE_HOME)/lib/compiler/preprocessor/processHeaderFile.sh -i $< -o $@ -w $(PREPROCESSOR_WORKING_FOLDER) -c $(CLASSES_HIERARCHY_FILE) -p $(HELPERS_PREFIX)
 
 libraries: deleteLibraries
-	@-$(foreach LIBRARY, $(LIBRARIES), echo; 											\
-		echo Building $(LIBRARY);														\
-		$(MAKE) all -f $(VBDE)libs/$(LIBRARY)/makefile $(BUILD_DIR)/lib$(LIBRARY).a 	\
-				-e TYPE=$(TYPE) 														\
-				-e CONFIG_FILE=$(CONFIG_FILE) 											\
-				-e CONFIG_MAKE_FILE=$(CONFIG_MAKE_FILE) 								\
-				-e GAME_HOME=$(MY_HOME);												\
+	@-$(foreach LIBRARY, $(LIBRARIES), echo; 																							\
+		echo Building $(LIBRARY);																										\
+		$(MAKE) all -f $(VBDE)libs/$(LIBRARY)/makefile $(BUILD_DIR)/lib$(shell sed -e "s/vuengine-components\///g" <<< $(LIBRARY)).a 	\
+				-e TYPE=$(TYPE) 																										\
+				-e CONFIG_FILE=$(CONFIG_FILE) 																							\
+				-e CONFIG_MAKE_FILE=$(CONFIG_MAKE_FILE) 																				\
+				-e GAME_HOME=$(MY_HOME);																								\
 	)
 
 deleteLibraries:

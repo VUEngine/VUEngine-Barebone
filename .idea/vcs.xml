@@ -2,6 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../../libs/vuengine" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../libs/vuengine-components" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../../../../../libs/vuengine" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../../../../../libs/vuengine-components" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../../../../../samples/vuengine/vuengine-barebone" vcs="Git" />
   </component>
 </project>
