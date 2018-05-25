@@ -19,29 +19,55 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#ifndef GAME_SAVE_DATA_MANAGER_H_
+#define GAME_SAVE_DATA_MANAGER_H_
+
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <VirtualList.h>
-#include <ProgressManager.h>
+#include <SaveDataManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												CLASS'S METHODS
+// 												MACROS
 //---------------------------------------------------------------------------------------------------------
 
-// class's constructor
-void ProgressManager::constructor()
+#undef  SAVE_STAMP
+#define SAVE_STAMP			"VUEngineBarebone"
+#undef  SAVE_STAMP_LENGTH
+#define SAVE_STAMP_LENGTH	16
+
+
+//---------------------------------------------------------------------------------------------------------
+// 											TYPE DEFINITIONS
+//---------------------------------------------------------------------------------------------------------
+
+// this struct is never instantiated, its sole purpose is to determine offsets of its members.
+// therefore it acts as kind of like a map of sram content.
+typedef struct GameSaveData
 {
-	// construct base object
-	Base::constructor();
+	// save data handled by base class
+	SaveData baseSaveData;
+
+	// some custom value
+	u8 someCustomValue;
+
+} GameSaveData;
+
+
+//---------------------------------------------------------------------------------------------------------
+//											CLASS'S DECLARATION
+//---------------------------------------------------------------------------------------------------------
+
+singleton class GameSaveDataManager : SaveDataManager
+{
+	static GameSaveDataManager getInstance();
+	void destructor();
+	u8 getCustomValue();
+    void setCustomValue(u8 customValue);
 }
 
-// class's destructor
-void ProgressManager::destructor()
-{
-	// destroy base
-	__SINGLETON_DESTROY;
-}
+
+#endif

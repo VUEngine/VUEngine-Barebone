@@ -38,7 +38,7 @@
 #include <Languages.h>
 #include <KeyPadManager.h>
 #include <SaveDataManager.h>
-#include <ProgressManager.h>
+#include <GameSaveDataManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ void AutoPauseSelectScreenState::destructor()
 
 void AutoPauseSelectScreenState::print()
 {
-	this->selection = SaveDataManager::getAutomaticPauseStatus(ProgressManager::getInstance());
+	this->selection = SaveDataManager::getAutomaticPauseStatus(GameSaveDataManager::getInstance());
 
 	const char* strAutomaticPauseTitle = I18n::getText(I18n::getInstance(), STR_AUTOMATIC_PAUSE);
 	const char* strAutomaticPauseTitleFont = "LargeFont";
@@ -160,7 +160,7 @@ void AutoPauseSelectScreenState::processInput(u32 pressedKey)
 			? GameState::safeCast(AutoPauseScreenState::getInstance())
 			: NULL
 		);
-		SaveDataManager::setAutomaticPauseStatus(ProgressManager::getInstance(), (bool)this->selection);
+		SaveDataManager::setAutomaticPauseStatus(GameSaveDataManager::getInstance(), (bool)this->selection);
 		SplashScreenState::loadNextState(SplashScreenState::safeCast(this));
 	}
 }

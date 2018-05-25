@@ -1,7 +1,7 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	AdjustmentScreenState																		\
-				SaveDataManager																				\
-				SplashScreenState																			\
+COMPONENTS = 	AdjustmentScreenState																	\
+				SaveDataManager																			\
+				SplashScreenState																		\
 
 # Compiler's output
 COMPILER_OUTPUT			= c
@@ -15,7 +15,7 @@ COMPILER_OUTPUT			= c
 # tools:				Adds debugging tools without all the debug checking.
 # beta:					Removes most asserts. For testing the performance on hardware.
 # release:				Removes all asserts. For shipping only!
-TYPE					= beta
+TYPE					= tools
 
 # Optimization level
 OPTIMIZATION			= Ofast
