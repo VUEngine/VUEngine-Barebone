@@ -1,7 +1,6 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	AdjustmentScreenState																	\
-				SaveDataManager																			\
-				SplashScreenState																		\
+COMPONENTS = 	SaveDataManager																			\
+				SplashScreens																			\
 
 # Compiler's output
 COMPILER_OUTPUT			= c

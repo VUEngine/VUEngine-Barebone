@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
-#include <PrecautionScreenState.h>
+#include <AdjustmentScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@
 int main(void)
 {
 	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
+	Game::start(Game::getInstance(), GameState::safeCast(AdjustmentScreenState::getInstance()));
 
 	// end program
 	return true;

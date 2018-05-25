@@ -33,7 +33,6 @@
 #include <I18n.h>
 #include <Languages.h>
 #include <HelloWorldScreenState.h>
-#include <AdjustmentScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
