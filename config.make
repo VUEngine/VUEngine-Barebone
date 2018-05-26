@@ -1,5 +1,6 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	SaveDataManager																			\
+COMPONENTS = 	LowBatteryManager																		\
+				SaveDataManager																			\
 				SplashScreens																			\
 
 # Compiler's output
