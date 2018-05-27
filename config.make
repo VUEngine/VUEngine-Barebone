@@ -1,5 +1,6 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	LowBatteryIndicatorManager																		\
+COMPONENTS = 	AutomaticPause																			\
+				LowBatteryIndicator																		\
 				SaveDataManager																			\
 				SplashScreens																			\
 
@@ -15,7 +16,7 @@ COMPILER_OUTPUT			= c
 # tools:				Adds debugging tools without all the debug checking.
 # beta:					Removes most asserts. For testing the performance on hardware.
 # release:				Removes all asserts. For shipping only!
-TYPE					= tools
+TYPE					= debug
 
 # Optimization level
 OPTIMIZATION			= Ofast
