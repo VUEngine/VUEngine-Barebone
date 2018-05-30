@@ -82,6 +82,9 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	// add wobble effect
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
 
+	// enable user input
+	Game::enableKeypad(Game::getInstance());
+
 	// start fade in effect
 	Camera::startEffect(Camera::getInstance(),
 		kFadeTo, // effect type
