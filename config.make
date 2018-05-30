@@ -1,8 +1,8 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	AutomaticPause																			\
-				LowBatteryIndicator																		\
-				SaveDataManager																			\
-				SplashScreens																			\
+COMPONENTS = 	vuengine-components/other/AutomaticPause													\
+				vuengine-components/other/LowBatteryIndicator												\
+				vuengine-components/other/SaveDataManager													\
+				vuengine-components/states/SplashScreens													\
 
 # Compiler's output
 COMPILER_OUTPUT			= c
@@ -39,7 +39,7 @@ USE_PROLOG_FUNCTIONS	= 0
 # Pad ROM for hardware testing
 # 0:					No padding.
 # 1:					Pad the ROM for hardware testing.
-PAD_ROM				 = 0
+PAD_ROM				 	= 0
 
 # Dump elf
 # 0:					No dumping.
@@ -69,4 +69,4 @@ VIRTUAL_TABLES_DATA_SECTION	 = .dram_bss
 
 # Size of variables to be loaded in the .sdata section
 # Not working properly because rosdata is used instead of rodata section
-# MSDA_SIZE			 = 0
+# MSDA_SIZE			 	= 0

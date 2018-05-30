@@ -65,16 +65,12 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	// call base
 	Base::enter(this, owner);
 
-	// disallow user input
-	Game::disableKeypad(Game::getInstance());
-
-	//load stage
+	// load stage
 	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
 
+	// print hello world
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
 	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, NULL);
-
-	// print hello world
 	Printing::text(
 		Printing::getInstance(),
 		strHelloWorld,
@@ -83,7 +79,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 		NULL
 	);
 
-	// add rhombus effect
+	// add wobble effect
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
 
 	// start fade in effect
