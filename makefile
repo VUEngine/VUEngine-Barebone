@@ -314,6 +314,7 @@ libraries: deleteLibraries
 				-e TYPE=$(TYPE) 																										\
 				-e CONFIG_FILE=$(CONFIG_FILE) 																							\
 				-e CONFIG_MAKE_FILE=$(CONFIG_MAKE_FILE) 																				\
+				-e COMPONENTS= 																				\
 				-e GAME_HOME=$(MY_HOME);																								\
 	)
 
