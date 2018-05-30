@@ -19,7 +19,6 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 //---------------------------------------------------------------------------------------------------------
 //												INCLUDES
 //---------------------------------------------------------------------------------------------------------
@@ -31,27 +30,22 @@
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMDef EMPTY_STAGE_ST_ENTITIES[] =
+PositionedEntityROMDef HELLO_WORLD_STAGE_ST_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMDef EMPTY_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMDef HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
-
-
-//---------------------------------------------------------------------------------------------------------
-// 											PRELOAD LISTS
-//---------------------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------------------
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMDef EMPTY_STAGE_ST =
+StageROMDef HELLO_WORLD_STAGE_ST =
 {
 	// allocator
 	__TYPE(Stage),
@@ -77,7 +71,7 @@ StageROMDef EMPTY_STAGE_ST =
 			// z
 			0,
 			// p
-			0
+			0,
 		},
 
 		// camera's frustum
@@ -93,7 +87,7 @@ StageROMDef EMPTY_STAGE_ST =
         	// y1
         	__SCREEN_HEIGHT,
         	// z1
-        	__SCREEN_WIDTH * 5
+        	__SCREEN_WIDTH * 5,
         }
 	},
 
@@ -108,7 +102,7 @@ StageROMDef EMPTY_STAGE_ST =
 		// particle removal delay cycles
 		0,
 		// deferred
-		false
+		false,
 	},
 
 	// rendering
@@ -132,7 +126,7 @@ StageROMDef EMPTY_STAGE_ST =
 			// brightness values on the respective regions of the screen. maximum brightness is 128.
 			{
 				// dark red
-				__BRIGHTNESS_DARK_RED,
+				8,
 				// medium red
 				__BRIGHTNESS_MEDIUM_RED,
 				// bright red
@@ -183,18 +177,18 @@ StageROMDef EMPTY_STAGE_ST =
 			__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
 		},
 
-		// obj segments z coordinates
+		// OBJECT segments z coordinates
 		// note that each spt's z coordinate much be larger than or equal to the previous one's,
 		// since the vip renders obj worlds in reverse order (__spt3 to __spt0)
 		{
 			// __spt0
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt1
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt2
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt3
-			__F_TO_FIX10_6(0),
+			0,
 		},
 
 		// optical configuration values
@@ -220,7 +214,7 @@ StageROMDef EMPTY_STAGE_ST =
 		{
 			__I_TO_FIX10_6(0),
 			__F_TO_FIX10_6(__GRAVITY),
-			__I_TO_FIX10_6(0)
+			__I_TO_FIX10_6(0),
 		},
 
 		// friction
@@ -246,14 +240,15 @@ StageROMDef EMPTY_STAGE_ST =
 	{
 		// ui
 		{
-			EMPTY_STAGE_ST_UI_ENTITIES,
+			HELLO_WORLD_STAGE_ST_UI_ENTITIES,
 			__TYPE(UiContainer),
 		},
 
 		// children
-		EMPTY_STAGE_ST_ENTITIES,
+		HELLO_WORLD_STAGE_ST_ENTITIES,
 	},
 
 	// post processing effects
 	(PostProcessingEffect*)NULL,
 };
+

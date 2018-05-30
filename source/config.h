@@ -27,8 +27,12 @@
 //												COMPONENTS
 //---------------------------------------------------------------------------------------------------------
 
-// Variant to use (0: VUEngine, 1: Planet Virtual Boy, 2: Nintendo or 3: Prototype)
-#define __ADJUSTMENT_SCREEN_VARIANT					0
+// adjustment screen variant to use (0: VUEngine, 1: Planet Virtual Boy, 2: Nintendo or 3: Prototype)
+#define __ADJUSTMENT_SCREEN_VARIANT								0
+#define __ADJUSTMENT_SCREEN_RHOMBUS_INITIAL_VALUE				-64
+#define __AUTOMATIC_PAUSE_SELECTION_SCREEN_OPTIONS_GAP			3
+#define __AUTOMATIC_PAUSE_SELECTION_SCREEN_OPTIONS_Y_POS		15
+#define __PRECAUTION_SCREEN_TEXT_LANGUAGE_ID					STR_PRECAUTION_SCREEN_TEXT
 
 
 //---------------------------------------------------------------------------------------------------------

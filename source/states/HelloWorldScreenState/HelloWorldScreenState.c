@@ -39,7 +39,7 @@
 // 												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern StageROMDef EMPTY_STAGE_ST;
+extern StageROMDef HELLO_WORLD_STAGE_ST;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	Base::enter(this, owner);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&EMPTY_STAGE_ST, NULL, true);
+	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&HELLO_WORLD_STAGE_ST, NULL, true);
 
 	// print hello world
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);

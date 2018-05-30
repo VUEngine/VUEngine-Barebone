@@ -44,12 +44,11 @@ const char* const LANGUAGE_DE_STRINGS[] =
 	/* STR_AUTOMATIC_PAUSE */			"Automatische Pause",
 	/* STR_AUTO_PAUSE_EXPLANATION */	" Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
 	/* STR_HELLO_WORLD */				"Hallo, Welt!",
-	/* STR_IMPORTANT */					"WICHTIG:",
 	/* STR_LANGUAGE */					"Sprache",
 	/* STR_LANGUAGE_SELECT */			"Sprachauswahl",
 	/* STR_OFF */						"Aus",
 	/* STR_ON */						"An",
-	/* STR_PRECAUTION_SCREEN_TEXT */	"   LESEN SIE VOR DEM\n\n SPIELEN DIE ANLEITUNG\n\nUND SICHERHEITSHINWEISE",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"        WICHTIG\n\n   LESEN SIE VOR DEM\n\n SPIELEN DIE ANLEITUNG\n\nUND SICHERHEITSHINWEISE",
 	/* STR_TAKE_A_REST */				"Bitte mache eine Pause!",
 };
 
