@@ -109,47 +109,44 @@ static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, Spat
 	u32 previousSourcePointerValue = 0;
 
 	// runtime working variables
-	static int waveLutIndex = 0;
+	static u8 waveLutIndex = 0;
 
 	// look up table of bitshifts performed on rows
 	// values must be multiples of 2
-	const u32 waveLut[128] =
+	const u32 waveLut[64] =
 	{
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-		4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-		6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-		6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-		4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-		2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0,
+		2, 2, 2, 2, 2, 2,
+		4, 4, 4, 4, 4,
+		6, 6, 6, 6, 6, 6,
+		8, 8, 8, 8, 8, 8, 8,
+		8, 8, 8, 8, 8, 8, 8,
+		6, 6, 6, 6, 6, 6,
+		4, 4, 4, 4, 4,
+		2, 2, 2, 2, 2, 2,
+		0, 0, 0, 0, 0, 0, 0, 0,
 	};
 
-	// write to framebuffers for both screens
-	for(; buffer < 2; buffer++)
+	// loop columns
+	for(x = 0; x < 384; x++)
 	{
-		// loop columns
-		for(x = 0; x < 384; x++)
+		// increase look up table index, wrap around if necessary
+		waveLutIndex = (waveLutIndex < 63) ? waveLutIndex + 1 : 0;
+
+		// we can skip further processing for the current column if no shifting would be done on it
+		if(waveLut[waveLutIndex] == 0)
 		{
-			// get pointer to currently manipulated 32 bits of framebuffer
-			u32* columnSourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4);
+			continue;
+		}
+
+		// write to framebuffers for both screens
+		for(buffer = 0; buffer < 2; buffer++)
+		{
+			// pointer to currently manipulated 32 bits of framebuffer
+			u32* sourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4) + 6;
 
 			// the shifted out pixels on top should be black
 			previousSourcePointerValue = 0;
-
-			// increase look up table index, wrap around if necessary
-			waveLutIndex += (waveLutIndex < 127) ? 1 : -127;
-
-			// we can skip further processing for the current column if no shifting would be done on it
-			if(waveLut[waveLutIndex] == 0)
-			{
-				continue;
-			}
-
-			// pointer to currently manipulated 32 bits of framebuffer
-			u32* sourcePointer = columnSourcePointer + 6;
 
 			// save current pointer value to temp var and shift highest x bits of it, according to lut,
 			// to the lowest bits, since we want to insert these
