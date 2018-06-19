@@ -70,13 +70,13 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 
 	// print hello world
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
-	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, NULL);
+	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyFont");
 	Printing::text(
 		Printing::getInstance(),
 		strHelloWorld,
 		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
 		12,
-		NULL
+		"VirtualBoyFont"
 	);
 
 	// add wobble effect
@@ -105,7 +105,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
 {
 	u8 buffer = 0;
-	u16 x = 0;
+	u16 x, y = 0;
 	u32 previousSourcePointerValue = 0;
 
 	// runtime working variables
@@ -131,7 +131,7 @@ static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, Spat
 	for(x = 0; x < 384; x++)
 	{
 		// increase look up table index, wrap around if necessary
-		waveLutIndex = (waveLutIndex < 63) ? waveLutIndex + 1 : 0;
+		waveLutIndex += (waveLutIndex < 63) ? 1 : -63;
 
 		// we can skip further processing for the current column if no shifting would be done on it
 		if(waveLut[waveLutIndex] == 0)
@@ -142,30 +142,34 @@ static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, Spat
 		// write to framebuffers for both screens
 		for(buffer = 0; buffer < 2; buffer++)
 		{
-			// pointer to currently manipulated 32 bits of framebuffer
-			u32* sourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4) + 6;
-
 			// the shifted out pixels on top should be black
 			previousSourcePointerValue = 0;
 
-			// save current pointer value to temp var and shift highest x bits of it, according to lut,
-			// to the lowest bits, since we want to insert these
-			u32 sourcePointerCurrentValue = *sourcePointer;
-			u32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - waveLut[waveLutIndex]);
+			// loop current column in steps of 16 pixels (32 bits)
+			for(y = 6; y < 8; y++)
+			{
+				// pointer to currently manipulated 32 bits of framebuffer
+				u32* sourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4) + y;
 
-			// manipulate current 32 bits in frame buffer
-			*sourcePointer =
-				// shift bits according to wave lut
-				// it's two bits per pixel, so 2 bits shifted left = 1 pixel shifted down on screen
-				(sourcePointerCurrentValue << waveLut[waveLutIndex])
+				// save current pointer value to temp var and shift highest x bits of it, according to lut,
+				// to the lowest bits, since we want to insert these
+				u32 sourcePointerCurrentValue = *sourcePointer;
+				u32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - waveLut[waveLutIndex]);
 
-				// since the above shifting creates black pixels, we need to carry over these pixels
-				// from the previous loop
-				| previousSourcePointerValue;
+				// manipulate current 32 bits in frame buffer
+				*sourcePointer =
+					// shift bits according to wave lut
+					// it's two bits per pixel, so 2 bits shifted left = 1 pixel shifted down on screen
+					(sourcePointerCurrentValue << waveLut[waveLutIndex])
 
-			// we need the current source pointer value from _before_ we modified it, therefore we save it
-			// it to a temp variable while modifying
-			previousSourcePointerValue = previousSourcePointerValueTemp;
+					// since the above shifting creates black pixels, we need to carry over these pixels
+					// from the previous loop
+					| previousSourcePointerValue;
+
+				// we need the current source pointer value from _before_ we modified it, therefore we save it
+				// it to a temp variable while modifying
+				previousSourcePointerValue = previousSourcePointerValueTemp;
+			}
 		}
 	}
 

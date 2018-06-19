@@ -24,6 +24,16 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Stage.h>
+#include <Printing.h>
+#include <CharSet.h>
+
+
+//---------------------------------------------------------------------------------------------------------
+//												DECLARATIONS
+//---------------------------------------------------------------------------------------------------------
+
+extern FontDefinition VUENGINE_FONT;
+extern FontDefinition VIRTUAL_BOY_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -38,6 +48,19 @@ PositionedEntityROMDef HELLO_WORLD_STAGE_ST_ENTITIES[] =
 PositionedEntityROMDef HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
+};
+
+
+//---------------------------------------------------------------------------------------------------------
+// 											PRELOAD LISTS
+//---------------------------------------------------------------------------------------------------------
+
+FontROMDef* const HELLO_WORLD_STAGE_ST_FONTS[] =
+{
+	&VUENGINE_FONT,
+	&VIRTUAL_BOY_FONT,
+
+	NULL
 };
 
 
@@ -224,7 +247,7 @@ StageROMDef HELLO_WORLD_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontDefinition**)NULL,
+		(FontDefinition**)HELLO_WORLD_STAGE_ST_FONTS,
 
 		// char sets to preload
 		(CharSetDefinition**)NULL,

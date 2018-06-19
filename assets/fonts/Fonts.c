@@ -21,28 +21,28 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <AutoPauseManager.h>
-#include <LowBatteryIndicatorManager.h>
-#include <PrecautionScreenState.h>
+#include <Printing.h>
+#include <CharSet.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 											GAME'S MAIN LOOP
+//												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
+extern FontDefinition VUENGINE_FONT;
+extern FontDefinition VIRTUAL_BOY_FONT;
+
+
+//---------------------------------------------------------------------------------------------------------
+//												DEFINITIONS
+//---------------------------------------------------------------------------------------------------------
+
+FontDefinition* const __FONTS[] =
 {
-	// initialize components
-	AutoPauseManager::getInstance();
-	LowBatteryIndicatorManager::getInstance();
-
-	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
-
-	// end program
-	return true;
-}
+	(FontDefinition*)&VUENGINE_FONT,
+	(FontDefinition*)&VIRTUAL_BOY_FONT,
+	NULL
+};
