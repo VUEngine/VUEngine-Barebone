@@ -45,7 +45,7 @@ void GameSaveDataManager::constructor()
 void GameSaveDataManager::destructor()
 {
 	// destroy base
-	__SINGLETON_DESTROY;
+	Base::destructor();
 }
 
 u8 GameSaveDataManager::getCustomValue()

@@ -56,7 +56,7 @@ void HelloWorldScreenState::constructor()
 void HelloWorldScreenState::destructor()
 {
 	// destroy base
-	__SINGLETON_DESTROY;
+	Base::destructor();
 }
 
 // state's enter
