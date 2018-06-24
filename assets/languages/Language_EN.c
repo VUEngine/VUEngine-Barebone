@@ -41,11 +41,11 @@
 
 const char* const LANGUAGE_EN_STRINGS[] =
 {
-	/* STR_AUTOMATIC_PAUSE */			"Automatic Pause",
+	/* STR_AUTOMATIC_PAUSE */			"AUTOMATIC PAUSE",
 	/* STR_AUTO_PAUSE_EXPLANATION */	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
 	/* STR_HELLO_WORLD */				"Hello, World!",
-	/* STR_LANGUAGE */					"Language",
-	/* STR_LANGUAGE_SELECT */			"Language Select",
+	/* STR_LANGUAGE */					"LANGUAGE",
+	/* STR_LANGUAGE_SELECT */			"LANGUAGE SELECT",
 	/* STR_OFF */						"Off",
 	/* STR_ON */						"On",
 	/* STR_PRECAUTION_SCREEN_TEXT */	"     IMPORTANT\n\nREAD INSTRUCTION AND\n\nPRECAUTION BOOKLETS\n\n  BEFORE OPERATING",

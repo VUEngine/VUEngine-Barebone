@@ -27,14 +27,6 @@
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-enum LanguageIdentifiers
-{
-	LANG_EN,
-	LANG_DE,
-	LANG_ES,
-	LANG_FR,
-};
-
 enum LanguageStrings
 {
 	STR_AUTOMATIC_PAUSE,

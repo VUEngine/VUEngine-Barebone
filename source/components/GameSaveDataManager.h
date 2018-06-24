@@ -31,16 +31,6 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 												MACROS
-//---------------------------------------------------------------------------------------------------------
-
-#undef  SAVE_STAMP
-#define SAVE_STAMP			"VUEngineBarebone"
-#undef  SAVE_STAMP_LENGTH
-#define SAVE_STAMP_LENGTH	16
-
-
-//---------------------------------------------------------------------------------------------------------
 // 											TYPE DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
@@ -65,6 +55,7 @@ singleton class GameSaveDataManager : SaveDataManager
 {
 	static GameSaveDataManager getInstance();
 	void destructor();
+	void initialize();
 	u8 getCustomValue();
     void setCustomValue(u8 customValue);
 }
