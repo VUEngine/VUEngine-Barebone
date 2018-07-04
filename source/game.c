@@ -44,7 +44,7 @@ int main(void)
 	LowBatteryIndicatorManager::setActive(LowBatteryIndicatorManager::getInstance(), true);
 	GameSaveDataManager::initialize(GameSaveDataManager::getInstance());
 	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(LangSelectScreenState_getInstance()),
+		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),
 		GameState::safeCast(HelloWorldScreenState::getInstance())
 	);
 
