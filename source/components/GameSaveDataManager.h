@@ -54,8 +54,7 @@ typedef struct GameSaveData
 singleton class GameSaveDataManager : SaveDataManager
 {
 	static GameSaveDataManager getInstance();
-	void destructor();
-	void initialize();
+	override void restoreSettings();
 	u8 getCustomValue();
     void setCustomValue(u8 customValue);
 }

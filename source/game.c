@@ -42,7 +42,7 @@ int main(void)
 	// initialize components
 	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
 	LowBatteryIndicatorManager::setActive(LowBatteryIndicatorManager::getInstance(), true);
-	GameSaveDataManager::initialize(GameSaveDataManager::getInstance());
+	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),
 		GameState::safeCast(HelloWorldScreenState::getInstance())

@@ -48,9 +48,9 @@ void GameSaveDataManager::destructor()
 	Base::destructor();
 }
 
-void GameSaveDataManager::initialize()
+void GameSaveDataManager::restoreSettings()
 {
-	SaveDataManager::initialize(this);
+	Base::restoreSettings(this);
 }
 
 u8 GameSaveDataManager::getCustomValue()
