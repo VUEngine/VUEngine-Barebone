@@ -27,7 +27,6 @@
 #include <Game.h>
 #include <GameSaveDataManager.h>
 #include <AutoPauseManager.h>
-#include <LowBatteryIndicatorManager.h>
 #include <PrecautionScreenState.h>
 #include <LangSelectScreenState.h>
 #include <HelloWorldScreenState.h>
@@ -41,7 +40,6 @@ int main(void)
 {
 	// initialize components
 	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
-	LowBatteryIndicatorManager::setActive(LowBatteryIndicatorManager::getInstance(), true);
 	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),

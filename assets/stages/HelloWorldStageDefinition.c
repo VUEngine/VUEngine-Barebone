@@ -32,6 +32,7 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
+extern EntityDefinition LOW_BATTERY_INDICATOR_LB;
 extern FontDefinition VUENGINE_FONT;
 extern FontDefinition VIRTUAL_BOY_FONT;
 
@@ -42,6 +43,8 @@ extern FontDefinition VIRTUAL_BOY_FONT;
 
 PositionedEntityROMDef HELLO_WORLD_STAGE_ST_ENTITIES[] =
 {
+	{&LOW_BATTERY_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
+
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 

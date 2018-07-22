@@ -68,6 +68,9 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	// load stage
 	GameState::loadStage(GameState::safeCast(this), (StageDefinition*)&HELLO_WORLD_STAGE_ST, NULL, true);
 
+	// start clocks to start animations
+	GameState::startClocks(GameState::safeCast(this));
+
 	// print hello world
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
 	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");

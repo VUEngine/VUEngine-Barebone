@@ -1,8 +1,8 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	vuengine-components/fonts/AstonishFont													\
+COMPONENTS = 	vuengine-components/entities/LowBatteryIndicatorEntity									\
+				vuengine-components/fonts/AstonishFont													\
 				vuengine-components/fonts/VirtualBoyFont												\
 				vuengine-components/other/AutomaticPause												\
-				vuengine-components/other/LowBatteryIndicator											\
 				vuengine-components/other/SaveDataManager												\
 				vuengine-components/states/SplashScreens												\
 
