@@ -1,5 +1,6 @@
 # VUEngine based components that the project uses
-COMPONENTS = 	vuengine-components/fonts/VirtualBoyFont												\
+COMPONENTS = 	vuengine-components/fonts/AstonishFont													\
+				vuengine-components/fonts/VirtualBoyFont												\
 				vuengine-components/other/AutomaticPause												\
 				vuengine-components/other/LowBatteryIndicator											\
 				vuengine-components/other/SaveDataManager												\

@@ -70,13 +70,13 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 
 	// print hello world
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
-	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoy");
+	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");
 	Printing::text(
 		Printing::getInstance(),
 		strHelloWorld,
 		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
 		12,
-		"VirtualBoy"
+		"VirtualBoyExt"
 	);
 
 	// add wobble effect

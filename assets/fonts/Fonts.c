@@ -33,7 +33,10 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern FontDefinition VUENGINE_FONT;
+extern FontDefinition ASTONISH_FONT;
+extern FontDefinition ASTONISH_EXTENDED_FONT;
 extern FontDefinition VIRTUAL_BOY_FONT;
+extern FontDefinition VIRTUAL_BOY_EXTENDED_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -43,6 +46,9 @@ extern FontDefinition VIRTUAL_BOY_FONT;
 FontDefinition* const __FONTS[] =
 {
 	(FontDefinition*)&VUENGINE_FONT,
+	(FontDefinition*)&ASTONISH_FONT,
+	(FontDefinition*)&ASTONISH_EXTENDED_FONT,
 	(FontDefinition*)&VIRTUAL_BOY_FONT,
+	(FontDefinition*)&VIRTUAL_BOY_EXTENDED_FONT,
 	NULL
 };

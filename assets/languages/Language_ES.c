@@ -55,7 +55,7 @@ const char* const LANGUAGE_ES_STRINGS[] =
 	/* STR_LANGUAGE_SELECT */			"SELECCIONAR IDIOMA",
 	/* STR_OFF */						"Apagado",
 	/* STR_ON */						"Encendido",
-	/* STR_PRECAUTION_SCREEN_TEXT */	"         IMPORTANTE\n\n     LEE LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
 	/* STR_TAKE_A_REST */				"¡Por favor, tómese un descanso!",
 
 	/* Game */
