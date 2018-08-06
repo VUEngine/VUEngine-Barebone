@@ -29,7 +29,7 @@
 
 enum LanguageStrings
 {
-	/* Components */
+	/* Plugins */
 	STR_AUTOMATIC_PAUSE,
 	STR_AUTO_PAUSE_EXPLANATION,
 	STR_LANGUAGE_SELECT,

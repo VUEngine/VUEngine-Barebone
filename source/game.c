@@ -38,7 +38,7 @@
 
 int main(void)
 {
-	// initialize components
+	// initialize plugins
 	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
 	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
 	SplashScreenState::setNextState(
