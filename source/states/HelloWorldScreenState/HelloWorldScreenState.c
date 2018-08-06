@@ -72,15 +72,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	GameState::startClocks(GameState::safeCast(this));
 
 	// print hello world
-	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
-	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");
-	Printing::text(
-		Printing::getInstance(),
-		strHelloWorld,
-		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
-		12,
-		"VirtualBoyExt"
-	);
+	HelloWorldScreenState::print(this);
 
 	// add wobble effect
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
@@ -96,6 +88,56 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 		__FADE_DELAY, // delay between fading steps (in ms)
 		NULL, // callback function
 		NULL // callback scope
+	);
+}
+
+void HelloWorldScreenState::suspend(void* owner)
+{
+	if(!Game::isEnteringSpecialMode(Game::getInstance()))
+	{
+		// do a fade out effect
+		Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
+	}
+
+	// call base
+	Base::suspend(this, owner);
+}
+
+void HelloWorldScreenState::resume(void* owner)
+{
+	// call base
+	Base::resume(this, owner);
+
+	// print hello world
+	HelloWorldScreenState::print(this);
+
+	// add wobble effect
+	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
+
+	if(!Game::isExitingSpecialMode(Game::getInstance()))
+	{
+		// start a fade in effect
+		Camera::startEffect(Camera::getInstance(),
+			kFadeTo, // effect type
+			0, // initial delay (in ms)
+			NULL, // target brightness
+			__FADE_DELAY, // delay between fading steps (in ms)
+			NULL, // callback function
+			NULL // callback scope
+		);
+	}
+}
+
+void HelloWorldScreenState::print()
+{
+	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
+	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");
+	Printing::text(
+		Printing::getInstance(),
+		strHelloWorld,
+		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
+		12,
+		"VirtualBoyExt"
 	);
 }
 

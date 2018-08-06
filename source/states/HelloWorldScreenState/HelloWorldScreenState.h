@@ -38,6 +38,8 @@ dynamic_singleton class HelloWorldScreenState : GameState
 {
 	static HelloWorldScreenState getInstance();
 	override void enter(void* owner);
+	override void suspend(void* owner);
+	override void resume(void* owner);
 }
 
 
