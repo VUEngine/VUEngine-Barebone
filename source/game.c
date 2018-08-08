@@ -25,7 +25,11 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
+#include <GameSaveDataManager.h>
+#include <AutoPauseManager.h>
 #include <PrecautionScreenState.h>
+#include <LangSelectScreenState.h>
+#include <HelloWorldScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -34,6 +38,14 @@
 
 int main(void)
 {
+	// initialize plugins
+	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
+	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
+	SplashScreenState::setNextState(
+		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),
+		GameState::safeCast(HelloWorldScreenState::getInstance())
+	);
+
 	// start the game
 	Game::start(Game::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
 

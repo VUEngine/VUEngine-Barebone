@@ -1,8 +1,13 @@
-# VUEngine based components that the project uses
-COMPONENTS =
+# VUEngine based plugins that the project uses
+PLUGINS = 	vuengine/plugins/entities/LowBatteryIndicatorEntity											\
+			vuengine/plugins/fonts/AstonishFont															\
+			vuengine/plugins/fonts/VirtualBoyFont														\
+			vuengine/plugins/other/AutomaticPause														\
+			vuengine/plugins/other/SaveDataManager														\
+			vuengine/plugins/states/SplashScreens														\
 
 # Compiler's output
-COMPILER_OUTPUT         = c
+COMPILER_OUTPUT			= c
 
 # Compilation type
 # preprocessor:			The .o files are preprocessor's output instead of compiler's.
@@ -13,35 +18,35 @@ COMPILER_OUTPUT         = c
 # tools:				Adds debugging tools without all the debug checking.
 # beta:					Removes most asserts. For testing the performance on hardware.
 # release:				Removes all asserts. For shipping only!
-TYPE                    = beta
+TYPE					= beta
 
 # Optimization level
-OPTIMIZATION            = Ofast
+OPTIMIZATION			= Ofast
 
 # Enable pedantic warnings
-# 0:                    Omit.
-# 1:                    Use.
+# 0:					Omit.
+# 1:					Use.
 PRINT_PEDANTIC_WARNINGS = 0
 
 # Frame pointer's usage
-# 0:                    Omit.
-# 1:                    Use.
-USE_FRAME_POINTER       = 0
+# 0:					Omit.
+# 1:					Use.
+USE_FRAME_POINTER	   = 0
 
 # Prolog functions' usage
-# 0:                    Omit.
-# 1:                    Use.
-USE_PROLOG_FUNCTIONS    = 0
+# 0:					Omit.
+# 1:					Use.
+USE_PROLOG_FUNCTIONS	= 0
 
 # Pad ROM for hardware testing
-# 0:                    No padding.
-# 1:                    Pad the ROM for hardware testing.
-PAD_ROM                 = 0
+# 0:					No padding.
+# 1:					Pad the ROM for hardware testing.
+PAD_ROM				 	= 0
 
 # Dump elf
-# 0:                    No dumping.
-# 1:                    Dump the assembly code and the memory sections.
-DUMP_ELF                = 0
+# 0:					No dumping.
+# 1:					Dump the assembly code and the memory sections.
+DUMP_ELF				= 0
 
 # Sections' usage
 # SRAM's usage
@@ -54,16 +59,16 @@ DUMP_ELF                = 0
 # the WORLD attributes start.
 
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-MEMORY_POOL_SECTION             = .sbss
+MEMORY_POOL_SECTION			 = .sbss
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-NON_INITIALIZED_DATA_SECTION    = .sbss
+NON_INITIALIZED_DATA_SECTION	= .sbss
 # valid options are [/.data/.sdata/.dram_data/.sram_data]
-INITIALIZED_DATA_SECTION        = .sdata
+INITIALIZED_DATA_SECTION		= .sdata
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
 STATIC_SINGLETONS_DATA_SECTION  = .dram_bss
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-VIRTUAL_TABLES_DATA_SECTION     = .dram_bss
+VIRTUAL_TABLES_DATA_SECTION	 = .dram_bss
 
 # Size of variables to be loaded in the .sdata section
 # Not working properly because rosdata is used instead of rodata section
-# MSDA_SIZE             = 0
+# MSDA_SIZE			 	= 0

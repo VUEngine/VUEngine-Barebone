@@ -27,26 +27,19 @@
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-enum LanguageIdentifiers
-{
-	LANG_EN,
-	LANG_DE,
-	LANG_ES,
-	LANG_FR,
-};
-
 enum LanguageStrings
 {
+	/* Plugins */
 	STR_AUTOMATIC_PAUSE,
 	STR_AUTO_PAUSE_EXPLANATION,
-	STR_HELLO_WORLD,
-	STR_IMPORTANT,
-	STR_LANGUAGE,
 	STR_LANGUAGE_SELECT,
 	STR_OFF,
 	STR_ON,
 	STR_PRECAUTION_SCREEN_TEXT,
 	STR_TAKE_A_REST,
+
+	/* Game */
+	STR_HELLO_WORLD,
 };
 
 

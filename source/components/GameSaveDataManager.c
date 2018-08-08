@@ -19,26 +19,59 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef POST_PROCESSING_EFFECTS_H_
-#define POST_PROCESSING_EFFECTS_H_
-
 
 //---------------------------------------------------------------------------------------------------------
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <SpatialObject.h>
+#include <stddef.h>
+#include <VirtualList.h>
+#include <SRAMManager.h>
+#include <GameSaveDataManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										FUNCTIONS
+// 												CLASS'S METHODS
 //---------------------------------------------------------------------------------------------------------
 
-static class PostProcessingEffects : Object
+// class's constructor
+void GameSaveDataManager::constructor()
 {
-	static void wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject);
+	// construct base object
+	Base::constructor();
 }
 
+// class's destructor
+void GameSaveDataManager::destructor()
+{
+	// destroy base
+	Base::destructor();
+}
 
-#endif
+void GameSaveDataManager::restoreSettings()
+{
+	Base::restoreSettings(this);
+}
 
+u8 GameSaveDataManager::getCustomValue()
+{
+	u8 customValue = 0;
+	if(this->sramAvailable)
+	{
+		SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&customValue, offsetof(struct GameSaveData, someCustomValue), sizeof(customValue));
+	}
+
+	return customValue;
+}
+
+void GameSaveDataManager::setCustomValue(u8 customValue)
+{
+	if(this->sramAvailable)
+	{
+		// write language
+		SRAMManager::save(SRAMManager::getInstance(), (BYTE*)&customValue, offsetof(struct GameSaveData, someCustomValue), sizeof(customValue));
+
+		// write checksum
+		SaveDataManager::writeChecksum(this);
+	}
+}

@@ -28,6 +28,13 @@
 
 
 //---------------------------------------------------------------------------------------------------------
+//												DECLARATIONS
+//---------------------------------------------------------------------------------------------------------
+
+extern EntityDefinition FLAG_FRANCE_EN;
+
+
+//---------------------------------------------------------------------------------------------------------
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
@@ -41,22 +48,28 @@
 
 const char* const LANGUAGE_FR_STRINGS[] =
 {
-	/* STR_AUTOMATIC_PAUSE */			"Pause Automatique",
+	/* Plugins */
+
+	/* STR_AUTOMATIC_PAUSE */			"PAUSE AUTOMATIQUE",
 	/* STR_AUTO_PAUSE_EXPLANATION */	"  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
-	/* STR_HELLO_WORLD */				"Bonjour Le Monde!",
-	/* STR_IMPORTANT */					"IMPORTANT:",
-	/* STR_LANGUAGE */					"Langue",
-	/* STR_LANGUAGE_SELECT */			"Choix de la langue",
+	/* STR_LANGUAGE_SELECT */			"CHOIX DE LA LANGUE",
 	/* STR_OFF */						"Desactivé",
 	/* STR_ON */						"Activé",
-	/* STR_PRECAUTION_SCREEN_TEXT */	"PRENEZ CONAISSANCE DE LA\n\nNOTICE ET DES PRÉCAUTIONS\n\nA AVANT DE JOUER",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
 	/* STR_TAKE_A_REST */				"Se il vous plaît, prendre un repos!",
+
+	/* Game */
+
+	/* STR_HELLO_WORLD */				"Bonjour Le Monde!",
 };
 
 const LangROMDef LANGUAGE_FR =
 {
 	// Language Name
 	"Français",
+
+	// Flag Entity
+	&FLAG_FRANCE_EN,
 
 	// Strings
 	(const char**)LANGUAGE_FR_STRINGS

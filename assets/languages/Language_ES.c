@@ -28,6 +28,13 @@
 
 
 //---------------------------------------------------------------------------------------------------------
+//												DECLARATIONS
+//---------------------------------------------------------------------------------------------------------
+
+extern EntityDefinition FLAG_SPAIN_EN;
+
+
+//---------------------------------------------------------------------------------------------------------
 // 												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
@@ -41,22 +48,28 @@
 
 const char* const LANGUAGE_ES_STRINGS[] =
 {
-	/* STR_AUTOMATIC_PAUSE */			"Pausa Automática",
-	/* STR_AUTO_PAUSE_EXPLANATION: */	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
-	/* STR_HELLO_WORLD */				"Hola Mundo!",
-	/* STR_IMPORTANT */					"IMPORTANTE:",
-	/* STR_LANGUAGE: */					"Idioma",
-	/* STR_LANGUAGE_SELECT */			"Seleccionar Idioma",
+	/* Plugins */
+
+	/* STR_AUTOMATIC_PAUSE */			"PAUSA AUTOMÁTICA",
+	/* STR_AUTO_PAUSE_EXPLANATION */	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
+	/* STR_LANGUAGE_SELECT */			"SELECCIONAR IDIOMA",
 	/* STR_OFF */						"Apagado",
 	/* STR_ON */						"Encendido",
-	/* STR_PRECAUTION_SCREEN_TEXT: */	"       LEE LOS LIBROS DE\n\nINSTRUCCIONES Y PRECAUCIONES\n\n       ANTES DE JUGAR",
-	/* STR_TAKE_A_REST: */				"¡Por favor, tómese un descanso!",
+	/* STR_PRECAUTION_SCREEN_TEXT */	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
+	/* STR_TAKE_A_REST */				"¡Por favor, tómese un descanso!",
+
+	/* Game */
+
+	/* STR_HELLO_WORLD */				"Hola Mundo!",
 };
 
 const LangROMDef LANGUAGE_ES =
 {
 	// Language Name
 	"Español",
+
+	// Flag Entity
+	&FLAG_SPAIN_EN,
 
 	// Strings
 	(const char**)LANGUAGE_ES_STRINGS

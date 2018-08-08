@@ -19,58 +19,36 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
- //---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
-//---------------------------------------------------------------------------------------------------------
-
-#include <SoundManager.h>
-
 
 //---------------------------------------------------------------------------------------------------------
-// 												DEFINITIONS
+//												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-const u16 INTRO_SND[] =
+#include <Printing.h>
+#include <CharSet.h>
+
+
+//---------------------------------------------------------------------------------------------------------
+//												DECLARATIONS
+//---------------------------------------------------------------------------------------------------------
+
+extern FontDefinition VUENGINE_FONT;
+extern FontDefinition ASTONISH_FONT;
+extern FontDefinition ASTONISH_EXTENDED_FONT;
+extern FontDefinition VIRTUAL_BOY_FONT;
+extern FontDefinition VIRTUAL_BOY_EXTENDED_FONT;
+
+
+//---------------------------------------------------------------------------------------------------------
+//												DEFINITIONS
+//---------------------------------------------------------------------------------------------------------
+
+FontDefinition* const __FONTS[] =
 {
-//songlength
-		2,
-//stdwait
-		0x0C,
-//stdSxLRV
-		0xFF,
-//stdSxEV0
-		0xF1,
-//stdSxEV1
-		0x01,
-//stdSxRAM
-		0x00,
-//stdS5SWP
-		//0x00,
-//song's notes
-		F_4,
-		F_5,
-		NONE,
-		NONE,
-		NONE,
-		C_3,
-		D_3,
-		NONE,
-		NONE,
-		NONE,
-		C_3,
-		D_3,
-		NONE,
-		NONE,
-		NONE,
-		C_3,
-		D_3,
-		NONE,
-		NONE,
-		NONE,
-		C_3,
-		D_3,
-		NONE,
-		NONE,
-		NONE,
-
+	(FontDefinition*)&VUENGINE_FONT,
+	(FontDefinition*)&ASTONISH_FONT,
+	(FontDefinition*)&ASTONISH_EXTENDED_FONT,
+	(FontDefinition*)&VIRTUAL_BOY_FONT,
+	(FontDefinition*)&VIRTUAL_BOY_EXTENDED_FONT,
+	NULL
 };

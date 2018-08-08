@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/vuengine.iml" filepath="$PROJECT_DIR$/.idea/vuengine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/vuengine-barebone.iml" filepath="$PROJECT_DIR$/.idea/vuengine-barebone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/barebone.iml" filepath="$PROJECT_DIR$/.idea/barebone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../libs/vuengine/core/.idea/core.iml" filepath="$PROJECT_DIR$/../../../libs/vuengine/core/.idea/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../libs/vuengine/plugins/.idea/plugins.iml" filepath="$PROJECT_DIR$/../../../libs/vuengine/plugins/.idea/plugins.iml" />
     </modules>
   </component>
 </project>

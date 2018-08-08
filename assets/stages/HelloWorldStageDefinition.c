@@ -19,41 +19,36 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 //---------------------------------------------------------------------------------------------------------
 //												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
 #include <Stage.h>
+#include <Printing.h>
+#include <CharSet.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-//											DECLARATIONS
+//												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_BG_IM;
-extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L;
-extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R;
-extern EntityDefinition ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM;
+extern EntityDefinition LOW_BATTERY_INDICATOR_LB;
+extern FontDefinition VUENGINE_FONT;
+extern FontDefinition VIRTUAL_BOY_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_ENTITIES[] =
+PositionedEntityROMDef HELLO_WORLD_STAGE_ST_ENTITIES[] =
 {
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {(12), (12), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Top Left (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {(12), (212), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Left (Right Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_BG_IM, {(192), (112), (16), (0)}, 0, NULL, NULL, NULL, false}, // Background
-	{&ADJUSTMENT_SCREEN_VUENGINE_LOGO_IM, {(192), (112), (0), (0)}, 0, NULL, NULL, NULL, false}, // Logo
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_L, {(372), (212), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Bottom Right (Left Eye)
-	{&ADJUSTMENT_SCREEN_VUENGINE_ICON_IM_R, {(372), (12), (0), (0)}, 0, NULL, NULL, NULL, false}, // Icon Top Right (Right Eye)
+	{&LOW_BATTERY_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMDef HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -63,12 +58,20 @@ PositionedEntityROMDef ADJUSTMENT_SCREEN_STAGE_ST_UI_ENTITIES[] =
 // 											PRELOAD LISTS
 //---------------------------------------------------------------------------------------------------------
 
+FontROMDef* const HELLO_WORLD_STAGE_ST_FONTS[] =
+{
+	&VUENGINE_FONT,
+	&VIRTUAL_BOY_FONT,
+
+	NULL
+};
+
 
 //---------------------------------------------------------------------------------------------------------
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
+StageROMDef HELLO_WORLD_STAGE_ST =
 {
 	// allocator
 	__TYPE(Stage),
@@ -94,7 +97,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 			// z
 			0,
 			// p
-			0
+			0,
 		},
 
 		// camera's frustum
@@ -110,7 +113,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
         	// y1
         	__SCREEN_HEIGHT,
         	// z1
-        	__SCREEN_WIDTH * 5
+        	__SCREEN_WIDTH * 5,
         }
 	},
 
@@ -125,7 +128,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// particle removal delay cycles
 		0,
 		// deferred
-		false
+		false,
 	},
 
 	// rendering
@@ -149,7 +152,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 			// brightness values on the respective regions of the screen. maximum brightness is 128.
 			{
 				// dark red
-				16,
+				8,
 				// medium red
 				__BRIGHTNESS_MEDIUM_RED,
 				// bright red
@@ -200,18 +203,18 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 			__AVAILABLE_CHAR_OBJECTS / __TOTAL_OBJECT_SEGMENTS,
 		},
 
-		// obj segments z coordinates
+		// OBJECT segments z coordinates
 		// note that each spt's z coordinate much be larger than or equal to the previous one's,
 		// since the vip renders obj worlds in reverse order (__spt3 to __spt0)
 		{
 			// __spt0
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt1
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt2
-			__F_TO_FIX10_6(0),
+			0,
 			// __spt3
-			__F_TO_FIX10_6(0),
+			0,
 		},
 
 		// optical configuration values
@@ -236,8 +239,8 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 		// gravity
 		{
 			__I_TO_FIX10_6(0),
-			__F_TO_FIX10_6(__GRAVITY),
-			__I_TO_FIX10_6(0)
+			__F_TO_FIX10_6(0),
+			__I_TO_FIX10_6(0),
 		},
 
 		// friction
@@ -247,7 +250,7 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontDefinition**)NULL,
+		(FontDefinition**)HELLO_WORLD_STAGE_ST_FONTS,
 
 		// char sets to preload
 		(CharSetDefinition**)NULL,
@@ -263,14 +266,15 @@ StageROMDef ADJUSTMENT_SCREEN_STAGE_ST =
 	{
 		// ui
 		{
-			ADJUSTMENT_SCREEN_STAGE_ST_UI_ENTITIES,
+			HELLO_WORLD_STAGE_ST_UI_ENTITIES,
 			__TYPE(UiContainer),
 		},
 
 		// children
-		ADJUSTMENT_SCREEN_STAGE_ST_ENTITIES,
+		HELLO_WORLD_STAGE_ST_ENTITIES,
 	},
 
 	// post processing effects
 	(PostProcessingEffect*)NULL,
 };
+

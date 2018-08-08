@@ -19,50 +19,44 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef SPLASH_SCREEN_STATE_H_
-#define SPLASH_SCREEN_STATE_H_
+#ifndef GAME_SAVE_DATA_MANAGER_H_
+#define GAME_SAVE_DATA_MANAGER_H_
 
 
 //---------------------------------------------------------------------------------------------------------
-//												INCLUDES
+// 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <GameState.h>
+#include <SaveDataManager.h>
 
 
 //---------------------------------------------------------------------------------------------------------
-//											CLASS'S ENUMS
+// 											TYPE DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-enum SplashScreensMessageTypes
+// this struct is never instantiated, its sole purpose is to determine offsets of its members.
+// therefore it acts as kind of like a map of sram content.
+typedef struct GameSaveData
 {
-	kScreenStarted = kLastEngineMessage + 1,
-	kScreenAllowUserInput
-};
+	// save data handled by base class
+	SaveData baseSaveData;
+
+	// some custom value
+	u8 someCustomValue;
+
+} GameSaveData;
 
 
 //---------------------------------------------------------------------------------------------------------
 //											CLASS'S DECLARATION
 //---------------------------------------------------------------------------------------------------------
 
-abstract class SplashScreenState : GameState
+singleton class GameSaveDataManager : SaveDataManager
 {
-	// state to enter after this one
-	GameState nextState;
-	// definition of screen's stage
-	StageDefinition* stageDefinition;
-
-	void constructor();
-	void destructor();
-	virtual void setNextState(GameState nextState);
-	virtual void loadNextState();
-	virtual void print();
-	virtual void processInput(u32 releasedKey);
-	override void enter(void* owner);
-	override void exit(void* owner);
-	override void resume(void* owner);
-	override bool processMessage(void* owner, Telegram telegram);
-	override void processUserInput(UserInput userInput);
+	static GameSaveDataManager getInstance();
+	override void restoreSettings();
+	u8 getCustomValue();
+    void setCustomValue(u8 customValue);
 }
 
 
