@@ -32,23 +32,23 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern FontDefinition VUENGINE_FONT;
-extern FontDefinition ASTONISH_FONT;
-extern FontDefinition ASTONISH_EXTENDED_FONT;
-extern FontDefinition VIRTUAL_BOY_FONT;
-extern FontDefinition VIRTUAL_BOY_EXTENDED_FONT;
+extern FontSpec VUENGINE_FONT;
+extern FontSpec ASTONISH_FONT;
+extern FontSpec ASTONISH_EXTENDED_FONT;
+extern FontSpec VIRTUAL_BOY_FONT;
+extern FontSpec VIRTUAL_BOY_EXTENDED_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-FontDefinition* const __FONTS[] =
+FontSpec* const __FONTS[] =
 {
-	(FontDefinition*)&VUENGINE_FONT,
-	(FontDefinition*)&ASTONISH_FONT,
-	(FontDefinition*)&ASTONISH_EXTENDED_FONT,
-	(FontDefinition*)&VIRTUAL_BOY_FONT,
-	(FontDefinition*)&VIRTUAL_BOY_EXTENDED_FONT,
+	(FontSpec*)&VUENGINE_FONT,
+	(FontSpec*)&ASTONISH_FONT,
+	(FontSpec*)&ASTONISH_EXTENDED_FONT,
+	(FontSpec*)&VIRTUAL_BOY_FONT,
+	(FontSpec*)&VIRTUAL_BOY_EXTENDED_FONT,
 	NULL
 };

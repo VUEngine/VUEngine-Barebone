@@ -32,23 +32,23 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntityDefinition LOW_POWER_INDICATOR_LB;
-extern FontDefinition VUENGINE_FONT;
-extern FontDefinition VIRTUAL_BOY_FONT;
+extern EntitySpec LOW_POWER_INDICATOR_LB;
+extern FontSpec VUENGINE_FONT;
+extern FontSpec VIRTUAL_BOY_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMDef HELLO_WORLD_STAGE_ST_ENTITIES[] =
+PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_ENTITIES[] =
 {
 	{&LOW_POWER_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMDef HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -58,7 +58,7 @@ PositionedEntityROMDef HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 // 											PRELOAD LISTS
 //---------------------------------------------------------------------------------------------------------
 
-FontROMDef* const HELLO_WORLD_STAGE_ST_FONTS[] =
+FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
 {
 	&VUENGINE_FONT,
 	&VIRTUAL_BOY_FONT,
@@ -71,7 +71,7 @@ FontROMDef* const HELLO_WORLD_STAGE_ST_FONTS[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMDef HELLO_WORLD_STAGE_ST =
+StageROMSpec HELLO_WORLD_STAGE_ST =
 {
 	// allocator
 	__TYPE(Stage),
@@ -160,7 +160,7 @@ StageROMDef HELLO_WORLD_STAGE_ST =
 			},
 
 			// brightness repeat
-			(BrightnessRepeatDefinition*)NULL,
+			(BrightnessRepeatSpec*)NULL,
 		},
 
 		// palettes' config
@@ -251,13 +251,13 @@ StageROMDef HELLO_WORLD_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontDefinition**)HELLO_WORLD_STAGE_ST_FONTS,
+		(FontSpec**)HELLO_WORLD_STAGE_ST_FONTS,
 
 		// char sets to preload
-		(CharSetDefinition**)NULL,
+		(CharSetSpec**)NULL,
 
 		// textures to preload
-		(TextureDefinition**)NULL,
+		(TextureSpec**)NULL,
 
 		// background music
 		(const u16 (*)[])NULL,

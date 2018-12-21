@@ -21,6 +21,7 @@ COMPILER_OUTPUT			= c
 TYPE					= beta
 
 # Optimization level
+# Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
 OPTIMIZATION			= Ofast
 
 # Enable pedantic warnings
