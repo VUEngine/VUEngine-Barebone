@@ -4,7 +4,7 @@ PLUGINS = 	vuengine/plugins/entities/LowPowerEntity														\
 			vuengine/plugins/fonts/VirtualBoy																\
 			vuengine/plugins/other/AutomaticPause															\
 			vuengine/plugins/other/SaveDataManager															\
-			vuengine/plugins/states/SplashScreens															\
+			vuengine/plugins/states/SplashScreens
 
 # Compiler's output
 COMPILER_OUTPUT			= c
