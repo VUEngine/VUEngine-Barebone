@@ -28,11 +28,11 @@
 //---------------------------------------------------------------------------------------------------------
 
 // game title (20 chars) 	 ####################
-#define __GAME_TITLE		"VUENGINE BAREBONE "
+#define __GAME_TITLE		"VUENGINE PROJECT    "
 // maker code (2 chars)		 ##
-#define __MAKER_CODE		"TV"
+#define __MAKER_CODE		"??"
 // game code (4 chars)		 ####
-#define __GAME_CODE			"VVBB"
+#define __GAME_CODE			"V??M"
 // revision (1.x)			 #
 #define __ROM_VERSION		 0
 
