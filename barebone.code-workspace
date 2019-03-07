@@ -1,28 +1,27 @@
 {
 	"folders": [
 		{
-            "name": "Project",
-			"path": "."
+			"path": ".",
+			"name": "VUEngine Barebone"
 		},
 		{
-			"name": "VUEngine",
-			"path": "..\\..\\..\\libs\\vuengine\\core"
+			"path": "..\\..\\vuengine\\core",
+			"name": "VUEngine Core"
 		},
 		{
-			"name": "Plugins",
-			"path": "..\\..\\..\\libs\\vuengine\\plugins"
+			"path": "..\\..\\vuengine\\plugins",
+			"name": "VUEngine Plugins"
 		}
 	],
 	"extensions": {
-        "recommendations": [
-			//"kr155e.vbde",
-			"ms-vscode.cpptools"
-		]
+		"recommendations": [
+			//"kr155e.vuengine",
+		]		
 	},
 	"settings": {
 		"files.autoGuessEncoding": true,
 		"C_Cpp.autoAddFileAssociations": false,
-		"editor.insertSpaces": false,
-		"files.hotExit": "onExitAndWindowClose"
+		"files.autoSave": "onFocusChange",
+		"editor.insertSpaces": false
 	}
 }
