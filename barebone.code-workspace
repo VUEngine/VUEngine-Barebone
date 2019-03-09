@@ -5,11 +5,11 @@
 			"name": "VUEngine Barebone"
 		},
 		{
-			"path": "..\\..\\vuengine\\core",
+			"path": "../../vuengine/core",
 			"name": "VUEngine Core"
 		},
 		{
-			"path": "..\\..\\vuengine\\plugins",
+			"path": "../../vuengine/plugins",
 			"name": "VUEngine Plugins"
 		}
 	],

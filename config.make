@@ -6,12 +6,6 @@ PLUGINS = 	vuengine/plugins/entities/LowPowerEntity														\
 			vuengine/plugins/other/SaveDataManager															\
 			vuengine/plugins/states/SplashScreens
 
-# Compiler's output
-COMPILER_OUTPUT			= c
-
-# Make jobs
-MAKE_JOBS = 6
-
 # Compilation type
 # preprocessor:			The .o files are preprocessor's output instead of compiler's.
 # debug:				Adds lots of runtime assertions. Enables debugging tools too.
@@ -27,30 +21,10 @@ TYPE					= beta
 # Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
 OPTIMIZATION			= Ofast
 
-# Enable pedantic warnings
-# 0:					Omit.
-# 1:					Use.
-PRINT_PEDANTIC_WARNINGS = 0
-
-# Frame pointer's usage
-# 0:					Omit.
-# 1:					Use.
-USE_FRAME_POINTER	   = 0
-
-# Prolog functions' usage
-# 0:					Omit.
-# 1:					Use.
-USE_PROLOG_FUNCTIONS	= 0
-
 # Pad ROM for hardware testing
 # 0:					No padding.
 # 1:					Pad the ROM for hardware testing.
 PAD_ROM				 	= 0
-
-# Dump elf
-# 0:					No dumping.
-# 1:					Dump the assembly code and the memory sections.
-DUMP_ELF				= 0
 
 # Sections' usage
 # SRAM's usage
@@ -75,4 +49,4 @@ VIRTUAL_TABLES_DATA_SECTION	 = .dram_bss
 
 # Size of variables to be loaded in the .sdata section
 # Not working properly because rosdata is used instead of rodata section
-#Â MSDA_SIZE			 	= 0
+# MSDA_SIZE			 	= 0
