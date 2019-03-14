@@ -34,7 +34,7 @@
 //												PLUGINS
 //---------------------------------------------------------------------------------------------------------
 
-#define __SAVE_DATA_MANAGER_SAVE_STAMP					"VUEngineBarebone"
+#define __SAVE_DATA_MANAGER_SAVE_STAMP					"VUEngineProject "
 #define __SAVE_DATA_MANAGER_SAVE_STAMP_LENGTH			16
 
 #define __AUTOMATIC_PAUSE_SELECTION_SCREEN_TITLE_TEXT	__TRANSLATE(STR_AUTOMATIC_PAUSE)

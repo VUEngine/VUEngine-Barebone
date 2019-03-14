@@ -1,30 +1,14 @@
 # VUEngine based plugins that the project uses
 PLUGINS = 	vuengine/plugins/entities/LowPowerEntity														\
-			vuengine/plugins/fonts/AstonishFont																	\
-			vuengine/plugins/fonts/VirtualBoyFont																\
+			vuengine/plugins/fonts/AstonishFont																\
+			vuengine/plugins/fonts/VirtualBoyFont															\
 			vuengine/plugins/other/AutomaticPause															\
 			vuengine/plugins/other/SaveDataManager															\
 			vuengine/plugins/states/SplashScreens
 
-# Compilation type
-# preprocessor:			The .o files are preprocessor's output instead of compiler's.
-# debug:				Adds lots of runtime assertions. Enables debugging tools too.
-# 						It is recommended to use the sram sections for the memory pools
-# 						when debugging in order to avoid stack overflows
-# 						(SRAM as WRAM only works on emulators).
-# tools:				Adds debugging tools without all the debug checking.
-# beta:					Removes most asserts. For testing the performance on hardware.
-# release:				Removes all asserts. For shipping only!
-TYPE					= beta
-
 # Optimization level
 # Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
 OPTIMIZATION			= Ofast
-
-# Pad ROM for hardware testing
-# 0:					No padding.
-# 1:					Pad the ROM for hardware testing.
-PAD_ROM				 	= 0
 
 # Sections' usage
 # SRAM's usage
