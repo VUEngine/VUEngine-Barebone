@@ -5,32 +5,3 @@ PLUGINS = 	vuengine/plugins/entities/LowPowerEntity														\
 			vuengine/plugins/other/AutomaticPause															\
 			vuengine/plugins/other/SaveDataManager															\
 			vuengine/plugins/states/SplashScreens
-
-# Optimization level
-# Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
-OPTIMIZATION			= Ofast
-
-# Sections' usage
-# SRAM's usage
-# You can use SRAM as WRAM. It adds, theoretically, 16MB of WRAM where all non initialized variables can be allocated.
-# This feature is experimental and only works properly on emulators.
-# Since only 8KB of SRAM is available on real carts, more than that will only work on emulators.
-# To make effective any change to these options, the whole project needs to be recompiled.
-# DRAM can be used as WRAM too, you must edit the linker script vb.ld to accommodate this
-# taking into account that the Param Table's last address normally is 0x0003D800, where
-# the WORLD attributes start.
-
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-MEMORY_POOL_SECTION			 = .sbss
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-NON_INITIALIZED_DATA_SECTION	= .sbss
-# valid options are [/.data/.sdata/.dram_data/.sram_data]
-INITIALIZED_DATA_SECTION		= .sdata
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-STATIC_SINGLETONS_DATA_SECTION  = .dram_bss
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-VIRTUAL_TABLES_DATA_SECTION	 = .dram_bss
-
-# Size of variables to be loaded in the .sdata section
-# Not working properly because rosdata is used instead of rodata section
-# MSDA_SIZE			 	= 0

@@ -30,9 +30,9 @@
 // game title (20 chars) 	 ####################
 #define __GAME_TITLE		"VUENGINE PROJECT    "
 // maker code (2 chars)		 ##
-#define __MAKER_CODE		"??"
+#define __MAKER_CODE		"VU"
 // game code (4 chars)		 ####
-#define __GAME_CODE			"V??M"
+#define __GAME_CODE			"VVUM"
 // revision (1.x)			 #
 #define __ROM_VERSION		 0
 
