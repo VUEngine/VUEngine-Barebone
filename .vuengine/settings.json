@@ -1,0 +1,31 @@
+{
+	"compiler": {
+		"dumpElf": false,
+		"framePointer": false,
+		"optimization": "Ofast",
+		"output": "c",
+		"pedanticWarnings": false,
+		"prologFunctions": false
+	},
+	"sections": {
+		"initializedData": ".sdata",
+		"memoryPool": ".sbss",
+		"staticSingletons": ".dram_bss",
+		"uninitializedData": ".sbss",
+		"virtualTables": ".dram_bss"
+	},
+	"plugins": [
+		"vuengine/plugins/entities/LowPowerEntity",
+		"vuengine/plugins/fonts/AstonishFont",
+		"vuengine/plugins/fonts/VirtualBoyFont",
+		"vuengine/plugins/other/AutomaticPause",
+		"vuengine/plugins/other/SaveDataManager",
+		"vuengine/plugins/states/SplashScreens"
+	],
+	"romHeader": {
+		"gameCode": "VVUM",
+		"gameTitle": "VUENGINE PROJECT    ",
+		"makerCode": "VU",
+		"revision": 0
+	}
+}

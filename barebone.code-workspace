@@ -1,16 +1,16 @@
 {
 	"folders": [
 		{
-			"path": ".",
-			"name": "VUEngine Barebone"
+			"name": "VUEngine Barebone",
+			"path": "."
 		},
 		{
-			"path": "../../vuengine/core",
-			"name": "VUEngine Core"
+			"name": "VUEngine Core",
+			"path": "../../vuengine/core"
 		},
 		{
-			"path": "../../vuengine/plugins",
-			"name": "VUEngine Plugins"
+			"name": "VUEngine Plugins",
+			"path": "../../vuengine/plugins"
 		}
 	],
 	"extensions": {
@@ -21,17 +21,6 @@
 	"settings": {
 		"files.autoGuessEncoding": true,
 		"C_Cpp.autoAddFileAssociations": false,
-		"files.autoSave": "onFocusChange",
-		"editor.insertSpaces": false,
-
-		"vuengine.compiler.optimization": "Ofast",
-		"vuengine.projects.plugins": [
-			"vuengine/plugins/entities/LowPowerEntity",
-			"vuengine/plugins/fonts/AstonishFont",
-			"vuengine/plugins/fonts/VirtualBoyFont",
-			"vuengine/plugins/other/AutomaticPause",
-			"vuengine/plugins/other/SaveDataManager",
-			"vuengine/plugins/states/SplashScreens",
-		]
+		"editor.insertSpaces": false
 	}
 }
