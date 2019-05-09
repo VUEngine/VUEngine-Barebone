@@ -2,10 +2,16 @@
 	"compiler": {
 		"dumpElf": false,
 		"framePointer": false,
-		"optimization": "Ofast",
+		"optimization": "O3",
 		"output": "c",
 		"pedanticWarnings": false,
 		"prologFunctions": false
+	},
+	"romHeader": {
+		"gameCode": "VVUM",
+		"gameTitle": "VUENGINE PROJECT    ",
+		"makerCode": "VU",
+		"revision": 0
 	},
 	"sections": {
 		"initializedData": ".sdata",
@@ -14,10 +20,7 @@
 		"uninitializedData": ".sbss",
 		"virtualTables": ".dram_bss"
 	},
-	"romHeader": {
-		"gameCode": "VVUM",
-		"gameTitle": "VUENGINE PROJECT    ",
-		"makerCode": "VU",
-		"revision": 0
+	"sram": {
+		"amount": 8192
 	}
 }
