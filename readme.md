@@ -1,14 +1,7 @@
 VUEngine Barebone
 =================
 
-Barebone project to be used as the foundation of new VUEngine 6 projects.
-
-
-COMPILING ON WIN32
-------------------
-
-The VUEngine Barebone as well as the VUEngine and VUEngine Plugins library come bundled with VBDE
-(http://vbde.planetvb.com). Compile by starting the VBDE build system.
+Barebone project to be used as the foundation of new VUEngine projects.
 
 
 LICENSE
