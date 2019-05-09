@@ -5,11 +5,11 @@
 			"path": "."
 		},
 		{
-			"name": "VUEngine Core",
+			"name": "VUEngine",
 			"path": "../../vuengine/core"
 		},
 		{
-			"name": "VUEngine Plugins",
+			"name": "Plugins",
 			"path": "../../vuengine/plugins"
 		}
 	],

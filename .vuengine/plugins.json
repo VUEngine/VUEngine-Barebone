@@ -1,10 +1,10 @@
 {
 	"plugins": [
-		"vuengine/plugins/entities/LowPowerEntity",
-		"vuengine/plugins/fonts/AstonishFont",
-		"vuengine/plugins/fonts/VirtualBoyFont",
-		"vuengine/plugins/other/AutomaticPause",
-		"vuengine/plugins/other/SaveDataManager",
-		"vuengine/plugins/states/SplashScreens"
+		"vuengine/entities/LowPowerEntity",
+		"vuengine/fonts/AstonishFont",
+		"vuengine/fonts/VirtualBoyFont",
+		"vuengine/other/AutomaticPause",
+		"vuengine/other/SaveDataManager",
+		"vuengine/states/SplashScreens"
 	]
 }
