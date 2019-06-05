@@ -1,7 +1,7 @@
 {
 	"compiler": {
 		"framePointer": false,
-		"optimization": "O3",
+		"optimization": "O2",
 		"output": "c",
 		"prologFunctions": false
 	},
