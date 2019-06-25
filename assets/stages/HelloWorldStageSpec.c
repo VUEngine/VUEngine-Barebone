@@ -268,7 +268,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		// ui
 		{
 			HELLO_WORLD_STAGE_ST_UI_ENTITIES,
-			__TYPE(UiContainer),
+			__TYPE(UIContainer),
 		},
 
 		// children
