@@ -14,7 +14,7 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec FLAG_UNITED_KINGDOM_EN;
+extern EntitySpec FLAG_JAPAN_EN;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -26,35 +26,35 @@ extern EntitySpec FLAG_UNITED_KINGDOM_EN;
  * of the full extended ASCII character set including special characters of European languages.
  */
 
-const char* const LANGUAGE_EN_STRINGS[] =
+const char* const LANGUAGE_JP_STRINGS[] =
 {
 	/* STR_AUTO_PAUSE_EXPLANATION: */
-	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
+	"\x20\x20\x9b\xbe\x90\x85\x95\x90\xa4\xaf\xa3\x88\x8f\x98\x85\xae\xbf\x90\x9d\xbe\x85\xac\x88\x90\xa1\x8c\x90\x85\x93\x88\xb9\xa\x20\x20\xba\xaf\x92\xbd\xa4\xbe\x85\xb5\x90\x85\xa0\x90\x85\xa3\x90\x98\x85\x91\x90\x85\xac\xbe\xba\x90\x98\x85\xac\xbb\xb1\xa\xac\xbf\xba\x90\x92\xbd\x98\xbe\x85\x91\xac\xbf\xbb\x8f\x98\x9d\x85\x94\xac\xbe\xb8\x90\x85\x9b\x90\xa3\x88\x90\x85\xb0\xa6\x8f\xa2",
 	/* STR_AUTOMATIC_PAUSE: */
-	"AUTOMATIC PAUSE",
+	"\x95\x90\xa4\xaf\xa3\x88\x8f\x98\x85\xae\xbf\x90\x9d\xbe",
 	/* STR_HELLO_WORLD: */
-	"Hello, World!",
+	"\xad\xbb\x90\x85\xbc\x90\xb9\xa4\xbe",
 	/* STR_LANGUAGE_SELECT: */
-	"LANGUAGE SELECT",
+	"\xb7\xbd\x98\xbe\x93\x88\x8f\x9c\xbe\x85\x9e\xba\x98\xa4",
 	/* STR_OFF: */
-	"Off",
+	"\x95\xac",
 	/* STR_ON: */
-	"On",
+	"\x95\xbd",
 	/* STR_PRECAUTION_SCREEN_TEXT: */
-	"     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
+	"\x20\x20\x20\x20\x92\xbd\xae\xbf\x90\xa0\xbd\xa4\xa\xba\x8f\xa4\xbe\x85\x92\xbd\x9d\xa4\xb7\x98\x9c\x8e\xbd\x85\x91\xbd\xa4\xbe\xa\x20\xac\xbf\xb8\x9a\x90\x9c\x8e\xbd\x85\xac\xbe\x98\xba\x8f\xa2\xa\x20\xad\xbe\xac\x8b\x90\x85\x95\xad\xbf\xba\x90\xa3\x88\xbd\x98\xbe",
 	/* STR_TAKE_A_REST: */
-	"Please take a rest!",
+	"\xac\xbf\xb8\x90\x9d\xbe\x85\xa3\x90\x98\x85\x91\x90\x85\xba\x9d\xa4",
 	
 };
 
-const LangROMSpec LANGUAGE_EN =
+const LangROMSpec LANGUAGE_JP =
 {
 	// language name
-	"English",
+	"\x9c\xbe\x8c\xaa\xbf\xa6\x90\x9d\xbe",
 
 	// flag entity
-	&FLAG_UNITED_KINGDOM_EN,
+	&FLAG_JAPAN_EN,
 	
 	// strings
-	(const char**)LANGUAGE_EN_STRINGS
+	(const char**)LANGUAGE_JP_STRINGS
 };
