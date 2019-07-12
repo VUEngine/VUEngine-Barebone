@@ -19,9 +19,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern FontSpec VUENGINE_FONT;
-extern FontSpec ASTONISH_FONT;
 extern FontSpec ASTONISH_EXTENDED_FONT;
-extern FontSpec VIRTUAL_BOY_FONT;
 extern FontSpec VIRTUAL_BOY_EXTENDED_FONT;
 
 

@@ -69,7 +69,7 @@
 			"EN": "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
 			"ES": "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
 			"FR": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
-			"JP": "    ｲﾝﾎﾟｰﾀﾝﾄ\nﾚｯﾄﾞ･ｲﾝｽﾄﾗｸｼｮﾝ･ｱﾝﾄﾞ\n ﾌﾟﾘｺｰｼｮﾝ･ﾌﾞｸﾚｯﾂ\n ﾍﾞﾌｫｰ･ｵﾍﾟﾚｰﾃｨﾝｸﾞ"
+			"JP": "     ｲﾝﾎﾟｰﾀﾝﾄ\nﾚｯﾄﾞ･ｲﾝｽﾄﾗｸｼｮﾝ･ｱﾝﾄﾞ\n  ﾌﾟﾘｺｰｼｮﾝ･ﾌﾞｸﾚｯﾂ\n  ﾍﾞﾌｫｰ･ｵﾍﾟﾚｰﾃｨﾝｸﾞ"
 		},
 		"STR_TAKE_A_REST": {
 			"DE": "Bitte mache eine Pause!",
@@ -80,4 +80,3 @@
 		}
 	}
 }
-
