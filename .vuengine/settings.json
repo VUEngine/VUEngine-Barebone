@@ -43,7 +43,7 @@
 	},
 	"debug": {
 		"alertStackOverflow": false,
-		"alertVipOvertime": true,
+		"alertVipOvertime": false,
 		"dimmForProfiling": false,
 		"printDetailedMemoryPoolStatus": false,
 		"printFramerate": false,

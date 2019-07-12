@@ -48,7 +48,7 @@
 #undef __PROFILE_GAME_STATE_DURING_VIP_INTERRUPT
 
 // alert vip's overtime
-#define __ALERT_VIP_OVERTIME
+#undef __ALERT_VIP_OVERTIME
 
 
 //---------------------------------------------------------------------------------------------------------
