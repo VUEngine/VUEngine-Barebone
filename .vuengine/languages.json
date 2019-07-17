@@ -15,10 +15,6 @@
 		"FR": {
 			"flag": "FLAG_FRANCE_EN",
 			"name": "Français"
-		},
-		"JP": {
-			"flag": "FLAG_JAPAN_EN",
-			"name": "ｼﾞｬﾊﾟﾆｰｽﾞ"
 		}
 	},
 	"strings": {
@@ -26,57 +22,49 @@
 			"DE": " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
 			"EN": "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
 			"ES": " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
-			"FR": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
-			"JP": "  ｻﾞｰ･ｵｰﾄﾏﾃｨｯｸ･ﾎﾟｰｽﾞ･ﾌｨｰﾁｬｰ･ｳｨﾙ\n  ﾚﾏｲﾝﾄﾞ･ﾕｰ･ﾀｰ･ﾃｰｸ･ｱｰ･ﾌﾞﾚｰｸ･ﾌﾛﾑ\nﾌﾟﾚｰｲﾝｸﾞ･ｱﾌﾟﾛｯｸｽ･ｴﾌﾞﾘｰ･ｻｰﾃｨｰ･ﾐﾆｯﾂ"
+			"FR": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ"
 		},
 		"STR_AUTOMATIC_PAUSE": {
 			"DE": "AUTOMATISCHE PAUSE",
 			"EN": "AUTOMATIC PAUSE",
 			"ES": "PAUSA AUTOMÁTICA",
-			"FR": "PAUSE AUTOMATIQUE",
-			"JP": "ｵｰﾄﾏﾃｨｯｸ･ﾎﾟｰｽﾞ"
+			"FR": "PAUSE AUTOMATIQUE"
 		},
 		"STR_HELLO_WORLD": {
 			"DE": "Hallo, Welt!",
 			"EN": "Hello, World!",
 			"ES": "Hola Mundo!",
-			"FR": "Bonjour Le Monde!",
-			"JP": "ﾍﾛｰ･ﾜｰﾙﾄﾞ"
+			"FR": "Bonjour Le Monde!"
 		},
 		"STR_LANGUAGE_SELECT": {
 			"DE": "SPRACHAUSWAHL",
 			"EN": "LANGUAGE SELECT",
 			"ES": "SELECCIONAR IDIOMA",
-			"FR": "CHOIX DE LA LANGUE",
-			"JP": "ﾗﾝｸﾞｳｨｯｼﾞ･ｾﾚｸﾄ"
+			"FR": "CHOIX DE LA LANGUE"
 		},
 		"STR_OFF": {
 			"DE": "Aus",
 			"EN": "Off",
 			"ES": "Apagado",
-			"FR": "Desactivé",
-			"JP": "ｵﾌ"
+			"FR": "Desactivé"
 		},
 		"STR_ON": {
 			"DE": "An",
 			"EN": "On",
 			"ES": "Encendido",
-			"FR": "Activé",
-			"JP": "ｵﾝ"
+			"FR": "Activé"
 		},
 		"STR_PRECAUTION_SCREEN_TEXT": {
 			"DE": "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
 			"EN": "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
 			"ES": "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
-			"FR": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
-			"JP": "     ｲﾝﾎﾟｰﾀﾝﾄ\nﾚｯﾄﾞ･ｲﾝｽﾄﾗｸｼｮﾝ･ｱﾝﾄﾞ\n  ﾌﾟﾘｺｰｼｮﾝ･ﾌﾞｸﾚｯﾂ\n  ﾍﾞﾌｫｰ･ｵﾍﾟﾚｰﾃｨﾝｸﾞ"
+			"FR": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER"
 		},
 		"STR_TAKE_A_REST": {
 			"DE": "Bitte mache eine Pause!",
 			"EN": "Please take a rest!",
 			"ES": "¡Por favor, tómese un descanso!",
-			"FR": "Se il vous plaît, prendre un repos!",
-			"JP": "ﾌﾟﾘｰｽﾞ･ﾃｰｸ･ｱｰ･ﾚｽﾄ"
+			"FR": "Se il vous plaît, prendre un repos!"
 		}
 	}
 }
