@@ -1,8 +1,6 @@
 {
-	"romHeader": {
-		"gameCode": "VXXM",
-		"gameTitle": "VUENGINE PROJECT",
-		"makerCode": "VU",
-		"revision": 0
-	}
+	"gameCode": "VXXM",
+	"gameTitle": "VUENGINE PROJECT",
+	"makerCode": "VU",
+	"revision": 0
 }
