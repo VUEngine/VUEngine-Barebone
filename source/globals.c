@@ -50,3 +50,8 @@ const UserAnimatedEntity _userAnimatedEntities[] =
 {
 	{NULL, ""},
 };
+
+SoundROM* const _userSounds[] =
+{
+	NULL
+};

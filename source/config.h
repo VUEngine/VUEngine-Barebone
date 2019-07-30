@@ -71,6 +71,7 @@
 #define __DEBUG_TOOLS
 #define __STAGE_EDITOR
 #define __ANIMATION_INSPECTOR
+#define __SOUND_TEST
 
 #endif
 
