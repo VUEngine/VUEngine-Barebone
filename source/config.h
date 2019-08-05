@@ -43,7 +43,7 @@
 // dimm screen to make it easier to read the profiling output
 #undef __DIMM_FOR_PROFILING
 
-// print the game's current process while the VIP's frame start and idle interrupts are fired, but the 
+// print the game's current process while the VIP's frame start and idle interrupts are fired, but the
 // game frame is still pending processes to complete
 #undef __PROFILE_GAME_STATE_DURING_VIP_INTERRUPT
 
@@ -135,7 +135,7 @@
 //											FRAME RATE CONTROL
 //---------------------------------------------------------------------------------------------------------
 
-// when defined, the engine skips to the next game frame when the VIP's GAMESTART interrupt is fired 
+// when defined, the engine skips to the next game frame when the VIP's GAMESTART interrupt is fired
 // beforethe current game frame is done
 #undef __FORCE_VIP_SYNC
 
@@ -150,7 +150,7 @@
 #define __TARGET_FPS 								(50 >> __FRAME_CYCLE)
 
 // milliseconds that must take to complete a game cycle
-#define __GAME_FRAME_DURATION						(__MILLISECONDS_IN_SECOND / __TARGET_FPS)
+#define __GAME_FRAME_DURATION						(__MILLISECONDS_PER_SECOND / __TARGET_FPS)
 
 // target frames per second
 #define __OPTIMUM_FPS 								(__TARGET_FPS >> __FRAME_CYCLE)
