@@ -23,7 +23,7 @@
 	],
 	"strings": [
 		{
-			"id": "STR_AUTO_PAUSE_EXPLANATION",
+			"id": "AutoPauseExplanation",
 			"translations": [
 				{
 					"language": "DE",
@@ -44,7 +44,7 @@
 			]
 		},
 		{
-			"id": "STR_AUTOMATIC_PAUSE",
+			"id": "AutomaticPause",
 			"translations": [
 				{
 					"language": "DE",
@@ -65,7 +65,7 @@
 			]
 		},
 		{
-			"id": "STR_HELLO_WORLD",
+			"id": "HelloWorld",
 			"translations": [
 				{
 					"language": "DE",
@@ -86,7 +86,7 @@
 			]
 		},
 		{
-			"id": "STR_LANGUAGE_SELECT",
+			"id": "LanguageSelect",
 			"translations": [
 				{
 					"language": "DE",
@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"id": "STR_OFF",
+			"id": "Off",
 			"translations": [
 				{
 					"language": "DE",
@@ -128,7 +128,7 @@
 			]
 		},
 		{
-			"id": "STR_ON",
+			"id": "On",
 			"translations": [
 				{
 					"language": "DE",
@@ -149,7 +149,7 @@
 			]
 		},
 		{
-			"id": "STR_PRECAUTION_SCREEN_TEXT",
+			"id": "PrecautionScreenText",
 			"translations": [
 				{
 					"language": "DE",
@@ -170,7 +170,7 @@
 			]
 		},
 		{
-			"id": "STR_TAKE_A_REST",
+			"id": "TakeARest",
 			"translations": [
 				{
 					"language": "DE",
