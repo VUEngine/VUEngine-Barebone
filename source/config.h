@@ -55,7 +55,33 @@
 //											DEBUGGING TOOLS
 //---------------------------------------------------------------------------------------------------------
 
+// If tools already defined, enable all
 #ifdef __TOOLS
+
+// tools
+#ifndef __DEBUG_TOOLS
+#define __DEBUG_TOOLS
+#endif
+
+#ifndef __STAGE_EDITOR
+#define __STAGE_EDITOR
+#endif
+
+#ifndef __ANIMATION_INSPECTOR
+#define __ANIMATION_INSPECTOR
+#endif
+
+#ifndef __SOUND_TEST
+#define __SOUND_TEST
+#endif
+
+#endif
+
+// Enable different settings for each tool
+#ifdef __DEBUG_TOOLS
+#ifndef __TOOLS
+#define __TOOLS
+#endif
 
 // print frame rate
 #define __PRINT_FRAMERATE
@@ -67,12 +93,24 @@
 // enable streaming's profiling
 #define __PROFILE_STREAMING
 
-// tools
-#define __DEBUG_TOOLS
-#define __STAGE_EDITOR
-#define __ANIMATION_INSPECTOR
-#define __SOUND_TEST
+#endif
 
+#ifdef __STAGE_EDITOR
+#ifndef __TOOLS
+#define __TOOLS
+#endif
+#endif
+
+#ifdef __ANIMATION_INSPECTOR
+#ifndef __TOOLS
+#define __TOOLS
+#endif
+#endif
+
+#ifdef __SOUND_TEST
+#ifndef __TOOLS
+#define __TOOLS
+#endif
 #endif
 
 
@@ -317,19 +355,6 @@
 //												SOUND
 //---------------------------------------------------------------------------------------------------------
 
-// channels per bgms
-#define __BGM_CHANNELS								2
-
-// channels per fx
-#define __FX_CHANNELS								1
-
-// simultaneous bgms
-#define __BGMS										1
-
-// simultaneous fx
-#define __FXS										2
-
-#define __TOTAL_SOUNDS								(__BGMS + __FXS)
 #define __LEFT_EAR_CENTER							96
 #define __RIGHT_EAR_CENTER							288
 
