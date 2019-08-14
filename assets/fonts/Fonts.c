@@ -16,9 +16,13 @@
 
 FontSpec* const __FONTS[] =
 {
-	(FontSpec*)&VUENGINE_FONT,
-	(FontSpec*)&ASTONISH_EXTENDED_FONT,
-	(FontSpec*)&VIRTUAL_BOY_EXTENDED_FONT,
+	(FontSpec*)&DEFAULT_FONT,
+	(FontSpec*)&ASTONISH_FONT,
+	(FontSpec*)&ASTONISH_EXT_FONT,
+	(FontSpec*)&ASTONISH_S_FONT,
+	(FontSpec*)&ASTONISH_S_EXT_FONT,
+	(FontSpec*)&VIRTUAL_BOY_FONT,
+	(FontSpec*)&VIRTUAL_BOY_EXT_FONT,
 	
 	NULL
 };

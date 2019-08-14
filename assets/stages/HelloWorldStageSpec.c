@@ -26,6 +26,7 @@
 #include <Stage.h>
 #include <Printing.h>
 #include <CharSet.h>
+#include <Fonts.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -33,8 +34,6 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern EntitySpec LOW_POWER_INDICATOR_LB;
-extern FontSpec VUENGINE_FONT;
-extern FontSpec VIRTUAL_BOY_EXTENDED_FONT;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -60,8 +59,8 @@ PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 
 FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
 {
-	&VUENGINE_FONT,
-	&VIRTUAL_BOY_EXTENDED_FONT,
+	&DEFAULT_FONT,
+	&VIRTUAL_BOY_EXT_FONT,
 
 	NULL
 };
@@ -87,7 +86,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 	{
 		__DEFAULT_PCM_HZ,
 	},
-	
+
 	// level
 	{
 		// size

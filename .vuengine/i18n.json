@@ -1,70 +1,194 @@
 {
-	"languages": {
-		"EN": {
+	"languages": [
+		{
+			"id": "EN",
 			"flag": "FLAG_UNITED_KINGDOM_EN",
 			"name": "English"
 		},
-		"DE": {
+		{
+			"id": "DE",
 			"flag": "FLAG_GERMANY_EN",
 			"name": "Deutsch"
 		},
-		"ES": {
+		{
+			"id": "ES",
 			"flag": "FLAG_SPAIN_EN",
 			"name": "Español"
 		},
-		"FR": {
+		{
+			"id": "FR",
 			"flag": "FLAG_FRANCE_EN",
 			"name": "Français"
 		}
-	},
-	"strings": {
-		"STR_AUTO_PAUSE_EXPLANATION": {
-			"DE": " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
-			"EN": "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
-			"ES": " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
-			"FR": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ"
+	],
+	"strings": [
+		{
+			"id": "STR_AUTO_PAUSE_EXPLANATION",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren"
+				},
+				{
+					"language": "EN",
+					"translation": "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes"
+				},
+				{
+					"language": "ES",
+					"translation": " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos"
+				},
+				{
+					"language": "FR",
+					"translation": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ"
+				}
+			]
 		},
-		"STR_AUTOMATIC_PAUSE": {
-			"DE": "AUTOMATISCHE PAUSE",
-			"EN": "AUTOMATIC PAUSE",
-			"ES": "PAUSA AUTOMÁTICA",
-			"FR": "PAUSE AUTOMATIQUE"
+		{
+			"id": "STR_AUTOMATIC_PAUSE",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "AUTOMATISCHE PAUSE"
+				},
+				{
+					"language": "EN",
+					"translation": "AUTOMATIC PAUSE"
+				},
+				{
+					"language": "ES",
+					"translation": "PAUSA AUTOMÁTICA"
+				},
+				{
+					"language": "FR",
+					"translation": "PAUSE AUTOMATIQUE"
+				}
+			]
 		},
-		"STR_HELLO_WORLD": {
-			"DE": "Hallo, Welt!",
-			"EN": "Hello, World!",
-			"ES": "Hola Mundo!",
-			"FR": "Bonjour Le Monde!"
+		{
+			"id": "STR_HELLO_WORLD",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "Hallo, Welt!"
+				},
+				{
+					"language": "EN",
+					"translation": "Hello, World!"
+				},
+				{
+					"language": "ES",
+					"translation": "Hola Mundo!"
+				},
+				{
+					"language": "FR",
+					"translation": "Bonjour Le Monde!"
+				}
+			]
 		},
-		"STR_LANGUAGE_SELECT": {
-			"DE": "SPRACHAUSWAHL",
-			"EN": "LANGUAGE SELECT",
-			"ES": "SELECCIONAR IDIOMA",
-			"FR": "CHOIX DE LA LANGUE"
+		{
+			"id": "STR_LANGUAGE_SELECT",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "SPRACHAUSWAHL"
+				},
+				{
+					"language": "EN",
+					"translation": "LANGUAGE SELECT"
+				},
+				{
+					"language": "ES",
+					"translation": "SELECCIONAR IDIOMA"
+				},
+				{
+					"language": "FR",
+					"translation": "CHOIX DE LA LANGUE"
+				}
+			]
 		},
-		"STR_OFF": {
-			"DE": "Aus",
-			"EN": "Off",
-			"ES": "Apagado",
-			"FR": "Desactivé"
+		{
+			"id": "STR_OFF",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "Aus"
+				},
+				{
+					"language": "EN",
+					"translation": "Off"
+				},
+				{
+					"language": "ES",
+					"translation": "Apagado"
+				},
+				{
+					"language": "FR",
+					"translation": "Desactivé"
+				}
+			]
 		},
-		"STR_ON": {
-			"DE": "An",
-			"EN": "On",
-			"ES": "Encendido",
-			"FR": "Activé"
+		{
+			"id": "STR_ON",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "An"
+				},
+				{
+					"language": "EN",
+					"translation": "On"
+				},
+				{
+					"language": "ES",
+					"translation": "Encendido"
+				},
+				{
+					"language": "FR",
+					"translation": "Activé"
+				}
+			]
 		},
-		"STR_PRECAUTION_SCREEN_TEXT": {
-			"DE": "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
-			"EN": "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
-			"ES": "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
-			"FR": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER"
+		{
+			"id": "STR_PRECAUTION_SCREEN_TEXT",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE"
+				},
+				{
+					"language": "EN",
+					"translation": "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING"
+				},
+				{
+					"language": "ES",
+					"translation": "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR"
+				},
+				{
+					"language": "FR",
+					"translation": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER"
+				}
+			]
 		},
-		"STR_TAKE_A_REST": {
-			"DE": "Bitte mache eine Pause!",
-			"EN": "Please take a rest!",
-			"ES": "¡Por favor, tómese un descanso!",
-			"FR": "Se il vous plaît, prendre un repos!"
+		{
+			"id": "STR_TAKE_A_REST",
+			"translations": [
+				{
+					"language": "DE",
+					"translation": "Bitte mache eine Pause!"
+				},
+				{
+					"language": "EN",
+					"translation": "Please take a rest!"
+				},
+				{
+					"language": "ES",
+					"translation": "¡Por favor, tómese un descanso!"
+				},
+				{
+					"language": "FR",
+					"translation": "Se il vous plaît, prendre un repos!"
+				}
+			]
 		}
-	}
+	]
 }
