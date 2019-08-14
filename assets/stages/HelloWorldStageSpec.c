@@ -271,7 +271,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		(TextureSpec**)NULL,
 
 		// background music
-		(const u16 (*)[])NULL,
+		(Sound**)NULL,
 	},
 
 	// entities

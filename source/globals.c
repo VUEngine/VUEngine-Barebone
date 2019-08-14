@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-// 										DEFINITIONS
+//												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
 #ifdef __DEBUG_TOOLS
@@ -51,7 +51,12 @@ const UserAnimatedEntity _userAnimatedEntities[] =
 	{NULL, ""},
 };
 
-SoundROM* const _userSounds[] =
+const SoundROM* _userSounds[] =
+{
+	NULL
+};
+
+const ToolState _userToolStates[] =
 {
 	NULL
 };
