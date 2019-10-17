@@ -186,6 +186,8 @@
 	"sound": {
 		"leftEarCenter": 96,
 		"rightEarCenter": 288,
+		"stereoHorizontalAttenuationFactor": 50,
+		"stereoVerticalAttenuationFactor": 50,
 		"stereoAttenuationFactor": 0.75
 	},
 	"sprite": {
