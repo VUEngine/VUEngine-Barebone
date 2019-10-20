@@ -85,6 +85,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 	// Sound config
 	{
 		__DEFAULT_PCM_HZ,
+		false
 	},
 
 	// level
