@@ -34,6 +34,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern EntitySpec LOW_POWER_INDICATOR_LB;
+extern Sound SAMPLE_THEME_SOUND;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -65,6 +66,11 @@ FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
 	NULL
 };
 
+SoundROM* HELLO_WORLD_STAGE_ST_SOUNDS[] =
+{
+	&SAMPLE_THEME_SOUND,
+	NULL
+};
 
 //---------------------------------------------------------------------------------------------------------
 //											STAGE DEFINITION
@@ -272,7 +278,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		(TextureSpec**)NULL,
 
 		// background music
-		(Sound**)NULL,
+		(Sound**)HELLO_WORLD_STAGE_ST_SOUNDS,
 	},
 
 	// entities

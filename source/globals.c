@@ -35,6 +35,9 @@
 //---------------------------------------------------------------------------------------------------------
 
 #ifdef __DEBUG_TOOLS
+
+extern Sound SAMPLE_THEME_SOUND;
+
 const ClassSizeData _userClassesSizeData[] =
 {
 	{NULL, ""},
@@ -53,6 +56,7 @@ const UserAnimatedEntity _userAnimatedEntities[] =
 
 const SoundROM* _userSounds[] =
 {
+	&SAMPLE_THEME_SOUND,
 	NULL
 };
 
