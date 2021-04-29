@@ -81,6 +81,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	Game::enableKeypad(Game::getInstance());
 
 	// start fade in effect
+	Camera::startEffect(Camera::getInstance(), kHide);
 	Camera::startEffect(Camera::getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)
@@ -117,6 +118,7 @@ void HelloWorldScreenState::resume(void* owner)
 	if(!Game::isExitingSpecialMode(Game::getInstance()))
 	{
 		// start a fade in effect
+		Camera::startEffect(Camera::getInstance(), kHide);
 		Camera::startEffect(Camera::getInstance(),
 			kFadeTo, // effect type
 			0, // initial delay (in ms)

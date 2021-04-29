@@ -15,8 +15,8 @@
 		"brightness": {
 			"brightRed": 128,
 			"darkRed": 32,
-			"fadeDelay": 8,
-			"fadeIncrement": 8,
+			"fadeDelay": 16,
+			"fadeIncrement": 1,
 			"mediumRed": 64
 		},
 		"palettes": {
@@ -75,19 +75,23 @@
 		"scrambleBinary": false
 	},
 	"debug": {
-		"alertStackOverflow": false,
+		"enableProfiler": false,
+		"showStackOverflowAlert": false,
 		"alertVipOvertime": false,
 		"dimmForProfiling": false,
-		"printDetailedMemoryPoolStatus": false,
+		"showDetailedMemoryPoolStatus": false,
 		"printFramerate": false,
+		"showMemoryPoolStatus": false,
+		"profileStreaming": false,
+		"showStreamingProfiling": false,
+		"stackHeadroom": 1000,
+		"alertForTornFrames": false,
+		"alertStackOverflow": false,
+		"printDetailedMemoryPoolStatus": false,
 		"printMemoryPoolStatus": false,
 		"profileGame": false,
 		"profileGameStateDuringVipInterrupt": false,
-		"profileStreaming": false,
-		"showGameProfiling": false,
-		"showStreamingProfiling": false,
-		"stackHeadroom": 1000,
-		"alertForTornFrames": false
+		"showGameProfiling": false
 	},
 	"exception": {
 		"position": {
@@ -102,6 +106,9 @@
 		"timerResolution": 10
 	},
 	"game": [],
+	"communications": {
+		"enable": false
+	},
 	"memoryPools": {
 		"cleanUp": false,
 		"pools": [
@@ -160,7 +167,7 @@
 		"maximumXViewDistance": 2048,
 		"maximumYViewDistance": 4096,
 		"parallaxCorrectionFactor": 4,
-		"scalingModifierFactor": 1.0,
+		"scalingModifierFactor": 1,
 		"screenDepth": 2048,
 		"screenHeight": 224,
 		"screenWidth": 384,
