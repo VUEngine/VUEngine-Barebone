@@ -151,9 +151,6 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 
 	// rendering
 	{
-		// number of cycles the texture writing is idle
-		__TARGET_FPS / 10,
-
 		// maximum number of texture's rows to write each time the texture writing is active
 		12,
 
@@ -285,12 +282,12 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 	{
 		// ui
 		{
-			HELLO_WORLD_STAGE_ST_UI_ENTITIES,
+			(PositionedEntity*)HELLO_WORLD_STAGE_ST_UI_ENTITIES,
 			__TYPE(UIContainer),
 		},
 
 		// children
-		HELLO_WORLD_STAGE_ST_ENTITIES,
+		(PositionedEntity*)HELLO_WORLD_STAGE_ST_ENTITIES,
 	},
 
 	// post processing effects

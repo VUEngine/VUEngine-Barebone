@@ -66,7 +66,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	Base::enter(this, owner);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&HELLO_WORLD_STAGE_ST, NULL, true);
+	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&HELLO_WORLD_STAGE_ST, NULL, true, false);
 
 	// start clocks to start animations
 	GameState::startClocks(GameState::safeCast(this));
