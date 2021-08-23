@@ -25,10 +25,12 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <Game.h>
-#include <GameSaveDataManager.h>
-#include <AutoPauseManager.h>
+// #include <GameSaveDataManager.h>
+// #include <AutoPauseManager.h>
 #include <PrecautionScreenState.h>
-#include <LangSelectScreenState.h>
+// #include <AutomaticPauseSelectionScreen.h>
+// #include <LanguageSelectionScreen.h>
+#include <AdjustmentScreenState.h>
 #include <HelloWorldScreenState.h>
 
 
@@ -39,12 +41,21 @@
 int main(void)
 {
 	// initialize plugins
-	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
-	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
-	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),
-		GameState::safeCast(HelloWorldScreenState::getInstance())
+	// AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
+	// GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
+	
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),
+		GameState::safeCast(AdjustmentScreenState::getInstance())
 	);
+    /* SplashScreenState::setNextState(
+		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
+		GameState::safeCast(AutomaticPauseSelectionScreen::getInstance())
+	);
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(AutomaticPauseSelectionScreen::getInstance()),
+		GameState::safeCast(LanguageSelectionScreen::getInstance())
+	); */
 
 	// start the game
 	Game::start(Game::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));

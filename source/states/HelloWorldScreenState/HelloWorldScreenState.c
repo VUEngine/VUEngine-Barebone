@@ -30,8 +30,8 @@
 #include <VIPManager.h>
 #include <Camera.h>
 #include <Printing.h>
-#include <I18n.h>
-#include <Languages.h>
+// #include <I18n.h>
+// #include <Languages.h>
 #include <HelloWorldScreenState.h>
 
 
@@ -132,7 +132,8 @@ void HelloWorldScreenState::resume(void* owner)
 
 void HelloWorldScreenState::print()
 {
-	const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
+	// const char* strHelloWorld = I18n::getText(I18n::getInstance(), STR_HELLO_WORLD);
+	const char* strHelloWorld = "HEMMO WORMP";
 	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");
 	Printing::text(
 		Printing::getInstance(),

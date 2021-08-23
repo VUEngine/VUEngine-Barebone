@@ -33,7 +33,7 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec LOW_POWER_INDICATOR_LB;
+// extern EntitySpec LOW_POWER_INDICATOR_LB;
 extern Sound SAMPLE_THEME_SOUND;
 
 
@@ -43,7 +43,7 @@ extern Sound SAMPLE_THEME_SOUND;
 
 PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_ENTITIES[] =
 {
-	{&LOW_POWER_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
+	// {&LOW_POWER_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -61,7 +61,7 @@ PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
 {
 	&DEFAULT_FONT,
-	&VIRTUAL_BOY_EXT_FONT,
+	// &VIRTUAL_BOY_EXT_FONT,
 
 	NULL
 };
