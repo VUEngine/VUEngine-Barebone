@@ -1,6 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -28,7 +34,7 @@ extern EntitySpec FLAG_GERMANY_EN;
 
 const char* const LANGUAGE_DE_STRINGS[] =
 {
-	/* STR_AUTO_PAUSE_EXPLANATION: */
+	/* STR_AUTOMATIC_PAUSE_EXPLANATION: */
 	" Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
 	/* STR_AUTOMATIC_PAUSE: */
 	"AUTOMATISCHE PAUSE",

@@ -1,6 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -28,7 +33,7 @@ extern EntitySpec FLAG_UNITED_KINGDOM_EN;
 
 const char* const LANGUAGE_EN_STRINGS[] =
 {
-	/* STR_AUTO_PAUSE_EXPLANATION: */
+	/* STR_AUTOMATIC_PAUSE_EXPLANATION: */
 	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
 	/* STR_AUTOMATIC_PAUSE: */
 	"AUTOMATIC PAUSE",

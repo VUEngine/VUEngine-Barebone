@@ -1,6 +1,12 @@
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
+
 
 OUTPUT_FORMAT("elf32-v810", "elf32-v810", "elf32-v810")
 OUTPUT("a.elf") /* force elf format output */

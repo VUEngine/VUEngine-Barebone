@@ -1,22 +1,10 @@
-/* VUEngine - Virtual Utopia Engine <http://vuengine.planetvb.com/>
- * A universal game engine for the Nintendo Virtual Boy
+/**
+ * VUEngine Barebone
  *
- * Copyright (C) 2007, 2018 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <chris@vr32.de>
+ * (c) Christian Radke and Jorge Eremiev
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
 
 
@@ -26,9 +14,11 @@
 
 #include <Game.h>
 #include <GameSaveDataManager.h>
-#include <AutoPauseManager.h>
+#include <AutomaticPauseManager.h>
 #include <PrecautionScreenState.h>
-#include <LangSelectScreenState.h>
+#include <AutomaticPauseSelectionScreenState.h>
+#include <LanguageSelectionScreenState.h>
+#include <AdjustmentScreenState.h>
 #include <HelloWorldScreenState.h>
 
 
@@ -39,10 +29,23 @@
 int main(void)
 {
 	// initialize plugins
-	AutoPauseManager::setActive(AutoPauseManager::getInstance(), true);
+	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), true);
 	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
-	SplashScreenState::setNextState(
-		SplashScreenState::safeCast(LangSelectScreenState::getInstance()),
+	
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),
+		GameState::safeCast(AdjustmentScreenState::getInstance())
+	);
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
+		GameState::safeCast(AutomaticPauseSelectionScreenState::getInstance())
+	);
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(AutomaticPauseSelectionScreenState::getInstance()),
+		GameState::safeCast(LanguageSelectionScreenState::getInstance())
+	);
+    SplashScreenState::setNextState(
+		SplashScreenState::safeCast(LanguageSelectionScreenState::getInstance()),
 		GameState::safeCast(HelloWorldScreenState::getInstance())
 	);
 

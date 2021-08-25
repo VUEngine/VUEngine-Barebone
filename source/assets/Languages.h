@@ -1,6 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
 
 #ifndef LANGUAGES_H_
 #define LANGUAGES_H_
@@ -21,7 +26,7 @@ enum LanguageIdentifiers
 
 enum LanguageStrings
 {
-	STR_AUTO_PAUSE_EXPLANATION,
+	STR_AUTOMATIC_PAUSE_EXPLANATION,
 	STR_AUTOMATIC_PAUSE,
 	STR_HELLO_WORLD,
 	STR_LANGUAGE_SELECT,

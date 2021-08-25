@@ -1,6 +1,4 @@
-.history
-.vscode/ipch
-build/
-release.bat
-v810_err.txt
 .DS_Store
+.history
+build/
+v810_err.txt
