@@ -1,11 +1,13 @@
-###########################################################################################################
-#                               THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                                #
-###########################################################################################################
-
 # VUEngine based plugins that the project uses
-PLUGINS 						=   vuengine//other/I18n \
-                                    vuengine//states/PrecautionScreen \
-                                    vuengine//states/AdjustmentScreenNintendo
+PLUGINS 						=   vuengine//fonts/AstonishFont \
+                                    vuengine//fonts/VirtualBoyFont \
+                                    vuengine//other/AutomaticPause \
+                                    vuengine//other/I18n \
+                                    vuengine//other/SaveDataManager \
+                                    vuengine//states/splash/PrecautionScreen \
+                                    vuengine//states/splash/AdjustmentScreenNintendo \
+                                    vuengine//states/splash/AutomaticPauseSelectionScreen \
+                                    vuengine//states/splash/LanguageSelectionScreen
 
 # Compiler's output
 COMPILER_OUTPUT					= c

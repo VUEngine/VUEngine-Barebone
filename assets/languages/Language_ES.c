@@ -1,6 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -19,42 +24,42 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec FLAG_FRANCE_EN;
+extern EntitySpec FLAG_SPAIN_EN;
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-const char* const LANGUAGE_FR_STRINGS[] =
+const char* const LANGUAGE_ES_STRINGS[] =
 {
 	/* STR_AUTO_PAUSE_EXPLANATION: */
-	"  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
+	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
 	/* STR_AUTOMATIC_PAUSE: */
-	"PAUSE AUTOMATIQUE",
+	"PAUSA AUTOMÁTICA",
 	/* STR_HELLO_WORLD: */
-	"Bonjour Le Monde!",
+	"Hola Mundo!",
 	/* STR_LANGUAGE_SELECT: */
-	"CHOIX DE LA LANGUE",
+	"SELECCIONAR IDIOMA",
 	/* STR_OFF: */
-	"Desactivé",
+	"Apagado",
 	/* STR_ON: */
-	"Activé",
+	"Encendido",
 	/* STR_PRECAUTION_SCREEN_TEXT: */
-	"        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
+	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
 	/* STR_TAKE_A_REST: */
-	"Se il vous plaît, prendre un repos!",
+	"¡Por favor, tómese un descanso!",
 	
 };
 
-const LangROMSpec LANGUAGE_FR =
+const LangROMSpec LANGUAGE_ES =
 {
 	// language name
-	"Français",
+	"Español",
 
 	// flag entity
-	&FLAG_FRANCE_EN,
+	&FLAG_SPAIN_EN,
 	
 	// strings
-	(const char**)LANGUAGE_FR_STRINGS
+	(const char**)LANGUAGE_ES_STRINGS
 };

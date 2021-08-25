@@ -1,6 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * VUEngine Barebone
+ *
+ * (c) Christian Radke and Jorge Eremiev
+ *
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
+ */
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -19,42 +24,42 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec FLAG_GERMANY_EN;
+extern EntitySpec FLAG_UNITED_KINGDOM_EN;
 
 
 //---------------------------------------------------------------------------------------------------------
 //												DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-const char* const LANGUAGE_DE_STRINGS[] =
+const char* const LANGUAGE_EN_STRINGS[] =
 {
-	/* STR_AUTO_PAUSE_EXPLANATION: */
-	" Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
+	/* STR_AUTOMATIC_PAUSE_EXPLANATION: */
+	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
 	/* STR_AUTOMATIC_PAUSE: */
-	"AUTOMATISCHE PAUSE",
+	"AUTOMATIC PAUSE",
 	/* STR_HELLO_WORLD: */
-	"Hallo, Welt!",
+	"Hello, World!",
 	/* STR_LANGUAGE_SELECT: */
-	"SPRACHAUSWAHL",
+	"LANGUAGE SELECT",
 	/* STR_OFF: */
-	"Aus",
+	"Off",
 	/* STR_ON: */
-	"An",
+	"On",
 	/* STR_PRECAUTION_SCREEN_TEXT: */
-	"        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
+	"     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
 	/* STR_TAKE_A_REST: */
-	"Bitte mache eine Pause!",
+	"Please take a rest!",
 	
 };
 
-const LangROMSpec LANGUAGE_DE =
+const LangROMSpec LANGUAGE_EN =
 {
 	// language name
-	"Deutsch",
+	"English",
 
 	// flag entity
-	&FLAG_GERMANY_EN,
+	&FLAG_UNITED_KINGDOM_EN,
 	
 	// strings
-	(const char**)LANGUAGE_DE_STRINGS
+	(const char**)LANGUAGE_EN_STRINGS
 };
