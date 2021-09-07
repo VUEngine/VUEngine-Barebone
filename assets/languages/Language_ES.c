@@ -1,7 +1,7 @@
 /**
  * VUEngine Barebone
  *
- * (c) Christian Radke and Jorge Eremiev
+ * (c) Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>
  *
  * For the full copyright and license information, please view the LICENSE file
  * that was distributed with this source code.
@@ -34,9 +34,9 @@ extern EntitySpec FLAG_SPAIN_EN;
 const char* const LANGUAGE_ES_STRINGS[] =
 {
 	/* STR_AUTO_PAUSE_EXPLANATION: */
-	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
+	" La funciï¿½n automï¿½tica de pausa te\nrecordarï¿½ que debes tomar un descanso\n  approximadamente cada 30 minutos",
 	/* STR_AUTOMATIC_PAUSE: */
-	"PAUSA AUTOMÁTICA",
+	"PAUSA AUTOMï¿½TICA",
 	/* STR_HELLO_WORLD: */
 	"Hola Mundo!",
 	/* STR_LANGUAGE_SELECT: */
@@ -48,14 +48,14 @@ const char* const LANGUAGE_ES_STRINGS[] =
 	/* STR_PRECAUTION_SCREEN_TEXT: */
 	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
 	/* STR_TAKE_A_REST: */
-	"¡Por favor, tómese un descanso!",
+	"ï¿½Por favor, tï¿½mese un descanso!",
 	
 };
 
 const LangROMSpec LANGUAGE_ES =
 {
 	// language name
-	"Español",
+	"Espaï¿½ol",
 
 	// flag entity
 	&FLAG_SPAIN_EN,
