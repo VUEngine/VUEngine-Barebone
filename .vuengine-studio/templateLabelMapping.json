@@ -1,0 +1,6 @@
+{
+    "name": ["VUEngine Barebone"],
+    "authors": ["Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>"],
+    "headerName": "VUENGINE PROJECT",
+    "makerCode": "VU"
+}
