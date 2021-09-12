@@ -1,12 +1,6 @@
-/**
- * VUEngine Barebone
- *
- * (c) Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>
- *
- * For the full copyright and license information, please view the LICENSE file
- * that was distributed with this source code.
- */
-
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                              THIS FILE WAS AUTO-GENERATED - DO NOT EDIT                               //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 OUTPUT_FORMAT("elf32-v810", "elf32-v810", "elf32-v810")
 OUTPUT("a.elf") /* force elf format output */

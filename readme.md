@@ -3,7 +3,7 @@
 Barebone project to be used as the foundation of new VUEngine projects.
 
 
-## LICENSE
+## License
 
 Copyright (C) 2007, 2021 by Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>
 
