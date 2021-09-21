@@ -41,9 +41,9 @@ void GameSaveDataManager::restoreSettings()
 	Base::restoreSettings(this);
 }
 
-u8 GameSaveDataManager::getCustomValue()
+uint8 GameSaveDataManager::getCustomValue()
 {
-	u8 customValue = 0;
+	uint8 customValue = 0;
 	if(this->sramAvailable)
 	{
 		SRAMManager::read(SRAMManager::getInstance(), (BYTE*)&customValue, offsetof(struct GameSaveData, someCustomValue), sizeof(customValue));
@@ -52,7 +52,7 @@ u8 GameSaveDataManager::getCustomValue()
 	return customValue;
 }
 
-void GameSaveDataManager::setCustomValue(u8 customValue)
+void GameSaveDataManager::setCustomValue(uint8 customValue)
 {
 	if(this->sramAvailable)
 	{

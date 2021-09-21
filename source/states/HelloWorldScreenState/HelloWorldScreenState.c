@@ -137,18 +137,18 @@ void HelloWorldScreenState::print()
  * @param currentDrawingFrameBufferSet	The framebuffer set that's currently being accessed
  * @param spatialObject
  */
-static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
+static void HelloWorldScreenState::wobble(uint32 currentDrawingFrameBufferSet, SpatialObject spatialObject __attribute__ ((unused)))
 {
-	u8 buffer = 0;
-	u16 x, y = 0;
-	u32 previousSourcePointerValue = 0;
+	uint8 buffer = 0;
+	uint16 x, y = 0;
+	uint32 previousSourcePointerValue = 0;
 
 	// runtime working variables
-	static u8 waveLutIndex = 0;
+	static uint8 waveLutIndex = 0;
 
 	// look up table of bitshifts performed on rows
 	// values must be multiples of 2
-	const u32 waveLut[64] =
+	const uint32 waveLut[64] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0,
 		2, 2, 2, 2, 2, 2,
@@ -184,12 +184,12 @@ static void HelloWorldScreenState::wobble(u32 currentDrawingFrameBufferSet, Spat
 			for(y = 6; y < 8; y++)
 			{
 				// pointer to currently manipulated 32 bits of framebuffer
-				u32* sourcePointer = (u32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4) + y;
+				uint32* sourcePointer = (uint32*) (currentDrawingFrameBufferSet | (buffer ? 0x00010000 : 0)) + (x << 4) + y;
 
 				// save current pointer value to temp var and shift highest x bits of it, according to lut,
 				// to the lowest bits, since we want to insert these
-				u32 sourcePointerCurrentValue = *sourcePointer;
-				u32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - waveLut[waveLutIndex]);
+				uint32 sourcePointerCurrentValue = *sourcePointer;
+				uint32 previousSourcePointerValueTemp = sourcePointerCurrentValue >> (32 - waveLut[waveLutIndex]);
 
 				// manipulate current 32 bits in frame buffer
 				*sourcePointer =

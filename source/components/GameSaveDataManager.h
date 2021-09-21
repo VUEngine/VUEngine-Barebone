@@ -30,7 +30,7 @@ typedef struct GameSaveData
 	SaveData baseSaveData;
 
 	// some custom value
-	u8 someCustomValue;
+	uint8 someCustomValue;
 
 } GameSaveData;
 
@@ -43,8 +43,8 @@ singleton class GameSaveDataManager : SaveDataManager
 {
 	static GameSaveDataManager getInstance();
 	override void restoreSettings();
-	u8 getCustomValue();
-    void setCustomValue(u8 customValue);
+	uint8 getCustomValue();
+    void setCustomValue(uint8 customValue);
 }
 
 
