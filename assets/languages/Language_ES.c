@@ -34,9 +34,9 @@ extern EntitySpec FLAG_SPAIN_EN;
 const char* const LANGUAGE_ES_STRINGS[] =
 {
 	/* STR_AUTO_PAUSE_EXPLANATION: */
-	" La funci�n autom�tica de pausa te\nrecordar� que debes tomar un descanso\n  approximadamente cada 30 minutos",
+	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
 	/* STR_AUTOMATIC_PAUSE: */
-	"PAUSA AUTOM�TICA",
+	"PAUSA AUTOMÁTICA",
 	/* STR_HELLO_WORLD: */
 	"Hola Mundo!",
 	/* STR_LANGUAGE_SELECT: */
@@ -48,14 +48,14 @@ const char* const LANGUAGE_ES_STRINGS[] =
 	/* STR_PRECAUTION_SCREEN_TEXT: */
 	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
 	/* STR_TAKE_A_REST: */
-	"�Por favor, t�mese un descanso!",
+	"¡Por favor, tómese un descanso!",
 	
 };
 
 const LangROMSpec LANGUAGE_ES =
 {
 	// language name
-	"Espa�ol",
+	"Español",
 
 	// flag entity
 	&FLAG_SPAIN_EN,
