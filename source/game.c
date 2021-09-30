@@ -32,19 +32,19 @@ int main(void)
 	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), true);
 	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
 	
-    SplashScreenState::setNextState(
+	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),
 		GameState::safeCast(AdjustmentScreenState::getInstance())
 	);
-    SplashScreenState::setNextState(
+	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
 		GameState::safeCast(AutomaticPauseSelectionScreenState::getInstance())
 	);
-    SplashScreenState::setNextState(
+	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(AutomaticPauseSelectionScreenState::getInstance()),
 		GameState::safeCast(LanguageSelectionScreenState::getInstance())
 	);
-    SplashScreenState::setNextState(
+	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(LanguageSelectionScreenState::getInstance()),
 		GameState::safeCast(HelloWorldScreenState::getInstance())
 	);

@@ -44,7 +44,7 @@ singleton class GameSaveDataManager : SaveDataManager
 	static GameSaveDataManager getInstance();
 	override void restoreSettings();
 	uint8 getCustomValue();
-    void setCustomValue(uint8 customValue);
+	void setCustomValue(uint8 customValue);
 }
 
 

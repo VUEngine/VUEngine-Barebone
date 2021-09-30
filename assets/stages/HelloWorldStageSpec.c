@@ -105,20 +105,20 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		},
 
 		// camera's frustum
-        {
-        	// x0
-        	0,
-        	// y0
+		{
+			// x0
+			0,
+			// y0
 			0,
 			// z0
 			-10,
-        	// x1
-        	__SCREEN_WIDTH,
-        	// y1
-        	__SCREEN_HEIGHT,
-        	// z1
-        	__SCREEN_WIDTH * 5,
-        }
+			// x1
+			__SCREEN_WIDTH,
+			// y1
+			__SCREEN_HEIGHT,
+			// z1
+			__SCREEN_WIDTH * 5,
+		}
 	},
 
 	// streaming
@@ -193,7 +193,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		1,
 
 		// object segments sizes (up to 1024 in total)
-        // can impact performance, make sure to configure only as large as maximally needed
+		// can impact performance, make sure to configure only as large as maximally needed
 		{
 			// __spt0
 			0,

@@ -42,20 +42,20 @@ const char* const LANGUAGE_FR_STRINGS[] =
 	/* STR_LANGUAGE_SELECT: */
 	"CHOIX DE LA LANGUE",
 	/* STR_OFF: */
-	"Desactivé",
+	"Desactivï¿½",
 	/* STR_ON: */
-	"Activé",
+	"Activï¿½",
 	/* STR_PRECAUTION_SCREEN_TEXT: */
-	"        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
+	"        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRï¿½CAUTIONS\n    A AVANT DE JOUER",
 	/* STR_TAKE_A_REST: */
-	"Se il vous plaît, prendre un repos!",
+	"Se il vous plaï¿½t, prendre un repos!",
 	
 };
 
 const LangROMSpec LANGUAGE_FR =
 {
 	// language name
-	"Français",
+	"Franï¿½ais",
 
 	// flag entity
 	&FLAG_FRANCE_EN,
