@@ -8,29 +8,47 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <I18n.h>
-#include <Languages.h>
 
 
 //---------------------------------------------------------------------------------------------------------
 //                                              DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern LangROMSpec EnglishLanguage;
-extern LangROMSpec FrenchLanguage;
-extern LangROMSpec GermanLanguage;
-extern LangROMSpec SpanishLanguage;
+extern EntitySpec FLAG_SPAIN_EN;
 
 
 //---------------------------------------------------------------------------------------------------------
 //                                               DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
-LangROMSpec* const __LANGUAGES[] =
+const char* const SpanishLanguageStrings[] =
 {
-	&EnglishLanguage,
-	&FrenchLanguage,
-	&GermanLanguage,
-	&SpanishLanguage,
+	/* kStringAutomaticPause: */
+	"PAUSA AUTOMÁTICA",
+	/* kStringAutomaticPauseExplanation: */
+	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
+	/* kStringHelloWorld: */
+	"Hola Mundo!",
+	/* kStringLanguageSelect: */
+	"SELECCIONAR IDIOMA",
+	/* kStringOff: */
+	"Apagado",
+	/* kStringOn: */
+	"Encendido",
+	/* kStringPrecautionScreenText: */
+	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
+	/* kStringTakeARest: */
+	"¡Por favor, tómese un descanso!",
+};
+
+const LangROMSpec SpanishLanguage =
+{
+	// language name
+	"Español",
+
+	// flag entity
+	&FLAG_SPAIN_EN,
 	
-	NULL
+	// strings
+	(const char**)SpanishLanguageStrings
 };

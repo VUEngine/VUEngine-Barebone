@@ -23,14 +23,14 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern FontSpec DEFAULT_FONT;
-extern FontSpec PROFILER_FONT;
-extern FontSpec ASTONISH_FONT;
-extern FontSpec ASTONISH_EXT_FONT;
-extern FontSpec ASTONISH_S_FONT;
-extern FontSpec ASTONISH_S_EXT_FONT;
-extern FontSpec VIRTUAL_BOY_FONT;
-extern FontSpec VIRTUAL_BOY_EXT_FONT;
+extern FontSpec DefaultFont;
+extern FontSpec ProfilerFont;
+extern FontSpec AstonishFont;
+extern FontSpec AstonishExtFont;
+extern FontSpec AstonishSFont;
+extern FontSpec AstonishSExtFont;
+extern FontSpec VirtualBoyFont;
+extern FontSpec VirtualBoyExtFont;
 
 
 #endif

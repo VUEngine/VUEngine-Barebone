@@ -1,0 +1,15 @@
+{
+    "id": "German",
+    "flag": "FLAG_GERMANY_EN",
+    "name": "Deutsch",
+    "strings": {
+        "AutomaticPause": "AUTOMATISCHE PAUSE",
+        "AutomaticPauseExplanation": " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
+        "HelloWorld": "Hallo, Welt!",
+        "LanguageSelect": "SPRACHAUSWAHL",
+        "Off": "Aus",
+        "On": "An",
+        "PrecautionScreenText": "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
+        "TakeARest": "Bitte mache eine Pause!"
+    }
+}
