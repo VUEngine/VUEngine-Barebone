@@ -2,6 +2,7 @@
     "id": "German",
     "flag": "FLAG_GERMANY_EN",
     "name": "Deutsch",
+	"order": 2,
     "strings": {
         "AutomaticPause": "AUTOMATISCHE PAUSE",
         "AutomaticPauseExplanation": " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",

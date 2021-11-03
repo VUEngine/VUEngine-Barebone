@@ -2,6 +2,7 @@
     "id": "Spanish",
     "flag": "FLAG_SPAIN_EN",
     "name": "Español",
+	"order": 3,
     "strings": {
         "AutomaticPause": "PAUSA AUTOMÁTICA",
         "AutomaticPauseExplanation": " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",

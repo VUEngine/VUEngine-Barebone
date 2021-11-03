@@ -2,6 +2,7 @@
     "id": "French",
     "flag": "FLAG_FRANCE_EN",
     "name": "Français",
+	"order": 4,
     "strings": {
         "AutomaticPause": "PAUSE AUTOMATIQUE",
         "AutomaticPauseExplanation": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
