@@ -23,22 +23,24 @@ extern EntitySpec FLAG_UNITED_KINGDOM_EN;
 
 const char* const EnglishLanguageStrings[] =
 {
-	/* kStringAutomaticPause: */
-	"AUTOMATIC PAUSE",
-	/* kStringAutomaticPauseExplanation: */
+	/* kStringAutomaticPauseBody: */
+	"Please take a rest!",
+	/* kStringAutomaticPauseSelectionBody: */
 	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
+	/* kStringAutomaticPauseSelectionOff: */
+	"Off",
+	/* kStringAutomaticPauseSelectionOn: */
+	"On",
+	/* kStringAutomaticPauseSelectionTitle: */
+	"AUTOMATIC PAUSE",
+	/* kStringAutomaticPauseTitle: */
+	"AUTOMATIC PAUSE",
 	/* kStringHelloWorld: */
 	"Hello, World!",
-	/* kStringLanguageSelect: */
+	/* kStringLanguageSelectTitle: */
 	"LANGUAGE SELECT",
-	/* kStringOff: */
-	"Off",
-	/* kStringOn: */
-	"On",
-	/* kStringPrecautionScreenText: */
+	/* kStringPrecautionScreenBody: */
 	"     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
-	/* kStringTakeARest: */
-	"Please take a rest!",
 };
 
 const LangROMSpec EnglishLanguage =

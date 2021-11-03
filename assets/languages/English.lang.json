@@ -1,16 +1,10 @@
 {
     "id": "English",
+	"code": "en",
     "flag": "FLAG_UNITED_KINGDOM_EN",
     "name": "English",
-	"order": 1,
+    "order": 1,
     "strings": {
-        "AutomaticPause": "AUTOMATIC PAUSE",
-        "AutomaticPauseExplanation": "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
-        "HelloWorld": "Hello, World!",
-        "LanguageSelect": "LANGUAGE SELECT",
-        "Off": "Off",
-        "On": "On",
-        "PrecautionScreenText": "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
-        "TakeARest": "Please take a rest!"
+        "HelloWorld": "Hello, World!"
     }
 }

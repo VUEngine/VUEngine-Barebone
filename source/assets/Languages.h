@@ -9,16 +9,25 @@
 //                                               DEFINITIONS
 //---------------------------------------------------------------------------------------------------------
 
+enum LanguageIdentifiers
+{
+	kLanguageEnglish,
+	kLanguageGerman,
+	kLanguageSpanish,
+	kLanguageFrench,
+};
+
 enum LanguageStrings
 {
-	kStringAutomaticPause,
-	kStringAutomaticPauseExplanation,
+	kStringAutomaticPauseBody,
+	kStringAutomaticPauseSelectionBody,
+	kStringAutomaticPauseSelectionOff,
+	kStringAutomaticPauseSelectionOn,
+	kStringAutomaticPauseSelectionTitle,
+	kStringAutomaticPauseTitle,
 	kStringHelloWorld,
-	kStringLanguageSelect,
-	kStringOff,
-	kStringOn,
-	kStringPrecautionScreenText,
-	kStringTakeARest,
+	kStringLanguageSelectTitle,
+	kStringPrecautionScreenBody,
 };
 
 

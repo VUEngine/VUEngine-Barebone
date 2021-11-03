@@ -1,16 +1,10 @@
 {
     "id": "French",
+	"code": "fr",
     "flag": "FLAG_FRANCE_EN",
     "name": "Français",
-	"order": 4,
+    "order": 4,
     "strings": {
-        "AutomaticPause": "PAUSE AUTOMATIQUE",
-        "AutomaticPauseExplanation": "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
-        "HelloWorld": "Bonjour Le Monde!",
-        "LanguageSelect": "CHOIX DE LA LANGUE",
-        "Off": "Desactivé",
-        "On": "Activé",
-        "PrecautionScreenText": "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
-        "TakeARest": "Se il vous plaît, prendre un repos!"
+        "HelloWorld": "Bonjour Le Monde!"
     }
 }

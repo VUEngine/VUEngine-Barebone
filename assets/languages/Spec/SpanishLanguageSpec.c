@@ -23,22 +23,24 @@ extern EntitySpec FLAG_SPAIN_EN;
 
 const char* const SpanishLanguageStrings[] =
 {
-	/* kStringAutomaticPause: */
-	"PAUSA AUTOMÁTICA",
-	/* kStringAutomaticPauseExplanation: */
+	/* kStringAutomaticPauseBody: */
+	"¡Por favor, tómese un descanso!",
+	/* kStringAutomaticPauseSelectionBody: */
 	" La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
+	/* kStringAutomaticPauseSelectionOff: */
+	"Apagado",
+	/* kStringAutomaticPauseSelectionOn: */
+	"Encendido",
+	/* kStringAutomaticPauseSelectionTitle: */
+	"PAUSA AUTOMÁTICA",
+	/* kStringAutomaticPauseTitle: */
+	"PAUSA AUTOMÁTICA",
 	/* kStringHelloWorld: */
 	"Hola Mundo!",
-	/* kStringLanguageSelect: */
+	/* kStringLanguageSelectTitle: */
 	"SELECCIONAR IDIOMA",
-	/* kStringOff: */
-	"Apagado",
-	/* kStringOn: */
-	"Encendido",
-	/* kStringPrecautionScreenText: */
+	/* kStringPrecautionScreenBody: */
 	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
-	/* kStringTakeARest: */
-	"¡Por favor, tómese un descanso!",
 };
 
 const LangROMSpec SpanishLanguage =

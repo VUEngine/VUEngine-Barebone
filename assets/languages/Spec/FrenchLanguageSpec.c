@@ -23,22 +23,24 @@ extern EntitySpec FLAG_FRANCE_EN;
 
 const char* const FrenchLanguageStrings[] =
 {
-	/* kStringAutomaticPause: */
-	"PAUSE AUTOMATIQUE",
-	/* kStringAutomaticPauseExplanation: */
+	/* kStringAutomaticPauseBody: */
+	"Se il vous plaît, prendre un repos!",
+	/* kStringAutomaticPauseSelectionBody: */
 	"  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
+	/* kStringAutomaticPauseSelectionOff: */
+	"Desactivé",
+	/* kStringAutomaticPauseSelectionOn: */
+	"Activé",
+	/* kStringAutomaticPauseSelectionTitle: */
+	"PAUSE AUTOMATIQUE",
+	/* kStringAutomaticPauseTitle: */
+	"PAUSE AUTOMATIQUE",
 	/* kStringHelloWorld: */
 	"Bonjour Le Monde!",
-	/* kStringLanguageSelect: */
+	/* kStringLanguageSelectTitle: */
 	"CHOIX DE LA LANGUE",
-	/* kStringOff: */
-	"Desactivé",
-	/* kStringOn: */
-	"Activé",
-	/* kStringPrecautionScreenText: */
+	/* kStringPrecautionScreenBody: */
 	"        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER",
-	/* kStringTakeARest: */
-	"Se il vous plaît, prendre un repos!",
 };
 
 const LangROMSpec FrenchLanguage =

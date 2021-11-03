@@ -1,16 +1,10 @@
 {
     "id": "Spanish",
+	"code": "es",
     "flag": "FLAG_SPAIN_EN",
     "name": "Español",
-	"order": 3,
+    "order": 3,
     "strings": {
-        "AutomaticPause": "PAUSA AUTOMÁTICA",
-        "AutomaticPauseExplanation": " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
-        "HelloWorld": "Hola Mundo!",
-        "LanguageSelect": "SELECCIONAR IDIOMA",
-        "Off": "Apagado",
-        "On": "Encendido",
-        "PrecautionScreenText": "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
-        "TakeARest": "¡Por favor, tómese un descanso!"
+        "HelloWorld": "Hola Mundo!"
     }
 }

@@ -23,22 +23,24 @@ extern EntitySpec FLAG_GERMANY_EN;
 
 const char* const GermanLanguageStrings[] =
 {
-	/* kStringAutomaticPause: */
-	"AUTOMATISCHE PAUSE",
-	/* kStringAutomaticPauseExplanation: */
+	/* kStringAutomaticPauseBody: */
+	"Bitte mache eine Pause!",
+	/* kStringAutomaticPauseSelectionBody: */
 	" Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
+	/* kStringAutomaticPauseSelectionOff: */
+	"Aus",
+	/* kStringAutomaticPauseSelectionOn: */
+	"An",
+	/* kStringAutomaticPauseSelectionTitle: */
+	"AUTOMATISCHE PAUSE",
+	/* kStringAutomaticPauseTitle: */
+	"AUTOMATISCHE PAUSE",
 	/* kStringHelloWorld: */
 	"Hallo, Welt!",
-	/* kStringLanguageSelect: */
+	/* kStringLanguageSelectTitle: */
 	"SPRACHAUSWAHL",
-	/* kStringOff: */
-	"Aus",
-	/* kStringOn: */
-	"An",
-	/* kStringPrecautionScreenText: */
+	/* kStringPrecautionScreenBody: */
 	"        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
-	/* kStringTakeARest: */
-	"Bitte mache eine Pause!",
 };
 
 const LangROMSpec GermanLanguage =
