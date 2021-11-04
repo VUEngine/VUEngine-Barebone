@@ -1,10 +1,10 @@
 {
-    "id": "French",
+	"id": "French",
 	"code": "fr",
-    "flag": "FLAG_FRANCE_EN",
-    "name": "Français",
-    "order": 4,
-    "strings": {
-        "HelloWorld": "Bonjour Le Monde!"
-    }
+	"flag": "FLAG_FRANCE_EN",
+	"name": "Français",
+	"order": 4,
+	"strings": {
+		"HelloWorld": "Bonjour Le Monde!"
+	}
 }

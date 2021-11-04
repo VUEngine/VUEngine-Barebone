@@ -1,10 +1,10 @@
 {
-    "id": "German",
+	"id": "German",
 	"code": "de",
-    "flag": "FLAG_GERMANY_EN",
-    "name": "Deutsch",
-    "order": 2,
-    "strings": {
-        "HelloWorld": "Hallo, Welt!"
-    }
+	"flag": "FLAG_GERMANY_EN",
+	"name": "Deutsch",
+	"order": 2,
+	"strings": {
+		"HelloWorld": "Hallo, Welt!"
+	}
 }
