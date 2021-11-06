@@ -21,21 +21,21 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec LOW_POWER_INDICATOR_LB;
+extern EntitySpec LowPowerIndicatorEntity;
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											ENTITY LISTS
 //---------------------------------------------------------------------------------------------------------
 
-PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_ENTITIES[] =
+PositionedEntityROMSpec HelloWorldStageEntities[] =
 {
-	{&LOW_POWER_INDICATOR_LB, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
+	{&LowPowerIndicatorEntity, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
+PositionedEntityROMSpec HelloWorldStageUiEntities[] =
 {
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
@@ -45,7 +45,7 @@ PositionedEntityROMSpec HELLO_WORLD_STAGE_ST_UI_ENTITIES[] =
 // 											PRELOAD LISTS
 //---------------------------------------------------------------------------------------------------------
 
-FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
+FontROMSpec* const HelloWorldStageFonts[] =
 {
 	&DefaultFont,
 	&VirtualBoyExtFont,
@@ -53,7 +53,7 @@ FontROMSpec* const HELLO_WORLD_STAGE_ST_FONTS[] =
 	NULL
 };
 
-SoundROM* HELLO_WORLD_STAGE_ST_SOUNDS[] =
+SoundROM* HelloWorldStageSounds[] =
 {
 	NULL
 };
@@ -62,7 +62,7 @@ SoundROM* HELLO_WORLD_STAGE_ST_SOUNDS[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMSpec HELLO_WORLD_STAGE_ST =
+StageROMSpec HelloWorldStage =
 {
 	// allocator
 	__TYPE(Stage),
@@ -252,7 +252,7 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 	// assets
 	{
 		// fonts to preload
-		(FontSpec**)HELLO_WORLD_STAGE_ST_FONTS,
+		(FontSpec**)HelloWorldStageFonts,
 
 		// char sets to preload
 		(CharSetSpec**)NULL,
@@ -261,19 +261,19 @@ StageROMSpec HELLO_WORLD_STAGE_ST =
 		(TextureSpec**)NULL,
 
 		// background music
-		(Sound**)HELLO_WORLD_STAGE_ST_SOUNDS,
+		(Sound**)HelloWorldStageSounds,
 	},
 
 	// entities
 	{
 		// ui
 		{
-			(PositionedEntity*)HELLO_WORLD_STAGE_ST_UI_ENTITIES,
+			(PositionedEntity*)HelloWorldStageUiEntities,
 			__TYPE(UIContainer),
 		},
 
 		// children
-		(PositionedEntity*)HELLO_WORLD_STAGE_ST_ENTITIES,
+		(PositionedEntity*)HelloWorldStageEntities,
 	},
 
 	// post processing effects
