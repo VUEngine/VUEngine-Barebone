@@ -8,7 +8,7 @@ PLUGINS 						= vuengine//fonts/AstonishFont \
 								  vuengine//other/AutomaticPause \
 								  vuengine//other/I18n \
 								  vuengine//other/SaveDataManager \
-								  vuengine//states/splash/AdjustmentScreenNintendo \
+								  vuengine//states/splash/AdjustmentScreenVUEngine \
 								  vuengine//states/splash/AutomaticPauseSelectionScreen \
 								  vuengine//states/splash/LanguageSelectionScreen \
 								  vuengine//states/splash/PrecautionScreen
