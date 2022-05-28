@@ -1,7 +1,9 @@
 {
-	"folders": [{
-		"path": "."
-	}],
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
     "plugins": [
         "user//watchdog",
         "vuengine//behaviors/SteeringBehaviors",
@@ -1961,10 +1963,6 @@
                         "tiles": 256
                     }
                 ]
-            },
-            "1eb7f7d4-1b52-4ed3-8d6a-82c5a3e01643": {
-                "typeId": "Image",
-                "name": "New"
             }
         },
         "WaveForm": {
@@ -2005,52 +2003,6 @@
                     26,
                     11
                 ]
-            }
-        },
-        "BrightnessRepeats": {
-            "c43f886a-acbb-48c1-a6b6-9cbaf727a31a": {
-                "typeId": "BrightnessRepeats",
-                "name": "New"
-            },
-            "80173ba9-a0d8-4948-a9e5-1bacae0e1b88": {
-                "typeId": "BrightnessRepeats",
-                "name": "New"
-            },
-            "f975af22-665a-4ef0-874f-c386f4a6baee": {
-                "typeId": "BrightnessRepeats",
-                "name": "New"
-            }
-        },
-        "ColumnTables": {
-            "3afe49f6-bc50-484a-9852-2a17b653090d": {
-                "typeId": "ColumnTables",
-                "name": "New"
-            },
-            "cab6ead8-560f-4126-b79c-b8a388c527f7": {
-                "typeId": "ColumnTables",
-                "name": "New"
-            },
-            "ba1970dd-3f9f-4587-9124-2387869c97e9": {
-                "typeId": "ColumnTables",
-                "name": "New"
-            },
-            "2c512ce2-b4d7-41ea-81ab-bc9ef49781a4": {
-                "typeId": "ColumnTables",
-                "name": "New"
-            },
-            "a2da273e-5477-4dc8-869f-b5c1166039e2": {
-                "typeId": "ColumnTables",
-                "name": "New"
-            }
-        },
-        "Entities": {
-            "f5287f3c-05b9-4312-8bde-da0b444d4fc4": {
-                "typeId": "Entities",
-                "name": "New"
-            },
-            "f388e0af-68fc-4f73-a787-913e3067b623": {
-                "typeId": "Entities",
-                "name": "New"
             }
         }
     }
