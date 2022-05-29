@@ -348,8 +348,9 @@
 // defaul step increment in fade transitions
 #define __CAMERA_EFFECT_FADE_INCREMENT				1
 
+
 //---------------------------------------------------------------------------------------------------------
-//                                             COLOR PALETTES                                              
+//                                                PALETTES                                                 
 //---------------------------------------------------------------------------------------------------------
 
 #define __PRINTING_PALETTE							0
