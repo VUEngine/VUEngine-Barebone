@@ -17,7 +17,7 @@
     ],
     "items": {
         "Compiler": {
-            "3d7c2619-19db-4ceb-b128-3425339734c8": {
+            "ckrlrclMRTN2Gk8s": {
                 "typeId": "Compiler",
                 "framePointer": false,
                 "optimization": "O2",
@@ -60,43 +60,13 @@
             }
         },
         "DebugMacros": {
-            "eaaa2eb0-f1c7-4716-ba4f-5051f142cd66": {
+            "JavjQex6kdySr6gc": {
                 "typeId": "DebugMacros",
-                "macros": [
-                    {
-                        "name": "__showSpritesProfiling",
-                        "define": false,
-                        "dependent": [
-                            "__dimmForProfiling",
-                            "__forcePrintingLayer"
-                        ]
-                    },
-                    {
-                        "name": "__showVipStatus",
-                        "define": false,
-                        "dependent": [
-                            "__forcePrintingLayer"
-                        ]
-                    },
-                    {
-                        "name": "__directDrawInterlacing",
-                        "define": false
-                    },
-                    {
-                        "name": "customGameMacro",
-                        "value": "123",
-                        "define": false
-                    },
-                    {
-                        "name": "__defaultFont",
-                        "value": "GuiTime",
-                        "define": false
-                    }
-                ]
+                "macros": []
             }
         },
         "EngineConfig": {
-            "a13168bc-4a61-470d-af32-429945c46a3e": {
+            "fyLv3TNKxfVZkk3N": {
                 "typeId": "EngineConfig",
                 "children": [
                     {
@@ -287,7 +257,7 @@
             }
         },
         "Events": {
-            "15e63f43-ed6e-4258-b5fb-5e6c1fb01a1c": {
+            "gt8r5tybZRx1Xj9s": {
                 "typeId": "Events",
                 "events": [
                     "SomethingHappened",
@@ -297,7 +267,7 @@
             }
         },
         "I18n": {
-            "dd003791-c6a6-420f-b167-62f03fadc161": {
+            "EaJQL4l1xfOMbZRQ": {
                 "typeId": "I18n",
                 "strings": [
                     "HelloWorld"
@@ -363,7 +333,7 @@
             }
         },
         "Project": {
-            "173065bc-d767-41c5-ae6d-cc74a043290f": {
+            "bVQcaaY9tNRsHiTU": {
                 "typeId": "Project",
                 "title": "VUEngine Barebone",
                 "author": "Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>",
@@ -371,7 +341,7 @@
             }
         },
         "RomHeader": {
-            "f8ad8e0d-9160-4ed8-9798-242c3a616b83": {
+            "NjPPxuXlZ2ufxuhY": {
                 "typeId": "RomHeader",
                 "gameCodeId": "XX",
                 "gameCodeLanguage": "M",
@@ -382,7 +352,7 @@
             }
         },
         "Entity": {
-            "a506c42f-5a40-4784-bf4d-82428edfd351": {
+            "6Vqr4556ZCI3zw6V": {
                 "typeId": "Entity",
                 "name": "FinishLine",
                 "class": "FinishLine",
