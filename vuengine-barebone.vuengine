@@ -256,101 +256,6 @@
                 ]
             }
         },
-        "Events": {
-            "gt8r5tybZRx1Xj9s": {
-                "typeId": "Events",
-                "events": [
-                    "SomethingHappened",
-                    "GameOver",
-                    "HeroDiedYetAgain"
-                ]
-            }
-        },
-        "I18n": {
-            "EaJQL4l1xfOMbZRQ": {
-                "typeId": "I18n",
-                "strings": [
-                    "HelloWorld"
-                ],
-                "children": [
-                    {
-                        "typeId": "I18nLanguage",
-                        "id": "English",
-                        "code": "en",
-                        "flag": "FlagUnitedKingdomEntity",
-                        "name": "English",
-                        "order": 1,
-                        "strings": [
-                            {
-                                "id": "HelloWorld",
-                                "translation": "Hello, World!"
-                            }
-                        ]
-                    },
-                    {
-                        "typeId": "I18nLanguage",
-                        "id": "German",
-                        "code": "de",
-                        "flag": "FlagGermanyEntity",
-                        "name": "Deutsch",
-                        "order": 2,
-                        "strings": [
-                            {
-                                "id": "HelloWorld",
-                                "translation": "Hallo, Welt!"
-                            }
-                        ]
-                    },
-                    {
-                        "typeId": "I18nLanguage",
-                        "id": "Spanish",
-                        "code": "es",
-                        "flag": "FlagSpainEntity",
-                        "name": "Español",
-                        "order": 3,
-                        "strings": [
-                            {
-                                "id": "HelloWorld",
-                                "translation": "Hola Mundo!"
-                            }
-                        ]
-                    },
-                    {
-                        "typeId": "I18nLanguage",
-                        "id": "French",
-                        "code": "fr",
-                        "flag": "FlagFranceEntity",
-                        "name": "Français",
-                        "order": 4,
-                        "strings": [
-                            {
-                                "id": "HelloWorld",
-                                "translation": "Bonjour Le Monde!"
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        "Project": {
-            "bVQcaaY9tNRsHiTU": {
-                "typeId": "Project",
-                "title": "VUEngine Barebone",
-                "author": "Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>",
-                "description": "Barebone project to be used as the foundation of new VUEngine projects."
-            }
-        },
-        "RomHeader": {
-            "NjPPxuXlZ2ufxuhY": {
-                "typeId": "RomHeader",
-                "gameCodeId": "XX",
-                "gameCodeLanguage": "M",
-                "gameCodeSystem": "V",
-                "gameTitle": "VUENGINE PROJECT",
-                "makerCode": "VU",
-                "revision": 0
-            }
-        },
         "Entity": {
             "6Vqr4556ZCI3zw6V": {
                 "typeId": "Entity",
@@ -626,6 +531,89 @@
                         "typeId": "EntityChildren"
                     }
                 ]
+            }
+        },
+        "Events": {
+            "gt8r5tybZRx1Xj9s": {
+                "typeId": "Events",
+                "events": []
+            }
+        },
+        "Language": {
+            "EaJQL4l1xfOMbZRQ": {
+                "typeId": "Language",
+                "name": "English",
+                "localizedName": "English",
+                "code": "en",
+                "flag": "FlagUnitedKingdomEntity",
+                "order": 1,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hello, World!"
+                    }
+                ]
+            },
+            "Nle8b2swtloWs8s5": {
+                "typeId": "Language",
+                "name": "German",
+                "localizedName": "Deutsch",
+                "code": "de",
+                "flag": "FlagGermanyEntity",
+                "order": 2,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hallo, Welt!"
+                    }
+                ]
+            },
+            "AcK94R94Ee3AsPOz": {
+                "typeId": "Language",
+                "name": "Spanish",
+                "localizedName": "Español",
+                "code": "es",
+                "flag": "FlagSpainEntity",
+                "order": 3,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hola Mundo!"
+                    }
+                ]
+            },
+            "RRq5mivAwMfz40hY": {
+                "typeId": "Language",
+                "name": "French",
+                "localizedName": "Français",
+                "code": "fr",
+                "flag": "FlagFranceEntity",
+                "order": 4,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Bonjour Le Monde!"
+                    }
+                ]
+            }
+        },
+        "Project": {
+            "bVQcaaY9tNRsHiTU": {
+                "typeId": "Project",
+                "title": "VUEngine Barebone",
+                "author": "Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>",
+                "description": "Barebone project to be used as the foundation of new VUEngine projects."
+            }
+        },
+        "RomHeader": {
+            "NjPPxuXlZ2ufxuhY": {
+                "typeId": "RomHeader",
+                "gameCodeId": "XX",
+                "gameCodeLanguage": "M",
+                "gameCodeSystem": "V",
+                "gameTitle": "VUENGINE PROJECT",
+                "makerCode": "VU",
+                "revision": 0
             }
         }
     }
