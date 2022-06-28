@@ -21,6 +21,7 @@
 #include <I18n.h>
 #include <Languages.h>
 #include <HelloWorldScreenState.h>
+#include <WireframesTestScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -210,4 +211,14 @@ static void HelloWorldScreenState::wobble(uint32 currentDrawingFrameBufferSet, S
 
 	// move the wave one pixel in the next frame
 	waveLutIndex++;
+}
+
+void HelloWorldScreenState::processUserInput(UserInput userInput)
+{
+	Game::disableKeypad(Game::getInstance());
+
+	if(!(K_PWR & userInput.releasedKey))
+	{
+		Game::changeState(Game::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
+	}
 }

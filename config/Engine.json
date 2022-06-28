@@ -152,10 +152,14 @@
 		],
 		"warningThreshold": 85
 	},
+	"directDraw":
+	{
+		"interlacedThreshold": 1000
+	},
 	"optics": {
 		"baseFactor": 32,
 		"cameraMinimumDisplacementPixelsPower": 1,
-		"distanceEyeScreen": 384,
+		"cameraNearPlane": 16,
 		"horizontalViewPointCenter": 192,
 		"maximumXViewDistance": 2048,
 		"maximumYViewDistance": 4096,
