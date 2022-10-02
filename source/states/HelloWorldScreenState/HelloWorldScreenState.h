@@ -28,6 +28,7 @@ dynamic_singleton class HelloWorldScreenState : GameState
 	override void enter(void* owner);
 	override void suspend(void* owner);
 	override void resume(void* owner);
+	override void processUserInput(UserInput userInput);
 }
 
 

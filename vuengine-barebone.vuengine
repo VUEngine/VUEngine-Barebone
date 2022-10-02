@@ -106,6 +106,10 @@
                     "profileGameStateDuringVipInterrupt": false,
                     "showGameProfiling": false
                 },
+				"directDraw":
+				{
+					"interlacedThreshold": 1000
+				},
                 "exceptions": {
                     "position": {
                         "x": 0,
@@ -171,7 +175,7 @@
                 "optics": {
                     "baseFactor": 32,
                     "cameraMinimumDisplacementPixelsPower": 1,
-                    "distanceEyeScreen": 384,
+                    "cameraNearPlane": 16,
                     "horizontalViewPointCenter": 192,
                     "maximumXViewDistance": 2048,
                     "maximumYViewDistance": 4096,
