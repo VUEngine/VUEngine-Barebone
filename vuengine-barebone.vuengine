@@ -1,0 +1,579 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "plugins": [
+        "vuengine//fonts/AstonishFont",
+        "vuengine//fonts/VirtualBoyFont",
+        "vuengine//other/AutomaticPause",
+        "vuengine//other/I18n",
+        "vuengine//other/SaveDataManager",
+        "vuengine//states/splash/AdjustmentScreenVUEngine",
+        "vuengine//states/splash/AutomaticPauseSelectionScreen",
+        "vuengine//states/splash/LanguageSelectionScreen",
+        "vuengine//states/splash/PrecautionScreen"
+    ],
+    "items": {
+        "Compiler": {
+            "ckrlrclMRTN2Gk8s": {
+                "typeId": "Compiler",
+                "framePointer": false,
+                "optimization": "O2",
+                "output": "c",
+                "prologFunctions": false,
+                "scrambleBinary": false,
+                "memorySections": {
+                    "dram": {
+                        "length": -24,
+                        "origin": "0x0003D800"
+                    },
+                    "exp": {
+                        "length": 16,
+                        "origin": "0x04000000"
+                    },
+                    "rom": {
+                        "length": 16,
+                        "origin": "0x07000000"
+                    },
+                    "sram": {
+                        "length": 16,
+                        "origin": "0x06000000"
+                    },
+                    "wram": {
+                        "length": 64,
+                        "origin": "0x05000000"
+                    }
+                },
+                "memoryUsage": {
+                    "typeId": "CompilerMemoryUsage",
+                    "initializedData": ".sdata",
+                    "memoryPool": ".sdata",
+                    "staticSingletons": ".dram_bss",
+                    "uninitializedData": ".sbss",
+                    "virtualTables": ".dram_bss"
+                }
+            }
+        },
+        "DebugMacros": {
+            "JavjQex6kdySr6gc": {
+                "typeId": "DebugMacros",
+                "macros": []
+            }
+        },
+        "EngineConfig": {
+            "fyLv3TNKxfVZkk3N": {
+                "typeId": "EngineConfig",
+				"affine": {
+					"maxRowsPerCall": 16,
+					"maxScale": 2
+				},
+				"animation": {
+					"maxAnimationFunctionNameLength": 16,
+					"maxFramesPerAnimationFunction": 16
+				},
+				"brightness": {
+					"brightRed": 128,
+					"darkRed": 32,
+					"fadeDelay": 16,
+					"fadeIncrement": 1,
+					"mediumRed": 64
+				},
+				"chars": {
+					"totalChars": 2048
+				},
+				"communications": {
+					"enable": false
+				},
+				"debug": {
+					"enableProfiler": false,
+					"showStackOverflowAlert": false,
+					"alertVipOvertime": false,
+					"dimmForProfiling": false,
+					"showDetailedMemoryPoolStatus": false,
+					"printFramerate": false,
+					"showMemoryPoolStatus": false,
+					"profileStreaming": false,
+					"showStreamingProfiling": false,
+					"stackHeadroom": 1000,
+					"alertForTornFrames": false
+				},
+				"directDraw":
+				{
+					"interlacedThreshold": 1000
+				},
+				"exceptions": {
+					"position": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				"frameRate": {
+					"forceVipSync": false,
+					"frameCycle": 0,
+					"runDelayedMessagesAtHalfFrameRate": false,
+					"timerResolution": 10
+				},
+				"memoryPools": {
+					"cleanUp": false,
+					"pools": [
+						{
+							"objects": 450,
+							"size": 16
+						},
+						{
+							"objects": 700,
+							"size": 20
+						},
+						{
+							"objects": 350,
+							"size": 28
+						},
+						{
+							"objects": 30,
+							"size": 40
+						},
+						{
+							"objects": 60,
+							"size": 68
+						},
+						{
+							"objects": 50,
+							"size": 80
+						},
+						{
+							"objects": 40,
+							"size": 108
+						},
+						{
+							"objects": 40,
+							"size": 116
+						},
+						{
+							"objects": 10,
+							"size": 140
+						},
+						{
+							"objects": 10,
+							"size": 152
+						},
+						{
+							"objects": 1,
+							"size": 164
+						}
+					],
+					"warningThreshold": 85
+				},
+				"optics": {
+					"baseFactor": 32,
+					"cameraMinimumDisplacementPixelsPower": 1,
+					"cameraNearPlane": 16,
+					"horizontalViewPointCenter": 192,
+					"useLegacyCoordinateProjection": true,
+					"maximumXViewDistance": 4096,
+					"maximumYViewDistance": 4096,
+					"parallaxCorrectionFactor": 4,
+					"scalingModifierFactor": 1,
+					"screenDepth": 2048,
+					"screenHeight": 224,
+					"screenWidth": 384,
+					"verticalViewPointCenter": 112
+				},
+				"palettes": {
+					"bgMapPalette0": "11100100",
+					"bgMapPalette1": "11100000",
+					"bgMapPalette2": "10010000",
+					"bgMapPalette3": "01010000",
+					"objectPalette0": "11100100",
+					"objectPalette1": "11100000",
+					"objectPalette2": "10010000",
+					"objectPalette3": "01010000",
+					"printingPalette": 0
+				},
+				"physics": {
+					"bodiesToCheckForGravity": 10,
+					"frictionForceFactorPower": 2,
+					"gravity": 19.6,
+					"maximumBouncinessCoefficient": 1,
+					"stopBouncingVelocityThreshold": 48,
+					"stopVelocityThreshold": 8,
+					"timeElapsedDivisor": 2
+				},
+				"random": {
+					"addUserInputAndTimeToRandomSeed": false,
+					"seedCycles": 2
+				},
+				"sound": {
+					"leftEarCenter": 96,
+					"rightEarCenter": 288,
+					"stereoHorizontalAttenuationFactor": 50,
+					"stereoVerticalAttenuationFactor": 50
+				},
+				"sprite": {
+					"totalLayers": 32,
+					"hackBgmapSpriteHeight": true
+				},
+				"sram": {
+					"totalSram": 8192
+				},
+				"texture": {
+					"bgmapsPerSegments": 14,
+					"printing": {
+						"offset": {
+							"parallax": 0,
+							"x": 0,
+							"y": 0,
+							"z": 0
+						},
+						"printableArea": 1792
+					},
+					"paramTableSegments": 1
+				}
+            }
+        },
+        "Entity": {
+            "6Vqr4556ZCI3zw6V": {
+                "typeId": "Entity",
+                "name": "FinishLine",
+                "class": "FinishLine",
+                "extraInfo": "",
+                "pixelSize": {
+                    "x": 1,
+                    "y": 2,
+                    "z": 3
+                },
+                "animations": {
+                    "default": "Default",
+                    "items": [
+                        {
+                            "name": "Finish",
+                            "callback": null,
+                            "cycles": 4,
+                            "frames": [
+                                0,
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0,
+                                37,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                37,
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                4,
+                                3,
+                                2,
+                                1,
+                                0
+                            ],
+                            "loop": false
+                        },
+                        {
+                            "name": "Count3",
+                            "callback": "FinishLine_onCountdown3Done",
+                            "cycles": 4,
+                            "frames": [
+                                5,
+                                6,
+                                7,
+                                8,
+                                9,
+                                10,
+                                11,
+                                12,
+                                13,
+                                14
+                            ],
+                            "loop": false
+                        },
+                        {
+                            "name": "Count2",
+                            "callback": "FinishLine_onCountdown2Done",
+                            "cycles": 4,
+                            "frames": [
+                                15,
+                                16,
+                                17,
+                                18,
+                                19,
+                                20,
+                                21,
+                                22,
+                                23,
+                                24
+                            ],
+                            "loop": false
+                        },
+                        {
+                            "name": "Count1",
+                            "callback": "FinishLine_onCountdown1Done",
+                            "cycles": 4,
+                            "frames": [
+                                25,
+                                26,
+                                27,
+                                28,
+                                29,
+                                30,
+                                31,
+                                32,
+                                33,
+                                34
+                            ],
+                            "loop": false
+                        },
+                        {
+                            "name": "Go",
+                            "callback": null,
+                            "cycles": 4,
+                            "frames": [
+                                35,
+                                35,
+                                36,
+                                36,
+                                36,
+                                36,
+                                35,
+                                35,
+                                35,
+                                35
+                            ],
+                            "loop": true
+                        },
+                        {
+                            "name": "Default",
+                            "callback": "",
+                            "cycles": 4,
+                            "frames": [
+                                36
+                            ],
+                            "loop": true
+                        }
+                    ]
+                },
+                "sprites": {
+                    "type": "Bgmap",
+                    "useZDisplacementInProjection": false,
+                    "items": [
+                        {
+                            "name": "Main",
+                            "class": "BgmapAnimatedSprite",
+                            "bgmapMode": "BGMAP",
+                            "displayMode": "Both",
+                            "transparency": "None",
+                            "displacement": {
+                                "x": 1,
+                                "y": 2,
+                                "z": 3,
+                                "parallax": 4
+                            },
+                            "manipulationFunction": "",
+                            "texture": {
+                                "charset": {
+                                    "type": "animatedShared"
+                                },
+                                "image": {
+                                    "chars": 2496,
+                                    "name": "FinishLine"
+                                },
+                                "padding": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "palettes": 1,
+                                "recyclable": false,
+                                "size": {
+                                    "x": 4,
+                                    "y": 16
+                                },
+                                "recycleable": false,
+                                "palette": 0
+                            }
+                        }
+                    ]
+                },
+                "physics": {
+                    "enabled": true,
+                    "mass": 0.1,
+                    "friction": 0.1,
+                    "bounciness": 0.1,
+                    "maximumVelocity": {
+                        "x": 1,
+                        "y": 2,
+                        "z": 3
+                    },
+                    "maximumSpeed": 0.1
+                },
+                "behaviors": {
+                    "items": []
+                },
+                "collisions": {
+                    "inGameType": "None",
+                    "shapes": [
+                        {
+                            "type": "LineField",
+                            "pixelSize": {
+                                "x": 1,
+                                "y": 2,
+                                "z": 3
+                            },
+                            "displacement": {
+                                "x": 1,
+                                "y": 2,
+                                "z": 3,
+                                "parallax": 4
+                            },
+                            "rotation": {
+                                "x": 1,
+                                "y": 2,
+                                "z": 3
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 2,
+                                "z": 3
+                            },
+                            "checkForCollisions": false,
+                            "layers": "TRACK_COLLISION_LAYER",
+                            "layersToIgnore": "TRACK_COLLISION_IGNORE_LAYER"
+                        }
+                    ]
+                },
+                "meshes": {
+                    "items": []
+                },
+                "childEntities": {}
+            }
+        },
+        "Events": {
+            "gt8r5tybZRx1Xj9s": {
+                "typeId": "Events",
+                "events": []
+            }
+        },
+        "Language": {
+            "EaJQL4l1xfOMbZRQ": {
+                "typeId": "Language",
+                "name": "English",
+                "localizedName": "English",
+                "code": "en",
+                "flag": "FlagUnitedKingdomEntity",
+                "order": 1,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hello, World!"
+                    }
+                ]
+            },
+            "Nle8b2swtloWs8s5": {
+                "typeId": "Language",
+                "name": "German",
+                "localizedName": "Deutsch",
+                "code": "de",
+                "flag": "FlagGermanyEntity",
+                "order": 2,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hallo, Welt!"
+                    }
+                ]
+            },
+            "AcK94R94Ee3AsPOz": {
+                "typeId": "Language",
+                "name": "Spanish",
+                "localizedName": "Español",
+                "code": "es",
+                "flag": "FlagSpainEntity",
+                "order": 3,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Hola Mundo!"
+                    }
+                ]
+            },
+            "RRq5mivAwMfz40hY": {
+                "typeId": "Language",
+                "name": "French",
+                "localizedName": "Français",
+                "code": "fr",
+                "flag": "FlagFranceEntity",
+                "order": 4,
+                "translations": [
+                    {
+                        "id": "HelloWorld",
+                        "translation": "Bonjour Le Monde!"
+                    }
+                ]
+            }
+        },
+        "Project": {
+            "bVQcaaY9tNRsHiTU": {
+                "typeId": "Project",
+                "name": "VUEngine Barebone",
+                "author": "Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>",
+                "description": "Barebone project to be used as the foundation of new VUEngine projects."
+            }
+        },
+        "RomHeader": {
+            "NjPPxuXlZ2ufxuhY": {
+                "typeId": "RomHeader",
+                "gameCodeId": "XX",
+                "gameCodeLanguage": "M",
+                "gameCodeSystem": "V",
+                "gameTitle": "VUENGINE PROJECT",
+                "makerCode": "VU",
+                "revision": 0
+            }
+        }
+    }
+}
