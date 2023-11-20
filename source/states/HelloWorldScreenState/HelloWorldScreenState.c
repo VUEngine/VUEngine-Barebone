@@ -21,7 +21,6 @@
 #include <Printing.h>
 #include <VUEngine.h>
 #include <VIPManager.h>
-#include <WireframesTestScreenState.h>
 
 #include <string.h>
 
@@ -214,14 +213,4 @@ static void HelloWorldScreenState::wobble(uint32 currentDrawingFrameBufferSet, S
 
 	// move the wave one pixel in the next frame
 	waveLutIndex++;
-}
-
-void HelloWorldScreenState::processUserInput(UserInput userInput)
-{
-	VUEngine::disableKeypad(VUEngine::getInstance());
-
-	if(!(K_PWR & userInput.releasedKey))
-	{
-	//	VUEngine::changeState(VUEngine::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
-	}
 }
