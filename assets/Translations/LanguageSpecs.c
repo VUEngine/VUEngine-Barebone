@@ -42,7 +42,7 @@ const char* const EnglishLanguageStrings[] =
     /* kStringLanguageSelectTitle: */
     "LANGUAGE SELECT",
     /* kStringPrecautionScreenBody: */
-    "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE"
+    "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING"
 };
 
 const LangROMSpec EnglishLanguage =
@@ -76,7 +76,7 @@ const char* const GermanLanguageStrings[] =
     /* kStringLanguageSelectTitle: */
     "SPRACHAUSWAHL",
     /* kStringPrecautionScreenBody: */
-    "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING"
+    "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE"
 };
 
 const LangROMSpec GermanLanguage =
