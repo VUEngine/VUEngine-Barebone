@@ -26,21 +26,21 @@ extern EntitySpec FlagFranceEntity;
 const char* const EnglishLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
-    "Please take a rest!"
+    "Please take a rest!",
     /* kStringAutomaticPauseSelectionBody: */
-    "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes"
+    "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
     /* kStringAutomaticPauseSelectionOff: */
-    "Off"
+    "Off",
     /* kStringAutomaticPauseSelectionOn: */
-    "On"
+    "On",
     /* kStringAutomaticPauseSelectionTitle: */
-    "AUTOMATIC PAUSE"
+    "AUTOMATIC PAUSE",
     /* kStringAutomaticPauseTitle: */
-    "AUTOMATIC PAUSE"
+    "AUTOMATIC PAUSE",
     /* kStringHelloWorld: */
-    "Hello, World!"
+    "Hello, World!",
     /* kStringLanguageSelectTitle: */
-    "LANGUAGE SELECT"
+    "LANGUAGE SELECT",
     /* kStringPrecautionScreenBody: */
     "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE"
 };
@@ -60,21 +60,21 @@ const LangROMSpec EnglishLanguage =
 const char* const GermanLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
-    "Bitte mache eine Pause!"
+    "Bitte mache eine Pause!",
     /* kStringAutomaticPauseSelectionBody: */
-    " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren"
+    " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
     /* kStringAutomaticPauseSelectionOff: */
-    "Aus"
+    "Aus",
     /* kStringAutomaticPauseSelectionOn: */
-    "An"
+    "An",
     /* kStringAutomaticPauseSelectionTitle: */
-    "AUTOMATISCHE PAUSE"
+    "AUTOMATISCHE PAUSE",
     /* kStringAutomaticPauseTitle: */
-    "AUTOMATISCHE PAUSE"
+    "AUTOMATISCHE PAUSE",
     /* kStringHelloWorld: */
-    "Hallo, Welt!"
+    "Hallo, Welt!",
     /* kStringLanguageSelectTitle: */
-    "SPRACHAUSWAHL"
+    "SPRACHAUSWAHL",
     /* kStringPrecautionScreenBody: */
     "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING"
 };
@@ -94,21 +94,21 @@ const LangROMSpec GermanLanguage =
 const char* const SpanishLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
-    "¡Por favor, tómese un descanso!"
+    "ï¿½Por favor, tï¿½mese un descanso!",
     /* kStringAutomaticPauseSelectionBody: */
-    " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos"
+    " La funciï¿½n automï¿½tica de pausa te\nrecordarï¿½ que debes tomar un descanso\n  approximadamente cada 30 minutos",
     /* kStringAutomaticPauseSelectionOff: */
-    "Apagado"
+    "Apagado",
     /* kStringAutomaticPauseSelectionOn: */
-    "Encendido"
+    "Encendido",
     /* kStringAutomaticPauseSelectionTitle: */
-    "PAUSA AUTOMÁTICA"
+    "PAUSA AUTOMï¿½TICA",
     /* kStringAutomaticPauseTitle: */
-    "PAUSA AUTOMÁTICA"
+    "PAUSA AUTOMï¿½TICA",
     /* kStringHelloWorld: */
-    "Hola Mundo!"
+    "Â¡Hola Mundo!",
     /* kStringLanguageSelectTitle: */
-    "SELECCIONAR IDIOMA"
+    "SELECCIONAR IDIOMA",
     /* kStringPrecautionScreenBody: */
     "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR"
 };
@@ -116,7 +116,7 @@ const char* const SpanishLanguageStrings[] =
 const LangROMSpec SpanishLanguage =
 {
 	// language name
-	"Español",
+	"Espaï¿½ol",
 
 	// flag entity
 	&FlagSpainEntity,
@@ -128,29 +128,29 @@ const LangROMSpec SpanishLanguage =
 const char* const FrenchLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
-    "Se il vous plaît, prendre un repos!"
+    "Se il vous plaï¿½t, prendre un repos!",
     /* kStringAutomaticPauseSelectionBody: */
-    "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ"
+    "  La fonction Pause automatique va\nvous rappelerez de prendre une pause\n  de jeu chaque 30 minutes environ",
     /* kStringAutomaticPauseSelectionOff: */
-    "Desactivé"
+    "Desactivï¿½",
     /* kStringAutomaticPauseSelectionOn: */
-    "Activé"
+    "Activï¿½",
     /* kStringAutomaticPauseSelectionTitle: */
-    "PAUSE AUTOMATIQUE"
+    "PAUSE AUTOMATIQUE",
     /* kStringAutomaticPauseTitle: */
-    "PAUSE AUTOMATIQUE"
+    "PAUSE AUTOMATIQUE",
     /* kStringHelloWorld: */
-    "Bonjour Le Monde!"
+    "Bonjour Le Monde!",
     /* kStringLanguageSelectTitle: */
-    "CHOIX DE LA LANGUE"
+    "CHOIX DE LA LANGUE",
     /* kStringPrecautionScreenBody: */
-    "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRÉCAUTIONS\n    A AVANT DE JOUER"
+    "        IMPORTANT\nPRENEZ CONAISSANCE DE LA\nNOTICE ET DES PRï¿½CAUTIONS\n    A AVANT DE JOUER"
 };
 
 const LangROMSpec FrenchLanguage =
 {
 	// language name
-	"Français",
+	"Franï¿½ais",
 
 	// flag entity
 	&FlagFranceEntity,

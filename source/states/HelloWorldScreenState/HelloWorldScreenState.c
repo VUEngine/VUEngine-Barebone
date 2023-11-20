@@ -123,7 +123,9 @@ void HelloWorldScreenState::resume(void* owner)
 void HelloWorldScreenState::print()
 {
 	const char* strHelloWorld = I18n::getText(I18n::getInstance(), kStringHelloWorld);
+
 	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strHelloWorld, "VirtualBoyExt");
+
 	Printing::text(
 		Printing::getInstance(),
 		strHelloWorld,
@@ -220,6 +222,6 @@ void HelloWorldScreenState::processUserInput(UserInput userInput)
 
 	if(!(K_PWR & userInput.releasedKey))
 	{
-		VUEngine::changeState(VUEngine::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
+	//	VUEngine::changeState(VUEngine::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
 	}
 }

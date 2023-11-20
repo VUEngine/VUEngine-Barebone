@@ -21,7 +21,7 @@
                 "framePointer": false,
                 "memorySections": {
                     "dram": {
-                        "length": -24,
+                        "length": -18,
                         "origin": "0x0003D800"
                     },
                     "exp": {
@@ -536,15 +536,13 @@
         },
         "Project": {
             "bVQcaaY9tNRsHiTU": {
-                "typeId": "Project",
-                "name": "VUEngine Barebone",
                 "author": "Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>",
-                "description": "Barebone project to be used as the foundation of new VUEngine projects."
+                "description": "Barebone project to be used as the foundation of new VUEngine projects.",
+                "name": "VUEngine Barebone"
             }
         },
         "RomHeader": {
             "NjPPxuXlZ2ufxuhY": {
-                "typeId": "RomHeader",
                 "gameCodeId": "XX",
                 "gameCodeLanguage": "M",
                 "gameCodeSystem": "V",
