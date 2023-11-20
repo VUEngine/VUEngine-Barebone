@@ -15,6 +15,22 @@
 
 
 //---------------------------------------------------------------------------------------------------------
+//                                            GAME ENTRY POINT                                             
+//---------------------------------------------------------------------------------------------------------
+
+#ifndef __GAME_ENTRY_POINT
+#define __GAME_ENTRY_POINT											game
+#endif
+
+
+//---------------------------------------------------------------------------------------------------------
+//                                          FIXED POINT DATA TYPE                                          
+//---------------------------------------------------------------------------------------------------------
+
+#define __FIXED_POINT_TYPE 											6
+
+
+//---------------------------------------------------------------------------------------------------------
 //                                             COMMUNICATIONS                                              
 //---------------------------------------------------------------------------------------------------------
 
@@ -109,10 +125,14 @@
 
 
 //---------------------------------------------------------------------------------------------------------
-//                                             DIRECT DRAWING                                              
+//                                               WIREFRAMES                                                
 //---------------------------------------------------------------------------------------------------------
 
-#define __DIRECT_DRAW_INTERLACED_THRESHOLD								__PIXELS_TO_METERS(1000)  
+// Sort the wireframes based on their distance to the camera to cull off those that are far off if necessary.
+#define __WIREFRAME_MANAGER_SORT_FOR_DRAWING
+
+// The distance to start interlacing wireframe graphics.
+#define __DIRECT_DRAW_INTERLACED_THRESHOLD							__PIXELS_TO_METERS(4096)  
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -120,7 +140,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // legacy coordinate system (0, 0, 0) is at the top left corner of the screen
-#undef __LEGACY_COORDINATE_PROJECTION
+#define __LEGACY_COORDINATE_PROJECTION
 
 // screen width in pixels
 #define __SCREEN_WIDTH												384
@@ -132,7 +152,7 @@
 #define __SCREEN_DEPTH												2048
 
 // maximum x view distance (depth) (power of two)
-#define __MAXIMUM_X_VIEW_DISTANCE									2048
+#define __MAXIMUM_X_VIEW_DISTANCE									4096
 
 // maximum y view distance (depth) (power of two)
 #define __MAXIMUM_Y_VIEW_DISTANCE									4096
@@ -175,7 +195,7 @@
 #define	__FRAME_CYCLE												0
 
 // target frames per second
-#define __TARGET_FPS 												(50 >> __FRAME_CYCLE)
+#define __TARGET_FPS 												(__MAXIMUM_FPS >> __FRAME_CYCLE)
 
 // milliseconds that must take to complete a game cycle
 #define __GAME_FRAME_DURATION										(__MILLISECONDS_PER_SECOND / __TARGET_FPS)
@@ -196,9 +216,6 @@
 
 // maximum number of frames per animation function
 #define __MAX_FRAMES_PER_ANIMATION_FUNCTION							16
-
-// maximum number of animation functions per description
-#define __MAX_ANIMATION_FUNCTIONS									32
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -315,8 +332,14 @@
 // number of bodies to check for gravity on each cycle
 #define __BODIES_TO_CHECK_FOR_GRAVITY								10
 
+// maximum friction coefficient
+#define __MAXIMUM_FRICTION_COEFFICIENT								__I_TO_FIXED(1)
+
 // divisor to speed up physics simulations, bigger numbers equal faster computations
 #define __PHYSICS_TIME_ELAPSED_DIVISOR								2
+
+// define to use fix7.9 computation on Body's direction
+#undef 		__PHYSICS_HIGH_PRECISION
 
 // thresholds to stop bodies
 #define __STOP_VELOCITY_THRESHOLD									__PIXELS_TO_METERS(8)
@@ -327,17 +350,22 @@
 
 #define __FRICTION_FORCE_FACTOR_POWER								2
 
+// smaller values allow movement to start when colliding against a shape and trying to move towards it
+#define __SHAPE_ANGLE_TO_PREVENT_DISPLACEMENT						__FIX7_9_TO_FIXED(__COS(10))
+
+// maximum size of shapes allows to avoid checks against far away shapes
+#define __SHAPE_MAXIMUM_SIZE										__PIXELS_TO_METERS(256)
+
+
 //---------------------------------------------------------------------------------------------------------
 //                                                  SOUND                                                  
 //---------------------------------------------------------------------------------------------------------
 
-#define __LEFT_EAR_CENTER											96
-#define __RIGHT_EAR_CENTER											288
+#define __EAR_DISPLACEMENT											384
 
 // affects the amount of attenuation caused by the distance between the x coordinate and each ear's
-// position defined by __LEFT_EAR_CENTER and __RIGHT_EAR_CENTER
-#define __SOUND_STEREO_HORIZONTAL_ATTENUATION_FACTOR				50
-#define __SOUND_STEREO_VERTICAL_ATTENUATION_FACTOR					50
+// position defined by __EAR_DISPLACEMENT
+#define __SOUND_STEREO_ATTENUATION_DISTANCE							2048
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -358,7 +386,7 @@
 #define __CAMERA_EFFECT_FADE_INCREMENT								1
 
 //---------------------------------------------------------------------------------------------------------
-//                                                PALETTES                                                 
+//                                             COLOR PALETTES                                              
 //---------------------------------------------------------------------------------------------------------
 
 #define __PRINTING_PALETTE											0

@@ -78,8 +78,17 @@ MeshROMSpec PyramidEntityMesh =
 		/// class allocator
 		__TYPE(Mesh),
 
+		/// displacement
+		{0, 0, 0},
+		
 		/// color
 		__COLOR_BRIGHT_RED,
+
+		/// transparent
+		__TRANSPARENCY_NONE,
+
+		/// interlaced
+		false
 	},
 
 	/// segments

@@ -12,17 +12,18 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <string.h>
 
-#include <Game.h>
 #include <Camera.h>
-#include <Printing.h>
+#include <CameraEffectManager.h>
 #include <I18n.h>
 #include <Languages.h>
-#include <WireframesTestScreenState.h>
 #include <Mesh.h>
-#include <debugConfig.h>
+#include <Printing.h>
+#include <WireframesTestScreenState.h>
+#include <VUEngine.h>
 
+#include <debugConfig.h>
+#include <string.h>
 
 //---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
@@ -64,7 +65,7 @@ void WireframesTestScreenState::enter(void* owner __attribute__ ((unused)))
 	WireframesTestScreenState::print(this);
 
 	// enable user input
-	Game::enableKeypad(Game::getInstance());
+	VUEngine::enableKeypad(VUEngine::getInstance());
 
 	// start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
@@ -80,7 +81,7 @@ void WireframesTestScreenState::enter(void* owner __attribute__ ((unused)))
 
 void WireframesTestScreenState::suspend(void* owner)
 {
-	if(!Game::isEnteringSpecialMode(Game::getInstance()))
+	if(!VUEngine::isEnteringSpecialMode(VUEngine::getInstance()))
 	{
 		// do a fade out effect
 		Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
@@ -98,7 +99,7 @@ void WireframesTestScreenState::resume(void* owner)
 	// print hello world
 	WireframesTestScreenState::print(this);
 
-	if(!Game::isExitingSpecialMode(Game::getInstance()))
+	if(!VUEngine::isExitingSpecialMode(VUEngine::getInstance()))
 	{
 		// start a fade in effect
 		Camera::startEffect(Camera::getInstance(), kHide);

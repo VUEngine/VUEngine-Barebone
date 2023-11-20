@@ -12,21 +12,21 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Game.h>
-#include <GameSaveDataManager.h>
-#include <AutomaticPauseManager.h>
-#include <PrecautionScreenState.h>
-#include <AutomaticPauseSelectionScreenState.h>
-#include <LanguageSelectionScreenState.h>
 #include <AdjustmentScreenState.h>
+#include <AutomaticPauseManager.h>
+#include <AutomaticPauseSelectionScreenState.h>
+#include <GameSaveDataManager.h>
 #include <HelloWorldScreenState.h>
+#include <LanguageSelectionScreenState.h>
+#include <PrecautionScreenState.h>
+#include <VUEngine.h>
 
 
 //---------------------------------------------------------------------------------------------------------
 // 											GAME'S MAIN LOOP
 //---------------------------------------------------------------------------------------------------------
 
-int main(void)
+int game(void)
 {
 	// initialize plugins
 	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), true);
@@ -50,7 +50,7 @@ int main(void)
 	);
 
 	// start the game
-	Game::start(Game::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
+	VUEngine::start(VUEngine::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
 
 	// end program
 	return true;

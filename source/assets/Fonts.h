@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern FontSpec DefaultFont;
+extern FontSpec DebugFont;
 extern FontSpec ProfilerFont;
 extern FontSpec AstonishFont;
 extern FontSpec AstonishExtFont;

@@ -50,8 +50,7 @@
                 },
                 "optimization": "O2",
                 "output": "c",
-                "prologFunctions": false,
-                "scrambleBinary": false
+                "prologFunctions": false
             }
         },
         "DebugMacros": {
@@ -61,7 +60,6 @@
         },
         "EngineConfig": {
             "fyLv3TNKxfVZkk3N": {
-                "typeId": "EngineConfig",
                 "affine": {
                     "maxRowsPerCall": 16,
                     "maxScale": 2
@@ -84,20 +82,16 @@
                     "enable": false
                 },
                 "debug": {
-                    "enableProfiler": false,
-                    "showStackOverflowAlert": false,
                     "alertVipOvertime": false,
                     "dimmForProfiling": false,
-                    "showDetailedMemoryPoolStatus": false,
+                    "enableProfiler": false,
                     "printFramerate": false,
-                    "showMemoryPoolStatus": false,
                     "profileStreaming": false,
+                    "showDetailedMemoryPoolStatus": false,
+                    "showMemoryPoolStatus": false,
+                    "showStackOverflowAlert": false,
                     "showStreamingProfiling": false,
-                    "stackHeadroom": 1000,
-                    "alertForTornFrames": false
-                },
-                "directDraw": {
-                    "interlacedThreshold": 1000
+                    "stackHeadroom": 1000
                 },
                 "exceptions": {
                     "position": {
@@ -110,6 +104,10 @@
                     "frameCycle": 0,
                     "runDelayedMessagesAtHalfFrameRate": false,
                     "timerResolution": 10
+                },
+                "game": [],
+                "math": {
+                    "fixedPointPrecision": 6
                 },
                 "memoryPools": {
                     "cleanUp": false,
@@ -166,7 +164,6 @@
                     "cameraMinimumDisplacementPixelsPower": 1,
                     "cameraNearPlane": 16,
                     "horizontalViewPointCenter": 192,
-                    "useLegacyCoordinateProjection": true,
                     "maximumXViewDistance": 4096,
                     "maximumYViewDistance": 4096,
                     "parallaxCorrectionFactor": 4,
@@ -174,6 +171,7 @@
                     "screenDepth": 2048,
                     "screenHeight": 224,
                     "screenWidth": 384,
+                    "useLegacyCoordinateProjection": true,
                     "verticalViewPointCenter": 112
                 },
                 "palettes": {
@@ -188,10 +186,13 @@
                     "printingPalette": 0
                 },
                 "physics": {
+                    "angleToPreventShapeDisplacement": 10,
                     "bodiesToCheckForGravity": 10,
                     "frictionForceFactorPower": 2,
                     "gravity": 19.6,
+                    "highPrecision": false,
                     "maximumBouncinessCoefficient": 1,
+                    "maximumFrictionCoefficient": 1,
                     "stopBouncingVelocityThreshold": 48,
                     "stopVelocityThreshold": 8,
                     "timeElapsedDivisor": 2
@@ -201,30 +202,31 @@
                     "seedCycles": 2
                 },
                 "sound": {
-                    "leftEarCenter": 96,
-                    "rightEarCenter": 288,
-                    "stereoHorizontalAttenuationFactor": 50,
-                    "stereoVerticalAttenuationFactor": 50
+                    "earDisplacement": 384,
+                    "stereoAttenuationDistance": 2048
                 },
                 "sprite": {
-                    "totalLayers": 32,
-                    "hackBgmapSpriteHeight": true
+                    "hackBgmapSpriteHeight": true,
+                    "totalLayers": 32
                 },
                 "sram": {
                     "totalSram": 8192
                 },
                 "texture": {
                     "bgmapsPerSegments": 14,
+                    "paramTableSegments": 1,
                     "printing": {
                         "offset": {
                             "parallax": 0,
                             "x": 0,
-                            "y": 0,
-                            "z": 0
+                            "y": 0
                         },
                         "printableArea": 1792
-                    },
-                    "paramTableSegments": 1
+                    }
+                },
+                "wireframes": {
+                    "interlacedThreshold": 4096,
+                    "sort": true
                 }
             }
         },

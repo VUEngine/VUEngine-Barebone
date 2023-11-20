@@ -12,17 +12,18 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <string.h>
+#include <HelloWorldScreenState.h>
 
-#include <Game.h>
-#include <VIPManager.h>
 #include <Camera.h>
-#include <Printing.h>
+#include <CameraEffectManager.h>
 #include <I18n.h>
 #include <Languages.h>
-#include <HelloWorldScreenState.h>
+#include <Printing.h>
+#include <VUEngine.h>
+#include <VIPManager.h>
 #include <WireframesTestScreenState.h>
 
+#include <string.h>
 
 //---------------------------------------------------------------------------------------------------------
 // 												DECLARATIONS
@@ -67,7 +68,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
 
 	// enable user input
-	Game::enableKeypad(Game::getInstance());
+	VUEngine::enableKeypad(VUEngine::getInstance());
 
 	// start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
@@ -83,7 +84,7 @@ void HelloWorldScreenState::enter(void* owner __attribute__ ((unused)))
 
 void HelloWorldScreenState::suspend(void* owner)
 {
-	if(!Game::isEnteringSpecialMode(Game::getInstance()))
+	if(!VUEngine::isEnteringSpecialMode(VUEngine::getInstance()))
 	{
 		// do a fade out effect
 		Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
@@ -104,7 +105,7 @@ void HelloWorldScreenState::resume(void* owner)
 	// add wobble effect
 	VIPManager::pushBackPostProcessingEffect(VIPManager::getInstance(), HelloWorldScreenState::wobble, NULL);
 
-	if(!Game::isExitingSpecialMode(Game::getInstance()))
+	if(!VUEngine::isExitingSpecialMode(VUEngine::getInstance()))
 	{
 		// start a fade in effect
 		Camera::startEffect(Camera::getInstance(), kHide);
@@ -215,10 +216,10 @@ static void HelloWorldScreenState::wobble(uint32 currentDrawingFrameBufferSet, S
 
 void HelloWorldScreenState::processUserInput(UserInput userInput)
 {
-	Game::disableKeypad(Game::getInstance());
+	VUEngine::disableKeypad(VUEngine::getInstance());
 
 	if(!(K_PWR & userInput.releasedKey))
 	{
-		Game::changeState(Game::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
+		VUEngine::changeState(VUEngine::getInstance(), GameState::safeCast(WireframesTestScreenState::getInstance()));
 	}
 }
