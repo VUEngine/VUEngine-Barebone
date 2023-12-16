@@ -16,7 +16,8 @@
 #include <AutomaticPauseManager.h>
 #include <AutomaticPauseSelectionScreenState.h>
 #include <GameSaveDataManager.h>
-#include <HelloWorldScreenState.h>
+#include <I18n.h>
+#include <MyGameState.h>
 #include <LanguageSelectionScreenState.h>
 #include <PrecautionScreenState.h>
 #include <VUEngine.h>
@@ -29,8 +30,8 @@
 int game(void)
 {
 	// initialize plugins
-	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), true);
-	GameSaveDataManager::restoreSettings(GameSaveDataManager::getInstance());
+	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), GameSaveDataManager::getAutomaticPauseStatus(GameSaveDataManager::getInstance()));
+	I18n::setActiveLanguage(I18n::getInstance(), GameSaveDataManager::getLanguage(GameSaveDataManager::getInstance()));
 	
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),
@@ -46,7 +47,7 @@ int game(void)
 	);
 	SplashScreenState::setNextState(
 		SplashScreenState::safeCast(LanguageSelectionScreenState::getInstance()),
-		GameState::safeCast(HelloWorldScreenState::getInstance())
+		GameState::safeCast(MyGameState::getInstance())
 	);
 
 	// start the game
