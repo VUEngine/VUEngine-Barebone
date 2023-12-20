@@ -62,7 +62,7 @@ SoundROMSpec* MyGameStageSoundSpecs[] =
 //											STAGE DEFINITION
 //---------------------------------------------------------------------------------------------------------
 
-StageROMSpec MyGameStage =
+StageROMSpec MyGameStageSpec =
 {
 	// allocator
 	__TYPE(Stage),
