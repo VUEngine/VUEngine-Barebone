@@ -11,11 +11,11 @@
 //												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <Stage.h>
-#include <Printing.h>
 #include <CharSet.h>
 #include <Fonts.h>
-#include <SoundWrapper.h>
+#include <Printing.h>
+#include <Stage.h>
+#include <Sound.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ FontROMSpec* const MyGameStageFonts[] =
 	NULL
 };
 
-SoundROM* MyGameStageSounds[] =
+SoundROMSpec* MyGameStageSoundSpecs[] =
 {
 	NULL
 };
@@ -261,7 +261,7 @@ StageROMSpec MyGameStage =
 		(TextureSpec**)NULL,
 
 		// background music
-		(Sound**)MyGameStageSounds,
+		(SoundSpec**)MyGameStageSoundSpecs,
 	},
 
 	// entities

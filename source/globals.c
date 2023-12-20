@@ -12,10 +12,10 @@
 // 												INCLUDES
 //---------------------------------------------------------------------------------------------------------
 
-#include <VUEngine.h>
+#include <AnimationInspector.h>
 #include <Debug.h>
 #include <StageEditor.h>
-#include <AnimationInspector.h>
+#include <VUEngine.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ const UserAnimatedEntity _userAnimatedEntities[] =
 	{NULL, ""},
 };
 
-const SoundROM* _userSounds[] =
+const SoundROMSpec* _userSounds[] =
 {
 	NULL
 };
