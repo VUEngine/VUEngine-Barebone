@@ -22,7 +22,7 @@
 //												DECLARATIONS
 //---------------------------------------------------------------------------------------------------------
 
-extern EntitySpec LowPowerIndicatorEntity;
+extern EntitySpec LowPowerIndicatorEntitySpec;
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ extern EntitySpec LowPowerIndicatorEntity;
 
 PositionedEntityROMSpec MyGameStageEntities[] =
 {
-	{&LowPowerIndicatorEntity, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
+	{&LowPowerIndicatorEntitySpec, {16, 12, 0, 0}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0,0,0,0}, 0, NULL, NULL, NULL, false},
 };
