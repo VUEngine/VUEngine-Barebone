@@ -1,10 +1,4 @@
 {
-	"name": "VUEngine Barebone",
-    "folders": [
-        {
-            "path": "."
-        }
-    ],
     "plugins": [
         "vuengine//fonts/AstonishFont",
         "vuengine//fonts/VirtualBoyFont",
@@ -15,5 +9,6 @@
         "vuengine//states/splash/AutomaticPauseSelectionScreen",
         "vuengine//states/splash/LanguageSelectionScreen",
         "vuengine//states/splash/PrecautionScreen"
-    ]
+    ],
+    "projectTitle": "VUEngine Barebone"
 }
