@@ -1,23 +1,28 @@
 {
     "plugins": {
-        "0": "vuengine//fonts/AstonishFont",
-        "1": "vuengine//fonts/VirtualBoyFont",
-        "2": "vuengine//other/AutomaticPause",
-        "3": "vuengine//other/I18n",
-        "4": "vuengine//other/SaveDataManager",
-        "5": "vuengine//states/splash/AdjustmentScreenVUEngine",
-        "6": "vuengine//states/splash/AutomaticPauseSelectionScreen",
-        "7": "vuengine//states/splash/LanguageSelectionScreen",
-        "8": "vuengine//states/splash/PrecautionScreen",
         "vuengine//fonts/AstonishFont": {},
         "vuengine//fonts/VirtualBoyFont": {},
-        "vuengine//other/AutomaticPause": {},
+        "vuengine//other/AutomaticPause": {
+            "bodyTextFont": "Default",
+            "titleTextFont": "Default"
+        },
         "vuengine//other/I18n": {},
         "vuengine//other/SaveDataManager": {},
-        "vuengine//states/splash/AdjustmentScreenVUEngine": {},
-        "vuengine//states/splash/AutomaticPauseSelectionScreen": {},
-        "vuengine//states/splash/LanguageSelectionScreen": {},
-        "vuengine//states/splash/PrecautionScreen": {}
+        "vuengine//states/splash/AdjustmentScreenVUEngine": {
+            "useLowPowerEntity": true
+        },
+        "vuengine//states/splash/AutomaticPauseSelectionScreen": {
+            "titleTextFont": "AstonishExt",
+            "bodyTextFont": "Default",
+            "optionsTextFont": "Default"
+        },
+        "vuengine//states/splash/LanguageSelectionScreen": {
+            "variant": 1,
+            "titleTextFont": "AstonishExt"
+        },
+        "vuengine//states/splash/PrecautionScreen": {
+            "textFont": "AstonishExt"
+        }
     },
     "projectTitle": "VUEngine Barebone"
 }
