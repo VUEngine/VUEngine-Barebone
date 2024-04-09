@@ -3,7 +3,7 @@
 ###########################################################################################################
 
 # VUEngine plugins which the project uses
-PLUGINS 						= vuengine//fonts/AstonishFont \
+PLUGINS							= vuengine//fonts/AstonishFont \
 								  vuengine//fonts/VirtualBoyFont \
 								  vuengine//other/AutomaticPause \
 								  vuengine//other/I18n \
@@ -40,8 +40,8 @@ USE_PROLOG_FUNCTIONS			= 0
 # taking into account that the Param Table's last address normally is 0x0003D800, where
 # the WORLD attributes start.
 
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-MEMORY_POOL_SECTION			 		= .sdata
+# valid options are [/.data/.sdata/.dram_data/.sram_data]
+MEMORY_POOL_SECTION					= .sdata
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
 NON_INITIALIZED_GLOBAL_DATA_SECTION	= .sbss
 # valid options are [/.data/.sdata/.dram_data/.sram_data]

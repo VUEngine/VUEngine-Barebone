@@ -157,10 +157,6 @@
 //                                           FRAME RATE CONTROL                                            
 //---------------------------------------------------------------------------------------------------------
 
-// when defined, the engine skips to the next game frame when the VIP's GAMESTART interrupt is fired
-// beforethe current game frame is done
-#undef __FORCE_VIP_SYNC
-
 // timer resolution
 #define __TIMER_RESOLUTION											10
 
@@ -271,7 +267,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // total number of bgmap segments
-#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 							12
+#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 							10
 
 // number of segments for param tables
 #define __PARAM_TABLE_SEGMENTS										1
