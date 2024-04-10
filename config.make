@@ -9,15 +9,12 @@ PLUGINS							= vuengine//fonts/AstonishFont \
 								  vuengine//other/I18n \
 								  vuengine//other/SaveDataManager \
 								  vuengine//states/splash/AdjustmentScreenVUEngine \
+								  vuengine//states/splash/AlignmentCheckScreen \
 								  vuengine//states/splash/AutomaticPauseSelectionScreen \
 								  vuengine//states/splash/LanguageSelectionScreen \
 								  vuengine//states/splash/PrecautionScreen
 
-# Compiler's output
-COMPILER_OUTPUT					= c
-
 # Optimization level
-# Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
 OPTIMIZATION					= O2
 
 # Frame pointer's usage

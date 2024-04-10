@@ -11,6 +11,7 @@
         "vuengine//states/splash/AdjustmentScreenVUEngine": {
             "useLowPowerEntity": true
         },
+        "vuengine//states/splash/AlignmentCheckScreen": {},
         "vuengine//states/splash/AutomaticPauseSelectionScreen": {
             "titleTextFont": "AstonishExt",
             "bodyTextFont": "Default",
