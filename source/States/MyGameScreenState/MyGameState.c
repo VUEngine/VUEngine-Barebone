@@ -111,7 +111,7 @@ void MyGameState::resume(void* owner)
 	// enable user input
 	VUEngine::enableKeypad(VUEngine::getInstance());
 
-	if(!VUEngine::isInSpecialMode(VUEngine::getInstance()))
+	if(!VUEngine::isExitingToolState(VUEngine::getInstance()))
 	{
 		// start a fade in effect
 		Camera::startEffect(Camera::getInstance(), kHide);
