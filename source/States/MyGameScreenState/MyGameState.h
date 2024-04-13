@@ -16,6 +16,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 #include <GameState.h>
+#include <AlignmentCheckScreenState.h>
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -24,10 +25,13 @@
 
 dynamic_singleton class MyGameState : GameState
 {
+	uint32 lastInputs[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH];
+
 	static MyGameState getInstance();
 	override void enter(void* owner);
 	override void suspend(void* owner);
 	override void resume(void* owner);
+	override void processUserInput(const UserInput*  userInput);
 }
 
 

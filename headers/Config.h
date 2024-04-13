@@ -267,7 +267,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 // total number of bgmap segments
-#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 							12
+#define __TOTAL_NUMBER_OF_BGMAPS_SEGMENTS 							10
 
 // number of segments for param tables
 #define __PARAM_TABLE_SEGMENTS										1

@@ -30,6 +30,7 @@
 //---------------------------------------------------------------------------------------------------------
 
 extern StageROMSpec MyGameStageSpec;
+extern const uint32 AlignmentCheckButtonSequence[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH];
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -40,6 +41,8 @@ extern StageROMSpec MyGameStageSpec;
 void MyGameState::constructor()
 {
 	Base::constructor();
+
+	MyGameState::resetLastInputs(this);
 }
 
 // class's destructor
@@ -54,6 +57,9 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 {
 	// call base
 	Base::enter(this, owner);
+
+	// reset last button inputs
+	MyGameState::resetLastInputs(this);
 
 	// load stage
 	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL, true, false);
@@ -96,10 +102,16 @@ void MyGameState::resume(void* owner)
 	// call base
 	Base::resume(this, owner);
 
+	// reset last button inputs
+	MyGameState::resetLastInputs(this);
+
 	// print text
 	MyGameState::print(this);
 
-	if(!VUEngine::isInToolState(VUEngine::getInstance()))
+	// enable user input
+	VUEngine::enableKeypad(VUEngine::getInstance());
+
+	if(!VUEngine::isInSpecialMode(VUEngine::getInstance()))
 	{
 		// start a fade in effect
 		Camera::startEffect(Camera::getInstance(), kHide);
@@ -111,6 +123,47 @@ void MyGameState::resume(void* owner)
 			NULL, // callback function
 			NULL // callback scope
 		);
+	}
+}
+
+void MyGameState::processUserInput(const UserInput* userInput)
+{
+	if(userInput->pressedKey & ~K_PWR)
+	{
+		MyGameState::recordLastInput(this, userInput);
+		MyGameState::matchButtonCode(this);
+	}
+}
+
+void MyGameState::resetLastInputs()
+{
+	for(uint8 i = 0; i < __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH; i++)
+	{
+		this->lastInputs[i] = 0;
+	}
+}
+
+void MyGameState::recordLastInput(const UserInput* userInput)
+{
+	for(uint8 i = 0; i < (__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH - 1); i++)
+	{
+		this->lastInputs[i] = this->lastInputs[i + 1];
+	}
+	this->lastInputs[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH - 1] = userInput->pressedKey;
+}
+
+void MyGameState::matchButtonCode()
+{
+	uint8 numberOfMatchingButtons = 0;
+	
+	for(uint8 i = 0; i < __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH; i++)
+	{
+		numberOfMatchingButtons += (AlignmentCheckButtonSequence[i] == this->lastInputs[i]);
+	}
+
+	if(numberOfMatchingButtons == __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH)
+	{
+		VUEngine::pause(VUEngine::getInstance(), GameState::safeCast(AlignmentCheckScreenState::getInstance()));
 	}
 }
 

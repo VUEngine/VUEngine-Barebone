@@ -3,21 +3,18 @@
 ###########################################################################################################
 
 # VUEngine plugins which the project uses
-PLUGINS 						= vuengine//fonts/AstonishFont \
+PLUGINS							= vuengine//fonts/AstonishFont \
 								  vuengine//fonts/VirtualBoyFont \
 								  vuengine//other/AutomaticPause \
 								  vuengine//other/I18n \
 								  vuengine//other/SaveDataManager \
 								  vuengine//states/splash/AdjustmentScreenVUEngine \
+								  vuengine//states/splash/AlignmentCheckScreen \
 								  vuengine//states/splash/AutomaticPauseSelectionScreen \
 								  vuengine//states/splash/LanguageSelectionScreen \
 								  vuengine//states/splash/PrecautionScreen
 
-# Compiler's output
-COMPILER_OUTPUT					= c
-
 # Optimization level
-# Do not use O3 for multiplayer games, it causes unexpected out of sync behaviour when framerate drops
 OPTIMIZATION					= O2
 
 # Frame pointer's usage
@@ -40,8 +37,8 @@ USE_PROLOG_FUNCTIONS			= 0
 # taking into account that the Param Table's last address normally is 0x0003D800, where
 # the WORLD attributes start.
 
-# valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
-MEMORY_POOL_SECTION			 		= .sdata
+# valid options are [/.data/.sdata/.dram_data/.sram_data]
+MEMORY_POOL_SECTION					= .sdata
 # valid options are [/.bss/.sbss/.dram_bss/.sram_bss]
 NON_INITIALIZED_GLOBAL_DATA_SECTION	= .sbss
 # valid options are [/.data/.sdata/.dram_data/.sram_data]
