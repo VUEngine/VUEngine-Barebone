@@ -81,7 +81,7 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 
 void MyGameState::suspend(void* owner)
 {
-	if(!VUEngine::isInSpecialMode(VUEngine::getInstance()))
+	if(!VUEngine::isInToolState(VUEngine::getInstance()))
 	{
 		// do a fade out effect
 		Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
@@ -99,7 +99,7 @@ void MyGameState::resume(void* owner)
 	// print text
 	MyGameState::print(this);
 
-	if(!VUEngine::isInSpecialMode(VUEngine::getInstance()))
+	if(!VUEngine::isInToolState(VUEngine::getInstance()))
 	{
 		// start a fade in effect
 		Camera::startEffect(Camera::getInstance(), kHide);
