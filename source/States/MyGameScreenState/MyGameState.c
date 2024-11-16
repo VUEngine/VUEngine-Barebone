@@ -62,7 +62,7 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 	MyGameState::resetLastInputs(this);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL, true, false);
+	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL);
 
 	// start clocks to start animations
 	GameState::startClocks(GameState::safeCast(this));
