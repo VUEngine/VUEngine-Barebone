@@ -1,4 +1,4 @@
-/**
+/*
  * VUEngine Barebone
  *
  * © Jorge Eremiev <jorgech3@gmail.com> and Christian Radke <c.radke@posteo.de>
@@ -8,9 +8,9 @@
  */
 
 
-//---------------------------------------------------------------------------------------------------------
-// 												INCLUDES
-//---------------------------------------------------------------------------------------------------------
+//=========================================================================================================
+// INCLUDES
+//=========================================================================================================
 
 #include <MyGameState.h>
 
@@ -25,34 +25,19 @@
 #include <string.h>
 
 
-//---------------------------------------------------------------------------------------------------------
-// 												DECLARATIONS
-//---------------------------------------------------------------------------------------------------------
+//=========================================================================================================
+// CLASS' DECLARATIONS
+//=========================================================================================================
 
 extern StageROMSpec MyGameStageSpec;
 extern const uint32 AlignmentCheckButtonSequence[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH];
 
 
+//=========================================================================================================
+// CLASS' PUBLIC METHODS
+//=========================================================================================================
+
 //---------------------------------------------------------------------------------------------------------
-// 											CLASS'S DEFINITION
-//---------------------------------------------------------------------------------------------------------
-
-// class's constructor
-void MyGameState::constructor()
-{
-	Base::constructor();
-
-	MyGameState::resetLastInputs(this);
-}
-
-// class's destructor
-void MyGameState::destructor()
-{
-	// destroy base
-	Base::destructor();
-}
-
-// state's enter
 void MyGameState::enter(void* owner __attribute__ ((unused)))
 {
 	// call base
@@ -62,7 +47,7 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 	MyGameState::resetLastInputs(this);
 
 	// load stage
-	GameState::loadStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL);
+	GameState::configureStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL);
 
 	// start clocks to start animations
 	GameState::startClocks(GameState::safeCast(this));
@@ -84,19 +69,15 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 		NULL // callback scope
 	);
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::suspend(void* owner)
 {
-	if(!VUEngine::isInToolState(VUEngine::getInstance()))
-	{
-		// do a fade out effect
-		Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
-	}
+	Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
 
 	// call base
 	Base::suspend(this, owner);
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::resume(void* owner)
 {
 	// call base
@@ -111,21 +92,17 @@ void MyGameState::resume(void* owner)
 	// enable user input
 	VUEngine::enableKeypad(VUEngine::getInstance());
 
-	if(!VUEngine::isExitingToolState(VUEngine::getInstance()))
-	{
-		// start a fade in effect
-		Camera::startEffect(Camera::getInstance(), kHide);
-		Camera::startEffect(Camera::getInstance(),
-			kFadeTo, // effect type
-			0, // initial delay (in ms)
-			NULL, // target brightness
-			__FADE_DELAY, // delay between fading steps (in ms)
-			NULL, // callback function
-			NULL // callback scope
-		);
-	}
+	Camera::startEffect(Camera::getInstance(), kHide);
+	Camera::startEffect(Camera::getInstance(),
+		kFadeTo, // effect type
+		0, // initial delay (in ms)
+		NULL, // target brightness
+		__FADE_DELAY, // delay between fading steps (in ms)
+		NULL, // callback function
+		NULL // callback scope
+	);
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::processUserInput(const UserInput* userInput)
 {
 	if(userInput->pressedKey & ~K_PWR)
@@ -135,6 +112,24 @@ void MyGameState::processUserInput(const UserInput* userInput)
 	}
 }
 
+//=========================================================================================================
+// CLASS' PRIVATE METHODS
+//=========================================================================================================
+
+//---------------------------------------------------------------------------------------------------------
+void MyGameState::constructor()
+{
+	Base::constructor();
+
+	MyGameState::resetLastInputs(this);
+}
+//---------------------------------------------------------------------------------------------------------
+void MyGameState::destructor()
+{
+	// destroy base
+	Base::destructor();
+}
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::resetLastInputs()
 {
 	for(uint8 i = 0; i < __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH; i++)
@@ -142,7 +137,7 @@ void MyGameState::resetLastInputs()
 		this->lastInputs[i] = 0;
 	}
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::recordLastInput(const UserInput* userInput)
 {
 	for(uint8 i = 0; i < (__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH - 1); i++)
@@ -151,7 +146,7 @@ void MyGameState::recordLastInput(const UserInput* userInput)
 	}
 	this->lastInputs[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH - 1] = userInput->pressedKey;
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::matchButtonCode()
 {
 	uint8 numberOfMatchingButtons = 0;
@@ -166,7 +161,7 @@ void MyGameState::matchButtonCode()
 		VUEngine::pause(VUEngine::getInstance(), GameState::safeCast(AlignmentCheckScreenState::getInstance()));
 	}
 }
-
+//---------------------------------------------------------------------------------------------------------
 void MyGameState::print()
 {
 	const char* strYourGameHere = I18n::getText(I18n::getInstance(), kStringYourGameHere);
@@ -181,3 +176,4 @@ void MyGameState::print()
 		"VirtualBoyExt"
 	);
 }
+//---------------------------------------------------------------------------------------------------------
