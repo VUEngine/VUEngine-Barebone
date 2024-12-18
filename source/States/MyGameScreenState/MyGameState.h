@@ -31,8 +31,12 @@
 /// Implements an empty game state intended to be the starting for a new, awesome game.
 dynamic_singleton class MyGameState : GameState
 {
+	/// @protectedsection
+
 	/// Cache of user's inputs
 	uint32 lastInputs[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH];
+
+	/// @publicsection
 
 	/// Method to GameSaveDataManager the singleton instance
 	/// @return AnimationSchemesState singleton

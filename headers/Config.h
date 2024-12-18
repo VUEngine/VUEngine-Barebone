@@ -151,14 +151,8 @@
 // player's eyes' vertical position
 #define __VERTICAL_VIEW_POINT_CENTER								112
 
-// parallax values are divide by this factor to control their strength
-#define __PARALLAX_CORRECTION_FACTOR								4
-
 // affects the strength of the scaling
 #define __SCALING_MODIFIER_FACTOR									1.0f
-
-// minimum number of pixels that the camera can move
-#define __CAMERA_MINIMUM_DISPLACEMENT_PIXELS_POWER					1
 
 
 //---------------------------------------------------------------------------------------------------------
@@ -313,9 +307,6 @@
 
 #define __GRAVITY													19.6f
 
-// number of bodies to check for gravity on each cycle
-#define __BODIES_TO_CHECK_FOR_GRAVITY								10
-
 // maximum friction coefficient
 #define __MAXIMUM_FRICTION_COEFFICIENT								__I_TO_FIXED(1)
 
@@ -385,13 +376,6 @@
 #define __OBJECT_PALETTE_1											0xE0 // 11100000
 #define __OBJECT_PALETTE_2											0x90 // 10010000
 #define __OBJECT_PALETTE_3											0x50 // 01010000
-
-
-//---------------------------------------------------------------------------------------------------------
-//                                        RANDOM NUMBER GENERATION                                         
-//---------------------------------------------------------------------------------------------------------
-
-#undef __ADD_USER_INPUT_AND_TIME_TO_RANDOM_SEED
 
 
 //---------------------------------------------------------------------------------------------------------
