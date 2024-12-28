@@ -119,6 +119,7 @@ void MyGameState::processUserInput(const UserInput* userInput)
 //---------------------------------------------------------------------------------------------------------
 void MyGameState::constructor()
 {
+	// Always explicitly call the base's constructor 
 	Base::constructor();
 
 	MyGameState::resetLastInputs(this);
@@ -126,7 +127,7 @@ void MyGameState::constructor()
 //---------------------------------------------------------------------------------------------------------
 void MyGameState::destructor()
 {
-	// destroy base
+	// Always explicitly call the base's destructor 
 	Base::destructor();
 }
 //---------------------------------------------------------------------------------------------------------
