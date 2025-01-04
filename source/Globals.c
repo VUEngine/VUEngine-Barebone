@@ -32,7 +32,7 @@ const UserObject _userObjects[] =
 	{NULL, ""},
 };
 
-const UserEntity _userAnimatedEntities[] =
+const UserActor _userAnimatedEntities[] =
 {
 	{NULL, ""},
 };

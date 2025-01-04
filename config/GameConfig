@@ -10,7 +10,7 @@
         "vuengine//other/I18n": {},
         "vuengine//other/SaveDataManager": {},
         "vuengine//states/splash/AdjustmentScreenVUEngine": {
-            "useLowPowerEntity": true
+            "useLowPowerActor": true
         },
         "vuengine//states/splash/AlignmentCheckScreen": {},
         "vuengine//states/splash/AutomaticPauseSelectionScreen": {

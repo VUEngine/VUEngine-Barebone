@@ -14,11 +14,11 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern LangROMSpec EnglishLanguageSpec;
-extern EntitySpec FlagUnitedKingdomEntitySpec;
+extern ActorSpec FlagUnitedKingdomActorSpec;
 extern LangROMSpec GermanLanguageSpec;
-extern EntitySpec FlagGermanyEntitySpec;
+extern ActorSpec FlagGermanyActorSpec;
 extern LangROMSpec SpanishLanguageSpec;
-extern EntitySpec FlagSpainEntitySpec;
+extern ActorSpec FlagSpainActorSpec;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
@@ -60,8 +60,8 @@ const LangROMSpec EnglishLanguageSpec =
 	// language name
 	"English",
 
-	// flag entity
-	&FlagUnitedKingdomEntitySpec,
+	// flag actor
+	&FlagUnitedKingdomActorSpec,
 	
 	// strings
 	(const char**)EnglishLanguageStrings
@@ -94,8 +94,8 @@ const LangROMSpec GermanLanguageSpec =
 	// language name
 	"Deutsch",
 
-	// flag entity
-	&FlagGermanyEntitySpec,
+	// flag actor
+	&FlagGermanyActorSpec,
 	
 	// strings
 	(const char**)GermanLanguageStrings
@@ -128,8 +128,8 @@ const LangROMSpec SpanishLanguageSpec =
 	// language name
 	"Espa�ol",
 
-	// flag entity
-	&FlagSpainEntitySpec,
+	// flag actor
+	&FlagSpainActorSpec,
 	
 	// strings
 	(const char**)SpanishLanguageStrings
