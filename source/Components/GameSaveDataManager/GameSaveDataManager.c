@@ -34,7 +34,6 @@ void GameSaveDataManager::constructor()
 
 void GameSaveDataManager::destructor()
 {
-	// destroy base
 	// Always explicitly call the base's destructor 
 	Base::destructor();
 }
@@ -67,4 +66,3 @@ uint8 GameSaveDataManager::getCustomValue()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

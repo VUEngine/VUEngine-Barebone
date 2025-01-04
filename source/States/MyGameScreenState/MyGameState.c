@@ -38,7 +38,6 @@ extern const uint32 AlignmentCheckButtonSequence[__PLUGIN_ALIGNMENT_CHECK_BUTTON
 
 void MyGameState::enter(void* owner __attribute__ ((unused)))
 {
-	// call base
 	Base::enter(this, owner);
 
 	// reset last button inputs
@@ -74,7 +73,6 @@ void MyGameState::suspend(void* owner)
 {
 	Camera::startEffect(Camera::getInstance(), kFadeOut, __FADE_DELAY);
 
-	// call base
 	Base::suspend(this, owner);
 }
 
@@ -82,7 +80,6 @@ void MyGameState::suspend(void* owner)
 
 void MyGameState::resume(void* owner)
 {
-	// call base
 	Base::resume(this, owner);
 
 	// reset last button inputs
@@ -194,4 +191,3 @@ void MyGameState::print()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

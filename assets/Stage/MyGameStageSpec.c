@@ -276,4 +276,3 @@ StageROMSpec MyGameStageSpec =
 	// Post processing effects
 	(PostProcessingEffect*)NULL,
 };
-
