@@ -24,17 +24,17 @@
 extern ActorSpec LowPowerIndicatorActorSpec;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// ENTITY LISTS
+// ACTOR LISTS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-PositionedActorROMSpec MyGameStageEntities[] =
+PositionedActorROMSpec MyGameStageActors[] =
 {
 	{&LowPowerIndicatorActorSpec, {16, 12, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
 
 	{NULL, {0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
 };
 
-PositionedActorROMSpec MyGameStageUiEntities[] =
+PositionedActorROMSpec MyGameStageUiActors[] =
 {
 	{NULL, {0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
 };
@@ -126,7 +126,7 @@ StageROMSpec MyGameStageSpec =
 		// Padding to be added to camera's frustum when checking if a actor is
 		// out of the camera's range
 		16,
-		// Amount of actor descriptions to check for streaming in entities
+		// Amount of actor descriptions to check for streaming in actors
 		24,
 		// If true, actor instantiation is done over time
 		false,
@@ -261,16 +261,16 @@ StageROMSpec MyGameStageSpec =
 		(SoundSpec**)MyGameStageSoundSpecs,
 	},
 
-	// Entities
+	// Actors
 	{
 		// UI configuration
 		{
-			(PositionedActor*)MyGameStageUiEntities,
+			(PositionedActor*)MyGameStageUiActors,
 			__TYPE(UIContainer),
 		},
 
-		// Stage's children entities
-		(PositionedActor*)MyGameStageEntities,
+		// Stage's children actors
+		(PositionedActor*)MyGameStageActors,
 	},
 
 	// Post processing effects
