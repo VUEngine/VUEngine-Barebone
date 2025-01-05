@@ -40,22 +40,22 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 {
 	Base::enter(this, owner);
 
-	// reset last button inputs
+	// Reset last button inputs
 	MyGameState::resetLastInputs(this);
 
-	// load stage
+	// Load stage
 	GameState::configureStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL);
 
-	// start clocks to start animations
+	// Start clocks to start animations
 	GameState::startClocks(GameState::safeCast(this));
 
-	// print text
+	// Print text
 	MyGameState::print(this);
 
-	// enable user input
+	// Enable user input
 	VUEngine::enableKeypad(VUEngine::getInstance());
 
-	// start fade in effect
+	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
 	Camera::startEffect(Camera::getInstance(),
 		kFadeTo, // effect type
@@ -82,13 +82,13 @@ void MyGameState::resume(void* owner)
 {
 	Base::resume(this, owner);
 
-	// reset last button inputs
+	// Reset last button inputs
 	MyGameState::resetLastInputs(this);
 
-	// print text
+	// Print text
 	MyGameState::print(this);
 
-	// enable user input
+	// Enable user input
 	VUEngine::enableKeypad(VUEngine::getInstance());
 
 	Camera::startEffect(Camera::getInstance(), kHide);

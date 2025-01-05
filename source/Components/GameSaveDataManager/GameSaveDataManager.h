@@ -22,10 +22,10 @@
 
 typedef struct GameSaveData
 {
-	// save data handled by base class
+	// Save data handled by base class
 	SaveData baseSaveData;
 
-	// some custom value
+	// Some custom value
 	uint8 someCustomValue;
 
 } GameSaveData;
