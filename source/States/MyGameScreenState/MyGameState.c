@@ -57,7 +57,9 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 
 	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect(Camera::getInstance(),
+	Camera::startEffect
+	(
+		Camera::getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)
 		NULL, // target brightness
@@ -92,7 +94,9 @@ void MyGameState::resume(void* owner)
 	VUEngine::enableKeypad(VUEngine::getInstance());
 
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect(Camera::getInstance(),
+	Camera::startEffect
+	(
+		Camera::getInstance(),
 		kFadeTo, // effect type
 		0, // initial delay (in ms)
 		NULL, // target brightness
@@ -169,7 +173,7 @@ void MyGameState::matchButtonCode()
 
 	if(numberOfMatchingButtons == __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH)
 	{
-		VUEngine::pause(VUEngine::getInstance(), GameState::safeCast(AlignmentCheckScreenState::getInstance()));
+		VUEngine::pause(GameState::safeCast(AlignmentCheckScreenState::getInstance()));
 	}
 }
 
@@ -179,10 +183,10 @@ void MyGameState::print()
 {
 	const char* strYourGameHere = I18n::getText(I18n::getInstance(), kStringYourGameHere);
 
-	FontSize textSize = Printing::getTextSize(Printing::getInstance(), strYourGameHere, "VirtualBoyExt");
+	FontSize textSize = Printing::getTextSize(strYourGameHere, "VirtualBoyExt");
 
-	Printing::text(
-		Printing::getInstance(),
+	Printing::text
+	(
 		strYourGameHere,
 		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
 		12,
