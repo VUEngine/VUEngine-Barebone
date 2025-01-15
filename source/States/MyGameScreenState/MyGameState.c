@@ -53,7 +53,7 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 	MyGameState::print(this);
 
 	// Enable user input
-	VUEngine::enableKeypad(VUEngine::getInstance());
+	KeypadManager::enable();
 
 	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
@@ -91,7 +91,7 @@ void MyGameState::resume(void* owner)
 	MyGameState::print(this);
 
 	// Enable user input
-	VUEngine::enableKeypad(VUEngine::getInstance());
+	KeypadManager::enable();
 
 	Camera::startEffect(Camera::getInstance(), kHide);
 	Camera::startEffect

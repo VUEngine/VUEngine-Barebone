@@ -73,8 +73,7 @@ StageROMSpec MyGameStageSpec =
 
 	// Sound config
 	{
-		6000,
-		false
+		6000
 	},
 
 	// General stage's attributes
