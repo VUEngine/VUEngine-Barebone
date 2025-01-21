@@ -64,7 +64,6 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 		0, // initial delay (in ms)
 		NULL, // target brightness
 		__FADE_DELAY, // delay between fading steps (in ms)
-		NULL, // callback function
 		NULL // callback scope
 	);
 }
@@ -101,7 +100,6 @@ void MyGameState::resume(void* owner)
 		0, // initial delay (in ms)
 		NULL, // target brightness
 		__FADE_DELAY, // delay between fading steps (in ms)
-		NULL, // callback function
 		NULL // callback scope
 	);
 }
