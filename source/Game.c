@@ -19,7 +19,6 @@
 #include <MyGameState.h>
 #include <LanguageSelectionScreenState.h>
 #include <PrecautionScreenState.h>
-#include <VUEngine.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // GAME'S ENTRY POINT
@@ -27,7 +26,7 @@
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-int game(void)
+GameState game(void)
 {
 	// Initialize plugins
 	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), GameSaveDataManager::getAutomaticPauseStatus(GameSaveDataManager::getInstance()));
@@ -38,24 +37,27 @@ int game(void)
 		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),
 		GameState::safeCast(AdjustmentScreenState::getInstance())
 	);
+
 	SplashScreenState::setNextState
 	(
 		SplashScreenState::safeCast(AdjustmentScreenState::getInstance()),
 		GameState::safeCast(AutomaticPauseSelectionScreenState::getInstance())
 	);
+
 	SplashScreenState::setNextState
 	(
 		SplashScreenState::safeCast(AutomaticPauseSelectionScreenState::getInstance()),
 		GameState::safeCast(LanguageSelectionScreenState::getInstance())
 	);
+
 	SplashScreenState::setNextState
 	(
 		SplashScreenState::safeCast(LanguageSelectionScreenState::getInstance()),
 		GameState::safeCast(MyGameState::getInstance())
 	);
 
-	// Start the game
-	return VUEngine::start(VUEngine::getInstance(), GameState::safeCast(PrecautionScreenState::getInstance()));
+	// Return the first GameState
+	return GameState::safeCast(PrecautionScreenState::getInstance());
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
