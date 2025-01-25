@@ -17,7 +17,7 @@
 #include <CameraEffectManager.h>
 #include <I18n.h>
 #include <Languages.h>
-#include <Printing.h>
+#include <Printer.h>
 #include <VUEngine.h>
 #include <VIPManager.h>
 
@@ -181,9 +181,9 @@ void MyGameState::print()
 {
 	const char* strYourGameHere = I18n::getText(I18n::getInstance(), kStringYourGameHere);
 
-	FontSize textSize = Printing::getTextSize(strYourGameHere, "VirtualBoyExt");
+	FontSize textSize = Printer::getTextSize(strYourGameHere, "VirtualBoyExt");
 
-	Printing::text
+	Printer::text
 	(
 		strYourGameHere,
 		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
