@@ -2,7 +2,6 @@
 ///////////////////////////////////////////////THIS FILE WAS AUTO-GENERATED - DO NOT EDIT //////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // INCLUDES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -13,17 +12,17 @@
 // DEFINITIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-FontSpec* const _fonts[] =
+FontData const _fontData[] =
 {
-	(FontSpec*)&DefaultFontSpec,
-	(FontSpec*)&ProfilerFontSpec,
-	(FontSpec*)&DebugFontSpec,
-	(FontSpec*)&AstonishFontSpec,
-	(FontSpec*)&AstonishExtFontSpec,
-	(FontSpec*)&AstonishSFontSpec,
-	(FontSpec*)&AstonishSExtFontSpec,
-	(FontSpec*)&VirtualBoyFontSpec,
-	(FontSpec*)&VirtualBoyExtFontSpec,
+	{(FontSpec*)&DefaultFontSpec, NULL},
+	{(FontSpec*)&ProfilerFontSpec, NULL},
+	{(FontSpec*)&DebugFontSpec, NULL},
+	{(FontSpec*)&AstonishFontSpec, NULL},
+	{(FontSpec*)&AstonishExtFontSpec, NULL},
+	{(FontSpec*)&AstonishSFontSpec, NULL},
+	{(FontSpec*)&AstonishSExtFontSpec, NULL},
+	{(FontSpec*)&VirtualBoyFontSpec, NULL},
+	{(FontSpec*)&VirtualBoyExtFontSpec, NULL},
 	
-	NULL
+	{NULL, NULL}
 };
