@@ -14,8 +14,8 @@
 // INCLUDES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#include <GameState.h>
 #include <AlignmentCheckScreenState.h>
+#include <GameState.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // CLASS' DECLARATION
@@ -54,7 +54,7 @@ dynamic_singleton class MyGameState : GameState
 
 	/// Process the provided user input.
 	/// @param userInput: Struct with the current user input information
-	override void processUserInput(const UserInput*  userInput);
+	override void processUserInput(const UserInput* userInput);
 }
 
 #endif

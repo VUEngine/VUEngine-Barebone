@@ -16,8 +16,8 @@
 #include <AutomaticPauseSelectionScreenState.h>
 #include <GameSaveDataManager.h>
 #include <I18n.h>
-#include <MyGameState.h>
 #include <LanguageSelectionScreenState.h>
+#include <MyGameState.h>
 #include <PrecautionScreenState.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -29,9 +29,12 @@
 GameState game(void)
 {
 	// Initialize plugins
-	AutomaticPauseManager::setActive(AutomaticPauseManager::getInstance(), GameSaveDataManager::getAutomaticPauseStatus(GameSaveDataManager::getInstance()));
+	AutomaticPauseManager::setActive(
+		AutomaticPauseManager::getInstance(),
+		GameSaveDataManager::getAutomaticPauseStatus(GameSaveDataManager::getInstance())
+	);
 	I18n::setActiveLanguage(I18n::getInstance(), GameSaveDataManager::getLanguage(GameSaveDataManager::getInstance()));
-	
+
 	SplashScreenState::setNextState
 	(
 		SplashScreenState::safeCast(PrecautionScreenState::getInstance()),

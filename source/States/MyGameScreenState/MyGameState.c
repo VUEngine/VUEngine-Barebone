@@ -19,8 +19,8 @@
 #include <Languages.h>
 #include <Printer.h>
 #include <Singleton.h>
-#include <VUEngine.h>
 #include <VIPManager.h>
+#include <VUEngine.h>
 
 #include <string.h>
 
@@ -37,7 +37,7 @@ extern const uint32 AlignmentCheckButtonSequence[__PLUGIN_ALIGNMENT_CHECK_BUTTON
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-void MyGameState::enter(void* owner __attribute__ ((unused)))
+void MyGameState::enter(void* owner __attribute__((unused)))
 {
 	Base::enter(this, owner);
 
@@ -58,14 +58,13 @@ void MyGameState::enter(void* owner __attribute__ ((unused)))
 
 	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect
-	(
+	Camera::startEffect(
 		Camera::getInstance(),
-		kFadeTo, // effect type
-		0, // initial delay (in ms)
-		NULL, // target brightness
-		__FADE_DELAY, // delay between fading steps (in ms)
-		NULL // callback scope
+		kFadeTo,	   // effect type
+		0,			   // initial delay (in ms)
+		NULL,		   // target brightness
+		__FADE_DELAY,  // delay between fading steps (in ms)
+		NULL		   // callback scope
 	);
 }
 
@@ -94,14 +93,13 @@ void MyGameState::resume(void* owner)
 	KeypadManager::enable();
 
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect
-	(
+	Camera::startEffect(
 		Camera::getInstance(),
-		kFadeTo, // effect type
-		0, // initial delay (in ms)
-		NULL, // target brightness
-		__FADE_DELAY, // delay between fading steps (in ms)
-		NULL // callback scope
+		kFadeTo,	   // effect type
+		0,			   // initial delay (in ms)
+		NULL,		   // target brightness
+		__FADE_DELAY,  // delay between fading steps (in ms)
+		NULL		   // callback scope
 	);
 }
 
@@ -124,7 +122,7 @@ void MyGameState::processUserInput(const UserInput* userInput)
 
 void MyGameState::constructor()
 {
-	// Always explicitly call the base's constructor 
+	// Always explicitly call the base's constructor
 	Base::constructor();
 
 	MyGameState::resetLastInputs(this);
@@ -134,7 +132,7 @@ void MyGameState::constructor()
 
 void MyGameState::destructor()
 {
-	// Always explicitly call the base's destructor 
+	// Always explicitly call the base's destructor
 	Base::destructor();
 }
 
@@ -164,7 +162,7 @@ void MyGameState::recordLastInput(const UserInput* userInput)
 void MyGameState::matchButtonCode()
 {
 	uint8 numberOfMatchingButtons = 0;
-	
+
 	for(uint8 i = 0; i < __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH; i++)
 	{
 		numberOfMatchingButtons += (AlignmentCheckButtonSequence[i] == this->lastInputs[i]);
@@ -184,13 +182,7 @@ void MyGameState::print()
 
 	FontSize textSize = Printer::getTextSize(strYourGameHere, "VirtualBoyExt");
 
-	Printer::text
-	(
-		strYourGameHere,
-		(__SCREEN_WIDTH >> 4) - (textSize.x >> 1),
-		12,
-		"VirtualBoyExt"
-	);
+	Printer::text(strYourGameHere, (__SCREEN_WIDTH >> 4) - (textSize.x >> 1), 12, "VirtualBoyExt");
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
