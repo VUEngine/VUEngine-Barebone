@@ -2,27 +2,19 @@
 ///////////////////////////////////////////////  THIS FILE WAS AUTO-GENERATED - DO NOT EDIT  ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#ifndef GAME_EVENTS_H_
+#define GAME_EVENTS_H_
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // INCLUDES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#include <Fonts.h>
+#include <Events.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-FontData _fontData[] =
-{
-	{(FontSpec*)&DefaultFontSpec, NULL},
-	{(FontSpec*)&ProfilerFontSpec, NULL},
-	{(FontSpec*)&DebugFontSpec, NULL},
-	{(FontSpec*)&AstonishFontSpec, NULL},
-	{(FontSpec*)&AstonishExtFontSpec, NULL},
-	{(FontSpec*)&AstonishSFontSpec, NULL},
-	{(FontSpec*)&AstonishSExtFontSpec, NULL},
-	{(FontSpec*)&VirtualBoyFontSpec, NULL},
-	{(FontSpec*)&VirtualBoyExtFontSpec, NULL},
-	
-	{NULL, NULL}
-};
+
+
+#endif

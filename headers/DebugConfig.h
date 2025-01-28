@@ -2,31 +2,11 @@
 ///////////////////////////////////////////////  THIS FILE WAS AUTO-GENERATED - DO NOT EDIT  ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef LANGUAGES_H_
-#define LANGUAGES_H_
+#ifndef	DEBUG_CONFIG_H_
+#undef	DEBUG_CONFIG_H_
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// DEFINITIONS
+// DEBUG MACROS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum LanguageIdentifiers
-{
-	kLanguageEnglish,
-	kLanguageGerman,
-	kLanguageSpanish,
-};
-
-enum LanguageStrings
-{
-    kStringAutomaticPauseBody,
-    kStringAutomaticPauseSelectionBody,
-    kStringAutomaticPauseSelectionOff,
-    kStringAutomaticPauseSelectionOn,
-    kStringAutomaticPauseSelectionTitle,
-    kStringAutomaticPauseTitle,
-    kStringLanguageSelectTitle,
-    kStringPrecautionScreenBody,
-    kStringYourGameHere,
-};
 
 #endif

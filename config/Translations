@@ -1,19 +1,19 @@
 {
-    "_version": "0.6.0",
+    "_version": "1.0.0",
     "languages": [
-   	{
+        {
             "code": "en",
             "flag": "FlagUnitedKingdomActorSpec",
             "localizedName": "English",
             "name": "English"
         },
-   	{
+        {
             "code": "de",
             "flag": "FlagGermanyActorSpec",
             "localizedName": "Deutsch",
             "name": "German"
         },
-   	{
+        {
             "code": "es",
             "flag": "FlagSpainActorSpec",
             "localizedName": "Español",

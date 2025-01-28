@@ -1,18 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////THIS FILE WAS AUTO-GENERATED - DO NOT EDIT //////////////////////////////////////////////////
+///////////////////////////////////////////////  THIS FILE WAS AUTO-GENERATED - DO NOT EDIT  ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // INCLUDES
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include <I18n.h>
 #include <Languages.h>
 
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DECLARATIONS
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern LangROMSpec EnglishLanguageSpec;
 extern ActorSpec FlagUnitedKingdomActorSpec;
@@ -21,9 +20,9 @@ extern ActorSpec FlagGermanyActorSpec;
 extern LangROMSpec SpanishLanguageSpec;
 extern ActorSpec FlagSpainActorSpec;
 
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
-//â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 LangROMSpec* const _languages[] =
 {
@@ -36,102 +35,102 @@ LangROMSpec* const _languages[] =
 
 const char* const EnglishLanguageStrings[] =
 {
-	/* kStringAutomaticPauseBody: */
-	"Please take a rest!",
-	/* kStringAutomaticPauseSelectionBody: */
-	"The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
-	/* kStringAutomaticPauseSelectionOff: */
-	"Off",
-	/* kStringAutomaticPauseSelectionOn: */
-	"On",
-	/* kStringAutomaticPauseSelectionTitle: */
-	"AUTOMATIC PAUSE",
-	/* kStringAutomaticPauseTitle: */
-	"AUTOMATIC PAUSE",
-	/* kStringLanguageSelectTitle: */
-	"LANGUAGE SELECT",
-	/* kStringPrecautionScreenBody: */
-	"     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
-	/* kStringYourGameHere: */
-	"Your Game Here",
+    /* kStringAutomaticPauseBody: */
+    "Please take a rest!",
+    /* kStringAutomaticPauseSelectionBody: */
+    "The Automatic Pause feature will\nremind you to take a break from\nplaying approx. every 30 minutes",
+    /* kStringAutomaticPauseSelectionOff: */
+    "Off",
+    /* kStringAutomaticPauseSelectionOn: */
+    "On",
+    /* kStringAutomaticPauseSelectionTitle: */
+    "AUTOMATIC PAUSE",
+    /* kStringAutomaticPauseTitle: */
+    "AUTOMATIC PAUSE",
+    /* kStringLanguageSelectTitle: */
+    "LANGUAGE SELECT",
+    /* kStringPrecautionScreenBody: */
+    "     IMPORTANT\nREAD INSTRUCTION AND\nPRECAUTION BOOKLETS\n  BEFORE OPERATING",
+    /* kStringYourGameHere: */
+    "Your Game Here",
 };
 
 const LangROMSpec EnglishLanguageSpec =
 {
-	// Language name
+	// language name
 	"English",
 
-	// Flag actor
+	// flag actor
 	&FlagUnitedKingdomActorSpec,
 	
-	// Strings
+	// strings
 	(const char**)EnglishLanguageStrings
 };
 
 const char* const GermanLanguageStrings[] =
 {
-	/* kStringAutomaticPauseBody: */
-	"Bitte mache eine Pause!",
-	/* kStringAutomaticPauseSelectionBody: */
-	" Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
-	/* kStringAutomaticPauseSelectionOff: */
-	"Aus",
-	/* kStringAutomaticPauseSelectionOn: */
-	"An",
-	/* kStringAutomaticPauseSelectionTitle: */
-	"AUTOMATISCHE PAUSE",
-	/* kStringAutomaticPauseTitle: */
-	"AUTOMATISCHE PAUSE",
-	/* kStringLanguageSelectTitle: */
-	"SPRACHAUSWAHL",
-	/* kStringPrecautionScreenBody: */
-	"        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
-	/* kStringYourGameHere: */
-	"Dein Spiel hier",
+    /* kStringAutomaticPauseBody: */
+    "Bitte mache eine Pause!",
+    /* kStringAutomaticPauseSelectionBody: */
+    " Die Automatische Pause Funktion\nerinnert dich daran, das Spiel ca.\n  alle 30 Minuten zu pausieren",
+    /* kStringAutomaticPauseSelectionOff: */
+    "Aus",
+    /* kStringAutomaticPauseSelectionOn: */
+    "An",
+    /* kStringAutomaticPauseSelectionTitle: */
+    "AUTOMATISCHE PAUSE",
+    /* kStringAutomaticPauseTitle: */
+    "AUTOMATISCHE PAUSE",
+    /* kStringLanguageSelectTitle: */
+    "SPRACHAUSWAHL",
+    /* kStringPrecautionScreenBody: */
+    "        WICHTIG\nBITTE LESEN SIE VOR DEM\n SPIELEN DIE ANLEITUNG\nUND SICHERHEITSHINWEISE",
+    /* kStringYourGameHere: */
+    "Dein Spiel hier",
 };
 
 const LangROMSpec GermanLanguageSpec =
 {
-	// Language name
+	// language name
 	"Deutsch",
 
-	// Flag actor
+	// flag actor
 	&FlagGermanyActorSpec,
 	
-	// Strings
+	// strings
 	(const char**)GermanLanguageStrings
 };
 
 const char* const SpanishLanguageStrings[] =
 {
-	/* kStringAutomaticPauseBody: */
-	"ï¿½Por favor, tï¿½mese un descanso!",
-	/* kStringAutomaticPauseSelectionBody: */
-	" La funciï¿½n automï¿½tica de pausa te\nrecordarï¿½ que debes tomar un descanso\n  approximadamente cada 30 minutos",
-	/* kStringAutomaticPauseSelectionOff: */
-	"Apagado",
-	/* kStringAutomaticPauseSelectionOn: */
-	"Encendido",
-	/* kStringAutomaticPauseSelectionTitle: */
-	"PAUSA AUTOMï¿½TICA",
-	/* kStringAutomaticPauseTitle: */
-	"PAUSA AUTOMï¿½TICA",
-	/* kStringLanguageSelectTitle: */
-	"SELECCIONAR IDIOMA",
-	/* kStringPrecautionScreenBody: */
-	"         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
-	/* kStringYourGameHere: */
-	"Su juego aquï¿½",
+    /* kStringAutomaticPauseBody: */
+    "¡Por favor, tómese un descanso!",
+    /* kStringAutomaticPauseSelectionBody: */
+    " La función automática de pausa te\nrecordará que debes tomar un descanso\n  approximadamente cada 30 minutos",
+    /* kStringAutomaticPauseSelectionOff: */
+    "Apagado",
+    /* kStringAutomaticPauseSelectionOn: */
+    "Encendido",
+    /* kStringAutomaticPauseSelectionTitle: */
+    "PAUSA AUTOMÁTICA",
+    /* kStringAutomaticPauseTitle: */
+    "PAUSA AUTOMÁTICA",
+    /* kStringLanguageSelectTitle: */
+    "SELECCIONAR IDIOMA",
+    /* kStringPrecautionScreenBody: */
+    "         IMPORTANTE\n     LEE LOS LIBROS DE\nINSTRUCCIONES Y PRECAUCIONES\n       ANTES DE JUGAR",
+    /* kStringYourGameHere: */
+    "Su juego aquí",
 };
 
 const LangROMSpec SpanishLanguageSpec =
 {
-	// Language name
-	"Espaï¿½ol",
+	// language name
+	"Español",
 
-	// Flag actor
+	// flag actor
 	&FlagSpainActorSpec,
 	
-	// Strings
+	// strings
 	(const char**)SpanishLanguageStrings
 };

@@ -2,27 +2,19 @@
 ///////////////////////////////////////////////  THIS FILE WAS AUTO-GENERATED - DO NOT EDIT  ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#ifndef COLLIDER_LAYERS_H_
+#define COLLIDER_LAYERS_H_
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // INCLUDES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#include <Fonts.h>
+#include <ColliderManager.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-FontData _fontData[] =
-{
-	{(FontSpec*)&DefaultFontSpec, NULL},
-	{(FontSpec*)&ProfilerFontSpec, NULL},
-	{(FontSpec*)&DebugFontSpec, NULL},
-	{(FontSpec*)&AstonishFontSpec, NULL},
-	{(FontSpec*)&AstonishExtFontSpec, NULL},
-	{(FontSpec*)&AstonishSFontSpec, NULL},
-	{(FontSpec*)&AstonishSExtFontSpec, NULL},
-	{(FontSpec*)&VirtualBoyFontSpec, NULL},
-	{(FontSpec*)&VirtualBoyExtFontSpec, NULL},
-	
-	{NULL, NULL}
-};
+
+
+#endif
