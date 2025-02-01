@@ -45,10 +45,10 @@ void MyGameState::enter(void* owner __attribute__((unused)))
 	MyGameState::resetLastInputs(this);
 
 	// Load stage
-	GameState::configureStage(GameState::safeCast(this), (StageSpec*)&MyGameStageSpec, NULL);
+	MyGameState::configureStage(this, (StageSpec*)&MyGameStageSpec, NULL);
 
 	// Start clocks to start animations
-	GameState::startClocks(GameState::safeCast(this));
+	MyGameState::startClocks(this);
 
 	// Print text
 	MyGameState::print(this);
