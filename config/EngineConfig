@@ -44,7 +44,7 @@
         "runDelayedMessagesAtHalfFrameRate": false,
         "timerResolution": 10
     },
-    "game": [],
+    "macros": [],
     "math": {
         "fixedPointPrecision": 6
     },
@@ -124,6 +124,7 @@
     },
     "physics": {
         "angleToPreventColliderDisplacement": 10,
+        "collidersMaximumSize": 256,
         "frictionForceFactorPower": 2,
         "gravity": 19.6,
         "highPrecision": false,
