@@ -58,7 +58,8 @@ void MyGameState::enter(void* owner __attribute__((unused)))
 
 	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect(
+	Camera::startEffect
+	(
 		Camera::getInstance(),
 		kFadeTo,	   // effect type
 		0,			   // initial delay (in ms)
@@ -93,7 +94,8 @@ void MyGameState::resume(void* owner)
 	KeypadManager::enable();
 
 	Camera::startEffect(Camera::getInstance(), kHide);
-	Camera::startEffect(
+	Camera::startEffect
+	(
 		Camera::getInstance(),
 		kFadeTo,	   // effect type
 		0,			   // initial delay (in ms)
@@ -154,6 +156,7 @@ void MyGameState::recordLastInput(const UserInput* userInput)
 	{
 		this->lastInputs[i] = this->lastInputs[i + 1];
 	}
+
 	this->lastInputs[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH - 1] = userInput->pressedKey;
 }
 
