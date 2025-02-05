@@ -66,9 +66,9 @@ StageROMSpec MyGameStageSpec =
 
 	// Timer config
 	{
-		__TIMER_20US,
-		160,
-		kUS
+		__TIMER_100US,
+		10,
+		kMS
 	},
 
 	// Sound config

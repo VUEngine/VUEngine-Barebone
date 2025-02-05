@@ -42,8 +42,8 @@ typedef struct GameSaveData
 /// Implements a custom save data manager.
 singleton class GameSaveDataManager : SaveDataManager
 {
-	/// Method to GameSaveDataManager the singleton instance
-	/// @return AnimationSchemesState singleton
+	/// Method to get the singleton instance
+	/// @return GameSaveDataManager singleton
 	static GameSaveDataManager getInstance();
 
 	/// Save a custom value to SRAM.

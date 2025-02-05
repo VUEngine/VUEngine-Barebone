@@ -27,7 +27,7 @@
 /// Inherits from GameState
 ///
 /// Implements an empty game state intended to be the starting for a new, awesome game.
-dynamic_singleton class MyGameState : GameState
+singleton class MyGameState : GameState
 {
 	/// @protectedsection
 
@@ -36,8 +36,8 @@ dynamic_singleton class MyGameState : GameState
 
 	/// @publicsection
 
-	/// Method to GameSaveDataManager the singleton instance
-	/// @return AnimationSchemesState singleton
+	/// Method to get the singleton instance
+	/// @return MyGameState singleton
 	static MyGameState getInstance();
 
 	/// Prepares the object to enter this state.
