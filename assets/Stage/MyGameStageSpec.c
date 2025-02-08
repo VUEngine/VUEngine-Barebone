@@ -29,13 +29,13 @@ extern ActorSpec LowPowerIndicatorActorSpec;
 
 PositionedActorROMSpec MyGameStageActors[] =
 {
-	{&LowPowerIndicatorActorSpec, {16, 12, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
-
 	{NULL, {0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
 };
 
 PositionedActorROMSpec MyGameStageUiActors[] =
 {
+	{&LowPowerIndicatorActorSpec, {-176, -100, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
+
 	{NULL, {0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 0, NULL, NULL, NULL, false},
 };
 

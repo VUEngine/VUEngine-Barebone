@@ -3,7 +3,8 @@
 ############################################################################################################################################
 
 # VUEngine plugins which the project uses
-PLUGINS							= vuengine//fonts/AstonishFont \
+PLUGINS							= vuengine//actors/LowPowerActor \
+								  vuengine//fonts/AstonishFont \
 								  vuengine//fonts/VirtualBoyFont \
 								  vuengine//other/AutomaticPause \
 								  vuengine//other/I18n \
