@@ -10,7 +10,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #define __PLUGIN_LOW_POWER_ACTOR_X_POSITION (-176)
-#define __PLUGIN_LOW_POWER_ACTOR_Y_POSITION (-100)
+#define __PLUGIN_LOW_POWER_ACTOR_Y_POSITION (100)
 #define __PLUGIN_LOW_POWER_ACTOR_Z_POSITION (0)
 
 #define __PLUGIN_AUTOMATIC_PAUSE_TITLE_TEXT_FONT "Default"
