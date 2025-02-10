@@ -29,7 +29,6 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern StageROMSpec MyGameStageSpec;
-extern const uint32 AlignmentCheckButtonSequence[__PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH];
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // CLASS' PUBLIC METHODS
@@ -168,7 +167,7 @@ void MyGameState::matchButtonCode()
 
 	for(uint8 i = 0; i < __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH; i++)
 	{
-		numberOfMatchingButtons += (AlignmentCheckButtonSequence[i] == this->lastInputs[i]);
+		numberOfMatchingButtons += (_alignmentCheckButtonSequence[i] == this->lastInputs[i]);
 	}
 
 	if(numberOfMatchingButtons == __PLUGIN_ALIGNMENT_CHECK_BUTTON_SEQUENCE_LENGTH)
