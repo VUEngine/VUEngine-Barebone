@@ -13,12 +13,9 @@
 // DECLARATIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern LangROMSpec EnglishLanguageSpec;
-extern ActorSpec FlagUnitedKingdomActorSpec;
-extern LangROMSpec GermanLanguageSpec;
-extern ActorSpec FlagGermanyActorSpec;
-extern LangROMSpec SpanishLanguageSpec;
-extern ActorSpec FlagSpainActorSpec;
+extern LangROMSpec enLanguageSpec;
+extern LangROMSpec deLanguageSpec;
+extern LangROMSpec esLanguageSpec;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
@@ -26,14 +23,14 @@ extern ActorSpec FlagSpainActorSpec;
 
 LangROMSpec* const _languages[] =
 {
-	&EnglishLanguageSpec,
-	&GermanLanguageSpec,
-	&SpanishLanguageSpec,
+	&enLanguageSpec,
+	&deLanguageSpec,
+	&esLanguageSpec,
 	
 	NULL
 };
 
-const char* const EnglishLanguageStrings[] =
+const char* const enLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
     "Please take a rest!",
@@ -55,19 +52,19 @@ const char* const EnglishLanguageStrings[] =
     "Your Game Here",
 };
 
-const LangROMSpec EnglishLanguageSpec =
+const LangROMSpec enLanguageSpec =
 {
 	// language name
 	"English",
 
 	// flag actor
-	&FlagUnitedKingdomActorSpec,
+	NULL,
 	
 	// strings
-	(const char**)EnglishLanguageStrings
+	(const char**)enLanguageStrings
 };
 
-const char* const GermanLanguageStrings[] =
+const char* const deLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
     "Bitte mache eine Pause!",
@@ -89,19 +86,19 @@ const char* const GermanLanguageStrings[] =
     "Dein Spiel hier",
 };
 
-const LangROMSpec GermanLanguageSpec =
+const LangROMSpec deLanguageSpec =
 {
 	// language name
-	"Deutsch",
+	"German",
 
 	// flag actor
-	&FlagGermanyActorSpec,
+	NULL,
 	
 	// strings
-	(const char**)GermanLanguageStrings
+	(const char**)deLanguageStrings
 };
 
-const char* const SpanishLanguageStrings[] =
+const char* const esLanguageStrings[] =
 {
     /* kStringAutomaticPauseBody: */
     "¡Por favor, tómese un descanso!",
@@ -123,14 +120,14 @@ const char* const SpanishLanguageStrings[] =
     "Su juego aquí",
 };
 
-const LangROMSpec SpanishLanguageSpec =
+const LangROMSpec esLanguageSpec =
 {
 	// language name
-	"Español",
+	"Spanish",
 
 	// flag actor
-	&FlagSpainActorSpec,
+	NULL,
 	
 	// strings
-	(const char**)SpanishLanguageStrings
+	(const char**)esLanguageStrings
 };
