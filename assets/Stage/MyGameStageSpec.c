@@ -50,7 +50,7 @@ FontROMSpec* const MyGameStageFonts[] =
 	NULL
 };
 
-SoundROMSpec* MyGameStageSoundSpecs[] =
+SoundROMSpec* const MyGameStageSoundSpecs[] =
 {
 	NULL
 };
@@ -69,11 +69,6 @@ StageROMSpec MyGameStageSpec =
 		__TIMER_100US,
 		10,
 		kMS
-	},
-
-	// Sound config
-	{
-		6000
 	},
 
 	// General stage's attributes
