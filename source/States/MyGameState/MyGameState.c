@@ -19,7 +19,7 @@
 #include <Languages.h>
 #include <Printer.h>
 #include <Singleton.h>
-#include <VIPManager.h>
+#include <DisplayUnit.h>
 #include <VUEngine.h>
 
 #include "MyGameState.h"
@@ -50,7 +50,7 @@ void MyGameState::enter(void* owner __attribute__((unused)))
 	MyGameState::print(this);
 
 	// Enable user input
-	KeypadManager::enable();
+	Keypad::enable();
 
 	// Start fade in effect
 	Camera::startEffect(Camera::getInstance(), kHide);
@@ -84,7 +84,7 @@ void MyGameState::resume(void* owner)
 	MyGameState::print(this);
 
 	// Enable user input
-	KeypadManager::enable();
+	Keypad::enable();
 
 	Camera::startEffect(Camera::getInstance(), kHide);
 	Camera::startEffect
