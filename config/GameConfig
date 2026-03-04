@@ -1,7 +1,7 @@
 {
 	"_version": "0.6.0",
 	"plugins": {
-		"platform//VirtualBoy": {},
+		"platforms//VirtualBoy": {},
 		"vuengine//actors/LowPowerActor": {},
 		"vuengine//fonts/AstonishFont": {},
 		"vuengine//fonts/VirtualBoyFont": {},
