@@ -22,6 +22,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern ActorSpec LowPowerIndicatorActorSpec;
+extern SoundSpec BeepSoundSpec;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // ACTOR LISTS
@@ -52,6 +53,7 @@ FontROMSpec* const MyGameStageFonts[] =
 
 SoundROMSpec* const MyGameStageSoundSpecs[] =
 {
+	&BeepSoundSpec,
 	NULL
 };
 

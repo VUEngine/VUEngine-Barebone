@@ -1,0 +1,88 @@
+{
+	"_id": "HkkTCSmqCY8KLNpV",
+	"_version": "0.7.0",
+	"author": "",
+	"comment": "",
+	"group": "none",
+	"instruments": {
+		"gwWRoNEoS45Pc3K6": {
+			"color": 4,
+			"envelope": {
+				"direction": 0,
+				"enabled": false,
+				"initialValue": 11,
+				"repeat": false,
+				"stepTime": 0
+			},
+			"interval": {
+				"enabled": false,
+				"value": 0
+			},
+			"modulationData": [
+				0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+			],
+			"name": "New 1",
+			"sweepMod": {
+				"direction": 0,
+				"enabled": false,
+				"frequency": 0,
+				"function": 0,
+				"interval": 1,
+				"repeat": true,
+				"shift": 7
+			},
+			"tap": 0,
+			"type": "wave",
+			"volume": {
+				"left": 11,
+				"right": 11
+			},
+			"waveform": [
+				62,60,58,56,54,52,50,48,46,44,42,40,38,36,34,32,30,28,26,24,22,20,18,16,14,12,10,8,6,4,2,0
+			]
+		}
+	},
+	"loop": false,
+	"loopPoint": 0,
+	"name": "",
+	"patterns": {
+		"vppBJgQxRpSj2QE4": {
+			"events": {
+				"0": {
+					"duration": 50,
+					"note": "B5"
+				},
+				"50": {
+					"duration": 50,
+					"note": "G5"
+				},
+				"100": {
+					"duration": 100,
+					"note": "A5"
+				}
+			},
+			"name": "New 1",
+			"size": 4,
+			"type": "wave"
+		}
+	},
+	"section": "rom",
+	"size": 256,
+	"speed": {
+		"0": 64
+	},
+	"timeSignature": {
+		"0": "4/4"
+	},
+	"tracks": [
+		{
+			"instrument": "gwWRoNEoS45Pc3K6",
+			"priority": 10,
+			"sequence": {
+				"0": "vppBJgQxRpSj2QE4"
+			},
+			"skippable": true,
+			"type": "wave"
+		}
+	]
+}
