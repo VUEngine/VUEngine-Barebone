@@ -7,7 +7,7 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include <Sound.h>
-#include <VBSoundTrack.h>
+#include <VSUSoundTrack.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DECLARATIONS
@@ -84,12 +84,12 @@ const SoundTrackKeyframe BeepSoundTrack0Keyframes[] =
 	{0, kSoundTrackEventEnd}, 
 };
 
-VBSoundTrackROMSpec BeepSoundTrack0 =
+VSUSoundTrackROMSpec BeepSoundTrack0 =
 {
 	// SoundTrack
 	{
 		// Allocator
-		__TYPE(VBSoundTrack),
+		__TYPE(VSUSoundTrack),
 
 		// Priority for sound channel usage
 		10,
@@ -133,7 +133,7 @@ VBSoundTrackROMSpec BeepSoundTrack0 =
 // DEFINITIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-VBSoundTrackROMSpec* const BeepSoundTracks[] =
+VSUSoundTrackROMSpec* const BeepSoundTracks[] =
 {&BeepSoundTrack0,
 	NULL
 };
