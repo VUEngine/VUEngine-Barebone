@@ -133,7 +133,7 @@ VBSoundTrackROMSpec BeepSoundTrack0 =
 // DEFINITIONS
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-SoundTrackROMSpec* const BeepSoundTracks[] =
+VBSoundTrackROMSpec* const BeepSoundTracks[] =
 {&BeepSoundTrack0,
 	NULL
 };
