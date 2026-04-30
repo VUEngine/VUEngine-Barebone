@@ -1,30 +1,27 @@
 {
-    "_version": "0.6.0",
-    "languages": [
-        {
-            "code": "en",
-            "flag": "FlagUnitedKingdomActorSpec",
-            "localizedName": "English",
-            "name": "English"
-        },
-        {
-            "code": "de",
-            "flag": "FlagGermanyActorSpec",
-            "localizedName": "Deutsch",
-            "name": "German"
-        },
-        {
-            "code": "es",
-            "flag": "FlagSpainActorSpec",
-            "localizedName": "Español",
-            "name": "Spanish"
-        }
-    ],
-    "translations": {
-        "YourGameHere": {
-            "de": "Dein Spiel hier",
-            "en": "Your Game Here",
-            "es": "Su juego aquí"
-        }
-    }
+	"_version": "0.7.0",
+	"languages": [
+		{
+			"code": "en",
+			"flagActorId": "y00jkkvzi3Ah6KaR",
+			"name": "English"
+		},
+		{
+			"code": "de",
+			"flagActorId": "8N3qMrFmfimZtdG9",
+			"name": "German"
+		},
+		{
+			"code": "es",
+			"flagActorId": "Ce8LW23XBQx4Tkbl",
+			"name": "Spanish"
+		}
+	],
+	"translations": {
+		"YourGameHere": {
+			"de": "Dein Spiel hier",
+			"en": "Your Game Here",
+			"es": "Su juego aquí"
+		}
+	}
 }

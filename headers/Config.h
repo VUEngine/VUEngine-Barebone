@@ -30,6 +30,13 @@
 // DEBUGGING / PROFILING
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+#ifndef __SHIPPING
+#define __ALERT_TILE_MEMORY_DEPLETION
+#define __ALERT_BGMAP_MEMORY_DEPLETION
+#define __ALERT_OBJECT_MEMORY_DEPLETION
+#define __ALERT_WORLD_MEMORY_DEPLETION
+#endif
+
 #define __STACK_HEADROOM 1000
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,6 +44,8 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #ifdef __TOOLS
+
+#undef __SHIPPING
 
 #ifndef __DEBUG_TOOL
 #define __DEBUG_TOOL
@@ -157,7 +166,7 @@
 // TILE MANAGEMENT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#define __TOTAL_TILES		2048
+#define __TOTAL_TILES					2048
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // SPRITE MANAGEMENT
@@ -180,7 +189,6 @@
 #define __PRINTING_BGMAP_X_OFFSET		  0
 #define __PRINTING_BGMAP_Y_OFFSET		  (64 * 8 - __SCREEN_HEIGHT)
 #define __PRINTING_BGMAP_PARALLAX_OFFSET  0
-#define __PRINTABLE_BGMAP_AREA			  1792
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // PARAM TABLE
@@ -210,6 +218,10 @@
 
 #define __EAR_DISPLACEMENT						 384
 #define __SOUND_STEREO_ATTENUATION_DISTANCE		 2048
+#define __MAXIMUM_VOLUME_GROUP_GENERAL		     15
+#define __MAXIMUM_VOLUME_GROUP_EFFECTS		     15
+#define __MAXIMUM_VOLUME_GROUP_MUSIC		     15
+#define __MAXIMUM_VOLUME_GROUP_OTHER		     15
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // BRIGHTNESS

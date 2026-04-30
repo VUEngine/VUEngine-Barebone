@@ -14,8 +14,11 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern LangROMSpec enLanguageSpec;
+extern ActorSpec FlagUnitedKingdomActorSpec;
 extern LangROMSpec deLanguageSpec;
+extern ActorSpec FlagGermanyActorSpec;
 extern LangROMSpec esLanguageSpec;
+extern ActorSpec FlagSpainActorSpec;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // DEFINITIONS
@@ -58,7 +61,7 @@ const LangROMSpec enLanguageSpec =
 	"English",
 
 	// flag actor
-	NULL,
+	&FlagUnitedKingdomActorSpec,
 	
 	// strings
 	(const char**)enLanguageStrings
@@ -92,7 +95,7 @@ const LangROMSpec deLanguageSpec =
 	"German",
 
 	// flag actor
-	NULL,
+	&FlagGermanyActorSpec,
 	
 	// strings
 	(const char**)deLanguageStrings
@@ -126,7 +129,7 @@ const LangROMSpec esLanguageSpec =
 	"Spanish",
 
 	// flag actor
-	NULL,
+	&FlagSpainActorSpec,
 	
 	// strings
 	(const char**)esLanguageStrings
