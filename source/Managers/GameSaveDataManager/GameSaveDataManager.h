@@ -20,6 +20,7 @@
 // CLASS' DATA
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+/// @memberof GameSaveDataManager
 typedef struct GameSaveData
 {
 	// Save data handled by base class
@@ -34,7 +35,6 @@ typedef struct GameSaveData
 // CLASS' DECLARATION
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-///
 /// Class GameSaveDataManager
 ///
 /// Inherits from SaveDataManager
@@ -42,10 +42,6 @@ typedef struct GameSaveData
 /// Implements a custom save data manager.
 singleton class GameSaveDataManager : SaveDataManager
 {
-	/// Method to get the singleton instance
-	/// @return GameSaveDataManager singleton
-	static GameSaveDataManager getInstance();
-
 	/// Save a custom value to SRAM.
 	/// @param customValue: Value to save
 	void setCustomValue(uint8 customValue);
